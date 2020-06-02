@@ -1,0 +1,106 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+
+<!-- Mirrored from course.cse.ust.hk/comp4441/labs/lab4/lab4.html by HTTrack Website Copier/3.x [XR&CO'2014], Wed, 03 Jun 2015 09:38:17 GMT -->
+<head>
+  <title>COMP4441 Lab4</title>
+  <meta content="text/html; charset=utf-8"
+ http-equiv="content-type">
+  <style type="text/css">
+<!--body { font-family: arial, helvetica, sans-serif; }pre { font-size: small; }#highlight { font-size: larger; }-->
+
+  </style>
+</head>
+<body>
+<h1><span style="font-weight: 400;">COMP 4441 Computer Music</span></h1>
+<h1><span style="font-weight: 400;">Lab 4: Wavetable Synthesis and Score Input</span></h1>
+<hr>
+<h2>What to do?</h2>
+<p align="left">In this lab, you will synthesize instrument tones using 
+wavetable synthesis and input a simple score.</p>
+<h2>Synthesize tones using wavetable synthesis</h2>
+<ul>
+	<li>You may start your lab on <a href="sinewave.orc">sinewave.orc</a> and
+	<a href="sinewave.sco">sinewave.sco</a>.</li>
+	<li>You are required to synthesize a <a href="045-a-short.wav">organ tone</a>.</li>
+	<li>Use PVan+ to get the amplitudes of the first 10 harmonics when the 
+	peak RMS amplitude is reached (The &quot;Peak RMS Amp&quot; option is chosen).</li>
+	<li>Construct a wavetable in the score file.</li>
+	<li>You may test the synthesized notes by inputting some notes in the score 
+	files.</li>
+</ul>
+<h2>Pitch-class and cpspch</h2>
+<ul>
+	<li>Looking up the frequency of each note is a tedious work. Pitch-class and
+	<a href="http://www.csounds.com/manual/html/cpspch.html">cpspch</a> can be 
+	used to due with this issue.</li>
+	<li>Function <a href="http://www.csounds.com/manual/html/cpspch.html">cpspch</a> 
+	takes a pitch-class value and return a corresponding frequency in Hertz.</li>
+	<li>A pitch-class consist of a decimal number in a format of yy.xx.</li>
+	<li>yy represent the octave number of a note (8 represent the octave of C4).</li>
+	<li>xx is a number from 0 to 11 represent the note order in a octave 
+	starting with C (e.g. C4 =&gt; 8.00, C#4 =&gt; 8.01, D4 =&gt; 8.02 .... B4 =&gt; 8.11).</li>
+	<li>You can look up the pitch-class of each note from this
+	<a href="http://www.csounds.com/manual/html/MiscPitch.html">table</a>.</li>
+	<li>Modify the orc file such that we can input p5 as a pitch-class value 
+	instead of frequency in Hertz.</li>
+	<li>The final orc file should look like <a href="song.orc">this</a>.</li>
+</ul>
+<h2>Simple Score Input</h2>
+<ul>
+	<li>When you need to input a note in this assignment, you have to figure out 
+	7 parameters (p1 to p7).</li>
+	<li>For p1(i1), p4(amp, is given), p6(attack, is given) and p7(decay, is 
+	given), you should have no problems to figure out.</li>
+	<li>For p2(start) and p3(duration), please refer to P.14 of lecture note
+	<a href="../../notes/rhythm.ppt">Rhythm</a> to 
+	figure out the way to deduce from a score.</li>
+	<li>For p5(pitch), please refer to lecture note
+	<a href="../../notes/pitch.ppt">Pitch</a> to figure 
+	out the way to deduce the pitch of a note from a score. Then look up the 
+	pitch class from the pitch-class
+	<a href="http://www.csounds.com/manual/html/MiscPitch.html">table</a>.</li>
+</ul>
+<ul>
+</ul>
+<h2 align="left">Lab Assignment</h2>
+<ul>
+  <li>
+    <p align="left">Synthesize the organ tone using the skills learned 
+	in lab2.</p>
+  </li>
+	<li>
+    <p align="left">Add cpspch function such that we can input pitch-class in p5 
+	instead of frequency in Hertz.</p>
+  </li>
+	<li>Input the following score with <a href="045-a-short.wav">organ</a>. <em>(It is okay if you did the previous version, which was harder.)</em>
+<p align="center"><img border="0" src="score.png"></p>
+	<li>Set the tempo to 145 beat per minute. Refer to lecture notes <a href="../../notes/amplitude.ppt">Amplitude</a> slides 22-26 about the tempo statement.</li>
+  </li>
+	<li>
+	<p align="left">The final score should sound like <a href="song.wav">this</a>. This is a selection from the piece "<strong>Gran Vals</strong>", which you can watch a full peformance here: <a href="http://www.youtube.com/watch?v=Hsp6dR-fL4A" target="_blank">Gran Vals - Francisco Tárrega</a>. Enjoy!</li>
+	<li>
+    <p align="left">Re-name the final files as <b>song.orc</b> and <b>song.sco</b>.</p>
+  </li>
+</ul>
+<h2><font face="Arial Unicode MS">CASS - Course Assignment Submission
+System</font></h2>
+<p><font face="Arial Unicode MS">If you have finished your assignment
+and demonstrated to your TAs, you don't need to submit your files to
+CASS. But if you don't attend the labs or you
+cannot finish the assignment in the lab, you need to submit the source
+code using the
+<a href="../../../cass/submit.html">CASS</a>. </font>
+</p>
+<hr>
+<h2><font face="Arial Unicode MS">Demonstration and Submission</font></h2>
+<p><font face="Arial Unicode MS">Please submit your files using
+<a href="../../../cass/submit.html">CASS</a> by <b>Monday (27-Oct-2014)</b>. For any questions, please contact
+your TAs by email (<b>*Only for question asking. Submissions please go to CASS.*</b> ronmo@cse.ust.hk, bwuaa@cse.ust.hk).
+ DO NOT submit the wav file; submitting the orc and sco
+files will be enough. Thank you.
+</font> </p>
+</body>
+
+<!-- Mirrored from course.cse.ust.hk/comp4441/labs/lab4/lab4.html by HTTrack Website Copier/3.x [XR&CO'2014], Wed, 03 Jun 2015 09:38:17 GMT -->
+</html>

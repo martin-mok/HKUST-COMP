@@ -1,0 +1,60 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01//EN">
+<html>
+<head>
+<title>flex: The Fast Lexical Analyzer</title>
+</head>
+<body>
+<ul>
+<li style="display: inline"><a href="#overview">Skip Table of
+Contents</a></li>
+</ul>
+<h1>flex: The Fast Lexical Analyzer</h1>
+<h2>Table of Contents</h2>
+<ol>
+<li><a href="#overview">Overview of Flex</a></li>
+<li><a href="#downloads">Available Downloads</a></li>
+<li><a href="#resources">Other Resources</a></li>
+</ol>
+<h2 id="overview">Overview of Flex</h2>
+<p>Flex is a tool for generating scanners. A scanner, sometimes
+called a tokenizer, is a program which recognizes lexical patterns
+in text. The flex program reads user-specified input files, or its
+standard input if no file names are given, for a description of a
+scanner to generate. The description is in the form of pairs of
+regular expressions and C code, called rules. Flex generates a C
+source file named, "lex.yy.c", which defines the function yylex().
+The file "lex.yy.c" can be compiled and linked to produce an
+executable. When the executable is run, it analyzes its input for
+occurrences of text matching the regular expressions for each rule.
+Whenever it finds a match, it executes the corresponding C
+code.</p>
+<h2 id="downloads">Available Downloads</h2>
+<p>See the <a href="http://sourceforge.net/projects/flex/files/">files area of the flex project</a> for flex release downloads.</p>
+<h2 id="resources">Other Resources</h2>
+<ul>
+<li>The <a href="/manual/">flex manual</a> contains details of how flex works and how you
+can use it in your programs and applications.</li>
+<li>the <a href=
+"http://lists.sourceforge.net/mailman/listinfo/flex-help">flex-help
+mailing list</a> is the place to post questions regarding flex
+usage.</li>
+<li>The <a href=
+"http://lists.sourceforge.net/mailman/listinfo/flex-announce">flex-announce
+mailing list</a> provides low-volume news of flex releases.</li>
+<li>The <a href="http://sourceforge.net/projects/flex/">flex
+SourceForge project page</a> contains links to all flex-related
+sourceforge-hosted resources.</li>
+<li><a href=" http://bugs.debian.org/cgi-bin/pkgreport.cgi?src=flex">The
+Debian Project Flex Bug Page</a> is often a great place to find patches
+and information about bug fixes of interest to flex users</li>
+</ul>
+<div class="copyright">
+<p>Flex is hosted by <a href="http://sourceforge.net/"><img src=
+"http://sourceforge.net/sflogo.php?group_id=72099&amp;type=5"
+border="0" alt="SourceForge.net"></a></p>
+<p>
+Copyright &copy; 2008 The Flex Project.
+</p>
+</div>
+</body>
+</html>

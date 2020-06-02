@@ -1,0 +1,386 @@
+<!doctype html public "-//IETF//DTD HTML//EN">
+<HTML>
+
+<HEAD>
+
+<TITLE>What Do People Want From IR by B. Croft</TITLE>
+
+<META NAME="GENERATOR" CONTENT="Internet Assistant for Word 1.0Z">
+<META NAME="AUTHOR" CONTENT="Gateway Authorized Customer">
+</HEAD>
+
+<BODY>
+
+<P>
+<CENTER> 
+<P>
+<IMG src="dlib_header.gif"> 
+<H1><A NAME="DDE_LINK1">What Do People Want from Information Retrieval?</A>
+</H1>
+
+<H3>(The Top 10 Research Issues for Companies that Use and Sell
+IR Systems)</H3>
+
+<P>
+<A HREF="http://ciir.cs.umass.edu/info/people/staff/croft.html">W. Bruce Croft</A>
+<BR>
+<A HREF="http://ciir.cs.umass.edu">Center for Intelligent Information Retrieval</A>
+<BR>
+<A HREF="http://www.cs.umass.edu">Computer Science Department</A>
+<BR>
+<A HREF="http://www.umass.edu">University of Massachusetts, Amherst</A>
+<BR>
+Amherst, MA 01003-4610<BR>
+<I>croft@cs.umass.edu</I> 
+<P>
+<B>D-Lib Magazine</B>, November 1995<BR>
+</CENTER><HR>
+
+<P>
+With the enormous increase in recent years in the number of text
+databases available on-line, and the consequent need for better
+techniques to access this information, there has been a strong
+resurgence of interest in the research done in the area of information
+retrieval (IR). For many years, IR research was done by a small
+community that had little impact on industry. Most applications
+of text retrieval focused on bibliographic databases, and the
+large information services such as <A HREF="http://www.dialog.com/dialog/dialog1.html">DIALOG</A>
+or <A HREF="http://www.westpub.com/hsphome.htm">WESTLAW</A> were
+based on standard Boolean logic approaches to text matching and
+paid little attention to the results of research on topics such
+as retrieval models, query processing, term weighting and relevance
+feedback.
+<P>
+Today, however, the situation is considerably different. Retrieval
+techniques based on IR research have found their way into major
+information services (for example, <A HREF="http://www.westpub.com/hsphome.htm">West Publishing's</A>
+WIN system, <A HREF="http://www.bookwire.com/individual/description.html">Individual's</A>
+clipping service) and the World Wide Web (for example, <A HREF="http://www.infoseek.com">InfoSeek</A>
+and <A HREF="http://www.lycos.com">Lycos</A>). Many of the features
+once considered too esoteric for the typical user, such as &quot;natural
+language&quot; queries, ranked retrieval results, term weighting,
+&quot;query-by-example&quot;, and query formulation assistance,
+have become common and, indeed, necessary in most IR products
+(for example, <A HREF="http://www.pls.com">PLS</A>, <A HREF="http://www.verity.com">Verity</A>
+and <A HREF="http://www.fulcrum.com">Fulcrum</A>).
+<P>
+Given the speed with which industry has adopted the results of
+IR research from the 1970s and 1980s, the IR community is faced
+with identifying major new directions. The emergence of new applications
+such as &quot;digital libraries&quot; is both an opportunity and
+a challenge. These applications provide unique opportunities as
+testbeds for evaluating and stimulating research, but the challenge
+for IR researchers is to define and pursue research programs that
+maintain their relevance in a rapidly changing environment. One
+problem is that the priorities that IR researchers place on research
+issues are not necessarily the same as those of companies and
+government agencies that use and sell IR systems. Understanding
+those priorities and the operational experience behind them will
+be part of the process of deciding which issues are of fundamental
+importance and which are more transient.
+<P>
+In this paper, I summarize the experience of the National Science
+Foundation (NSF) Center for Intelligent Information Retrieval
+(CIIR) in the area of industrial and government research priorities.
+The Center has more than 40 members from the computer and information
+industries, applications areas such as medicine and environmental
+technology, and a variety of government agencies. These members
+participate in a variety of research and technology transfer projects,
+and the CIIR supports a number of prototype and operational retrieval
+applications, such as <A HREF="http://thomas.loc.gov">THOMAS</A>
+and <A HREF="http://lcweb2.loc.gov/amhome.html">American Memory at the Library of Congress</A>,
+<A HREF="http://www.infoseek.com">InfoSeek</A>, <A HREF="http://www.stat-usa.gov/stat-usa.html">STAT/USA</A>
+at the <A HREF="http://www.doc.gov">Department of Commerce</A>,
+the <A HREF="http://www.support.lotus.com">Lotus Help Desk</A>,
+and the <A HREF="http://www-far.npr.gov/VDOB/">U.S. Business Advisor</A>.
+<P>
+The following list describes ten of the most important issues
+we have encountered during our interactions with CIIR members
+(apologies to David Letterman). They are listed in approximate
+reverse order of importance, based purely on my own assessment.
+<H3>10. Relevance Feedback.</H3>
+
+<P>
+Relevance feedback is a process where users identify relevant
+documents in an initial list of retrieved documents, and the system
+then creates a new query based on those sample relevant documents.
+Algorithms for automatic relevance feedback have been studied
+in IR for more than thirty years, and the research community considers
+them to be thoroughly tested and effective. Companies and government
+agencies that use IR systems also view relevance feedback as a
+desirable feature, but there are some practical difficulties that
+have delayed the general adoption of this technique.
+<P>
+Most of the relevance feedback experiments reported in the IR
+literature were based on small test collections of abstract-length
+documents. The central problems in relevance feedback are selecting
+&quot;features&quot; (words, phrases) from relevant documents
+and calculating weights for these features in the context of a
+new query. These problems are substantially more difficult in
+environments with large databases of full-text documents. In addition,
+people searching databases in real applications often use relevance
+feedback in different ways than anticipated by IR researchers.
+Feedback techniques were developed to improve an initial query
+and assumed that a few relevant documents (all those in the top
+ten, for example) would be provided. In many real interactions,
+however, users specify only a single relevant document. Sometimes
+that relevant document may not even be strongly related to the
+initial query, and the user is, in effect, browsing using feedback.
+<P>
+These factors mean that traditional feedback techniques can be
+unpredictable in operational settings. Research aimed at correcting
+this problem is underway and more operational systems using relevance
+feedback can be expected in the near future. Relevance feedback
+techniques are also an important part of building profiles in
+a routing system (issue 6), with the main difference being the
+number of example relevant documents available.
+<H3>9. Information Extraction.</H3>
+
+<P>
+Information extraction techniques, primarily developed in the
+context of the Advanced Research Projects Agency (ARPA) Message
+Understanding Conferences (MUCs), are designed to identify database
+entities, attributes and relationships in full text. For example,
+for people interested in new joint ventures, an information extraction
+system could identify the names of the companies involved, the
+new company, the products, and the location, all from articles
+coming over a news feed. Companies and government agencies have
+considerable interest in these techniques, and see them as contributing
+significant &quot;added-value&quot; to the text databases they
+and others generate. Potential users also see these techniques
+as tools to help with data analysis, browsing, and mining using
+text databases. The current state of information extraction tools
+is such that it requires a considerable investment to build a
+new extraction application, and certain types of information are
+very difficult to identify. Research in this area is focused on
+reducing the effort required for new applications.
+<P>
+Extraction of simple categories of information is, on the other
+hand, practical and can be an important part of a text-based information
+system. Examples of this type of information include company and
+other organization names, peoples' names, locations, and dates.
+<H3>8. Multimedia Retrieval.</H3>
+
+<P>
+Multimedia indexing and retrieval refers to techniques being developed
+to access image, video and sound databases without text descriptions.
+The perceived value of multimedia information systems is very
+high and, consequently, industry has a considerable interest in
+the development of these techniques. General solutions to multimedia
+indexing are very difficult and, where they currently exist, tend
+to be of limited utility. An example of this is indexing images
+by their color distribution. This technique can be effectively
+used in some applications, such as retrieving pictures of fabric
+in specified color shades, but in many other applications simply
+cannot be used. Some progress has been made in multimedia indexing
+for specific applications (for example, retrieval of photographs
+of faces), and in processing language-related multimedia. Examples
+of language-related multimedia include text in images, scanned
+document images, and speech. Given the number of industrial and
+academic research groups working in this area, steady improvement
+of the techniques available can be expected.
+<H3>7. Effective Retrieval.</H3>
+
+<P>
+The development of effective retrieval techniques has been the
+core of IR research for more than 30 years. A number of measures
+of effectiveness have been proposed, but the most frequently mentioned
+are recall and precision. Finding text that satisfies a user's
+information need is not simple, and considerable progress has
+been made in developing ranking techniques that are significantly
+more effective than Boolean logic.
+<P>
+Contrary to some researchers' opinions, companies that sell and
+use IR systems <I>are</I> interested in effectiveness. Having
+a more effective retrieval engine is a major selling point. It
+is not, however, the primary focus of their concerns and I have
+indicated this by the quite low ranking of this issue in the top
+10. With regard to effectiveness, companies are particularly interested
+in techniques that produce significant improvements (rather than
+a few percent average precision) and that avoid occasional major
+mistakes. A system that performs well on most queries but makes
+it difficult for users to recover from bad mistakes, or even understand
+why they were made, is likely to be considered unacceptable. These
+occasional mistakes have very little impact on the average recall/precision
+measures used in standard IR tests, but considerable impact on
+end users. An example of a technique that produces reliable (although
+small) improvements in effectiveness, is generally well-regarded
+by users, but is one of the main sources of occasional bad mistakes
+is stemming. Solutions include building better stemmers and doing
+stemming as part of query processing rather than indexing.
+<H3>6. Routing and Filtering.</H3>
+
+<P>
+Information routing, filtering and clipping are all synonyms used
+to describe the process of identifying relevant documents in streams
+of information such as news feeds. Instead of comparing a single
+query to large numbers of archived documents, as is the case for
+IR, large number of archived profiles are compared to individual
+documents. Documents that match are sent to the users associated
+with the profile. A profile is a representation of a long-term
+information need and is usually more complex than a session-based
+query.
+<P>
+Companies and government agencies often indicate that routing
+is the main function required for a text-based system, with IR
+being a backup, secondary function. Given that, we can expect
+to see a significant increase in the use of routing systems.
+<P>
+Both efficiency and effectiveness are important for routing, and
+both have to be addressed in different ways than IR systems. Efficiency
+is important in order to deal with high-volume document streams
+(e.g. 100 MB/hour) and large numbers of profiles (tens of thousands).
+New indexing and memory-based architectures are being developed
+for these systems. In terms of effectiveness, the basic algorithms
+are very similar to retrieval but instead of producing a ranking,
+cutoffs must be used to separate relevant from non-relevant documents.
+Learning techniques are being studied both as a means of determining
+these cutoffs and automatically building profiles based on user
+feedback.
+<H3>5. Interfaces and Browsing.</H3>
+
+<P>
+Effective interfaces for text-based information systems are a
+high priority for users of these systems. The interface is a major
+part of how a system is evaluated, and as the retrieval and routing
+algorithms become more complex to improve recall and precision,
+more stress is placed on the design of interfaces that make the
+system easy to use and understandable. Interfaces must support
+a range of functions including query formulation, presentation
+of retrieved information, feedback, and browsing. The challenge
+is present this sophisticated functionality in a conceptually
+simple way. Despite the importance of this issue, there has been
+relatively little relevant research done by either the IR or human-computer
+interface (HCI) communities. This, however, is changing and much
+more work on interfaces for information systems and information
+visualization will be appearing.
+<H3>4. &quot;Magic&quot;.</H3>
+
+<P>
+One of the major causes of failures in IR systems is vocabulary
+mismatch. This means that the information need is often described
+using different words than are found in relevant documents. Techniques
+that address this problem by automatic expansion of the query
+are often regarded as a form of &quot;magic&quot; by users and
+are viewed as highly desirable. Vocabulary expansion can result
+from transforming the document and query representations, as with
+Latent Semantic Indexing, or it can be done as a form of automatic
+thesaurus built by corpus analysis. Further research in this area
+will make these techniques more reliable and efficient.
+<H3>3. Efficient, Flexible Indexing and Retrieval.</H3>
+
+<P>
+One of the most frequently mentioned, and most highly rated, issues
+is efficiency. Many different aspects of a system can have an
+impact on efficiency, and metrics such as query response time
+and indexing speed are major concerns of virtually every company
+involved with text-based systems. In the past, efficiency was
+a secondary issue in much of the IR literature. This has changed
+with the increased accessibility of large, full-text databases
+and new algorithms designed to increase indexing and query speed
+are published regularly. There has also been substantial research
+on text compression algorithms for decreasing storage overheads
+and I/O times. New applications of text-based systems that involve
+real-time and multi-user constraints will also require more work
+on concurrency control, update, and recovery strategies appropriate
+for these applications. Web-based systems, such as Infoseek, have
+particularly strict efficiency requirements since they must deal
+with hundreds of! thousands of queries per day.
+<P>
+The other aspect of indexing that is considered very important
+is the capability of handling a wide variety of document formats.
+This includes both standards such as SGML, HTML, Acrobat, and
+WordPerfect to name a few, as well as the myriad formats used
+in text-based applications such as medicine, law, commerce, etc.
+<H3>2. Distributed IR.</H3>
+
+<P>
+With the advent of the World-Wide Web and the huge increase in
+the use of the Internet, there has been a corresponding increase
+in demand for text retrieval systems that can work in distributed,
+wide-area network environments. This demand also comes from groupware
+applications such as Lotus Notes, which facilitate the rapid creation
+of databases distributed throughout an organization. One problem
+of this type is addressed by Web search engines, such as Infoseek
+and Lycos, which index Web pages and provide access to them. The
+more general problems are locating the best databases to search
+in a distributed environment that may contain hundreds or even
+thousands of databases, and merging the results that come back
+from the distributed search. The results must be merged in order
+to produce the overall ranking of retrieved items, instead of
+a collection of individual rankings. The difficulty of doing this
+effectively comes from the fact that the individual rankings may
+be incompatible in the sense that the numbers used to produce
+these rankings may not be directly comparable (they may even come
+from different IR systems). Research addressing these issues has
+begun to appear in the major conferences.
+<P>
+The work in this area, and that done in routing and relevance
+feedback, is closely related to the work on multi-agent systems
+that has received a lot of attention.
+<H3>1. Integrated Solutions.</H3>
+
+<P>
+The most important problem from the point of view of companies
+using and selling text-based systems is integration with other
+systems. A text retrieval system is a tool that can be used to
+solve part of an organization's information management problems.
+It is not often, however, the complete solution. Typically, a
+complete solution requires other text-based tools such as routing
+and extraction, tools for handling multimedia and scanned documents
+such as OCR, a database management system for structured data,
+and workflow or other groupware systems for managing documents
+and their use in the organization. Currently, these systems must
+be integrated using customized software, and even then the integration
+is often very superficial. More work on standardized architectures
+and common platforms is needed. Examples of some of the standards
+efforts include the Z39.50 search protocol, the SQL-Multimedia
+proposals, and the ARPA TIPSTER architecture for integrating retrieval,
+routing, and extraction systems.
+<P>
+One of the most important aspects of developing common platforms
+is the integration of database management and IR systems. An effective
+integration of these systems, together with multimedia capabilities,
+would provide an information system that could be used to manage
+many of the applications that currently exist. Although partial
+solutions to this integration do exist, they do not address one
+of the fundamental issues, which is that database systems all
+retrieve using Boolean logic, whereas both text and multimedia
+require techniques involving uncertainty and ranking for effective
+retrieval. True integration of text and multimedia is likely to
+require significant changes in the standard database techniques
+for indexing and query optimization, and may even require new
+query languages. Research on these issues is underway and more
+effort and support for this work is likely.
+<P>
+<CENTER><IMG src="ciir.gif"></CENTER> 
+<P>
+This list of ten issues is not meant to be comprehensive. There
+are other research areas that are of significant interest to companies,
+such as multilingual IR, data mining in text databases, and text
+categorization (attaching categories to text from predefined set,
+such as news categories or diagnosis codes). Although the ranking
+of these issues may not coincide with the priorities that IR researchers
+(including myself) may put on their own research programs, there
+is almost total agreement that these issues all pose significant
+research challenges. Some of these challenges will be solved in
+the short-term, but others will be the basis of longer research
+projects. The opportunities and experience provided by the explosion
+of operational text-based systems will be invaluable for IR research.
+<P>
+The<A HREF="http://ciir.cs.umass.edu/info/ciirbiblo.html">CIIR Bibliography</A>
+describes papers that have more details on the related research
+being done at the CIIR, as well as pointers to other peoples'
+work. <HR>
+
+<P>
+<A href = "../../dlib.html"><IMG src="dlib_forum_btn.gif" border=0 ALT="D-Lib Home Page |"> </A><A href="11contents.html">
+<IMG src="dlib_home_btn.gif" border=0 ALT=" D-Lib Magazine Contents Page |"> </A><A href="11clips.html">
+<IMG src="dlib_next_btn.gif" border=0 ALT=" Next Story | "></A><A href="http://www.dlib.org/Hypernews/get/dlib_responses.html">
+<IMG src="comments_btn.gif" border=0 ALT="Comments"></A><HR>
+
+<P>
+<I>hdl://cnri.dlib/november95-croft</I> 
+</BODY>
+
+</HTML>

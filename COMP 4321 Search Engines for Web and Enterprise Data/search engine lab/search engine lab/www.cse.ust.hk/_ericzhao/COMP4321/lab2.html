@@ -1,0 +1,589 @@
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+
+
+<!-- Mirrored from www.cse.ust.hk/~ericzhao/COMP4321/lab2.html by HTTrack Website Copier/3.x [XR&CO'2014], Mon, 29 Dec 2014 05:52:52 GMT -->
+<head>
+
+<title>
+
+COMP4321 Labs : Search Engines for Web and Enterprise Data</title>
+
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+
+
+
+<link rel="stylesheet" href="css/admin_1.1.css" type="text/css" />
+
+<link rel="stylesheet" href="css/admin_1.1-bg.css" type="text/css" />
+
+<link rel="stylesheet" href="css/eric_css.css" type="text/css" />
+
+<!-- TODO: based on the $cf['site']['theme'] to select a static theme.... -->
+
+<link type="text/css" href="lib/jqueryui/theme/ui.all.css" rel="Stylesheet" /> 
+
+<script type="text/javascript" src="lib/jquery/jquery-1.3.1.min.js"></script>	
+
+
+
+<script type="text/javascript" src="lib/jqueryui/jquery-ui-personalized-1.6rc6.min.js"></script>
+
+<!--
+
+<script type="text/javascript" src="lib/jquery.jeditable.mini.js"></script>	
+
+-->
+
+<script>		
+
+		$(function(){	
+
+		// main entry point
+
+		
+
+		$('#theme-switcher').themeswitcher( {		
+
+				loadTheme: "Smoothness",				
+
+				cookieName: '' /* not used cookie here... */
+
+			}
+
+		 );
+
+
+
+		// Test: Do the simple layout of the content....
+
+		// Initially, reLayout the screen 		
+
+		// Each time the window is resized, reLayout the screen			
+
+		function redoLayout() {		
+
+			// assume 10 px margin between 
+
+			//  [ ------------------------------ Wrap ------------------------------------]
+
+			//  [ -- sidebar --] [-- 10px --] [----------------- main ------------------]
+
+			var bodyWidth = $("body:first").width(); // first body's width...			
+
+			var sidebarWidth = $("#sidebar").width(); // sidebar's width...
+
+			var mainWidthThreshold = 250;
+
+						
+
+			var mainWidth = bodyWidth - sidebarWidth - 10; ; 			
+
+			if ( mainWidth > mainWidthThreshold ) {			
+
+				$("#wrap").width(bodyWidth);
+
+				$("#main").width(mainWidth);
+
+			}
+
+		}		
+
+		redoLayout();
+
+		$(window).resize( function() {
+
+			redoLayout();
+
+		});
+
+		
+
+		
+
+			
+
+	});
+
+</script>
+
+
+
+
+
+<!-- For Query table style... -->
+
+<style>
+
+
+
+table td { 
+
+	border: 1px solid;
+
+	padding: 2px;
+
+	
+
+}
+
+	
+
+</style>
+
+</head>
+
+
+
+<body>
+
+
+
+<!-- Load the jquery theme switcher tool.... -->
+
+<script type="text/javascript" src="../../../jqueryui.com/themeroller/themeswitchertool/index.html"></script>
+
+	
+
+	<div id="wrap">
+
+
+
+		<!-- header -->
+
+
+
+		<div id="header">
+
+			<span id="slogan" class="jeditable_line"> Fall 2014 </span>
+
+			<!-- tabs -->		
+
+			<!--
+
+			<ul>
+
+				<li><a href="#"><span>Site-Tab1</span></a></li>
+
+				<li><a href="#"><span>Site-Tab2</span></a></li>				
+
+			</ul>
+
+			-->
+
+		</div>
+
+
+
+
+
+		<div id="header-logo">
+
+			<div id="logo" class="jeditable_line"><a href="../../_dlee/4321/index.html">COMP4321</a> <span class=red>Labs</span></div>			
+
+			<div id="header-educ" class="jeditable_line_fixed_height">Search Engines for Web and Enterprise Data</div>
+
+		</div>
+
+
+
+		
+
+		<!-- For the display, currently just hack, using theme-switcher to achieve the effect
+
+		TODO: port to a static theme mapping later on....
+
+		-->
+
+		<div id="theme-switcher" style="display:none;"></div>
+
+		
+
+		
+
+		<!-- Style is now integrated with JQueryUI css framework -->
+
+		<!-- side bar -->
+
+		<div class="ui-widget ui-corner-all ui-helper-reset" id="sidebar" >			
+
+						
+
+			
+
+			<h1 class="ui-widget-header ui-helper-reset">Main Menu</h1>					
+
+			<!--<ul class="ui-widget-content ui-helper-reset" id="contentManagamentMenu">-->
+            <ul class="navbar">
+								
+
+												
+
+								<li class="ui-state-default ui-corner-all" >
+
+									<span class="ui-icon ui-icon-star"  ></span>												
+
+									<a href="index-2.html"  id="modify_title_html_1251527068" >Information</a>								
+
+									<br />								
+
+									
+
+									
+
+									
+
+								</li>	
+
+								
+
+																
+
+								<li class="ui-state-default ui-corner-all" >
+
+									<span class="ui-icon ui-icon-star"  ></span>												
+
+									<a href="lab1.html"  id="modify_title_html_1251529887" >Lab1</a>								
+
+									<br />								
+
+									
+
+									
+
+									
+
+								</li>	
+ 
+								
+
+																
+
+								<li class="ui-state-default ui-corner-all" >
+
+									<span class="ui-icon ui-icon-star"  ></span>												
+
+									<a href="lab2.html"  id="modify_title_html_1251530023" >Lab2</a>								
+
+									<br />								
+
+									
+
+									
+
+									
+
+								</li>	
+
+								
+
+																
+
+								<li class="ui-state-default ui-corner-all" >
+
+									<span class="ui-icon ui-icon-star"  ></span>												
+
+									<a href="lab3.html"  id="modify_title_html_1251530035" >Lab3</a>								
+
+									<br />								
+
+									
+
+									
+
+									
+
+								</li>	
+
+								
+
+																
+
+								<li class="ui-state-default ui-corner-all" >
+
+									<span class="ui-icon ui-icon-star"  ></span>												
+
+									<a href="lab4.html"  id="modify_title_html_1251529936" >Lab4</a>								
+
+									<br />								
+
+									
+
+									
+
+									
+
+								</li>	
+
+								
+
+																
+
+								<li class="ui-state-default ui-corner-all" >
+
+									<span class="ui-icon ui-icon-star"  ></span>												
+
+									<a href="project.html"  id="modify_title_html_1251529946" >Term Project</a>								
+
+									<br />								
+
+									
+
+									
+
+									
+
+								</li>	
+<li class="ui-state-default ui-corner-all" >
+<span class="ui-icon ui-icon-star"  ></span>
+<a href="http://www.cse.ust.hk/~ericzhao/COMP4321/Password_Only/homework_exam/schedule.html"  id="modify_title_html_1251529946" >HW and Exam</font></a>
+<br />
+<li class="ui-state-default ui-corner-all" >
+<span class="ui-icon ui-icon-star"  ></span>
+<a href="news_page.html"  id="modify_title_html_1251529946" ><font color="red">News</font></a>
+<br />
+</li>
+								
+
+								
+
+
+
+			</ul>	
+
+			
+
+		</div> <!-- END sidebar -->
+
+		
+
+		
+
+
+
+		
+
+		<div id="main" >
+
+		
+
+		
+
+			
+
+										
+
+						<!-- Wrapper for the editor -->
+
+						<div class="ui-widget ui-corner-all ui-helper-reset"  >			
+
+							<h1 class="ui-widget-header ui-helper-reset">Lab2</h1>
+
+											
+
+							<h1 style="text-align: center;"><span style="font-family: times new roman,times;"><span style="font-size: xx-large;"><span style="color: #ff0000;"><strong><span lang="EN-US">Lab2</span></strong></span><strong><span lang="EN-US"> - <span style="color: #000000;">HTML Parser</span></span></strong></span></span></h1>
+
+<h2><span style="font-size: x-large;"><span style="font-family: times new roman,times;"><strong><span lang="EN-US"><a href="http://www.cse.ust.hk/~csvictor/comp336_fall2009/#Useful_Links"></a></span></strong></span></span></h2>
+
+<div class="MsoNormal" style="text-align: center;"><span style="font-family: times new roman,times;"><span lang="EN-US"> 
+
+<hr size="2" />
+
+</span></span></div>
+
+<p class="MsoNormal"><span style="font-family: times new roman,times;"><strong></strong></span></p>
+
+<ul type="disc">
+
+<li class="MsoNormal">
+
+<h2><span style="font-size: x-large;"><span style="font-family: times new roman,times;"><strong><span lang="EN-US"><a href="#Introduction"><span style="color: blue;">Introduction</span></a></span></strong></span></span></h2>
+
+</li>
+
+<li class="MsoNormal">
+
+<h2><span style="font-size: x-large;"><span style="font-family: times new roman,times;"><strong><span lang="EN-US"><a href="#Packages"><span style="color: blue;">Packages</span></a></span></strong></span></span></h2>
+
+</li>
+
+<li class="MsoNormal">
+
+<h2><span style="font-size: x-large;"><span style="font-family: times new roman,times;"><strong><span lang="EN-US"><a href="#Examples"><span style="color: blue;">Examples</span></a></span></strong></span></span></h2>
+
+</li>
+
+<li class="MsoNormal">
+
+<h2><span style="font-size: x-large;"><span style="font-family: times new roman,times;"><strong><span lang="EN-US"><a href="#Exercise">Exercise</a></span></strong></span></span></h2>
+
+</li>
+
+<li class="MsoNormal">
+
+<h2><span style="font-size: x-large;"><span style="font-family: times new roman,times;"><strong><span lang="EN-US"><a href="#Useful_Links"><span style="color: blue;">Useful Links</span></a></span></strong></span></span></h2>
+
+</li>
+
+</ul>
+
+<div class="MsoNormal" style="text-align: center;"><span style="font-family: times new roman,times;"><span lang="EN-US"> 
+
+<hr size="2" />
+
+</span></span></div>
+
+<h2 class="MsoNormal"><span style="font-family: times new roman,times;"><a name="Introduction"></a><span style="font-size: 24pt;" lang="EN-US">Introduction</span></span></h2>
+
+<p class="MsoNormal"><span style="font-family: times new roman,times;"><span lang="EN-US"><span style="font-size: medium;">HTML Parser is a Java library used to parse HTML. It manages the connections&nbsp;and&nbsp;provides functions for parsing the html. It handles two use-cases: extraction and transformation. Extraction means extracting text, links, resources, etc., from a webpage, and transformation means transforming a webpage to another. To build a spider for a web search engine, we only need to use a small part of the library.</span></span></span></p>
+
+<div class="MsoNormal" style="text-align: center;"><span style="font-family: times new roman,times;"><span lang="EN-US"> 
+
+<hr size="2" />
+
+</span></span></div>
+
+<h2 class="MsoNormal"><span style="font-family: times new roman,times;"><a name="Packages"></a><span style="font-size: 24pt;" lang="EN-US">Packages</span></span></h2>
+
+<ul type="disc">
+
+<li class="MsoNormal"><span style="font-family: times new roman,times;"><span style="font-size: 13.5pt;" lang="EN-US"><a href="http://htmlparser.sourceforge.net/javadoc/org/htmlparser/package-summary.html"><span style="color: blue;">org.htmlparser</span></a>- The basic API classes which will be used by most developers when working with the HTML Parser.</span></span></li>
+
+<li class="MsoNormal"><span style="font-family: times new roman,times;"><span style="font-size: 13.5pt;" lang="EN-US"><a href="http://htmlparser.sourceforge.net/javadoc/org/htmlparser/beans/package-summary.html"><span style="color: blue;">org.htmlparser.beans</span></a>- The beans package contains Java Beans using the HTML Parser.</span></span></li>
+
+<li class="MsoNormal"><span style="font-family: times new roman,times;"><span style="font-size: 13.5pt;" lang="EN-US"><a href="http://htmlparser.sourceforge.net/javadoc/org/htmlparser/filters/package-summary.html"><span style="color: blue;">org.htmlparser.filters</span></a>- The filters package contains example filters to select only desired nodes.</span></span></li>
+
+<li class="MsoNormal"><span style="font-family: times new roman,times;"><span style="font-size: 13.5pt;" lang="EN-US"><a href="http://htmlparser.sourceforge.net/javadoc/org/htmlparser/http/package-summary.html"><span style="color: blue;">org.htmlparser.http</span></a>- The http package is responsible for HTTP connections to servers.</span></span></li>
+
+<li class="MsoNormal"><span style="font-family: times new roman,times;"><span style="font-size: 13.5pt;" lang="EN-US"><a href="http://htmlparser.sourceforge.net/javadoc/org/htmlparser/lexer/package-summary.html"><span style="color: blue;">org.htmlparser.lexer</span></a>- The lexer package is the base level I/O subsystem.</span></span></li>
+
+<li class="MsoNormal"><span style="font-family: times new roman,times;"><span style="font-size: 13.5pt;" lang="EN-US"><a href="http://htmlparser.sourceforge.net/old/javadoc/org/htmlparser/lexerapplications/tabby/package-summary.html"><span style="color: blue;">org.htmlparser.lexerapplications.tabby</span></a>- The Tabby program is a demonstration of how to use the underlying Lexer classes to perform file I/O.</span></span></li>
+
+<li class="MsoNormal"><span style="font-family: times new roman,times;"><span style="font-size: 13.5pt;" lang="EN-US"><a href="http://htmlparser.sourceforge.net/javadoc/org/htmlparser/lexerapplications/thumbelina/package-summary.html"><span style="color: blue;">org.htmlparser.lexerapplications.thumbelina</span></a>- Extract the images behind thumbnail images.</span></span></li>
+
+<li class="MsoNormal"><span style="font-family: times new roman,times;"><span style="font-size: 13.5pt;" lang="EN-US"><a href="http://htmlparser.sourceforge.net/javadoc/org/htmlparser/nodes/package-summary.html"><span style="color: blue;">org.htmlparser.nodes</span></a>- The nodes package has the concrete node implementations.</span></span></li>
+
+<li class="MsoNormal"><span style="font-family: times new roman,times;"><span style="font-size: 13.5pt;" lang="EN-US"><a href="http://htmlparser.sourceforge.net/javadoc/org/htmlparser/parserapplications/package-summary.html"><span style="color: blue;">org.htmlparser.parserapplications</span></a>- Example applications.</span></span></li>
+
+<li class="MsoNormal"><span style="font-family: times new roman,times;"><span style="font-size: 13.5pt;" lang="EN-US"><a href="http://htmlparser.sourceforge.net/javadoc/org/htmlparser/parserapplications/filterbuilder/package-summary.html"><span style="color: blue;">org.htmlparser.parserapplications.filterbuilder</span></a>- </span></span></li>
+
+<li class="MsoNormal"><span style="font-family: times new roman,times;"><span style="font-size: 13.5pt;" lang="EN-US"><a href="http://htmlparser.sourceforge.net/javadoc/org/htmlparser/parserapplications/filterbuilder/layouts/package-summary.html"><span style="color: blue;">org.htmlparser.parserapplications.filterbuilder.layouts</span></a>- </span></span></li>
+
+<li class="MsoNormal"><span style="font-family: times new roman,times;"><span style="font-size: 13.5pt;" lang="EN-US"><a href="http://htmlparser.sourceforge.net/javadoc/org/htmlparser/parserapplications/filterbuilder/wrappers/package-summary.html"><span style="color: blue;">org.htmlparser.parserapplications.filterbuilder.wrappers</span></a>- </span></span></li>
+
+<li class="MsoNormal"><span style="font-family: times new roman,times;"><span style="font-size: 13.5pt;" lang="EN-US"><a href="http://htmlparser.sourceforge.net/javadoc/org/htmlparser/sax/package-summary.html"><span style="color: blue;">org.htmlparser.sax</span></a>- The sax package implements a SAX (Simple API for XML) parser for HTML.</span></span></li>
+
+<li class="MsoNormal"><span style="font-family: times new roman,times;"><span style="font-size: 13.5pt;" lang="EN-US"><a href="http://htmlparser.sourceforge.net/javadoc/org/htmlparser/scanners/package-summary.html"><span style="color: blue;">org.htmlparser.scanners</span></a>- The scanners package contains classes responsible for the tertiary identification of tags.</span></span></li>
+
+<li class="MsoNormal"><span style="font-family: times new roman,times;"><span style="font-size: 13.5pt;" lang="EN-US"><a href="http://htmlparser.sourceforge.net/javadoc/org/htmlparser/tags/package-summary.html"><span style="color: blue;">org.htmlparser.tags</span></a>- The tags package contains specific tags.</span></span></li>
+
+<li class="MsoNormal"><span style="font-family: times new roman,times;"><span style="font-size: 13.5pt;" lang="EN-US"><a href="http://htmlparser.sourceforge.net/javadoc/org/htmlparser/util/package-summary.html"><span style="color: blue;">org.htmlparser.util</span></a>- Code which can be reused by many classes, is located in this package.</span></span></li>
+
+<li class="MsoNormal"><span style="font-family: times new roman,times;"><span style="font-size: 13.5pt;" lang="EN-US"><a href="http://htmlparser.sourceforge.net/javadoc/org/htmlparser/util/sort/package-summary.html"><span style="color: blue;">org.htmlparser.util.sort</span></a>- Provides generic sorting and searching.</span></span></li>
+
+<li class="MsoNormal"><span style="font-family: times new roman,times;"><span style="font-size: 13.5pt;" lang="EN-US"><a href="http://htmlparser.sourceforge.net/javadoc/org/htmlparser/visitors/package-summary.html"><span style="color: blue;">org.htmlparser.visitors</span></a>- The visitors package contains classes that use the Visitor pattern.</span></span></li>
+
+</ul>
+
+<div class="MsoNormal" style="text-align: center;"><span style="font-family: times new roman,times;"><span lang="EN-US"> 
+
+<hr size="2" />
+
+</span></span></div>
+
+<h2 class="MsoNormal"><span style="font-family: times new roman,times;"><span lang="EN-US">&nbsp; </span><a name="Examples"></a><span style="font-size: 24pt;" lang="EN-US">Examples </span></span></h2>
+
+<p class="MsoNormal"><span style="font-family: times new roman,times;"><span style="font-size: 13.5pt;" lang="EN-US">For any information about the library, visit the site <a href="http://htmlparser.sourceforge.net/index.html"><span style="color: blue;">http://htmlparser.sourceforge.net/index.html</span></a>. Below are the sample programs that are useful for building a spider: </span></span></p>
+
+<ul type="disc">
+
+<li class="MsoNormal"><span style="font-family: times new roman,times;"><span style="font-size: 13.5pt;" lang="EN-US"><a href="http://www.cse.ust.hk/~ericzhao/COMP4321/lab2/StringExtractor.java"><span style="color: blue;">StringExtractor.java</span></a><br />Extract text from a web page. </span></span></li>
+
+<li class="MsoNormal"><span style="font-family: times new roman,times;"><span style="font-size: 13.5pt;" lang="EN-US"><a href="http://www.cse.ust.hk/~ericzhao/COMP4321/lab2/LinkExtractor.java"><span style="color: blue;">LinkExtractor.java</span></a><br />Extract links/mail addresses from a web page. </span></span></li>
+
+</ul>
+
+<p class="MsoNormal"><span style="font-family: times new roman,times;"><span style="font-size: 13.5pt;" lang="EN-US">To compile the examples, you need to download the package <a href="http://downloads.sourceforge.net/htmlparser/htmlparser1_6_20060610.zip?modtime=1149940066&amp;big_mirror=0"><span style="color: blue;">htmlparser1_6_20060610.zip</span></a> and extract it.<br />Then you can copy the jar files in htmlparser1_6/lib to a directory, say "~/lib"<br />The StringExtractor.java then can be compiled by "javac -cp ~/lib/htmlparser.jar StringExtractor.java"<br />and executed by "java -cp ~/lib/htmlparser.jar:. StringExtractor". <br />You can find more examples in <a href="http://htmlparser.sourceforge.net/samples.html"><span style="color: blue;">http://htmlparser.sourceforge.net/samples.html</span></a>. The source codes for the examples can be found in src.zip\src\org\htmlparser\parserapplications\ in the package. <br />You will find that the links extracted by the provided LinkExtractor.java are relative. To get the absolute link, you can use the constructor of the URL. </span></span></p>
+
+<pre class="MsoNormal"><span style="font-family: times new roman,times;"><span style="font-size: 13.5pt;" lang="EN-US">URL absoluteLink = new URL(base,relativeLink);</span></span></pre>
+
+<p class="MsoNormal"><span style="font-family: times new roman,times;"><span style="font-size: 13.5pt;" lang="EN-US">where base is the URL of the current visited webpage. <br />Here is another example using org.htmlparser.beans.HTMLLinkBean to extract links: <a href="http://www.cse.ust.hk/~ericzhao/COMP4321/lab2/TestLinks.java"><span style="color: blue;">TestLinks.java</span></a></span></span>&nbsp;&nbsp;</p>
+
+<h2 class="MsoNormal" style="text-align: left;"><span style="font-family: times new roman,times;"> 
+
+<hr size="2" />
+
+</span><a name="Exercise"></a><span style="font-size: x-large;"><span style="font-family: times new roman,times;">Exercise</span></span><span style="font-family: times new roman,times;"><span style="font-family: times new roman,times;"><span style="color: black;"><span style="font-size: large;"><span style="font-size: medium;"><span style="font-family: times new roman,times;"><span style="color: #333333;"><strong>&nbsp;</strong></span></span></span></span></span></span></span></h2>
+
+<p>&nbsp;<span style="font-family: times new roman,times;"><span style="font-family: times new roman,times;"><span style="color: black;"><span style="font-size: large;"><strong><span style="text-decoration: underline;">Requirements</span></strong></span></span><span style="font-size: 16pt;"><strong><span style="text-decoration: underline;"> </span></strong></span><br /></span><span style="font-size: medium;"><span style="font-family: times new roman,times;">In your program, you are expected to mainly implement two functions: <br /><strong>1. public Vector extractWords();</strong></span></span></span><span style="font-family: times new roman,times;"><span style="font-size: medium;"><span style="font-family: times new roman,times;"><strong>//&nbsp;Extract the words in the&nbsp;webpage and&nbsp;put it into a Vector</strong>&nbsp;<br /></span></span></span><span style="font-family: times new roman,times;"><span style="font-size: medium;"><span style="font-family: times new roman,times;">You can use org.htmlparser.beans.StringBean to get the texts in the webpage and then use java.util.StringTokenizer to tokenize the words for further indexing.</span></span></span></p>
+
+<p><span style="font-size: medium;"><span style="font-family: times new roman,times;"><strong>2. public Vector extractLinks();// Extract the links in the&nbsp;webpage and&nbsp;put it into a Vector</strong>&nbsp;<br /><span style="font-family: times new roman,times;"><span style="font-size: medium;"><span style="font-family: times new roman,times;">You can use org.htmlparser.beans.LinkBean to get the links in the webpage.</span></span></span></span></span></p>
+
+<p><span style="font-family: times new roman,times;"><span style="font-size: medium;">Start your work on the skeleton program&nbsp;<a href="http://www.cse.ust.hk/~ericzhao/COMP4321/lab2/Crawler.java">Crawler.java</a></span><span style="font-size: medium;">. <strong>The following output is expected:</strong>&nbsp;&nbsp;<a href="http://www.cse.ust.hk/~ericzhao/COMP4321/lab2/lab2_out.txt">lab2_out.txt</a></span></span></p>
+<p><span style="font-family: times new roman,times;"><span style="font-size: medium;"><span style="font-family: times new roman,times;"><strong><span style="text-decoration: underline;"><span style="color: #000000;"><span style="font-size: large;">Hints</span><br /></span></span></strong>
+<p><span style="font-size: medium;"><span style="font-family: times new roman,times;"><strong> 1. You may use StringBean and LinkBean to get the desired result.</strong></p>
+<p><span style="font-size: medium;"><span style="font-family: times new roman,times;"><strong>2. You may use StringTokenizer to break the texts to tokens.</strong></p></span>
+
+<p><span style="font-family: times new roman,times;"><span style="font-size: medium;"><span style="font-family: times new roman,times;"><strong><span style="text-decoration: underline;"><span style="color: #000000;"><span style="font-size: large;">Submission</span><br /></span></span></strong>
+no need to submit
+<!--Submit your program via&nbsp;</span></span></span>&nbsp;<a href="https://course.cse.ust.hk/cass/submit.html"><span style="font-family: times new roman,times;"><span style="font-size: medium;"><span style="font-family: times new roman,times;">CASS system</span></span></span></a><span style="font-family: times new roman,times;"><span style="font-size: medium;"><span style="font-family: times new roman,times;"> before next lab. Assignment Name is <span style="color: red;">Lab2</span></span></span></span><span style="font-family: times new roman,times;"><span style="font-size: medium;"><span style="font-family: times new roman,times;"><em><span style="color: black;">.<br /></span></em><span style="color: black;">Refer to </span></span></span></span><a href="http://cssystem.cse.ust.hk/home.php?docbase=UGuides/cass&amp;req_url=UGuides/cass/student.html"><span style="font-family: times new roman,times;"><span style="font-size: medium;"><span style="font-family: times new roman,times;">CASS  Course Assignment Submission System</span></span></span></a><span style="font-family: times new roman,times;"><span style="font-size: medium;"><span style="font-family: times new roman,times;"> for more information about the usage of CASS.&nbsp;</span></span></span></p>-->
+
+<hr size="2" />
+
+<h2>&nbsp;<span style="font-family: times new roman,times;"><span lang="EN-US">&nbsp;</span><a name="Useful_Links"></a><span style="font-size: 24pt;" lang="EN-US">Useful Links</span></span></h2>
+
+<p class="MsoNormal"><span style="font-family: times new roman,times;"><span style="font-size: 13.5pt;" lang="EN-US">1. HTML Parser Project: <a href="http://htmlparser.sourceforge.net/"><span style="color: blue;">http://htmlparser.sourceforge.net/</span></a><br />2. HTML Parser Javadoc: <a href="http://htmlparser.sourceforge.net/javadoc/index.html"><span style="color: blue;">http://htmlparser.sourceforge.net/javadoc/index.html</span></a></span></span></p>
+
+<div class="MsoNormal" style="text-align: center;"><span style="font-family: times new roman,times;"><span lang="EN-US"> 
+
+<hr size="2" />
+
+</span></span></div>
+
+<p>&nbsp;</p>
+
+<p>&nbsp;</p>
+
+<p>&nbsp;</p>								
+
+											
+
+						</div>						
+
+				
+
+	
+
+	
+
+			
+
+		
+
+				
+
+		</div>	
+
+		
+
+	</div> <!-- END of main column: wrap -->
+
+		
+
+		
+
+	<br />
+
+	<br />
+
+	
+
+	<div class="footer jeditable_textarea" id="footer_textarea">Hong Kong University of Science and Technology - Department of Computer Science and Engineering</div>
+
+</body>
+
+
+<!-- Mirrored from www.cse.ust.hk/~ericzhao/COMP4321/lab2.html by HTTrack Website Copier/3.x [XR&CO'2014], Mon, 29 Dec 2014 05:52:52 GMT -->
+</html>

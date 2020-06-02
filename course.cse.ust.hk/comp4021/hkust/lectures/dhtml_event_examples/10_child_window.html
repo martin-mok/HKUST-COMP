@@ -1,0 +1,35 @@
+<html>
+
+<!-- Mirrored from course.cse.ust.hk/comp4021/hkust/lectures/dhtml_event_examples/10_child_window.html by HTTrack Website Copier/3.x [XR&CO'2014], Wed, 03 Jun 2015 10:25:08 GMT -->
+<head>
+<script>
+var parentColor = "black";
+function triggerParentColor() {
+  if (window.opener == null) {
+    alert("no opener window");
+  } else {
+    if (parentColor == "black") {
+      window.opener.document.getElementById("parenttest1").style.color =
+"red";
+      parentColor = "red";
+    } else {
+      window.opener.document.getElementById("parenttest1").style.color =
+"black";
+      parentColor = "black";
+    }
+  }
+  return false;
+}
+</script>
+</head>
+<body>
+<span align="center">
+<div id="childtest1">Child Window</div>
+<p/>
+<a href="#" onClick="triggerParentColor();return false;">Change Parent
+Color</a>
+</span>
+</body>
+
+<!-- Mirrored from course.cse.ust.hk/comp4021/hkust/lectures/dhtml_event_examples/10_child_window.html by HTTrack Website Copier/3.x [XR&CO'2014], Wed, 03 Jun 2015 10:25:08 GMT -->
+</html>

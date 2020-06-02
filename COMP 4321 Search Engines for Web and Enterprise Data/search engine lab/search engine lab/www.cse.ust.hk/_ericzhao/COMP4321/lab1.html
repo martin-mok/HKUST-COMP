@@ -1,0 +1,556 @@
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+
+
+<!-- Mirrored from www.cse.ust.hk/~ericzhao/COMP4321/lab1.html by HTTrack Website Copier/3.x [XR&CO'2014], Mon, 29 Dec 2014 05:52:52 GMT -->
+<head>
+
+<title>
+
+COMP4321 Labs : Search Engines for Web and Enterprise Data</title>
+
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+
+
+
+<link rel="stylesheet" href="css/admin_1.1.css" type="text/css" />
+
+<link rel="stylesheet" href="css/admin_1.1-bg.css" type="text/css" />
+
+<link rel="stylesheet" href="css/eric_css.css" type="text/css" />
+
+<!-- TODO: based on the $cf['site']['theme'] to select a static theme.... -->
+
+<link type="text/css" href="lib/jqueryui/theme/ui.all.css" rel="Stylesheet" /> 
+
+<script type="text/javascript" src="lib/jquery/jquery-1.3.1.min.js"></script>	
+
+
+
+<script type="text/javascript" src="lib/jqueryui/jquery-ui-personalized-1.6rc6.min.js"></script>
+
+<!--
+
+<script type="text/javascript" src="lib/jquery.jeditable.mini.js"></script>	
+
+-->
+
+<script>		
+
+		$(function(){	
+
+		// main entry point
+
+		
+
+		$('#theme-switcher').themeswitcher( {		
+
+				loadTheme: "Smoothness",				
+
+				cookieName: '' /* not used cookie here... */
+
+			}
+
+		 );
+
+
+
+		// Test: Do the simple layout of the content....
+
+		// Initially, reLayout the screen 		
+
+		// Each time the window is resized, reLayout the screen			
+
+		function redoLayout() {		
+
+			// assume 10 px margin between 
+
+			//  [ ------------------------------ Wrap ------------------------------------]
+
+			//  [ -- sidebar --] [-- 10px --] [----------------- main ------------------]
+
+			var bodyWidth = $("body:first").width(); // first body's width...			
+
+			var sidebarWidth = $("#sidebar").width(); // sidebar's width...
+
+			var mainWidthThreshold = 250;
+
+						
+
+			var mainWidth = bodyWidth - sidebarWidth - 10; ; 			
+
+			if ( mainWidth > mainWidthThreshold ) {			
+
+				$("#wrap").width(bodyWidth);
+
+				$("#main").width(mainWidth);
+
+			}
+
+		}		
+
+		redoLayout();
+
+		$(window).resize( function() {
+
+			redoLayout();
+
+		});
+
+		
+
+		
+
+			
+
+	});
+
+</script>
+
+
+
+
+
+<!-- For Query table style... -->
+
+<style>
+
+
+
+table td { 
+
+	border: 1px solid;
+
+	padding: 2px;
+
+	
+
+}
+
+	
+
+</style>
+
+</head>
+
+
+
+<body>
+
+
+
+<!-- Load the jquery theme switcher tool.... -->
+
+<script type="text/javascript" src="../../../jqueryui.com/themeroller/themeswitchertool/index.html"></script>
+
+	
+
+	<div id="wrap">
+
+
+
+		<!-- header -->
+
+
+
+		<div id="header">
+
+			<span id="slogan" class="jeditable_line"> Fall 2014 </span>
+
+			<!-- tabs -->		
+
+			<!--
+
+			<ul>
+
+				<li><a href="#"><span>Site-Tab1</span></a></li>
+
+				<li><a href="#"><span>Site-Tab2</span></a></li>				
+
+			</ul>
+
+			-->
+
+		</div>
+
+
+
+
+
+		<div id="header-logo">
+
+			<div id="logo" class="jeditable_line"><a href="../../_dlee/4321/index.html">COMP4321</a> <span class=red>Labs</span></div>			
+
+			<div id="header-educ" class="jeditable_line_fixed_height">Search Engines for Web and Enterprise Data</div>
+
+		</div>
+
+
+
+		
+
+		<!-- For the display, currently just hack, using theme-switcher to achieve the effect
+
+		TODO: port to a static theme mapping later on....
+
+		-->
+
+		<div id="theme-switcher" style="display:none;"></div>
+
+		
+
+		
+
+		<!-- Style is now integrated with JQueryUI css framework -->
+
+		<!-- side bar -->
+
+		<div class="ui-widget ui-corner-all ui-helper-reset" id="sidebar" >			
+
+						
+
+			
+
+			<h1 class="ui-widget-header ui-helper-reset">Main Menu</h1>					
+
+			<!--<ul class="ui-widget-content ui-helper-reset" id="contentManagamentMenu">-->
+            <ul class="navbar">
+								
+
+												
+
+								<li class="ui-state-default ui-corner-all" >
+
+									<span class="ui-icon ui-icon-star"  ></span>												
+
+									<a href="index-2.html"  id="modify_title_html_1251527068" >Information</a>								
+
+									<br />								
+
+									
+
+									
+
+									
+
+								</li>	
+
+								
+
+																
+
+								<li class="ui-state-default ui-corner-all" >
+
+									<span class="ui-icon ui-icon-star"  ></span>												
+
+									<a href="lab1.html"  id="modify_title_html_1251529887" >Lab1</a>								
+
+									<br />								
+
+									
+
+									
+
+									
+
+								</li>	
+ 
+								
+
+																
+
+								<li class="ui-state-default ui-corner-all" >
+
+									<span class="ui-icon ui-icon-star"  ></span>												
+
+									<a href="lab2.html"  id="modify_title_html_1251530023" >Lab2</a>								
+
+									<br />								
+
+									
+
+									
+
+									
+
+								</li>	
+
+								
+
+																
+
+								<li class="ui-state-default ui-corner-all" >
+
+									<span class="ui-icon ui-icon-star"  ></span>												
+
+									<a href="lab3.html"  id="modify_title_html_1251530035" >Lab3</a>								
+
+									<br />								
+
+									
+
+									
+
+									
+
+								</li>	
+
+								
+
+																
+
+								<li class="ui-state-default ui-corner-all" >
+
+									<span class="ui-icon ui-icon-star"  ></span>												
+
+									<a href="lab4.html"  id="modify_title_html_1251529936" >Lab4</a>								
+
+									<br />								
+
+									
+
+									
+
+									
+
+								</li>	
+
+								
+
+																
+
+								<li class="ui-state-default ui-corner-all" >
+
+									<span class="ui-icon ui-icon-star"  ></span>												
+
+									<a href="project.html"  id="modify_title_html_1251529946" >Term Project</a>								
+
+									<br />								
+
+									
+
+									
+
+									
+
+								</li>	
+
+<li class="ui-state-default ui-corner-all" >
+<span class="ui-icon ui-icon-star"  ></span>
+<a href="http://www.cse.ust.hk/~ericzhao/COMP4321/Password_Only/homework_exam/schedule.html"  id="modify_title_html_1251529946" >HW and Exam</font></a>
+<br />
+<li class="ui-state-default ui-corner-all" >
+<span class="ui-icon ui-icon-star"  ></span>
+<a href="news_page.html"  id="modify_title_html_1251529946" ><font color="red">News</font></a>
+<br />
+</li>
+								
+
+								
+
+
+
+			</ul>	
+
+			
+
+		</div> <!-- END sidebar -->
+
+		
+
+		
+
+
+
+		
+
+		<div id="main" >
+
+		
+
+		
+
+			
+
+										
+
+						<!-- Wrapper for the editor -->
+
+						<div class="ui-widget ui-corner-all ui-helper-reset"  >			
+
+							<h1 class="ui-widget-header ui-helper-reset">Lab1</h1>
+
+											
+
+							<h1 style="text-align: center;"><span style="font-family: times new roman,times;"><span style="font-size: 24pt;">&nbsp;<span style="font-size: xx-large;"><span style="color: #ff0000;">Lab1</span> -</span></span><span style="font-size: xx-large;"><span style="color: #000000;"> JDBM</span></span></span></h1>
+
+<div class="MsoNormal" style="text-align: center;"><span style="font-family: times new roman,times;"> 
+
+<hr size="2" />
+
+</span></div>
+
+<ul type="disc">
+
+<li class="MsoNormal">
+
+<h2><span style="font-size: x-large;"><span style="font-family: Times;"><span style="font-family: times new roman,times;"><a title="Introduction" href="#Introduction">Introduction</a></span></span></span></h2>
+
+</li>
+
+<li class="MsoNormal">
+
+<h2><span style="font-size: x-large;"><span style="font-family: times new roman,times;"><a title="Specification" href="#Specification"><span style="font-family: times new roman,times;">Specification</span></a></span></span></h2>
+
+</li>
+
+<li class="MsoNormal">
+
+<h2><span style="font-size: x-large;"><span style="font-family: times new roman,times;"><a title="Sample Programs" href="#Sample Programs"><span style="font-family: times new roman,times;">Sample Programs</span></a></span></span></h2>
+
+</li>
+
+<li class="MsoNormal">
+
+<h2><span style="font-size: x-large;"><span style="font-family: times new roman,times;"><a href="#Exercise"><span style="font-family: times new roman,times;">Exercise</span></a></span></span></h2>
+
+</li>
+
+<li class="MsoNormal">
+
+<h2><span style="font-size: x-large;"><span style="font-family: times new roman,times;"><a title="Useful Links" href="#Useful Links"><span style="font-family: times new roman,times;">Useful Links</span></a></span></span></h2>
+
+</li>
+
+</ul>
+
+<div class="MsoNormal" style="text-align: center;"><span style="font-family: times new roman,times;"> 
+
+<hr size="2" />
+
+</span></div>
+
+<h2><span style="font-family: times new roman,times;"><span style="font-size: 24pt;"><a name="Introduction"></a><span style="font-size: x-large;"><span style="font-family: times new roman,times;">Introduction</span></span></span><span style="font-size: x-large;"><span style="font-family: times new roman,times;"> </span></span></span></h2>
+
+<p><span style="font-size: medium;"><span style="font-family: times new roman,times;">JDBM is a transactional persistence engine for Java. It provides the&nbsp;basic database functions based on&nbsp;scalable data structures: <span class="SpellE">hash table </span>and <span class="SpellE">B+ Tree</span>. <span style="font-size: medium;">JDBM </span>provides functions for storing, fetching, searching and deleting records according to the specified keys. You need not write your own hashing functions or build search trees to accomplish the search function. <span style="font-size: medium;">JDBM </span>can do these for you. </span></span></p>
+
+<p><span style="font-size: medium;"><span style="font-family: times new roman,times;">In JDBM, the basic tuple is a key/content pair.&nbsp;Since the key and the content are of <em>java.lang.Object</em> type, we can store any variables into the database without complex conversions, which are required when using other database managers. We can also store an array into the value part of the triple so that we do not need to create our own method to separate the postings.</span></span></p>
+
+<p><span style="font-size: medium;"><span style="font-family: times new roman,times;">Maybe the previous description is a little bit abstract and confusing. Don't worry, let us take an example to see what JDBM can do and why it is convenient for us to build the search engine. As what we learned in the course, search engine has to index the pages and keywords. After indexing, we have to store it in the database to assure the indexed pages/keywords are still there when we restart the computer. What will happen if we don't store it on database? It means all the indexed results will be removed from the memory when the server is down, which causes search engine to crawl and index all the pages again. When the number of pages is small (e.g. in the first phase of our project, only 30 pages are needed to be crawled and indexed) it is OK without database, but how about billions of pages, like what Google deals with? We can view JDBM as a kind of database. It can store the data in like other database (e.g.SQL Server and MySQL). However, the difference is, the concept of "table" in traditional database system is "HTree" or "BTree"in <em>RecordManager</em>. HTree and BTree in JDBM are the implementation of hashtable and B+Tree, which are the abstract data structure. We don't need to care the implementation details and the structures of them, however,  what we need to know is the so called <em>HTree</em>/<em>BTree</em> can help us store data in a structure of hashtable/B+Tree. We can add/remove/search a particular entry in HTree/BTree (implementation of hashtable/B+Tree), which can help us index the pages and store the indexed results into hard disk. The figure below is an example of how to index the keywords and the structure of hashtable.  </span></span></p>
+<p style="text-align: center;" align="center"><span style="font-family: times new roman,times;"><img id="_x0000_i1032" style="border: 0px;" src="http://www.cse.ust.hk/~ericzhao/COMP4321/images/lab1_1.jpg" alt="" width="456" height="179" /></span></p>
+
+<p><span style="font-size: medium;"><span style="font-family: times new roman,times;">In JDBM, more than one relation (HTree/BTree) can be stored in a <em>RecordManager</em>, which is associcated to a db file. There is also a lg file to store the transaction log. The <em>RecordManager</em> can store two types of objects: <em>jdbm.btree</em>(B+ tree) and <em>jdbm.htree</em>(hash table). We can create a B+ tree or hash table based on our need and store it in a <em>RecordManager</em>.</span></span></p>
+
+<div class="MsoNormal" style="text-align: center;"><span style="font-family: times new roman,times;"> 
+
+<hr size="2" />
+
+</span></div>
+
+<h2><strong><span style="font-size: 24pt;"><span style="font-family: times new roman,times;"><a name="Specification"></a><span style="font-size: x-large;"><span style="font-family: times new roman,times;">Specification</span></span></span></span></strong></h2>
+
+<p><span style="font-size: medium;"><strong><span style="font-family: times new roman,times;">Some commonly used classes: </span></strong></span></p>
+
+<p><span style="font-size: medium;"><span style="font-family: times new roman,times;">1.&nbsp;&nbsp;&nbsp; </span><a href="http://jdbm.sourceforge.net/V1.0/doc/api/jdbm/RecordManager.html"><span style="font-family: times new roman,times;">RecordManager</span></a><span style="font-family: times new roman,times;"> <br />2.&nbsp;&nbsp;&nbsp; </span><a href="http://jdbm.sourceforge.net/V1.0/doc/api/jdbm/RecordManagerFactory.html"><span class="SpellE"><span class="GramE"><span style="font-family: times new roman,times;">RecordManagerFactory</span></span></span></a><span style="font-family: times new roman,times;"><span class="GramE"> <br />3.</span>&nbsp;&nbsp;&nbsp; </span><a href="http://jdbm.sourceforge.net/V1.0/doc/api/jdbm/btree/BTree.html"><span class="SpellE"><span class="GramE"><span style="font-family: times new roman,times;">btree</span></span></span></a><span style="font-family: times new roman,times;"> <br />4.&nbsp;&nbsp;&nbsp; </span><a href="http://jdbm.sourceforge.net/V1.0/doc/api/jdbm/htree/HTree.html"><span class="SpellE"><span class="GramE"><span style="font-family: times new roman,times;">htree</span></span></span></a><span style="font-family: times new roman,times;"> <br />5.&nbsp;&nbsp;&nbsp; </span><a href="http://jdbm.sourceforge.net/V1.0/doc/api/jdbm/helper/FastIterator.html"><span class="SpellE"><span class="GramE"><span style="font-family: times new roman,times;">FastIterator</span></span></span></a><span style="font-family: times new roman,times;"><span class="GramE"> <br />6.</span>&nbsp;&nbsp;&nbsp; </span><a href="http://jdbm.sourceforge.net/V1.0/doc/api/jdbm/helper/TupleBrowser.html"><span class="SpellE"><span style="font-family: times new roman,times;">TupleBrowser</span></span></a></span></p>
+
+<p><span style="font-size: medium;"><span style="font-family: times new roman,times;">The complete javadoc can be found in </span><a href="http://jdbm.sourceforge.net/V1.0/doc/api"><span style="font-family: times new roman,times;">http://jdbm.sourceforge.net/V1.0/doc/api</span></a><span style="font-family: times new roman,times;"> or the downloaded </span><a href="http://prdownloads.sourceforge.net/jdbm/jdbm-1.0.zip?download"><span style="font-family: times new roman,times;">jdbm-1.0.zip</span></a></span></p>
+
+<div class="MsoNormal" style="text-align: center;"><span style="font-family: times new roman,times;"> 
+
+<hr size="2" />
+
+</span></div>
+
+<h2><span style="font-family: times new roman,times;"><strong><span style="font-size: 24pt;"><a name="Sample Programs"></a><span style="font-size: x-large;"><span style="font-family: times new roman,times;">Sample Programs</span></span></span></strong><span style="font-size: medium;"><strong><span style="font-size: x-large;"><span style="font-family: times new roman,times;"> </span></span></strong></span></span></h2>
+
+<p><span style="font-size: medium;"><span style="font-family: times new roman,times;">Here is a simple example using hash table.&nbsp;</span></span></p>
+
+<pre><span style="font-family: times new roman,times;"><span style="font-size: medium;"><span style="font-family: times new roman,times;">import jdbm.RecordManager;<br />import jdbm.RecordManagerFactory;<br />import jdbm.htree.HTree;<br />import jdbm.helper.FastIterator;<br /><br />public class JDBMsample<br />{<br />        public static void main(String[] args)<br />        {<br />               try<br />               {<br />                       RecordManager recman;<br />                       HTree hashtable;<br />                       </span><span style="font-family: times new roman,times;"><span style="color: #0000ff;">// Create a RecordManager name &ldquo;testRM&rdquo;<br /></span>                       recman = RecordManagerFactory.createRecordManager("testRM"); <br />                       </span><span style="font-family: times new roman,times;"><span style="color: #0000ff;">// get the record id of the object named &ldquo;ht1&rdquo;<br /></span>                       long recid = recman.getNamedObject("ht1");<br /><br />                       if (recid != 0)<br /><br />                       {<br />                               </span><span style="font-family: times new roman,times;"><span style="color: #0000ff;">// load the hash table named&ldquo;ht1&rdquo;from the RecordManager<br /></span>                               hashtable = HTree.load(recman, recid); <br />                       }<br />                       else<br />                       {<br />                               </span><span style="font-family: times new roman,times;"><span style="color: #0000ff;">// create a hash table in the RecordManager<br /></span>                               hashtable = HTree.createInstance(recman); <br />                               <span style="color: #0000ff;">// set the name of the hash table to &ldquo;ht1&rdquo;</span><br />                               recman.setNamedObject( "ht1", hashtable.getRecid() ); <br />                       }<br />                       <br />                       </span><span style="font-family: times new roman,times;"><span style="color: #0000ff;">// add some triples into the hash table<br /></span>                       hashtable.put("key1", "context 1");<br />                       hashtable.put("key2", "context 2");<br />                       hashtable.put("key3", "context 3");<br />                       hashtable.put("key4", "context 4");<br />                       <br />                       </span><span style="font-family: times new roman,times;"><span style="color: #0000ff;">// get the content of the &ldquo;key3&rdquo; from the hash table<br /></span>                       System.out.println( hashtable.get("key3"));<br /><br />                       </span><span style="font-family: times new roman,times;"><span style="color: #0000ff;">// remove the triple with key = &ldquo;key2&rdquo;<br /></span>                       hashtable.remove( "key2" );<br /><br />                       </span><span style="font-family: times new roman,times;"><span style="color: #0000ff;">// iterate through all keys<br /></span>                       FastIterator iter = hashtable.keys();<br /><br />                       String key;<br />                       while( (key = (String)iter.next())!=null)<br />                       {<br />                               <span style="color: #0000ff;">// get and print the content of each key</span><br />                               System.out.println(key + " : " + hashtable.get(key));<br />                       }<br /><br />                       </span><span style="font-family: times new roman,times;"><span style="color: #0000ff;">// commit the changes<br /></span>                       recman.commit();<br /><br />                       </span><span style="font-family: times new roman,times;"><span style="color: #0000ff;">// close the RecordManager<br /></span>                       recman.close();<br />               }<br />               catch(java.io.IOException ex)<br />               {<br />                       System.err.println(ex.toString());<br />               }<br />        }<br />}<br /></span></span></span></pre>
+
+<p><span style="font-size: medium;"><span style="font-family: times new roman,times;">To compile and execute the programs, we must firstly download the library from </span><a href="http://prdownloads.sourceforge.net/jdbm/jdbm-1.0.zip?download"><span style="font-family: times new roman,times;">http://prdownloads.sourceforge.net/jdbm/jdbm-1.0.zip?download</span></a><span style="font-family: times new roman,times;">.<br />Then we can extract the jdbm-1.0.jar from the jdbm-1.0.zip.<br />If the jdbm-1.0.jar is placed in "~/lib", the compile command for the </span><a href="http://www.cse.ust.hk/~ericzhao/COMP4321/lab1/JDBMsample.java"><span style="font-family: times new roman,times;">JDBMsample.java</span></a><span style="font-family: times new roman,times;"> is "<span class="SpellE"><span style="text-decoration: underline;">javac</span></span><span style="text-decoration: underline;"> -cp ~/lib/jdbm-1.0.jar JDBMsample.java</span>"<br />and the program is executed by "<span style="text-decoration: underline;">java -cp ~/lib/jdbm-1.0.jar<span class="GramE">:.</span> <span class="SpellE"><span class="GramE">JDBMsample</span></span></span><span class="GramE">". (Note there has a space in front of "JDBMsample", and there should not have a space after jdbm-1.0.jar)</span></span></span></p>
+
+<p class="MsoNormal"><span style="font-size: medium;"><span style="font-family: times new roman,times;">Here are two official examples: <br /></span><a href="http://jdbm.sourceforge.net/V1.0/FamousPeople.html"><span class="SpellE"><span style="font-family: times new roman,times;">FamousPeople.java</span></span></a><span style="font-family: times new roman,times;"> <br /></span><a href="http://jdbm.sourceforge.net/V1.0/FruitBasket.html"><span style="font-family: times new roman,times;">FruitBasket.java</span></a></span><span style="font-size: medium;"><br /><span style="font-family: times new roman,times;"><span style="color: black;">You are asked to implement a database similar to that illustrated in the figure above.</span> </span></span></p>
+
+<h2 class="MsoNormal" style="text-align: left;"><span style="font-family: times new roman,times;"> 
+
+<hr size="2" />
+
+</span><a name="Exercise"></a><span style="font-size: x-large;"><span style="font-family: times new roman,times;">Exercise</span></span></h2>
+
+<p><span style="font-family: times new roman,times;"><span style="font-family: times new roman,times;"><strong><span style="text-decoration: underline;"><span style="color: black;"><span style="font-size: large;">Requirements</span></span></span></strong><strong><span style="text-decoration: underline;"><span style="font-size: 16pt;"> </span></span></strong><br /></span><span style="font-size: medium;"><span style="font-family: times new roman,times;">The <strong>key</strong> is a <strong>single word</strong>, the <strong>content</strong> is <strong>a list of "docX Y"</strong>, where X and Y are any distinct integers. An example of a (key, content) pair is: ("dog", "doc23 43 doc10 6"). The <strong>filename</strong> of the db file is <strong>"lab1.db".</strong> <br />In your program, you are expected to mainly implement three functions: <br /><strong>1. public static void addEntry(String word, int x, int y, HTree hashtable);</strong></span></span></span><span style="font-family: times new roman,times;"><span style="font-size: medium;"><span style="font-family: times new roman,times;"><strong>// Add a "docX Y" entry for the key "word"</strong> <br />For example: </span></span></span></p>
+
+<p><span style="font-family: times new roman,times;"><span style="font-family: Verdana;"><span style="font-size: medium;"><span style="font-family: times new roman,times;">- Before, one of the (key, content) pairs in the database is: <br />("dog", "doc23 43 doc10 6") <br />- After calling addEntry("dog", 5, 9): <br />("dog", "doc23 43 doc10 6 doc5 9") </span></span></span></span></p>
+
+<p><span style="font-size: medium;"><span style="font-family: times new roman,times;"><strong>2. public static void delEntry(String word); // Delete the word and its list from the database</strong> <br />For example, after calling delEntry("dog", hashtable), the key "dog" and its content are deleted from the database <br /><strong>3. public static void printAll();// Print all the data in the database</strong> <br />For example, a call for printAll(hashtable) may produce the following output:</span></span></p>
+
+<pre><span style="font-family: times new roman,times;">dog = doc23 43 doc10 6 <br />cat = doc4 2 <br />pig = doc98 20 doc65 22 doc19 45 </span></pre>
+
+<p><span style="font-family: times new roman,times;"><span style="font-size: medium;">Start your work on the skeleton program&nbsp;</span><span style="font-size: medium;"><a href="http://www.cse.ust.hk/~ericzhao/COMP4321/lab1/InvertedIndex.java">InvertedIndex.java</a></span><span style="font-size: medium;">. <strong>The following output is expected:</strong>&nbsp;&nbsp;</span></span></p>
+
+<pre><span style="font-family: times new roman,times;">First print<br />cat = doc2 6 <br />dog = doc1 33 <br />Second print<br />cat = doc2 6 doc8 3 doc11 106 <br />dog = doc1 33 doc6 73 doc8 83 doc10 5 <br />Third print<br />cat = doc2 6 doc8 3 doc11 106 <br /></span></pre>
+
+<p><span style="font-family: times new roman,times;">&nbsp;</span><span style="font-family: times new roman,times;"><span style="font-size: medium;"><span style="font-family: times new roman,times;"><strong><span style="text-decoration: underline;"><span style="color: #000000;">
+
+<span style="font-size: large;">Submission</span><br /></span></span></strong>no need to submit
+
+<!--Submit your program via </span></span></span><a href="https://course.cse.ust.hk/cass/submit.html"><span style="font-family: times new roman,times;"><span style="font-size: medium;"><span style="font-family: times new roman,times;">CASS system</span></span></span></a><span style="font-family: times new roman,times;"><span style="font-size: medium;"><span style="font-family: times new roman,times;"> before next lab. Assignment Name is <span style="color: red;">Lab1</span></span></span></span><span style="font-family: times new roman,times;"><span style="font-size: medium;"><span style="font-family: times new roman,times;"><em><span style="color: black;">.<br /></span></em><span style="color: black;">Refer to </span></span></span></span><a href="http://cssystem.cse.ust.hk/home.php?docbase=UGuides/cass&amp;req_url=UGuides/cass/student.html"><span style="font-family: times new roman,times;"><span style="font-size: medium;"><span style="font-family: times new roman,times;">CASS  Course Assignment Submission System</span></span></span></a><span style="font-family: times new roman,times;"><span style="font-size: medium;"><span style="font-family: times new roman,times;"> for more information about the usage of CASS.&nbsp;</span></span></span></p>-->
+
+<hr size="2" />
+
+<h2><span style="font-family: times new roman,times;">&nbsp;</span><span style="font-family: times new roman,times;"><span style="font-size: 24pt;"><a name="Useful Links"></a><span style="font-family: times new roman,times;"><span style="font-size: x-large;"><span style="font-family: times new roman,times;">Useful Links</span></span></span></span></span></h2>
+
+<p><span style="font-family: times new roman,times;"><span style="font-size: medium;">1. Slides of lab1: <span style="font-size: medium;"><a href="http://prezi.com/q82kncokhsms/comp4321-lab1-tutorial/?auth_key=c26d93ae17d0954602a78306536163645e301288">Slides Link</a></span></span></p>
+
+<p><span style="font-family: times new roman,times;"><span style="font-size: medium;">2. The official site of <span class="SpellE">jdbm</span>:&nbsp; </span><span style="font-size: medium;"><a href="http://jdbm.sourceforge.net/">http://jdbm.sourceforge.net/</a></span></span></p>
+
+<p><span style="font-size: medium;"><span style="font-family: times new roman,times;">3. The javadoc of jdbm:&nbsp; </span><a href="http://jdbm.sourceforge.net/V1.0/doc/api/"><span style="font-family: times new roman,times;">http://jdbm.sourceforge.net/V1.0/doc/api/</span></a></span></p>
+
+<p><span style="font-size: medium;"><span style="font-family: times new roman,times;">4. The java API: </span><a href="http://download.oracle.com/javase/1.4.2/docs/api/index.html"><span style="font-family: times new roman,times;">http://download.oracle.com/javase/1.4.2/docs/api/index.html</span></a></span></p>
+
+<p>&nbsp;</p>
+
+<hr size="2" />
+
+<p>&nbsp;</p>								
+
+											
+
+						</div>						
+
+				
+
+	
+
+	
+
+			
+
+		
+
+				
+
+		</div>	
+
+		
+
+	</div> <!-- END of main column: wrap -->
+
+		
+
+		
+
+	<br />
+
+	<br />
+
+	
+
+	<div class="footer jeditable_textarea" id="footer_textarea">Hong Kong University of Science and Technology - Department of Computer Science and Engineering</div>
+
+</body>
+
+
+<!-- Mirrored from www.cse.ust.hk/~ericzhao/COMP4321/lab1.html by HTTrack Website Copier/3.x [XR&CO'2014], Mon, 29 Dec 2014 05:52:52 GMT -->
+</html>

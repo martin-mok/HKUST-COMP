@@ -1,0 +1,44 @@
+<!--
+COMP303 JavaScript Example
+
+settimeout example
+-->
+
+<html>
+
+<!-- Mirrored from course.cse.ust.hk/comp4021/hkust/lectures/examples_for_javascript2/09_cleartimeout.html by HTTrack Website Copier/3.x [XR&CO'2014], Wed, 03 Jun 2015 10:09:50 GMT -->
+<head>
+<script language="JavaScript">
+<!--
+
+var the_timer;
+
+
+function set_timer() {
+	the_timer=setTimeout("show_message()", 500 );
+}
+
+function reset_timer() {
+	clearTimeout(the_timer);
+}
+
+function show_message() {
+	alert("Too slow! Are you a snail?");
+}
+
+-->
+</script>
+</head>
+
+<body onload="set_timer()" onclick="reset_timer()">
+
+<h1>Click on this page within 0.5 seconds!!!</h1>
+
+<img src="snail.gif"/>
+<br/>
+A snail.
+
+</body> 
+
+<!-- Mirrored from course.cse.ust.hk/comp4021/hkust/lectures/examples_for_javascript2/09_cleartimeout.html by HTTrack Website Copier/3.x [XR&CO'2014], Wed, 03 Jun 2015 10:09:50 GMT -->
+</html>

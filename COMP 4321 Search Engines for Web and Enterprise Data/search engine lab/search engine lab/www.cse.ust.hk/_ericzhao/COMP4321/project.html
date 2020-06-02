@@ -1,0 +1,1239 @@
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+
+
+<!-- Mirrored from www.cse.ust.hk/~ericzhao/COMP4321/project.html by HTTrack Website Copier/3.x [XR&CO'2014], Mon, 29 Dec 2014 05:52:52 GMT -->
+<head>
+
+<title>
+
+COMP4321 Labs : Search Engines for Web and Enterprise Data</title>
+
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+
+
+
+<link rel="stylesheet" href="css/admin_1.1.css" type="text/css" />
+
+<link rel="stylesheet" href="css/admin_1.1-bg.css" type="text/css" />
+
+<link rel="stylesheet" href="css/eric_css.css" type="text/css" />
+
+<!-- TODO: based on the $cf['site']['theme'] to select a static theme.... -->
+
+<link type="text/css" href="lib/jqueryui/theme/ui.all.css" rel="Stylesheet" /> 
+
+<script type="text/javascript" src="lib/jquery/jquery-1.3.1.min.js"></script>	
+
+
+
+<script type="text/javascript" src="lib/jqueryui/jquery-ui-personalized-1.6rc6.min.js"></script>
+
+<!--
+
+<script type="text/javascript" src="lib/jquery.jeditable.mini.js"></script>	
+
+-->
+
+<script>		
+
+		$(function(){	
+
+		// main entry point
+
+		
+
+		$('#theme-switcher').themeswitcher( {		
+
+				loadTheme: "Smoothness",				
+
+				cookieName: '' /* not used cookie here... */
+
+			}
+
+		 );
+
+
+
+		// Test: Do the simple layout of the content....
+
+		// Initially, reLayout the screen 		
+
+		// Each time the window is resized, reLayout the screen			
+
+		function redoLayout() {		
+
+			// assume 10 px margin between 
+
+			//  [ ------------------------------ Wrap ------------------------------------]
+
+			//  [ -- sidebar --] [-- 10px --] [----------------- main ------------------]
+
+			var bodyWidth = $("body:first").width(); // first body's width...			
+
+			var sidebarWidth = $("#sidebar").width(); // sidebar's width...
+
+			var mainWidthThreshold = 250;
+
+						
+
+			var mainWidth = bodyWidth - sidebarWidth - 10; ; 			
+
+			if ( mainWidth > mainWidthThreshold ) {			
+
+				$("#wrap").width(bodyWidth);
+
+				$("#main").width(mainWidth);
+
+			}
+
+		}		
+
+		redoLayout();
+
+		$(window).resize( function() {
+
+			redoLayout();
+
+		});
+
+		
+
+		
+
+			
+
+	});
+
+</script>
+
+
+
+
+
+<!-- For Query table style... -->
+
+<style>
+
+
+
+table td { 
+
+	border: 1px solid;
+
+	padding: 2px;
+
+	
+
+}
+
+	
+
+</style>
+
+</head>
+
+
+
+<body>
+
+
+
+<!-- Load the jquery theme switcher tool.... -->
+
+<script type="text/javascript" src="../../../jqueryui.com/themeroller/themeswitchertool/index.html"></script>
+
+	
+
+	<div id="wrap">
+
+
+
+		<!-- header -->
+
+
+
+		<div id="header">
+
+			<span id="slogan" class="jeditable_line"> Fall 2014 </span>
+
+			<!-- tabs -->		
+
+			<!--
+
+			<ul>
+
+				<li><a href="#"><span>Site-Tab1</span></a></li>
+
+				<li><a href="#"><span>Site-Tab2</span></a></li>				
+
+			</ul>
+
+			-->
+
+		</div>
+
+
+
+
+
+		<div id="header-logo">
+
+			<div id="logo" class="jeditable_line"><a href="../../_dlee/4321/index.html">COMP4321</a> <span class=red>Labs</span></div>			
+
+			<div id="header-educ" class="jeditable_line_fixed_height">Search Engines for Web and Enterprise Data</div>
+
+		</div>
+
+
+
+		
+
+		<!-- For the display, currently just hack, using theme-switcher to achieve the effect
+
+		TODO: port to a static theme mapping later on....
+
+		-->
+
+	<div id="theme-switcher" style="display:none;"></div>
+
+		
+
+		
+
+		<!-- Style is now integrated with JQueryUI css framework -->
+
+		<!-- side bar -->
+
+		<div class="ui-widget ui-corner-all ui-helper-reset" id="sidebar" >			
+
+						
+
+			
+
+			<h1 class="ui-widget-header ui-helper-reset">Main Menu</h1>					
+
+			<!--<ul class="ui-widget-content ui-helper-reset" id="contentManagamentMenu">-->
+            <ul class="navbar">
+								
+
+												
+
+								<li class="ui-state-default ui-corner-all" >
+
+									<span class="ui-icon ui-icon-star"  ></span>												
+
+									<a href="index-2.html"  id="modify_title_html_1251527068" >Information</a>								
+
+									<br />								
+
+									
+
+									
+
+									
+
+								</li>	
+
+								
+
+																
+
+								<li class="ui-state-default ui-corner-all" >
+
+									<span class="ui-icon ui-icon-star"  ></span>												
+
+									<a href="lab1.html"  id="modify_title_html_1251529887" >Lab1</a>								
+
+									<br />								
+
+									
+
+									
+
+									
+
+								</li>	
+ 
+								
+
+																
+
+								<li class="ui-state-default ui-corner-all" >
+
+									<span class="ui-icon ui-icon-star"  ></span>												
+
+									<a href="lab2.html"  id="modify_title_html_1251530023" >Lab2</a>								
+
+									<br />								
+
+									
+
+									
+
+									
+
+								</li>	
+
+								
+
+																
+
+								<li class="ui-state-default ui-corner-all" >
+
+									<span class="ui-icon ui-icon-star"  ></span>												
+
+									<a href="lab3.html"  id="modify_title_html_1251530035" >Lab3</a>								
+
+									<br />								
+
+									
+
+									
+
+									
+
+								</li>	
+
+								
+
+																
+
+								<li class="ui-state-default ui-corner-all" >
+
+									<span class="ui-icon ui-icon-star"  ></span>												
+
+									<a href="lab4.html"  id="modify_title_html_1251529936" >Lab4</a>								
+
+									<br />								
+
+									
+
+									
+
+									
+
+								</li>	
+
+								
+
+																
+
+								<li class="ui-state-default ui-corner-all" >
+
+									<span class="ui-icon ui-icon-star"  ></span>												
+
+									<a href="project.html"  id="modify_title_html_1251529946" >Term Project</a>								
+
+									<br />								
+
+									
+
+									
+
+									
+
+								</li>	
+<li class="ui-state-default ui-corner-all" >
+<span class="ui-icon ui-icon-star"  ></span>
+<a href="http://www.cse.ust.hk/~ericzhao/COMP4321/Password_Only/homework_exam/schedule.html"  id="modify_title_html_1251529946" >HW and Exam</font></a>
+<br />
+</li>
+<li class="ui-state-default ui-corner-all" >
+<span class="ui-icon ui-icon-star"  ></span>
+<a href="news_page.html"  id="modify_title_html_1251529946" ><font color="red">News</font></a>
+<br />
+</li>
+								
+
+								
+
+
+
+			</ul>	
+
+			
+
+		</div> <!-- END sidebar -->
+
+		
+
+		
+
+
+
+		
+
+		<div id="main" >
+
+		
+
+		
+
+			
+
+										
+
+						<!-- Wrapper for the editor -->
+
+						<div class="ui-widget ui-corner-all ui-helper-reset"  >			
+
+							<h1 class="ui-widget-header ui-helper-reset">Term Project</h1>
+
+											
+
+							<h1 style="text-align: center;"><span style="font-family: times new roman,times;"><span style="font-size: xx-large;"><span style="color: #ff0000;"><span lang="EN-US"><span style="color: #ff0000;">Term Project</span><span style="color: #333333;">&nbsp;-&nbsp;A Web Search Engine</span><span style="color: #333333;">&nbsp;</span></span></span></span></span></h1>
+
+<h2><span style="font-size: x-large;"><span style="font-family: times new roman,times;"><strong><span lang="EN-US"><a style="FONT-FAMILY: " href="http://www.cse.ust.hk/~csvictor/comp4321_fall2009/#Useful_Links"></a></span></strong></span></span></h2>
+
+<div class="MsoNormal" style="text-align: center;"><span style="font-family: times new roman,times;"><span lang="EN-US"><span style="font-family: times new roman,times;"> 
+
+<hr size="2" />
+
+</span></span></span></div>
+
+<p class="MsoNormal"><span style="font-family: times new roman,times;"><strong style="FONT-FAMILY: "></strong></span></p>
+
+<ul type="disc">
+
+<li class="MsoNormal">
+
+<h2><span style="font-size: x-large;"><span style="font-family: times new roman,times;"><strong><span lang="EN-US"><a style="FONT-FAMILY: " href="#description"><span style="font-family: times new roman,times;">Project DescriptioNS</span></a></span></strong></span></span></h2>
+
+</li>
+
+<li class="MsoNormal">
+
+<h2><span style="font-size: x-large;"><span style="font-family: times new roman,times;"><strong><span lang="EN-US"><a style="FONT-FAMILY: " href="#submissions"><span style="font-family: times new roman,times;">Submissions</span></a></span></strong></span></span></h2>
+
+</li>
+
+<li class="MsoNormal">
+
+<h2><span style="font-size: x-large;"><span style="font-family: times new roman,times;"><strong><span lang="EN-US"><a style="FONT-FAMILY: " href="#marking"><span style="font-family: times new roman,times;">MARKING Scheme</span></a></span></strong></span></span></h2>
+
+</li>
+
+<li class="MsoNormal">
+
+<h2><span style="font-size: x-large;"><span style="font-family: times new roman,times;"><strong><span lang="EN-US"><a href="#bonus">Bonus</a></span></strong></span></span></h2>
+
+</li>
+
+<li class="MsoNormal">
+
+<h2><span style="font-size: x-large;"><span style="font-family: times new roman,times;"><strong><span lang="EN-US"><a href="#implementation">Implementation Hints</a></span></strong></span></span></h2>
+
+</li>
+
+<li class="MsoNormal">
+
+<h2><span style="font-size: x-large;"><span style="font-family: times new roman,times;"><strong><span lang="EN-US"><span style="font-family: times new roman,times;"><span style="font-family: times new roman,times;"><a href="#suggestions">Some Suggestions</a></span></span></span></strong></span></span></h2>
+
+</li>
+
+</ul>
+
+<div class="MsoNormal" style="FONT-FAMILY: ; TEXT-ALIGN: left"><span style="font-family: times new roman,times;"> 
+
+<hr size="2" />
+
+</span></div>
+
+<h2 class="MsoNormal" style="FONT-FAMILY: ; TEXT-ALIGN: left"><span style="font-size: x-large;"><span style="font-family: times new roman,times;"><a style="FONT-FAMILY: " name="description"></a><span style="font-family: times new roman,times;">DescriptionS</span></span></span></h2>
+
+<div class="MsoNormal" style="TEXT-ALIGN: left"><span style="font-family: times new roman,times;"><span style="font-size: medium;"><span style="font-family: times new roman,times;">You are required to work in <strong>a group of 3 members</strong>.The grade of each member in the team depends on the workload (s)he shares.You may need to do some planning before the implementation of the project on how to distribute the workload.  </span></span></span></div>
+
+<div class="MsoNormal" style="TEXT-ALIGN: left"><span style="font-family: times new roman,times;"><span style="font-size: medium;"><span style="font-family: times new roman,times;">You are required to develop a web-based search engine with the following functions:</span></span></span></div>
+
+<div class="MsoNormal" style="text-align: center;"><ol style="TEXT-ALIGN: left">
+
+<li>
+
+<div class="MsoNormal" style="MARGIN: 0cm 0cm 0pt; FONT-FAMILY: "><span style="font-size: medium;"><span style="font-family: times new roman,times;">A spider (or called a crawler) function to fetch pages recursively from a given web site:</span></span></div>
+
+<ul>
+
+<li>
+
+<div class="MsoNormal" style="MARGIN: 0cm 0cm 0pt; FONT-FAMILY: "><span style="font-size: medium;"><span style="font-family: times new roman,times;">Given a starting URL and the number of pages to be indexed, recursively fetch the required number of pages from the given site into the local system using a breadth-first strategy.</span></span></div>
+
+</li>
+
+<li>
+
+<div class="MsoNormal" style="MARGIN: 0cm 0cm 0pt; FONT-FAMILY: "><span style="font-size: medium;"><span style="font-family: times new roman,times;">For each page fetched into the local system,&nbsp;extract all the hyperlinks so that the spider can recursively process more pages, and proceed to the indexing functions in Step 2.</span></span></div>
+
+</li>
+
+<li>
+
+<div class="MsoNormal" style="MARGIN: 0cm 0cm 0pt; FONT-FAMILY: "><span style="font-size: medium;"><span style="font-family: times new roman,times;">Build a file structure containing the parent/child link relation. As noted elsewhere, every URL is represented internally as a page-ID, so the file structure should be able to return the page-IDs of the children pages given the page-ID of the parent page and vice versa.</span></span></div>
+
+</li>
+
+<li>
+
+<div class="MsoNormal" style="MARGIN: 0cm 0cm 0pt; FONT-FAMILY: "><span style="font-size: medium;"><span style="font-family: times new roman,times;">Before a page is fetched into the system, it must perform several checks:</span></span></div>
+
+<ul>
+
+<li>
+
+<div class="MsoNormal" style="MARGIN: 0cm 0cm 0pt; FONT-FAMILY: "><span style="font-family: times new roman,times;"><span style="font-size: medium;"><span style="font-family: times new roman,times;">If the URL doesn&rsquo;t exist in the inverted index, go ahead to retrieve the URL</span></span></span></div>
+
+</li>
+
+<li>
+
+<div class="MsoNormal" style="margin: 0cm 0cm 0pt;"><span style="font-family: times new roman,times;"><span style="font-size: medium;"><span style="font-family: times new roman,times;">If the URL already exists in the index but the last modification date of the URL is later than that recorded in the index, go ahead to retrieve the URL; otherwise, ignore the URL</span></span></span></div>
+
+</li>
+
+<li>
+
+<div class="MsoNormal" style="margin: 0cm 0cm 0pt;"><span style="font-family: times new roman,times;"><span style="font-size: medium;"><span style="font-family: times new roman,times;">To handle cyclic links gracefully</span></span></span></div>
+
+</li>
+
+</ul>
+
+</li>
+
+<li>
+
+<div class="MsoNormal" style="margin: 0cm 0cm 0pt;"><span style="font-family: times new roman,times;"><span style="font-size: medium;"><span style="font-family: times new roman,times;"><strong>Resource</strong>: The <strong>HTML parser&nbsp;</strong>library from <a href="http://htmlparser.sourceforge.net/"><span style="color: blue;">http://htmlparser.sourceforge.net/</span></a>&nbsp;<span style="font-family: ">provides the basic functions to&nbsp;fetch the we bpages and&nbsp;to extract the keywords and links from the&nbsp;web&nbsp;pages; notice that the&nbsp;HTML parser&nbsp;is a very large library, but we need no more than a few basic functions from it.</span></span></span></span></div>
+
+</li>
+
+</ul>
+
+</li>
+
+<li>
+
+<div class="MsoNormal" style="MARGIN: 0cm 0cm 0pt; FONT-FAMILY: "><span style="font-family: times new roman,times;"><span style="font-size: medium;"><span style="font-family: times new roman,times;">An indexer which extracts keywords from a page and inserts them into an inverted file</span></span></span></div>
+
+<ul>
+
+<li>
+
+<div class="MsoNormal" style="MARGIN: 0cm 0cm 0pt; FONT-FAMILY: "><span style="font-family: times new roman,times;"><span style="font-size: medium;"><span style="font-family: times new roman,times;">The indexer first removes all stop words from the file; a dictionary of stop words will be provided</span></span></span></div>
+
+</li>
+
+<li>
+
+<div class="MsoNormal" style="MARGIN: 0cm 0cm 0pt; FONT-FAMILY: "><span style="font-family: times new roman,times;"><span style="font-size: medium;"><span style="font-family: times new roman,times;">It then transforms words into stems using the Porter&rsquo;s algorithm</span></span></span></div>
+
+</li>
+
+<li>
+
+<div class="MsoNormal" style="MARGIN: 0cm 0cm 0pt; FONT-FAMILY: "><span style="font-family: times new roman,times;"><span style="font-size: medium;"><span style="font-family: times new roman,times;">It inserts the stems into the two inverted files:</span></span></span></div>
+
+<ul>
+
+<li>
+
+<div class="MsoNormal" style="MARGIN: 0cm 0cm 0pt; FONT-FAMILY: "><span style="font-family: times new roman,times;"><span style="font-size: medium;"><span style="font-family: times new roman,times;">all stems extracted from the page body, together with all statistical information needed to support the vector space model (i.e., no need to support Boolean operations), are inserted into one inverted file</span></span></span></div>
+
+</li>
+
+<li>
+
+<div class="MsoNormal" style="MARGIN: 0cm 0cm 0pt; FONT-FAMILY: "><span style="font-family: times new roman,times;"><span style="font-size: medium;"><span style="font-family: times new roman,times;">all stems extracted from the page title are inserted into another inverted file</span></span></span></div>
+
+</li>
+
+</ul>
+
+</li>
+
+<li>
+
+<div class="MsoNormal" style="MARGIN: 0cm 0cm 0pt; FONT-FAMILY: "><span style="font-family: times new roman,times;"><span style="font-size: medium;"><span style="font-family: times new roman,times;">The indexes must be able to support phrase search such as &ldquo;hong kong&rdquo; in page titles and page bodies.</span></span></span></div>
+
+</li>
+
+<li>
+
+<div class="MsoNormal" style="MARGIN: 0cm 0cm 0pt; FONT-FAMILY: "><span style="font-family: times new roman,times;"><span style="font-size: medium;"><span style="font-family: times new roman,times;"><span style="font-family: times new roman,times;"><span style="font-size: medium;"><span style="font-family: times new roman,times;"><strong>Resource</strong>: A Java Implementation of Porter's algorithm is available <a href="http://www.cse.ust.hk/~ericzhao/COMP4321/lab3/Porter.java">here</a>. The JDBM library from <span style="font-size: medium;"><a style="FONT-FAMILY: " href="http://jdbm.sourceforge.net/">http://jdbm.sourceforge.net/</a><span style="font-family: times new roman,times;">&nbsp;</span>is suggested to be used to <span style="mso-fareast-font-family: PMingLiU; mso-fareast-language: EN-US; mso-ansi-language: EN-US; mso-bidi-language: AR-SA;">create and manipulate the file structures for storing the inverted file and other file structures needed</span>.</span></span></span></span></span></span></span></div>
+
+</li>
+
+</ul>
+
+</li>
+
+<li>
+
+<div class="MsoNormal" style="MARGIN: 0cm 0cm 0pt; FONT-FAMILY: "><span style="font-family: times new roman,times;"><span style="font-size: medium;"><span style="font-family: times new roman,times;">A retrieval function (or called the <strong>search engine</strong>) that compares a list of query terms against the inverted file and returns the top documents, up to a maximum of 50, to the user in a ranked order according to the vector space model.&nbsp; As noted about, phrase must be supported, e.g., &ldquo;hong kong&rdquo; universities</span></span></span></div>
+
+<ul>
+
+<li>
+
+<div class="MsoNormal" style="MARGIN: 0cm 0cm 0pt; FONT-FAMILY: "><span style="font-family: times new roman,times;"><span style="font-size: medium;"><span style="font-family: times new roman,times;"><span style="mso-fareast-font-family: PMingLiU; mso-fareast-language: EN-US; mso-ansi-language: EN-US; mso-bidi-language: AR-SA;"><span style="font-family: times new roman,times;">Term weighting formula is based on <em>tfxidf/max(tf)</em> and document similarity is based on cosine similarity measure.</span></span></span></span></span></div>
+
+</li>
+
+<li>
+
+<div class="MsoNormal" style="MARGIN: 0cm 0cm 0pt; FONT-FAMILY: "><span style="font-family: times new roman,times;"><span style="font-size: medium;"><span style="font-family: times new roman,times;">Derive and implement a mechanism to favor matches in title. For example, a match in the title would significantly boost the rank of a page</span></span></span></div>
+
+</li>
+
+</ul>
+
+</li>
+
+<li>
+
+<div class="MsoNormal" style="MARGIN: 0cm 0cm 0pt; FONT-FAMILY: ; TEXT-ALIGN: left"><span style="font-family: times new roman,times;"><span style="font-size: medium;"><span style="font-family: times new roman,times;">A web interface that accepts a user query in a text box, submits the query to the search engine, and displays the returned results to the user</span></span></span></div>
+
+<ul>
+
+<li>
+
+<div class="MsoNormal" style="MARGIN: 0cm 0cm 0pt; FONT-FAMILY: ; TEXT-ALIGN: left"><span style="font-family: times new roman,times;"><span style="font-size: medium;"><span style="font-family: times new roman,times;">Since only the vector space model is required, you don&rsquo;t need to support logical operators; the query is just a list of keywords that allows phrases to be specified in double quotes</span></span></span></div>
+
+</li>
+
+<li>
+
+<div class="MsoNormal" style="MARGIN: 0cm 0cm 0pt; FONT-FAMILY: ; TEXT-ALIGN: left"><span style="font-family: times new roman,times;"><span style="font-size: medium;"><span style="font-family: times new roman,times;">The results are ranked in descending order of the document scores</span></span></span></div>
+
+</li>
+
+<li>
+
+<div class="MsoNormal" style="MARGIN: 0cm 0cm 0pt; FONT-FAMILY: ; TEXT-ALIGN: left"><span style="font-family: times new roman,times;"><span style="font-size: medium;"><span style="font-family: times new roman,times;">Each item returned is displayed in the following format:</span></span></span></div>
+
+</li>
+
+</ul>
+
+<p class="MsoNormal" style="FONT-FAMILY: "><span style="font-family: times new roman,times;">&nbsp;</span></p>
+
+<p class="MsoNormal" style="MARGIN: 0cm 0cm 0pt; FONT-FAMILY: ; TEXT-ALIGN: left">
+
+<table class="MsoNormalTable" style="margin: auto auto auto 36pt; border-collapse: collapse; mso-padding-alt: 0cm 5.4pt 0cm 5.4pt;" border="0" cellspacing="0" cellpadding="0">
+
+<tbody>
+
+<tr style="mso-yfti-irow: 0; mso-yfti-firstrow: yes;">
+
+<td style="padding: 0cm 5.4pt; width: 36pt; background-color: transparent; border: medium none #d4d0c8;" width="48" valign="top">
+
+<p class="MsoNormal" style="margin: 0cm 0cm 0pt;"><span style="font-size: 9pt;"><span style="font-family: times new roman,times;">score</span></span></p>
+
+</td>
+
+<td style="padding: 0cm 5.4pt; width: 442.8pt; background-color: transparent; border: medium none #d4d0c8;" width="590" valign="top">
+
+<p class="MsoNormal" style="margin: 0cm 0cm 0pt;"><span style="font-size: 9pt;"><span style="font-family: times new roman,times;">page title</span></span></p>
+
+</td>
+
+</tr>
+
+<tr style="mso-yfti-irow: 1;">
+
+<td style="padding: 0cm 5.4pt; width: 36pt; background-color: transparent; border: medium none #d4d0c8;" width="48" valign="top">
+
+<p class="MsoNormal" style="margin: 0cm 0cm 0pt;"><span style="font-size: 9pt; font-family: "><span style="mso-spacerun: yes;"><span style="font-family: times new roman,times;">&nbsp;</span></span></span></p>
+
+</td>
+
+<td style="padding: 0cm 5.4pt; width: 442.8pt; background-color: transparent; border: medium none #d4d0c8;" width="590" valign="top">
+
+<p class="MsoNormal" style="margin: 0cm 0cm 0pt;"><span style="font-size: 9pt;"><span style="font-family: times new roman,times;">url</span></span></p>
+
+</td>
+
+</tr>
+
+<tr style="mso-yfti-irow: 2;">
+
+<td style="padding: 0cm 5.4pt; width: 36pt; background-color: transparent; border: medium none #d4d0c8;" width="48" valign="top">
+
+<p class="MsoNormal" style="margin: 0cm 0cm 0pt;"><span style="font-size: 9pt; font-family: "><span style="mso-spacerun: yes;"><span style="font-family: times new roman,times;">&nbsp;</span></span></span></p>
+
+</td>
+
+<td style="padding: 0cm 5.4pt; width: 442.8pt; background-color: transparent; border: medium none #d4d0c8;" width="590" valign="top">
+
+<p class="MsoNormal" style="margin: 0cm 0cm 0pt;"><span style="font-size: 9pt;"><span style="font-family: times new roman,times;">last modification date, size of page</span></span></p>
+
+</td>
+
+</tr>
+
+<tr style="mso-yfti-irow: 3;">
+
+<td style="padding: 0cm 5.4pt; width: 36pt; background-color: transparent; border: medium none #d4d0c8;" width="48" valign="top">
+
+<p class="MsoNormal" style="margin: 0cm 0cm 0pt;"><span style="font-size: 9pt; font-family: "><span style="mso-spacerun: yes;"><span style="font-family: times new roman,times;">&nbsp;</span></span></span></p>
+
+</td>
+
+<td style="padding: 0cm 5.4pt; width: 442.8pt; background-color: transparent; border: medium none #d4d0c8;" width="590" valign="top">
+
+<p class="MsoNormal" style="margin: 0cm 0cm 0pt;"><span style="font-size: 9pt;"><span style="font-family: times new roman,times;">keyword 1 freq 1; keyword 2 freq 2; &hellip;</span></span></p>
+
+<p class="MsoNormal" style="margin: 0cm 0cm 0pt;"><span style="font-size: 9pt;"><span style="font-family: times new roman,times;">Parent link 1</span></span></p>
+
+<p class="MsoNormal" style="margin: 0cm 0cm 0pt;"><span style="font-size: 9pt;"><span style="font-family: times new roman,times;">Parent link 2</span></span></p>
+
+<p class="MsoNormal" style="margin: 0cm 0cm 0pt;"><span style="font-size: 9pt;"><span style="font-family: times new roman,times;">&hellip; &hellip;</span></span></p>
+
+<p class="MsoNormal" style="margin: 0cm 0cm 0pt;"><span style="font-size: 9pt;"><span style="font-family: times new roman,times;">Child link 1</span></span></p>
+
+<p class="MsoNormal" style="margin: 0cm 0cm 0pt;"><span style="font-size: 9pt;"><span style="font-family: times new roman,times;">Child link 2</span></span></p>
+
+<p class="MsoNormal" style="margin: 0cm 0cm 0pt;"><span style="font-size: 9pt;"><span style="font-family: times new roman,times;">&hellip; &hellip;</span></span></p>
+
+</td>
+
+</tr>
+
+<tr style="mso-yfti-irow: 4;">
+
+<td style="padding: 0cm 5.4pt; width: 36pt; background-color: transparent; border: medium none #d4d0c8;" width="48" valign="top">
+
+<p class="MsoNormal" style="margin: 0cm 0cm 0pt;"><span style="font-size: 9pt;"><span style="font-family: times new roman,times;">score</span></span></p>
+
+</td>
+
+<td style="padding: 0cm 5.4pt; width: 442.8pt; background-color: transparent; border: medium none #d4d0c8;" width="590" valign="top">
+
+<p class="MsoNormal" style="margin: 0cm 0cm 0pt;"><span style="font-size: 9pt;"><span style="font-family: times new roman,times;">page title</span></span></p>
+
+</td>
+
+</tr>
+
+<tr style="mso-yfti-irow: 5; mso-yfti-lastrow: yes;">
+
+<td style="padding: 0cm 5.4pt; width: 36pt; background-color: transparent; border: medium none #d4d0c8;" width="48" valign="top">
+
+<p class="MsoNormal" style="margin: 0cm 0cm 0pt;"><span style="font-size: 9pt; font-family: "><span style="mso-spacerun: yes;"><span style="font-family: times new roman,times;">&nbsp;</span></span></span></p>
+
+</td>
+
+<td style="padding: 0cm 5.4pt; width: 442.8pt; background-color: transparent; border: medium none #d4d0c8;" width="590" valign="top">
+
+<p class="MsoNormal" style="margin: 0cm 0cm 0pt;"><span style="font-size: 9pt;"><span style="font-family: times new roman,times;">&hellip; &hellip;</span></span></p>
+
+</td>
+
+</tr>
+
+</tbody>
+
+</table>
+
+</p>
+
+<ul>
+
+<li><span style="font-family: times new roman,times;">&nbsp; </span> 
+
+<ul>
+
+<li>
+
+<div class="MsoNormal" style="MARGIN: 0cm 0cm 0pt; FONT-FAMILY: ; TEXT-ALIGN: left"><span style="font-family: times new roman,times;"><span style="font-size: medium;"><span style="font-family: times new roman,times;">The title and URL are hyperlinked to the actual page on the remote server</span></span></span></div>
+
+</li>
+
+<li>
+
+<div class="MsoNormal" style="MARGIN: 0cm 0cm 0pt; FONT-FAMILY: ; TEXT-ALIGN: left"><span style="font-family: times new roman,times;"><span style="font-size: medium;"><span style="font-family: times new roman,times;">The list of keywords displays up to 5 most frequent stemmed keywords (excluding stop words) in the page together with their occurrence frequencies</span></span></span></div>
+
+</li>
+
+<li><span style="color: #ff0000;"><span style="font-family: times new roman,times;"><span style="font-size: medium;"><span style="font-family: times new roman,times;">Some  pages do not contain the last modified date field and the size field in  their headers. In these cases, you can consider the date </span></span></span><span style="font-family: times new roman,times;"><span style="font-size: medium;"><span style="font-family: times new roman,times;">field </span></span></span><span style="font-family: times new roman,times;"><span style="font-size: medium;"><span style="font-family: times new roman,times;">to be the  last modified date and consider the length of the content (i.e. directly  count the number of characters) to be the size of the page.</span></span></span></span><span style="font-family: times new roman,times;"><span style="font-size: medium;"></span></span></li>
+
+</ul>
+
+</li>
+
+<li>
+
+<div class="MsoNormal" style="MARGIN: 0cm 0cm 0pt; FONT-FAMILY: ; TEXT-ALIGN: left"><span style="font-family: times new roman,times;"><span style="font-size: medium;"><span style="font-family: times new roman,times;">While the interface doesn&rsquo;t have to be fancy, each result item should be format with clarity</span></span></span></div>
+
+</li>
+
+<li>
+
+<div class="MsoNormal" style="MARGIN: 0cm 0cm 0pt; FONT-FAMILY: ; TEXT-ALIGN: left"><span style="font-family: times new roman,times;"><span style="font-size: medium;"><span style="font-family: times new roman,times;">All of the results (up to 50 web pages) can be displayed on one page</span></span></span></div>
+
+</li>
+
+<li class="MsoNormal" style="MARGIN: 0cm 0cm 0pt; FONT-FAMILY: ; TEXT-ALIGN: left"><span style="font-family: times new roman,times;"><span style="font-size: medium;"><span style="font-family: times new roman,times;">In order to interface your search engine with the web interface, you need to write a&nbsp;JSP&nbsp;page to pass the query string to the search engine.&nbsp;</span></span></span></li>
+
+</ul>
+
+</li>
+
+</ol></div>
+
+<div class="MsoNormal" style="TEXT-ALIGN: left">
+
+<hr size="2" />
+
+</div>
+
+<h2 class="MsoNormal" style="TEXT-ALIGN: left"><span style="font-size: x-large;">&nbsp;</span><a style="FONT-FAMILY: " name="submissions"></a><span style="font-family: times new roman,times;"><span style="font-size: x-large;">Submissions</span></span></h2>
+
+<p class="MsoNormal" style="MARGIN: 0cm 0cm 0pt; FONT-FAMILY: ; TEXT-ALIGN: left"><span style="font-size: medium;"><span style="font-family: times new roman,times;"><strong><span style="text-decoration: underline;"><span style="font-family: times new roman,times;"><span style="font-size: large;">PHASE 1:</span></span></span></strong></span></span></p>
+
+<div class="MsoNormal" style="TEXT-ALIGN: left">
+
+<ul>
+
+<li>
+
+<div class="MsoNormal" style="MARGIN: 0cm 0cm 0pt; FONT-FAMILY: ; TEXT-ALIGN: left"><span style="font-size: medium;"><span style="font-family: times new roman,times;"><strong></strong></span></span><span style="font-family: times new roman,times;"><span style="font-size: medium;">It&nbsp;worths <strong>5%</strong>&nbsp;of&nbsp;the course marks. However, if you fail to submit the phase 1, you will get zero marks for you entire project.</span></span></div>
+
+</li>
+
+<li><span style="font-family: times new roman,times;"><span style="font-size: medium;">You&nbsp;need&nbsp;to:</span></span> 
+
+<ul>
+
+<li style="FONT-FAMILY: "><span style="font-family: times new roman,times;"><span style="font-size: medium;">implement a spider (integrated with an indexer)&nbsp;for fetching and indexing webpages</span></span></li>
+ 
+<li style="FONT-FAMILY: "><span style="font-family: times new roman,times;"><span style="font-size: medium;">index 30 pages from <a href="http://www.cse.ust.hk/">http://www.cse.ust.hk</a> </span></span></li>
+
+<li><span style="font-family: times new roman,times;"><span style="font-size: medium;">implement a test program which&nbsp;read&nbsp;data from&nbsp;the jdbm and outputs a plain-text file named <span style="text-decoration: underline;">spider_result.txt</span>. </span></span><span style="font-family: times new roman,times;"><span style="font-size: medium;">The format of the <span style="text-decoration: underline;">spider_result.txt</span> file should be as follows: </span></span></li>
+
+<li style="FONT-FAMILY: "> 
+
+<table class="MsoTableGrid" style="border-collapse: collapse; mso-padding-alt: 0cm 5.4pt 0cm 5.4pt; mso-border-alt: solid windowtext .5pt; mso-yfti-tbllook: 480; mso-border-insideh: .5pt solid windowtext; mso-border-insidev: .5pt solid windowtext;" border="1" cellspacing="0" cellpadding="0">
+
+<tbody>
+
+<tr style="mso-yfti-irow: 0; mso-yfti-firstrow: yes; mso-yfti-lastrow: yes;">
+
+<td style="padding: 0cm 5.4pt; width: 418.1pt; background-color: transparent; border: 1pt solid windowtext;" width="557" valign="top">
+
+<p class="MsoNormal" style="margin: 0cm 0cm 0pt;"><span style="font-size: small; font-family: Times New Roman;">Page title</span></p>
+
+<p class="MsoNormal" style="margin: 0cm 0cm 0pt;"><span style="font-size: small; font-family: Times New Roman;">URL</span></p>
+
+<p class="MsoNormal" style="margin: 0cm 0cm 0pt;"><span style="font-size: small; font-family: Times New Roman;">Last modification date, size of page</span></p>
+
+<p class="MsoNormal" style="margin: 0cm 0cm 0pt;"><span style="font-size: small; font-family: Times New Roman;">Keyword1 freq1; Keyword2 freq2; Keyword3 freq3; &hellip;...</span></p>
+
+<p class="MsoNormal" style="margin: 0cm 0cm 0pt;"><span style="font-size: small; font-family: Times New Roman;">Child Link1</span></p>
+
+<p class="MsoNormal" style="margin: 0cm 0cm 0pt;"><span style="font-size: small; font-family: Times New Roman;">Child Link2 .....</span></p>
+
+<p class="MsoNormal" style="margin: 0cm 0cm 0pt;"><span style="font-size: small; font-family: Times New Roman;">-------------------------------------------------------------------------------------------</span></p>
+
+<p class="MsoNormal" style="margin: 0cm 0cm 0pt;"><span style="font-size: small; font-family: Times New Roman;">Page title</span></p>
+
+<p class="MsoNormal" style="margin: 0cm 0cm 0pt;"><span style="font-size: small; font-family: Times New Roman;">URL</span></p>
+
+<p class="MsoNormal" style="margin: 0cm 0cm 0pt;"><span style="font-size: small; font-family: Times New Roman;">Last modification date, size of page</span></p>
+
+<p class="MsoNormal" style="margin: 0cm 0cm 0pt;"><span style="font-size: small; font-family: Times New Roman;">Keyword1 freq1; Keyword2 freq2; Keyword3 freq3; &hellip;&hellip;</span></p>
+
+<p class="MsoNormal" style="margin: 0cm 0cm 0pt;"><span style="font-size: small; font-family: Times New Roman;">Child Link1</span></p>
+
+<p class="MsoNormal" style="margin: 0cm 0cm 0pt;"><span style="font-size: small; font-family: Times New Roman;">Child Link2 &hellip;.</span></p>
+
+<p class="MsoNormal" style="margin: 0cm 0cm 0pt;"><span style="font-size: small; font-family: Times New Roman;">&hellip;.</span></p>
+
+<p class="MsoNormal" style="margin: 0cm 0cm 0pt;"><span style="font-size: small; font-family: Times New Roman;"><span style="font-size: small; font-family: Times New Roman;">&hellip;.</span></span></p>
+
+</td>
+
+</tr>
+
+</tbody>
+
+</table>
+
+</li>
+
+</ul>
+
+</li>
+
+<li style="FONT-FAMILY: "><span style="font-family: times new roman,times;"><span style="font-size: medium;">You should submit:</span></span> <ol>
+
+<li style="FONT-FAMILY: "><span style="font-family: times new roman,times;"><span style="font-size: medium;">a document containing the design of the jdbm database scheme of the indexer. All supporting databases should be defined, for example, forward and inverted indexes, mapping tables for URL&nbsp;&lt;=&gt; page ID and word&nbsp;&lt;=&gt; word ID conversion. The jdbm database schema depends on the functions implemented. You should include an explanation on your design.</span></span></li>
+
+<li style="FONT-FAMILY: "><span style="font-family: times new roman,times;"><span style="font-size: medium;">the source codes of the spider and the test program</span></span></li>
+
+<li style="FONT-FAMILY: "><span style="font-family: times new roman,times;"><span style="font-size: medium;">a&nbsp;<span style="text-decoration: underline;">readme.txt</span> file&nbsp;containing the instructions to build the spider and the test program,&nbsp;and how to execute them. </span></span></li>
+
+<li style="FONT-FAMILY: "><span style="font-family: times new roman,times;"><span style="font-size: medium;">the db file which contains the indexed 30 pages starting from <a href="http://www.cse.ust.hk/">http://www.cse.ust.hk/</a></span></span></li>
+
+<li style="FONT-FAMILY: "><span style="font-family: times new roman,times;"><span style="font-size: medium;"><span style="text-decoration: underline;">spider_result.txt</span> which is the output of&nbsp;test program</span></span><span style="font-family: times new roman,times;">&nbsp;</span></li>
+
+</ol></li>
+
+<li style="FONT-FAMILY: "><span style="font-family: times new roman,times;"><span style="font-size: medium;">Zip the files and submit via <a href="https://course.cse.ust.hk/cass/submit.html">CASS</a> system. The assignment name is <span style="color: #ff0000;">Phase1</span>.</span></span></li>
+
+</ul>
+
+</div>
+
+<p><span style="font-size: medium;"><span style="font-family: times new roman,times;"><span style="font-size: medium;"><span style="font-family: times new roman,times;"><strong><span style="text-decoration: underline;"><span style="font-family: times new roman,times;"><span style="font-size: large;">FINAL SUBMISSION:</span></span></span></strong></span></span></span></span></p>
+
+<ul>
+
+<li><span style="font-size: medium;"><span style="font-family: times new roman,times;"><span style="font-size: medium;"><span style="font-family: times new roman,times;">It worths <strong>15%</strong> of&nbsp;the course marks. </span></span></span></span></li>
+
+<li><span style="font-size: medium;"><span style="font-family: times new roman,times;"><span style="font-size: medium;"><span style="font-family: times new roman,times;"><span style="font-family: times new roman,times;"><span style="font-size: medium;">You&nbsp;need&nbsp;to:</span></span></span></span></span></span> 
+
+<ul>
+
+<li><span style="font-size: medium;"><span style="font-family: times new roman,times;"><span style="font-size: medium;">implement the search engine and the web interface. The user inputs queries the search engine through the web interface. The search engine compares the query terms against the indexed terms in jdbm and returns the top documents to the user through the web interface.</span></span></span></li>
+
+<li><span style="font-size: medium;"><span style="font-family: times new roman,times;"><span style="font-size: medium;">either set up your search engine on <a href="http://comp4321.cse.ust.hk/~your_account/comp4321proj.html">http://comp4321.cse.ust.hk/~your_account/comp4321proj.html</a>, or on your local computer(then you need to set up apache in linux/unix, or IIS in windows environment by yourself), so that you can demonstrate the project to TA. It should be set&nbsp;up&nbsp;on only one of your group members.</span></span></span></li>
+
+<li><span style="font-size: medium;"><span style="font-family: times new roman,times;"><span style="font-size: medium;">index 300 pages starting from <a href="http://www.cse.ust.hk/~ericzhao/COMP4321/TestPages/testpage.htm">http://www.cse.ust.hk/~ericzhao/COMP4321/TestPages/testpage.htm</a><a href="http://ihome.ust.hk/~wxiang/TA/TestPages/testpage.htm"></a></span></span></span></li>
+
+</ul>
+
+</li>
+
+<li><span style="font-size: medium;"><span style="font-family: times new roman,times;"><span style="font-size: medium;">You need to submit:</span></span></span> <ol>
+
+<li><span style="font-size: medium;"><span style="font-family: times new roman,times;"><span style="font-size: medium;">the source codes of the spider, indexer, search engine and the web int<span style="font-size: medium;"><span style="font-family: times new roman,times;"><span style="font-size: medium;">erface </span></span></span><span style="color: #ff0000;">(DO NOT submit the db files)</span></span></span></span></li>
+
+<li><span style="font-size: medium;"><span style="font-family: times new roman,times;"><span style="font-size: medium;">a document (<span style="font-size: 13.5pt; color: #333333; font-family: ">around 8-10 pages long</span>)&nbsp;containing</span></span></span> 
+
+<ul>
+
+<li><span style="font-family: times new roman,times;"><span style="font-size: medium;">Overall design of the system</span></span></li>
+
+<li style="FONT-FAMILY: "><span style="font-family: times new roman,times;"><span style="font-size: medium;">The file structures used in the index database</span></span></li>
+
+<li style="FONT-FAMILY: "><span style="font-family: times new roman,times;"><span style="font-size: medium;">Algorithms used (including the mechanism for favoring title matches)</span></span></li>
+
+<li style="FONT-FAMILY: "><span style="font-family: times new roman,times;"><span style="font-size: medium;">Installation procedure (it could be as simple as &ldquo;Type make in the project directory&rdquo;)</span></span></li>
+
+<li style="FONT-FAMILY: "><span style="font-family: times new roman,times;"><span style="font-size: medium;">Highlight of features beyond the required specification</span></span></li>
+
+<li style="FONT-FAMILY: "><span style="font-family: times new roman,times;"><span style="font-size: medium;">Testing of the functions implemented; include screenshots if applicable in the report</span></span></li>
+
+<li><span style="font-family: times new roman,times;"><span style="font-size: medium;">Conclusion: What are the strengths and weaknesses of your systems; what you would have done differently if you could re-implement the whole system; what would be the interesting features to add to your system, etc.</span></span></li>
+
+</ul>
+
+</li>
+
+</ol></li>
+
+<li><span style="font-family: times new roman,times;"><span style="font-size: medium;">Zip the files and submit via <a href="https://course.cse.ust.hk/cass/submit.html">CASS</a> system. The assignment name is <span style="color: #ff0000;">FinalPhase</span>.</span></span></li>
+
+</ul>
+
+<p>&nbsp;</p>
+
+<hr size="2" />
+
+<h2>&nbsp;<span style="font-family: times new roman,times;"><span style="font-size: x-large;"><span style="font-size: x-large;"><span style="font-family: times new roman,times;"><strong><span lang="EN-US"><a style="FONT-FAMILY: " name="marking"></a><span style="font-family: times new roman,times;">MARKING Scheme</span></span></strong></span></span></span></span></h2>
+
+<p>&nbsp;</p>
+
+<p style="TEXT-ALIGN: center">
+
+<table border="0">
+
+<tbody>
+
+<tr>
+
+<td>&nbsp;</td>
+
+<td><span style="font-size: medium;">Phase1(5)</span></td>
+
+<td><span style="font-size: medium;">Final Submission(15)</span></td>
+
+</tr>
+
+<tr>
+
+<td><span style="font-size: medium;">Correctness and completeness</span></td>
+
+<td><span style="font-size: medium;">70%</span></td>
+
+<td><span style="font-size: medium;">60%</span></td>
+
+</tr>
+
+<tr>
+
+<td><span style="font-size: medium;">Program design and programming style</span></td>
+
+<td><span style="font-size: medium;">10%</span></td>
+
+<td><span style="font-size: medium;">10%</span></td>
+
+</tr>
+
+<tr>
+
+<td><span style="font-size: medium;">Documentation</span></td>
+
+<td><span style="font-size: medium;">20%</span></td>
+
+<td><span style="font-size: medium;">10%</span></td>
+
+</tr>
+
+<tr>
+
+<td><span style="font-size: medium;">Basic user interface design</span></td>
+
+<td><span style="font-size: medium;">0%</span></td>
+
+<td><span style="font-size: medium;">5%</span></td>
+
+</tr>
+
+<tr>
+
+<td><span style="font-size: medium;">Demonstration (to TA)</span></td>
+
+<td><span style="font-size: medium;">0%</span></td>
+
+<td><span style="font-size: medium;">10%</span></td>
+
+</tr>
+
+<tr>
+
+<td><span style="font-size: medium;">Demonstration (in class)</span></td>
+
+<td><span style="font-size: medium;">0%</span></td>
+
+<td><span style="font-size: medium;">5%</span></td>
+
+</tr>
+
+<tr>
+
+<td><span style="font-size: medium;"><span style="color: #ff0000;">Bonus</span></span></td>
+
+<td><span style="font-size: medium;">0%</span></td>
+
+<td><span style="color: #ff0000;"><span style="font-size: medium;">10%</span></span></td>
+
+</tr>
+
+<tr>
+
+<td><strong><span style="font-size: medium;">TOTAL</span></strong></td>
+
+<td><strong><span style="font-size: medium;">100%</span></strong></td>
+
+<td><strong><span style="font-size: medium;">110%</span></strong></td>
+
+</tr>
+
+</tbody>
+
+</table>
+
+</p>
+
+<p style="TEXT-ALIGN: left">&nbsp;</p>
+
+<p>&nbsp;</p>
+
+<hr size="2" />
+
+<h2 style="FONT-FAMILY: ; TEXT-ALIGN: left"><span style="font-family: times new roman,times;"><span style="font-size: x-large;"><span style="font-size: x-large;"><span style="font-family: times new roman,times;"><strong><span lang="EN-US"><span style="font-family: times new roman,times;"><span style="font-family: times new roman,times;"><a name="bonus"></a>Bonus</span></span></span></strong></span></span></span></span></h2>
+
+<ul>
+
+<li>
+
+<div style="FONT-FAMILY: ; TEXT-ALIGN: left"><span style="font-family: times new roman,times;"><span style="font-size: medium;">You can enhance your system beyond what is required in the project description to get a maximum of 10% bonus. However, the final decision on whether your additional work is worth any bonus is completely up to the TA and my decision. The following is a couple of examples that may be considered for bonus. Whether you will get any bonus, and if so, how much, depends on how much effort is required to do the extra work and how well is the implementation.</span></span></div>
+
+<ol>
+
+<li>
+
+<div style="FONT-FAMILY: ; TEXT-ALIGN: left"><span style="font-size: medium;"><span style="font-family: times new roman,times;">Implementation of the relevance feedback feature &ldquo;get similar pages&rdquo; (cf. Google); clicking the &ldquo;get similar pages&rdquo; button will extract the top 5 most frequent keywords (excluding stop words) from the page; rewrite the original query and submit the revised query for a new search.</span></span></div>
+
+</li>
+
+<li>
+
+<div style="FONT-FAMILY: ; TEXT-ALIGN: left"><span style="font-size: medium;"><span style="font-family: times new roman,times;">Allow the user to see a list of all (stemmed) keywords indexed in your database, browse through them, and select the keywords he/she is interested in, and then submit them as a vector-space query to your search engine.</span></span></div>
+
+</li>
+
+<li>
+
+<div style="FONT-FAMILY: ; TEXT-ALIGN: left"><span style="font-size: medium;"><span style="font-family: times new roman,times;">A user-friendly interface for all of the functions (e.g., making use of DHTML, AJAX, application-based interface)</span></span></div>
+
+</li>
+
+<li>
+
+<div style="FONT-FAMILY: ; TEXT-ALIGN: left"><span style="font-size: medium;"><span style="font-family: times new roman,times;">Keep track of query history (need application-based interface or cookies, etc.) and allow users to view the result of a previous query (or operate on the results, e.g., merging the results of two previous queries or search within the result of a previous query).</span></span></div>
+
+</li>
+
+<li>
+
+<div style="FONT-FAMILY: ; TEXT-ALIGN: left"><span style="font-size: medium;"><span style="font-family: times new roman,times;">Many other features that you can observe from existing commercial search engines.</span></span></div>
+
+</li>
+
+<li>
+
+<div style="FONT-FAMILY: ; TEXT-ALIGN: left"><span style="font-size: medium;"><span style="font-family: times new roman,times;">Consider links in result ranking (e.g., PageRank).</span></span></div>
+
+</li>
+
+<li>
+
+<div style="FONT-FAMILY: ; TEXT-ALIGN: left"><span style="font-size: medium;"><span style="font-family: times new roman,times;">Exceedingly good speed by using special implementation techniques.</span></span></div>
+
+</li>
+
+</ol></li>
+
+</ul>
+
+<p>&nbsp;</p>
+
+<hr size="2" />
+
+<p>&nbsp;</p>
+
+<h2><span style="font-size: x-large;"><span style="font-family: times new roman,times;"><a name="implementation"></a>Implementation Hints</span></span></h2>
+
+<ul>
+
+<li><span style="font-family: times new roman,times;"><span style="font-size: medium;">Using JDBM in JSP&nbsp;</span></span> 
+
+<ul>
+
+<li><span style="font-family: times new roman,times;"><span style="font-size: medium;">To use&nbsp;JDBM in JSP, the name of the database file should be set as absolute path. That is, <span style="font-family: times new roman,times;"><span style="font-size: medium;"><em>recman = RecordManagerFactory.createRecordManager("/comp4321/your_account/public_html/database");</em> Then the <span style="text-decoration: underline;">database.db</span> and <span style="text-decoration: underline;">database.lg</span> files should be placed in <span style="text-decoration: underline;">/comp4321/your_account/public_html</span>. </span></span></span></span></li>
+
+<li><span style="font-family: times new roman,times;"><span style="font-size: medium;"><span style="font-family: times new roman,times;"><span style="font-size: medium;">In case your JSP pages need to write on the database, make sure that the tomcat user has the permission to write on the folder. To do so, execute the command to set the permission:<em> chmod g+rw public_html</em></span></span></span></span></li>
+
+</ul>
+
+</li>
+
+<li><span style="font-family: times new roman,times;"><span style="font-size: medium;">Using Java classes and libraries in JSP</span></span> 
+
+<ul>
+
+<li><span style="font-family: times new roman,times;"><span style="font-size: medium;">To use java classes, create a folder named <strong>WEB-INF</strong> in <strong>public_html</strong> folder. In the&nbsp;<strong>WEB-INF</strong> folder, create another folder named <strong>classes</strong> and all the compiled class files should be placed in it. Make sure that all the folders and the classes should be accessible for the tomcat user. i.e. <em>chmod g+r WEB-INF -R</em></span></span></li>
+
+<li><span style="font-family: times new roman,times;"><span style="font-size: medium;">To use java libraries, the jar files should be placed into <strong>WEB-INF/lib/</strong>. Similar to the java classes case, the permissions should be set properly.&nbsp;</span></span></li>
+
+</ul>
+
+</li>
+
+</ul>
+
+<p>&nbsp;</p>
+
+<hr size="2" />
+
+<h2 style="FONT-FAMILY: ; TEXT-ALIGN: left"><span style="font-family: times new roman,times;"><span style="font-size: x-large;"><span style="font-size: x-large;"><span style="font-family: times new roman,times;"><strong><span lang="EN-US"><span style="font-family: times new roman,times;"><span style="font-family: times new roman,times;"><a name="suggestions"></a><span style="color: #000000;">Some Suggestions</span></span></span></span></strong></span></span></span></span></h2>
+
+<p><span style="color: #000000;">&nbsp;</span></p>
+
+<ol>
+
+<li>
+
+<div style="FONT-FAMILY: ; TEXT-ALIGN: left"><span style="font-family: times new roman,times;"><span style="font-size: medium;"><span style="color: #000000;">You are free to choose any programming language you like to do your project. However, you should bear your own risk if you choose another language, and you should not expect us to help you with debugging. </span></span></span></div>
+
+</li>
+
+<li>
+
+<div style="FONT-FAMILY: ; TEXT-ALIGN: left"><span style="font-family: times new roman,times;"><span style="font-size: medium;"><span style="font-family: "><span style="color: #000000;"><span style="font-family: ">You are also free to choose other packages to implement the project.&nbsp; However, you have to make sure you implement a &ldquo;real&rdquo; search engine. For example, storing all the index information in arrays or other main-memory data structures is not acceptable.</span></span></span></span></span></div>
+
+</li>
+
+<li>
+
+<div style="FONT-FAMILY: ; TEXT-ALIGN: left"><span style="font-family: times new roman,times;"><span style="font-size: medium;"><span style="font-family: "><span style="color: #000000;"><span style="font-family: ">You are suggested to use the <a href="http://www.cse.ust.hk/~ericzhao/COMP4321/lab3/stopwords.txt">stopword list</a>.</span></span></span></span></span></div>
+
+</li>
+
+<li>
+
+<div style="FONT-FAMILY: ; TEXT-ALIGN: left"><span style="font-family: times new roman,times;"><span style="font-size: medium;"><span style="font-family: "><span style="color: #000000;"><span style="font-family: ">Speed is not essential but must be reasonable in that you program (spider or search) should run at the average speed (i.e., if your program takes 5 times more than your friend&rsquo;s, then there must be something wrong with your design, or your friend&rsquo;s). If you had implemented special techniques that can speed up indexing and search (e.g., by using a special index design and/or intelligent caching), you can highlight it in your report and to the TA for qualifying bonus points. If your system is judged to be slower than normal, you should be able to give an explanation to avoid penalty.</span></span></span></span></span></div>
+
+</li>
+
+<li>
+
+<div style="FONT-FAMILY: ; TEXT-ALIGN: left"><span style="font-family: times new roman,times;"><span style="font-size: medium;"><span style="font-family: "><span style="color: #000000;"><span style="font-family: ">If you are so unfortunate that you cannot finish the phases before deadlines, you should still submit the parts that you have done so that the TA can give partial marks to you. I won&rsquo;t be harsh in grading as I realize that you have lots of things to do. However, don&rsquo;t use this as an excuse for copying from other or from the old projects. If you are so unlucky that I discover you copy from other, you and the one who gives you the source would get <span style="color: #ff0000;">ZERO MARK</span>!<br /></span></span></span></span></span></div>
+
+</li>
+
+</ol>
+
+<p>&nbsp;</p>
+
+<hr size="2" />
+
+<p>&nbsp;</p>
+
+<p>&nbsp;</p>
+
+<p>&nbsp;</p>								
+
+											
+
+						</div>						
+
+				
+
+	
+
+	
+
+			
+
+		
+
+				
+
+		</div>	
+
+		
+
+	</div> <!-- END of main column: wrap -->
+
+		
+
+		
+
+	<br />
+
+	<br />
+
+	
+
+	<div class="footer jeditable_textarea" id="footer_textarea">Hong Kong University of Science and Technology - Department of Computer Science and Engineering</div>
+
+</body>
+
+
+<!-- Mirrored from www.cse.ust.hk/~ericzhao/COMP4321/project.html by HTTrack Website Copier/3.x [XR&CO'2014], Mon, 29 Dec 2014 05:52:52 GMT -->
+</html>

@@ -1,0 +1,25 @@
+<html>
+
+
+<!-- Mirrored from course.cse.ust.hk/comp4021/hkust/lectures/dom_examples2/01_html_dom_creation.html by HTTrack Website Copier/3.x [XR&CO'2014], Wed, 03 Jun 2015 10:28:34 GMT -->
+<head>
+
+<script type="text/javascript">
+
+function insert_new_text()
+{
+    var newText = document.createTextNode
+	("This is dynamically added text!");
+    var textpart = document.getElementById("my_text");
+    textpart.appendChild(newText);
+}
+</script>
+
+</head>
+
+<body onkeypress="insert_new_text()">
+
+<h1 id="my_text">Hi there, press a key! </h1>
+
+</body>
+

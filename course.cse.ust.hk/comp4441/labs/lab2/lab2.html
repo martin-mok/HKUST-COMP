@@ -1,0 +1,168 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+      "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+
+<!-- Mirrored from course.cse.ust.hk/comp4441/labs/lab2/lab2.html by HTTrack Website Copier/3.x [XR&CO'2014], Wed, 03 Jun 2015 09:38:15 GMT -->
+<head>
+  <title>COMP4441 Lab 2</title>
+  <meta content="text/html; charset=iso-8859-1" http-equiv="content-type">
+  <style type="text/css">
+<!--body { font-family: arial, helvetica, sans-serif; }pre { font-size: small; }#highlight { font-size: larger; }-->
+
+  </style>
+</head>
+
+<body>
+<h1><span style="font-weight: 400">COMP 4441 Computer Music</span></h1>
+<h1><span style="font-weight: 400">Lab 2: Sound Analysis</span></h1>
+<hr>
+
+<h2>What to do ?</h2>
+
+<p align="left">In this lab, you will analyze sound files to find the harmonics and
+synthesize them using additive synthesis. The first instrument tone to synthesis 
+is a <a href="trumpetC4.wav">C4 trumpet tone</a>.</p>
+
+
+
+<h3>PVan Spectrum Analysis</h3>
+<p>Run <a href="pvan%2b.zip">pvan+</a>. Download the sound file 
+<a href="trumpetC4.wav">trumpetC4.wav</a> for analysis.</p>
+
+<ul>
+	<li>Choose to analyze a sound file. Locate and open the input sound file (trumpetC4.wav).</li>
+	<li>By default, pvan+ will automatically <strong>detect the fundamental frequency</strong>, and align it to the nearest pitch frequency. You may later adjust these parameters for other advanced usage.
+</ul>
+<div style="text-align:center;">
+	<img alt="pvanplus file open" src="pvanplus1.png"> </div>
+<ul>
+	<li>You can choose the portion of the sound to be analyzed. For this lab, you can use the <strong>default values</strong> and analyze the whole sound.</li>
+	</li>
+</ul>
+<div style="text-align:center;">
+	<img alt="pvanplus sound portion" src="pvanplus2.png"> </div>
+<div style="text-align:center;">
+	<img alt="pvanplus analysis finished" src="pvanplus3.png"> </div>
+<ul>
+	<li>Choose the <strong>Harmonics</strong> tab, click on the button <em>Peak RMS Amp.</em> to see the time frame where the RMS amplitude is highest. You may need to <strong>maximize the window</strong> to see the button.</li>
+	</li>
+</ul>
+<div style="text-align:center;">
+	<img alt="pvanplus spectral snapshot" src="pvanplus4.png"></div>
+<ul>
+	<li>You should see the plot of Harmonic numbers against Amplitude. Record the
+	amplitudes for every harmonics by choosing <strong>Data -> Copy current spectral snapshot -> Tab separated</strong> (You do not need to copy manually from the Debug Info box!). You can paste 
+	the data (amplitudes) to Notepad or other text editor.</li>
+	</ul>
+<div style="text-align:center;">
+	<img alt="pvanplus copy data" src="pvanplus5.png"> </div>
+<ul>
+
+	<li>Synthesize the sound using Csound with the <strong>first 10 harmonics</strong> using additive
+	synthesis, the technique you learnt from Lab 1. The result should sound similar
+	to <a href="trumpetC4.wav">the original sound</a>.</li>
+	<li><em>Where can you find the fundamental frequency?</em></li>
+	<li>The sample codes from Lab 1: 
+	<a href="sinewave.orc">sinewave.orc</a>	and <a href="sinewave.sco">sinewave.sco</a>.</li>
+</ul>
+
+<h3>Points to note</h3>
+<ul>
+	<li>You may adjust the parameters to change the outlook of the graphs for better visualization.</li>
+</ul>
+<div style="text-align:center;">
+	<img alt="pvanplus parameters" src="pvanplus6.png"> </div>
+</ul>
+<ul>
+	<li>Since pvan+ is still a software under development, it may sometimes give wrong guesses or becomes unstable. For example, if you see in the "&quot;Spectrum&quot; tab that it has detected a wrong fundamental frequency, you may try to input the value yourself.</li>
+</ul>
+<div style="text-align:center;">
+	<img alt="pvanplus wrong f0" src="pvanplus7.png"> </div>
+</ul>
+
+<h3>Lab Assignment</h3>
+<p>Synthesize <a href="voice.wav">this voice sound</a> using additive synthesis
+with the <strong>first 10 harmonics</strong>.</p>
+
+<ol style="list-style-type: lower-roman;">
+Hints:
+<li>Analyze the harmonics to obtain the amplitudes of each of the harmonics.</li>
+<li>The sample codes from Lab 1: <a href="sinewave.orc">sinewave.orc</a> and 
+<a href="sinewave.sco">sinewave.sco</a>.</li>
+</ol>
+<!--<h3>Checking the lab scores</h3>
+<p>You may check the lab scores of COMP4441 at this link: <a target="_blank" href="https://docs.google.com/spreadsheet/pub?key=0Ahld0CNrFfFIdHFNeHNEN0luSVBxMFd4ZHZiVlI0ZFE&single=true&gid=1&output=html">COMP4441 on Google Docs</a>. Please be reminded that sometimes there may be delay (about a week) between the submission due and the score showing up.</p>
+-->
+<!--
+<ul>
+	<li>From <Strong>File</strong> menu</li>
+	<ul>
+		<li>Choose <strong>New</strong>, specify the input sound file (trumpetC4.wav)
+		and fill the <strong>Analysis Frequency</strong> with <em>264.5</em> in the
+		dialog box.</li>
+		<li>You should see a Perspective Plot when the analysis is complete
+		(it may take some time).</li>
+		<li>Choose <strong>Save As</strong> to save the pv analysis file.</li>
+		<li>Choose <strong>Print</strong> if you want a hard copy of the plot.</li>
+		<li>If this doesn't work, copy the plot into Paint or MS Word by selecting
+		Edit menu -> Copy -> Plot or pressing Ctrl + C and then print.</li>
+		<li>Choose <strong>Open</strong> to retrieve a saved pv analysis file.</li>
+	</ul>
+	<li>From <Strong>Window</strong> menu to select different graphs.</li>
+		<ul>
+			<li><strong>Perspective Plot</strong></li>
+			<ul>
+				<li>Right click on the plot to switch shading method.</li>
+				<li>Look at the amplitudes of the harmonics.</li>
+				<li>Notice the amplitude fluctuation due to the
+				performer's vibrato and natural noise in the tone.</li>
+			</ul>
+			<li><strong>Spectral Snapshot</strong></li>
+			<ul>
+				<li>Copy the values from Spectral Snapshot by selecting Edit menu ->
+				Copy -> Data. Then, you can paste them into your text file.</li>
+			</ul>
+			<li><strong>Amplitude Envelope</strong></li>
+			<ul>
+				<li>Specify the harmonic no. in the floating menu under Harmonic
+				Partial tab to display it.</li>
+			</ul>
+			<li><strong>Frequency Envelope</strong></li>
+			<ul>
+				<li>Here is an example, showing the noise at the beginning and end of
+				the sound, and notice that the average pitch is not a straight
+				line either!</li>
+			</ul>
+		</ul>
+    <li>Choose "Spectrum" -> "Synthesize" -> "Play" to play the synthesized sound.
+    Compare it to the original sound in Cool Edit. They should sound very similar.
+    (Cool Edit is available in CS Lab4 in the Start Menu -> Programs -> Music ->
+    Cool Edit 2000 -> Cool Edit 2000.</li>
+    <li>
+
+
+</ul>
+
+<hr>
+-->
+<h2><font face="Arial Unicode MS">CASS - Course Assignment Submission
+System</font></h2>
+<p><font face="Arial Unicode MS">If you have finished your assignment and 
+demonstrated to your TAs, you don't need to submit your files to CASS. But if you don't attend the labs or you
+cannot finish the assignment in the lab, you need to submit the source
+code using the
+<a href="../../../cass/submit.html">CASS</a>. </font> </p>
+<hr>
+
+<h2><font face="Arial Unicode MS">Demonstration and Submission</font></h2>
+<p><font face="Arial Unicode MS">Please submit your files
+"<a href="../answers/additive.html">additive.orc</a>" and "<a href="../answers/additive-2.html">additive.sco</a>" using
+<a href="../../../cass/submit.html">CASS</a> before <b>Monday (29-Sep-2014)</b>. For any questions, please contact
+your TAs by email (<b>*Only for question asking. Submissions please go to CASS.*</b> ronmo@cse.ust.hk, bwuaa@cse.ust.hk).
+ DO NOT submit the wav file; submitting the orc and sco
+files will be enough. Thank you.
+</font> </p>
+</body>
+
+<!-- Mirrored from course.cse.ust.hk/comp4441/labs/lab2/lab2.html by HTTrack Website Copier/3.x [XR&CO'2014], Wed, 03 Jun 2015 09:38:15 GMT -->
+</html>

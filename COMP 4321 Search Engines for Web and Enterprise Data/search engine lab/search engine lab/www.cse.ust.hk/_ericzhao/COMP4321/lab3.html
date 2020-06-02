@@ -1,0 +1,563 @@
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+
+
+<!-- Mirrored from www.cse.ust.hk/~ericzhao/COMP4321/lab3.html by HTTrack Website Copier/3.x [XR&CO'2014], Mon, 29 Dec 2014 05:52:52 GMT -->
+<head>
+
+<title>
+
+COMP4321 Labs : Search Engines for Web and Enterprise Data</title>
+
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+
+
+
+<link rel="stylesheet" href="css/admin_1.1.css" type="text/css" />
+
+<link rel="stylesheet" href="css/admin_1.1-bg.css" type="text/css" />
+
+<link rel="stylesheet" href="css/eric_css.css" type="text/css" />
+
+<!-- TODO: based on the $cf['site']['theme'] to select a static theme.... -->
+
+<link type="text/css" href="lib/jqueryui/theme/ui.all.css" rel="Stylesheet" /> 
+
+<script type="text/javascript" src="lib/jquery/jquery-1.3.1.min.js"></script>	
+
+
+
+<script type="text/javascript" src="lib/jqueryui/jquery-ui-personalized-1.6rc6.min.js"></script>
+
+<!--
+
+<script type="text/javascript" src="lib/jquery.jeditable.mini.js"></script>	
+
+-->
+
+<script>		
+
+		$(function(){	
+
+		// main entry point
+
+		
+
+		$('#theme-switcher').themeswitcher( {		
+
+				loadTheme: "Smoothness",				
+
+				cookieName: '' /* not used cookie here... */
+
+			}
+
+		 );
+
+
+
+		// Test: Do the simple layout of the content....
+
+		// Initially, reLayout the screen 		
+
+		// Each time the window is resized, reLayout the screen			
+
+		function redoLayout() {		
+
+			// assume 10 px margin between 
+
+			//  [ ------------------------------ Wrap ------------------------------------]
+
+			//  [ -- sidebar --] [-- 10px --] [----------------- main ------------------]
+
+			var bodyWidth = $("body:first").width(); // first body's width...			
+
+			var sidebarWidth = $("#sidebar").width(); // sidebar's width...
+
+			var mainWidthThreshold = 250;
+
+						
+
+			var mainWidth = bodyWidth - sidebarWidth - 10; ; 			
+
+			if ( mainWidth > mainWidthThreshold ) {			
+
+				$("#wrap").width(bodyWidth);
+
+				$("#main").width(mainWidth);
+
+			}
+
+		}		
+
+		redoLayout();
+
+		$(window).resize( function() {
+
+			redoLayout();
+
+		});
+
+		
+
+		
+
+			
+
+	});
+
+</script>
+
+
+
+
+
+<!-- For Query table style... -->
+
+<style>
+
+
+
+table td { 
+
+	border: 1px solid;
+
+	padding: 2px;
+
+	
+
+}
+
+	
+
+</style>
+
+</head>
+
+
+
+<body>
+
+
+
+<!-- Load the jquery theme switcher tool.... -->
+
+<script type="text/javascript" src="../../../jqueryui.com/themeroller/themeswitchertool/index.html"></script>
+
+	
+
+	<div id="wrap">
+
+
+
+		<!-- header -->
+
+
+
+		<div id="header">
+
+			<span id="slogan" class="jeditable_line"> Fall 2014 </span>
+
+			<!-- tabs -->		
+
+			<!--
+
+			<ul>
+
+				<li><a href="#"><span>Site-Tab1</span></a></li>
+
+				<li><a href="#"><span>Site-Tab2</span></a></li>				
+
+			</ul>
+
+			-->
+
+		</div>
+
+
+
+
+
+		<div id="header-logo">
+
+			<div id="logo" class="jeditable_line"><a href="../../_dlee/4321/index.html">COMP4321</a> <span class=red>Labs</span></div>			
+
+			<div id="header-educ" class="jeditable_line_fixed_height">Search Engines for Web and Enterprise Data</div>
+
+		</div>
+
+
+
+		
+
+		<!-- For the display, currently just hack, using theme-switcher to achieve the effect
+
+		TODO: port to a static theme mapping later on....
+
+		-->
+
+		<div id="theme-switcher" style="display:none;"></div>
+
+		
+
+		
+
+		<!-- Style is now integrated with JQueryUI css framework -->
+
+		<!-- side bar -->
+
+		<div class="ui-widget ui-corner-all ui-helper-reset" id="sidebar" >			
+
+						
+
+			
+
+			<h1 class="ui-widget-header ui-helper-reset">Main Menu</h1>					
+
+			<!--<ul class="ui-widget-content ui-helper-reset" id="contentManagamentMenu">-->
+            <ul class="navbar">
+								
+
+												
+
+								<li class="ui-state-default ui-corner-all" >
+
+									<span class="ui-icon ui-icon-star"  ></span>												
+
+									<a href="index-2.html"  id="modify_title_html_1251527068" >Information</a>								
+
+									<br />								
+
+									
+
+									
+
+									
+
+								</li>	
+
+								
+
+																
+
+								<li class="ui-state-default ui-corner-all" >
+
+									<span class="ui-icon ui-icon-star"  ></span>												
+
+									<a href="lab1.html"  id="modify_title_html_1251529887" >Lab1</a>								
+
+									<br />								
+
+									
+
+									
+
+									
+
+								</li>	
+ 
+								
+
+																
+
+								<li class="ui-state-default ui-corner-all" >
+
+									<span class="ui-icon ui-icon-star"  ></span>												
+
+									<a href="lab2.html"  id="modify_title_html_1251530023" >Lab2</a>								
+
+									<br />								
+
+									
+
+									
+
+									
+
+								</li>	
+
+								
+
+																
+
+								<li class="ui-state-default ui-corner-all" >
+
+									<span class="ui-icon ui-icon-star"  ></span>												
+
+									<a href="lab3.html"  id="modify_title_html_1251530035" >Lab3</a>								
+
+									<br />								
+
+									
+
+									
+
+									
+
+								</li>	
+
+								
+
+																
+
+								<li class="ui-state-default ui-corner-all" >
+
+									<span class="ui-icon ui-icon-star"  ></span>												
+
+									<a href="lab4.html"  id="modify_title_html_1251529936" >Lab4</a>								
+
+									<br />								
+
+									
+
+									
+
+									
+
+								</li>	
+
+								
+
+																
+
+								<li class="ui-state-default ui-corner-all" >
+
+									<span class="ui-icon ui-icon-star"  ></span>												
+
+									<a href="project.html"  id="modify_title_html_1251529946" >Term Project</a>								
+
+									<br />								
+
+									
+
+									
+
+									
+
+								</li>	
+<li class="ui-state-default ui-corner-all" >
+<span class="ui-icon ui-icon-star"  ></span>
+<a href="http://www.cse.ust.hk/~ericzhao/COMP4321/Password_Only/homework_exam/schedule.html"  id="modify_title_html_1251529946">HW and Exam</font></a>
+<br />
+</li>
+<li class="ui-state-default ui-corner-all" >
+<span class="ui-icon ui-icon-star"  ></span>
+<a href="news_page.html"  id="modify_title_html_1251529946" ><font color="red">News</font></a>
+<br />
+</li>
+								
+
+								
+
+
+
+			</ul>	
+
+			
+
+		</div> <!-- END sidebar -->
+
+		
+
+		
+
+
+
+		
+
+		<div id="main" >
+
+		
+
+		
+
+			
+
+										
+
+						<!-- Wrapper for the editor -->
+
+						<div class="ui-widget ui-corner-all ui-helper-reset"  >			
+
+							<h1 class="ui-widget-header ui-helper-reset">Lab3</h1>
+
+											
+
+							<h1 style="text-align: center;"><span style="font-family: times new roman,times;"><strong><span style="font-size: x-large;"><span style="font-size: xx-large;"><span style="color: #ff0000;">Lab3</span> - <span style="color: #000000;">Stemming and Stopword Removal</span></span><br /></span></strong></span></h1>
+
+<hr />
+
+<ul>
+
+<li>
+
+<h2><span style="font-family: times new roman,times;"><span style="font-size: x-large;"><a href="#Introduction"><strong>Introduction</strong></a></span></span></h2>
+
+</li>
+
+<li>
+
+<h2><span style="font-family: times new roman,times;"><a href="#Working_mechanism_of_a_simple_search"></a><span style="font-size: x-large;"><a href="#Working_mechanism_of_a_simple_search"><strong>Working mechanism of a simple search engine</strong></a></span></span></h2>
+
+</li>
+
+<li>
+
+<h2><span style="font-family: times new roman,times;"><span style="font-size: x-large;"><a href="#Stemmer"><strong>Stemmer and stopword remover</strong></a></span></span></h2>
+
+</li>
+
+<li>
+
+<h2><span style="font-family: times new roman,times;"><span style="font-size: x-large;"><a href="#Exercise"><strong>Exercise</strong></a></span></span></h2>
+
+</li>
+
+<li>
+
+<h2><span style="font-family: times new roman,times;"><span style="font-size: x-large;"><a href="#links"><strong>Useful links</strong></a></span></span></h2>
+
+</li>
+
+</ul>
+
+<p><span style="font-family: times new roman,times;"><strong></strong></span></p>
+
+<p>&nbsp;</p>
+
+<hr />
+
+<p>&nbsp;</p>
+
+<p>&nbsp;</p>
+
+<h2><span style="font-family: times new roman,times;"><strong><span style="font-size: small;"><a name="Introduction"></a><span style="font-size: x-large;">Introduction</span></span></strong></span></h2>
+
+<p><span style="font-family: times new roman,times;"><span style="font-size: medium;">A search engine usually provides a friendly user interface that you can input the keywords you want to search for. Based on your input query, the search engine can retrieve all the documents that are related to the query according to its own retrieval algorithm and return a result list to you. A concrete example of a search engine is the one you used in <a href="http://ustlib.ust.hk/">our library</a>. </span></span></p>
+
+<p><span style="font-family: times new roman,times;"><span style="font-size: medium;">Basically nearly all the search engines can accept keywords search; others even permit users to input questions or support languages other than English. The objective of a search engine is to provide the most convenient and effective search mechanism to its users. Its result lists should contain documents which really conform to the user's original interest. </span></span></p>
+
+<hr />
+
+<h2><span style="font-family: times new roman,times;"><span style="font-size: x-large;"><strong><span style="font-size: x-large;"><a name="Working_mechanism_of_a_simple_search"></a>Working mechanism of a simple search engine</span></strong></span><span style="font-size: x-large;">&nbsp; </span></span></h2>
+
+<p><span style="font-family: times new roman,times;"><span style="font-size: medium;">Now we will introduce a mechanism of a simple search engine which is based on the vector space model.</span></span></p>
+
+<ul>
+
+<li><span style="font-family: times new roman,times;"><span style="font-size: medium;">Stopword removal: Words which are very frequent and do not carry meaning (such as "a", "the") are called stopwords. These words are assumed not to carry any important information and so are usually ignored in order to save storage space of the inverted file. First, you should define the list of stopwords. Then, when you read in a new document you should remove all the stopwords before proceeding to the next stage.</span></span></li>
+
+<li><span style="font-family: times new roman,times;"><span style="font-size: medium;">Stemming: In English, words having the same stem are usually assumed to have similar meaning, such as "computing", "compute", "computed" and "computation". In order to improve the recall of the search (i.e., to get relevant documents which don't contain the exact words as specified in the query),&nbsp; stemming is performed to remove the affix and successor. Porter's algorithm is a well-known stemming algorithm.</span></span></li>
+
+<li><span style="font-family: times new roman,times;"><span style="font-size: medium;">Creating the index: You should maintain the inverted index that contains the word/posting pairs. If a word has already existed in the index file, you can store the record containing the id of this document and the term frequency to its posting. Otherwise you should create a new key and store the corresponding postings in the posting list.</span></span></li>
+
+</ul>
+
+<div style="text-align: center;"><span style="font-family: times new roman,times;"><img style="width: 497px; height: 251px;" src="http://www.cse.ust.hk/~ericzhao/COMP4321/images/lab3_flow.jpg" alt="Process Flow" width="497" height="251" /></span></div>
+
+<p><span style="font-family: times new roman,times;"><span style="font-size: medium;">The above steps are used to create the index file. After we have such kind of index, we can provide the search service. Actually there are many different search algorithms, each with its own advantage sand disadvantages. We may adopt the simplest tf*idf/max_tf weighting scheme and assume that all of the keywords that users input have the same weight.</span></span></p>
+
+<ul>
+
+<li><span style="font-family: times new roman,times;"><span style="font-size: medium;">Keywords preprocessing: When a user inputs the keywords, we should preprocess them. First removing all the stopwords and then doing the stemming.</span></span></li>
+
+<li><span style="font-family: times new roman,times;"><span style="font-size: medium;">Searching: Now we can do the search according to the keywords. Basad on the ranking algorithm, we compute the score of all the relevant documents and rank them.</span></span></li>
+
+<li><span style="font-family: times new roman,times;"><span style="font-size: medium;">Returning the result: According to the ranking, we can return the result documents list to the user.<br /></span></span></li>
+
+</ul>
+
+<hr />
+
+<h2><span style="font-family: times new roman,times;"><span style="font-size: x-large;"><strong><span style="font-size: x-large;"><a name="Stemmer"></a>Stemmer and stopword remover</span></strong></span></span></h2>
+
+<p><span style="font-family: times new roman,times;"><span style="font-size: medium;">In the project, you are recommended to use the "Porter stemming algorithm". It is fast and has a performance comparable to other complex algorithms. <span style="font-family: times new roman,times;"><span style="font-size: medium;"><a href="http://www.cse.ust.hk/~ericzhao/COMP4321/lab3/Porter.java">Here</a> is a Java implementation of the Porter stemming Algorithm, which was implemented by Fotis Lazarinis.</span></span></span></span></p>
+
+<p><span style="font-family: times new roman,times;"><span style="font-size: medium;">For stopword removal, there are many stopword removers ready for use. However, most of them are C programs, which are unnecessarily complicated. You are recommended to use a simple data structure in&nbsp;java to help you perform this task efficiently.</span></span></p>
+
+<p><span style="font-family: times new roman,times;"><span style="font-size: medium;"><a href="http://www.cse.ust.hk/~ericzhao/COMP4321/lab3/StopStem.java">Here</a> is an example for stopping and stemming in Java. To compile it, you need to firstly place the Porter.java into a directory named "IRUtilities" and compile the Porter.java into Porter.class.</span></span></p>
+
+<hr />
+
+<h2><span style="font-family: times new roman,times;"><strong><span style="font-size: x-large;"><a name="Exercise"></a>Exercise</span></strong></span></h2>
+
+<p><span style="font-family: times new roman,times;"><span style="font-size: medium;">You may notice that in the sample today, the stopword list is hard-coded by inserting each word line by line. You are required to modify the example program to read stopwords from a file, <a href="http://www.cse.ust.hk/~ericzhao/COMP4321/lab3/stopwords.txt">stopwords.txt</a>. </span></span></p>
+
+<p><span style="font-family: times new roman,times;"><span style="font-size: medium;"> You only need to modify the code in "StopStem" function, which is used to read the stopwords from txt file into memory. You are <font color="red"> not</font> required to touch other code in sample program. Thus, a package named as "IRUtilities" should be created under project and Porter.java should be put under the package. </span></span></p>
+
+<p><span style="font-family: times new roman,times;"><span style="font-size: medium;">According to the sample code, "StopWords.txt" should be set the same directory as "src" folder of the project. Learn by yourself about how to read external txt file by "BufferedReader".</span></span></p>
+  
+<p><span style="font-family: times new roman,times;"><span style="font-size: medium;"><span style="font-size: large;"><span style="text-decoration: underline;"><strong>Submission</strong></span></span></span></span><span style="font-family: times new roman,times;"><span style="font-size: medium;"><br />
+no need to submit
+<!--Put the following information on top of the file StopStem.java</span></span></p>
+
+<p>&nbsp;</p>
+
+<p><span style="font-family: times new roman,times;"><span style="font-size: medium;">
+
+<p><span style="font-size: x-small; font-family: Arial;">/* <br />COMP4321 Lab3 Exercise<br />Student Name:<br />Student ID:<br />Section:<br />Email:<br /><br />*/</span></p>
+
+<p>Submit your program via <a href="https://course.cse.ust.hk/cass/submit.html">CASS system</a> before next lab. Assignment Name is <span style="color: #ff0000;">Lab3</span><span style="font-style: italic; color: #3333ff;"><span style="color: #000000;">.<br /></span></span><span style="color: #3333ff;"><span style="color: #000000;">Refer to </span></span><a href="http://cssystem.cse.ust.hk/home.php?docbase=UGuides/cass&amp;req_url=UGuides/cass/student.html">CASS  Course Assignment Submission System</a> for more information about the usage of CASS.</p>
+
+</span></span></p>
+
+<p>&nbsp;</p>
+
+<p>&nbsp;</p>
+
+<hr />
+
+<p>&nbsp;</p>
+
+<h2><span style="font-family: times new roman,times;"><span style="font-size: x-large;"><strong><span style="font-size: x-large;"><a name="links"></a>Useful links</span></strong></span></span></h2>
+
+<p class="MsoNormal"><span style="font-family: times new roman,times;"><span style="font-size: medium;"><span lang="EN-US">Java tutorial in File I/O<br /></span><span lang="EN-US">1. <a title="http://download.oracle.com/javase/tutorial/essential/io/" href="http://download.oracle.com/javase/tutorial/essential/io/">http://download.oracle.com/javase/tutorial/essential/io/</a><br /></span></span></span></p>-->
+
+<p><span style="font-family: times new roman,times;"><strong></strong></span></p>
+
+<p>&nbsp;</p>
+
+<p>&nbsp;</p>
+
+<hr />								
+
+											
+
+						</div>						
+
+				
+
+	
+
+	
+
+			
+
+		
+
+				
+
+		</div>	
+
+		
+
+	</div> <!-- END of main column: wrap -->
+
+		
+
+		
+
+	<br />
+
+	<br />
+
+	
+
+	<div class="footer jeditable_textarea" id="footer_textarea">Hong Kong University of Science and Technology - Department of Computer Science and Engineering</div>
+
+</body>
+
+
+<!-- Mirrored from www.cse.ust.hk/~ericzhao/COMP4321/lab3.html by HTTrack Website Copier/3.x [XR&CO'2014], Mon, 29 Dec 2014 05:52:52 GMT -->
+</html>

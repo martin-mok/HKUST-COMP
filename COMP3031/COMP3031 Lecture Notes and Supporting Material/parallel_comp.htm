@@ -1,0 +1,3408 @@
+<HTML>
+<HEAD>
+<TITLE>Introduction to Parallel Computing</TITLE>
+
+<SCRIPT LANGUAGE="JavaScript" SRC="../tutorials.js"></SCRIPT>
+
+<!-- Piwik Added 11/12/14 BMB -->
+<script src="https://analytics.llnl.gov/piwik.js" type="text/javascript"> 
+<script>
+var siteName = document.domain;
+var pkBaseURL = 'https://analytics.llnl.gov/';
+if (typeof jQuery=="undefined") {
+    document.write(unescape("%3Cscript src='" + pkBaseURL + "jquery.js' type='text/javascript'%3E%3C/script%3E"));
+}
+</script><script>
+    try {
+        var LLNLTracker = Piwik.getTracker(pkBaseURL + "piwik.php", 1);
+        LLNLTracker.trackPageView();
+        LLNLTracker.enableLinkTracking();
+        var localSiteTracker = Piwik.getTracker(pkBaseURL + "piwik.php", 149);
+        localSiteTracker.trackPageView();
+        localSiteTracker.enableLinkTracking();
+    }
+    catch (err) {
+        console.log(err);
+    }
+</script><noscript><p><img src="https://analytics.llnl.gov/piwik.php?idsite=2" style="border:0" alt="" /></p></noscript>
+<!-- End Piwik Tracking Code ->
+
+<LINK REL=StyleSheet HREF="../tutorials.css" TYPE="text/css">
+<LINK REL="SHORTCUT ICON" HREF="http://www.llnl.gov/favicon.ico">
+
+<!-- BEGIN META TAGS -->
+<META NAME="LLNLRandR" CONTENT="UCRL-MI-133316">
+<META NAME="distribution" CONTENT="global">
+<META NAME="description" content="Livermore Computing Training">
+<META NAME="rating" CONTENT="general">
+<META HTTP-EQUIV="keywords" CONTENT="Lawrence Livermore
+National Laboratory, LLNL, High Performance Computing, parallel, programming, 
+HPC, training, workshops, tutorials, Blaise Barney">
+<META NAME="copyright" CONTENT="This document is copyrighted U.S.
+Department of Energy">
+<META NAME="Author" content="Blaise Barney">
+<META NAME="email" CONTENT="blaiseb@llnl.gov">
+<!-- END META TAGS -->
+</HEAD>
+
+<BODY>
+<BASEFONT SIZE=3>            <!-- default font size -->
+
+<A NAME=top>  </A>
+<TABLE CELLPADDING=0 CELLSPACING=0 WIDTH=100%>
+<TR><TD COLSPAN=2 BGCOLOR=#3F5098>
+  <TABLE CELLPADDING=0 CELLSPACING=0 WIDTH=900>
+  <TR><TD BACKGROUND=../images/bg1.gif>
+  <A NAME=top> </A>
+  <SCRIPT LANGUAGE="JavaScript">addNavigation()</SCRIPT>
+  <P><BR>
+  <H1>Introduction to Parallel Computing</H1>
+  <P>
+  </TD></TR></TABLE>
+</TD>
+</TR><TR VALIGN=top>
+<TD><I>Author: Blaise Barney, Lawrence Livermore National Laboratory</I></TD>
+<TD ALIGN=right><FONT SIZE=-1>UCRL-MI-133316</FONT></TD>
+</TR></TABLE>
+<P>
+
+<A NAME=TOC> </A>
+<H2>Table of Contents</H2>
+<OL>
+<LI><A HREF=#Abstract>Abstract</A>
+<LI><A HREF=#Overview>Overview</A>
+    <OL>
+    <LI><A HREF=#Whatis>What is Parallel Computing?</A>
+    <LI><A HREF=#WhyUse>Why Use Parallel Computing?</A>
+    <LI><A HREF=#Who>Who is Using Parallel Computing?</A>
+    </OL>
+
+<LI><A HREF=#Concepts>Concepts and Terminology</A>
+    <OL>
+    <LI><A HREF=#Neumann>von Neumann Computer Architecture</A>
+    <LI><A HREF=#Flynn>Flynn's Classical Taxonomy</A>
+    <LI><A HREF=#Terminology>Some General Parallel Terminology</A>
+    <LI><A HREF=#LimitsCosts>Limits and Costs of Parallel Programming</A> 
+</OL>
+
+<LI><A HREF=#MemoryArch>Parallel Computer Memory Architectures</A> 
+    <OL>
+    <LI><A HREF=#SharedMemory>Shared Memory</A> 
+    <LI><A HREF=#DistributedMemory>Distributed Memory</A> 
+    <LI><A HREF=#HybridMemory>Hybrid Distributed-Shared Memory</A>
+    </OL>
+ 
+<LI><A HREF=#Models>Parallel Programming Models</A>
+    <OL>
+    <LI><A HREF=#ModelsOverview>Overview</A>
+    <LI><A HREF=#ModelsShared>Shared Memory Model</A> 
+    <LI><A HREF=#ModelsThreads>Threads Model</A>
+    <LI><A HREF=#ModelsMessage>Distributed Memory / Message Passing Model</A>
+    <LI><A HREF=#ModelsData>Data Parallel Model</A>
+    <LI><A HREF=#Hybrid>Hybrid Model</A>
+    <LI><A HREF=#SPMD-MPMD>SPMD and MPMP</A>
+    </OL>
+
+<LI><A HREF=#Designing>Designing Parallel Programs</A>
+    <OL>
+    <LI><A HREF=#DesignAutomatic>Automatic vs. Manual Parallelization</A>
+    <LI><A HREF=#DesignUnderstand>Understand the Problem and the Program</A>
+    <LI><A HREF=#DesignPartitioning>Partitioning</A> 
+    <LI><A HREF=#DesignCommunications>Communications</A> 
+    <LI><A HREF=#DesignSynchronization>Synchronization</A>
+    <LI><A HREF=#DesignDependencies>Data Dependencies</A>
+    <LI><A HREF=#DesignLoadBalance>Load Balancing</A> 
+    <LI><A HREF=#DesignGranularity>Granularity</A> 
+    <LI><A HREF=#DesignIO>I/O</A>
+    <LI><A HREF=#DesignDebug>Debugging</A>
+    <LI><A HREF=#DesignPerformance>Performance Analysis and Tuning</A>
+    </OL>
+
+<LI><A HREF=#Examples>Parallel Examples</A> 
+    <OL>
+    <LI><A HREF=#ExamplesArray>Array Processing</A>
+    <LI><A HREF=#ExamplesPI>PI Calculation</A> 
+    <LI><A HREF=#ExamplesHeat>Simple Heat Equation</A> 
+    <LI><A HREF=#ExamplesWave>1-D Wave Equation</A>
+    </OL>
+
+<LI><A HREF=#References>References and More Information</A>
+</OL>
+ 
+<!--========================================================================-->
+ 
+<A NAME=Abstract> <BR><BR> </A>
+<TABLE BORDER=1 CELLPADDING=5 CELLSPACING=0 WIDTH=100%>
+<TR><TD BGCOLOR=#98ABCE>
+<SPAN class=heading1>Abstract</SPAN></TD>
+</TD></TR></TABLE>
+<P><BR>
+ 
+This tutorial is the first of eight tutorials in the 4+ day "Using LLNL's Supercomputers" workshop. It is intended to provide only a very quick overview of the extensive and broad topic of Parallel Computing, as a lead-in for the tutorials that follow it.  As such, it covers just the very basics of parallel computing, and is intended for someone who is just becoming acquainted with the subject and who is planning to attend one or more of the other tutorials in this workshop. It is not intended to cover Parallel Programming in depth, as this would require significantly more time. The tutorial begins with a discussion on parallel computing - what it is and how it's used, followed by a discussion on concepts and terminology associated with parallel computing. The topics of parallel memory architectures and programming models are then explored. These topics are followed by a series of practical discussions on a number of the complex issues related to designing and running parallel programs. The tutorial concludes with several examples of how to parallelize simple serial programs. 
+<BR><BR>
+
+<!--========================================================================-->
+
+<A NAME=Overview> <BR><BR> </A>
+<A NAME=Whatis> </A>
+<TABLE BORDER=1 CELLPADDING=5 CELLSPACING=0 WIDTH=100%>
+<TR><TD BGCOLOR=#98ABCE>
+<SPAN class=heading1>Overview</SPAN></TD>
+</TD></TR></TABLE>
+<H2>What is Parallel Computing?</H2>
+
+<IMG SRC=../images/arrowBullet.gif ALIGN=top HSPACE=3>
+<SPAN CLASS=heading3>Serial Computing:</SPAN>
+<UL>
+<P>
+<LI>Traditionally, software has been written for <B><I>serial</I></B>  
+    computation:
+    <UL>
+    <LI>A problem is broken into a discrete series of instructions
+    <LI>Instructions are executed sequentially one after another
+    <LI>Executed on a single processor
+    <LI>Only one instruction may execute at any moment in time
+    </UL>
+<P>
+<IMG SRC=images/serialProblem.gif WIDTH=604 HEIGHT=250 BORDER=1 
+ALT='Serial computing'>
+<P>
+<B>For example:</B>
+<P>
+<IMG SRC=images/serialProblem2.gif WIDTH=604 HEIGHT=250 BORDER=1 
+ALT='Serial computing'>
+</UL>
+<P>
+
+<IMG SRC=../images/arrowBullet.gif ALIGN=top HSPACE=3>
+<SPAN CLASS=heading3>Parallel Computing:</SPAN>
+<UL>
+<LI>In the simplest sense, <B><I>parallel computing</I></B> is the simultaneous 
+    use of multiple compute resources to solve a computational problem:
+    <UL>
+    <LI>A problem is broken into discrete parts that can be solved concurrently
+    <LI>Each part is further broken down to a series of instructions
+    <LI>Instructions from each part execute simultaneously on different processors
+    <LI>An overall control/coordination mechanism is employed 
+    </UL>
+<P>
+<IMG SRC=images/parallelProblem.gif WIDTH=683 HEIGHT=372 BORDER=1 
+ALT='Parallel computing'>
+<P>
+<B>For example:</B>
+<P>
+<IMG SRC=images/parallelProblem2.gif WIDTH=683 HEIGHT=372 BORDER=1 
+ALT='Parallel computing'>
+<P>
+<LI>The computational problem should be able to: 
+    <UL>
+    <LI>Be broken apart into discrete pieces of work that can be solved 
+        simultaneously;
+    <LI>Execute multiple program instructions at any moment in time;
+    <LI>Be solved in less time with multiple compute resources than with a single 
+        compute resource.
+    </UL>
+<P>
+<LI>The compute resources are typically:
+    <UL>
+    <LI>A single computer with multiple processors/cores
+    <LI>An arbitrary number of such computers connected by a network
+    </UL>
+</UL>
+<P>
+
+<IMG SRC=../images/arrowBullet.gif ALIGN=top HSPACE=3>
+<SPAN CLASS=heading3>Parallel Computers:</SPAN>
+<UL>
+<P>
+<LI>Virtually all stand-alone computers today are parallel from a hardware
+    perspective:
+    <UL>
+    <LI>Multiple functional units (L1 cache, L2 cache, branch, prefetch, decode,
+        floating-point, graphics processing (GPU), integer, etc.)
+    <LI>Multiple execution units/cores
+    <LI>Multiple hardware threads
+    </UL>
+<P>
+<TABLE BORDER=0 CELLSPACING=0 CELLPADDING=0>
+<TR VALIGN=top>
+<TD ALIGN=center>
+<IMG SRC=images/bgqComputeChip.jpg WIDTH=450 HEIGTH=453 BORDER=0>
+<BR>IBM BG/Q Compute Chip with 18 cores (PU) and 16 L2 Cache units (L2) </TD>
+</TR></TABLE>
+<P>
+<LI>Networks connect multiple stand-alone computers (nodes) to make larger
+    parallel computer clusters.
+<P>
+<IMG SRC=images/nodesNetwork.gif WIDTH=720 HEIGTH=249 BORDER=0>
+<P>
+<LI>For example, the schematic below shows a typical LLNL parallel computer cluster: 
+    <UL>
+    <LI>Each compute node is a multi-processor parallel computer in itself
+    <LI>Multiple compute nodes are networked together with an Infiniband network
+    <LI>Special purpose nodes, also multi-processor, are used for other purposes
+    </UL>
+<P>
+<IMG SRC=images/parallelComputer1.gif WIDTH=781 HEIGTH=402 BORDER=0>
+<P>
+<LI>The majority of the world's large parallel computers (supercomputers)
+    are clusters of hardware produced by a handful of (mostly) well known vendors.
+<P>
+<LI>Source: <A HREF=http://top500.org TARGET=_blank>Top500.org</A>
+<P>
+<IMG SRC=images/top500Vendors.jpg WIDTH=852 HEIGHT=527 BORDER=0>
+</UL>
+
+<!--========================================================================-->
+
+<A NAME=WhyUse> <BR><BR> </A>
+<TABLE BORDER=1 CELLPADDING=5 CELLSPACING=0 WIDTH=100%>
+<TR><TD BGCOLOR=#98ABCE>
+<SPAN class=heading1>Overview</SPAN></TD>
+</TD></TR></TABLE>
+<H2>Why Use Parallel Computing?</H2>
+
+<IMG SRC=../images/arrowBullet.gif ALIGN=top HSPACE=3>
+<SPAN CLASS=heading3>The Real World is Massively Parallel:</SPAN>
+<P>
+<TABLE BORDER=0 CELLSPACING=0 CELLPADDING=0 WIDTH=800>
+<TR VALIGN=top>
+<TD>
+<UL>
+<LI>In the natural world, many complex, interrelated events are happening at the
+    same time, yet within a temporal sequence.
+<P>
+<LI>Compared to serial computing, parallel computing is much better suited for
+    modeling, simulating and understanding complex, real world phenomena.
+<P>
+<LI>For example, imagine modeling these serially:
+<P>
+<IMG SRC=images/realWorldCollage1.jpg WIDTH=760 HEIGHT=220>
+<BR><IMG SRC=images/realWorldCollage2.jpg WIDTH=760 HEIGHT=230>
+<BR><IMG SRC=images/realWorldCollage3.jpg WIDTH=760 HEIGHT=208>
+</UL>
+</TD>
+</TR></TABLE>
+
+
+<IMG SRC=../images/arrowBullet.gif ALIGN=top HSPACE=3>
+<SPAN CLASS=heading3>Main Reasons:</SPAN>
+
+<P>
+<TABLE BORDER=0 CELLPADDING=0 CELLSPACING=0 WIDTH=700>
+<TR VALIGN=top>
+<TD><UL>
+<LI><B>SAVE TIME AND/OR MONEY:</B> 
+    <UL>
+    <LI>In theory, throwing more resources at a task will shorten its time to 
+        completion, with potential cost savings. 
+    <LI>Parallel computers can be built from cheap, commodity components.
+    <P>
+    <IMG SRC=images/timeMoney.jpg WIDTH=600 HEIGHT=131 BORDER=0>
+    </UL>
+<P>
+<LI><B>SOLVE LARGER / MORE COMPLEX PROBLEMS:</B> 
+    <UL>
+    <LI>Many problems are so large and/or complex that it is impractical or
+        impossible to solve them on a single computer, especially given limited
+        computer memory.
+    <LI>Example: "Grand Challenge Problems" 
+        (<A HREF=http://en.wikipedia.org/wiki/Grand_Challenge 
+        TARGET=_blank>en.wikipedia.org/wiki/Grand_Challenge</A>) requiring
+        PetaFLOPS and PetaBytes of computing resources.
+    <LI>Example: Web search engines/databases processing millions of transactions
+        per second
+    <P>
+    <IMG SRC=images/biggerProblems.jpg WIDTH=600 HEIGHT=180 BORDER=0>
+    </UL>
+<P>
+<LI><B>PROVIDE CONCURRENCY:</B> 
+    <UL>
+    <LI>A single compute resource can only do one thing at a time. Multiple  
+        compute resources can do many things simultaneously. 
+    <LI>Example: the Access Grid 
+        (<A HREF=http://www.accessgrid.org/ TARGET=AG>www.accessgrid.org</A>)
+        provides a global collaboration network where people from around the 
+        world can meet and conduct work "virtually".
+    <P>
+    <IMG SRC=images/accessGrid.jpg WIDTH=600 HEIGHT=182 BORDER=0>
+    </UL>
+<P>
+<LI><B>TAKE ADVANTAGE OF NON-LOCAL RESOURCES:</B> 
+    <UL>
+    <LI>Using compute resources on a wide area network, or even the Internet when 
+        local compute resources are scarce or insufficient.
+    <LI>Example: SETI@home (<A HREF=http://setiathome.berkeley.edu/   
+        TARGET=SETI>setiathome.berkeley.edu</A>) over 1.3 million users,
+        3.4 million computers in nearly every country in the world. Source:
+        <A HREF=http://www.boincsynergy.com/stats/ TARGET=setistats>
+        www.boincsynergy.com/stats/</A> (June, 2013).
+    <LI>Example: Folding@home (<A HREF=http://folding.stanford.edu/ 
+        TARGET=folding>folding.stanford.edu</A>)
+        uses over 320,000 computers globally (June, 2013)
+    <P>
+    <IMG SRC=images/SETILogo.jpg WIDTH=600 HEIGHT=122 BORDER=0>
+    </UL>
+<P>
+<LI><B>MAKE BETTER USE OF UNDERLYING PARALLEL HARDWARE:</B> 
+    <UL>
+    <LI>Modern computers, even laptops, are parallel in architecture with
+        multiple processors/cores.
+    <LI>Parallel software is specifically intended for parallel hardware with
+        multiple cores, threads, etc.
+    <LI>In most cases, serial programs run on modern computers "waste" 
+        potential computing power.
+    <P>
+    <TABLE BORDER=0 CELLSPACING=0 CELLPADDING=0>
+    <TR VALIGN=top>
+    <TD ALIGN=center>
+    <IMG SRC=images/xeon5600processorDie3.jpg WIDTH=600 HEIGHT=321 BORDER=0>
+    <BR>Intel Xeon processor with 6 cores and 6 L3 cache units</TD>
+    </TR></TABLE>
+    </UL>
+</UL>
+<P>
+
+<IMG SRC=../images/arrowBullet.gif ALIGN=top HSPACE=3>
+<SPAN CLASS=heading3>The Future:</SPAN>
+<UL>
+<LI>During the past 20+ years, the trends indicated by ever faster
+    networks, distributed systems, and multi-processor computer architectures
+    (even at the desktop level) clearly show 
+    that <B><I>parallelism is the future of computing</I></B>.
+<P>
+<LI>In this same time period, there has been a greater than 
+    <FONT STYLE="background-color: yellow"><B>500,000x</B></FONT>
+    increase in supercomputer performance, with no end currently in sight.
+<P>
+<LI><B><I>The race is already on for Exascale Computing!</I></B>
+    <UL>
+    <LI>Exaflop = 10<SUP>18</SUP> calculations per second
+    </UL>
+<P>
+<IMG SRC=images/top500.1993-2013.gif WIDTH=856 HEIGHT=657 BORDER=0>
+</UL>
+</TD>
+</TR></TABLE>
+
+<!--========================================================================-->
+
+<A NAME=Who> <BR><BR> </A>
+<TABLE BORDER=1 CELLPADDING=5 CELLSPACING=0 WIDTH=100%>
+<TR><TD BGCOLOR=#98ABCE>
+<SPAN class=heading1>Overview</SPAN></TD>
+</TD></TR></TABLE>
+<H2>Who is Using Parallel Computing?</H2>
+
+<P>
+<TABLE BORDER=0 CELLSPACING=0 CELLPADDING=0 WIDTH=800>
+<TR VALIGN=top>
+<TD>
+<IMG SRC=../images/arrowBullet.gif ALIGN=top HSPACE=3>
+<SPAN CLASS=heading3>Science and Engineering:</SPAN>
+<UL>
+<LI>Historically, parallel computing has been considered to be 
+    "the high end of computing", and has been used to model difficult 
+    problems in many areas of science and engineering:
+<TABLE BORDER=0 CELLSPACING=0 CELLPADDING=0>
+<TR VALIGN=top>
+<TD><UL>
+    <LI>Atmosphere, Earth, Environment 
+    <LI>Physics - applied, nuclear, particle, condensed matter, 
+        high pressure, fusion, photonics
+    <LI>Bioscience, Biotechnology, Genetics
+    <LI>Chemistry, Molecular Sciences
+    <LI>Geology, Seismology
+    </UL></TD>
+<TD><UL>
+    <LI>Mechanical Engineering - from prosthetics to spacecraft
+    <LI>Electrical Engineering, Circuit Design, Microelectronics    
+    <LI>Computer Science, Mathematics
+    <LI>Defense, Weapons
+    </UL></TD>
+</TR></TABLE>
+<P>
+<IMG SRC=images/simulations01.jpg WIDTH=781 HEIGHT=357 BORDER=0 
+ALT='Computer simulations'>
+</UL>
+<P>
+
+<IMG SRC=../images/arrowBullet.gif ALIGN=top HSPACE=3>
+<SPAN CLASS=heading3>Industrial and Commercial:</SPAN>
+<UL>
+<LI>Today, commercial applications provide an equal or greater driving 
+    force in the development of faster computers.
+    These applications require the processing of large 
+    amounts of data in sophisticated ways. For example:
+<TABLE BORDER=0 CELLSPACING=0 CELLPADDING=0>
+<TR VALIGN=top>
+<TD><UL>
+    <LI>Databases, data mining
+    <LI>Oil exploration
+    <LI>Web search engines, web based business services
+    <LI>Medical imaging and diagnosis
+    <LI>Pharmaceutical design
+    </UL></TD>
+<TD><UL>
+    <LI>Financial and economic modeling
+    <LI>Management of national and multi-national corporations 
+    <LI>Advanced graphics and virtual reality, particularly in the entertainment
+        industry
+    <LI>Networked video and multi-media technologies
+    <LI>Collaborative work environments
+    </UL></TD>
+</TR></TABLE>
+<P>
+<IMG SRC=images/simulations02.jpg WIDTH=781 HEIGHT=360 BORDER=0 
+ALT='Computer simulations'>
+</UL>
+</TD>
+</TR></TABLE>
+
+<IMG SRC=../images/arrowBullet.gif ALIGN=top HSPACE=3>
+<SPAN CLASS=heading3>Global Applications:</SPAN>
+<UL>
+<LI>Parallel computing is now being used extensively around the world, in a
+    wide variety of applications.
+<P>
+<LI>Source: <A HREF=http://top500.org TARGET=_blank>Top500.org</A>
+<P>
+<TABLE BORDER=0 CELLPADDING=0 CELLSPACING=0>
+<TR VALIGN=top>
+<IMG SRC=images/top500Apps.gif WIDTH=753 HEIGHT=446 BORDER=0>
+<P>
+<TD COLSPAN=2>Click on images below for larger version</TD>
+</TR><TR VALIGN=top>
+<TD><A HREF=images/top500SegmentsTime.jpg>
+<IMG SRC=images/top500SegmentsTime2.jpg WIDTH=397 HEIGHT=570 BORDER=0></A></TD>
+<TD><A HREF=images/top500CountriesTime.jpg>
+<IMG SRC=images/top500CountriesTime2.jpg WIDTH=400 HEIGHT=570 BORDER=0></A></TD>
+</TR></TABLE>
+</UL>
+
+<!--========================================================================-->
+
+<A NAME=Concepts> <BR><BR> </A>
+<A NAME=Neumann> </A>
+<TABLE BORDER=1 CELLPADDING=5 CELLSPACING=0 WIDTH=100%>
+<TR><TD BGCOLOR=#98ABCE>
+<SPAN class=heading1>Concepts and Terminology</SPAN></TD>
+</TD></TR></TABLE>
+<H2>von Neumann Architecture</H2>
+
+<UL>
+<P>
+<LI>Named after the Hungarian mathematician John von Neumann who first authored 
+    the general requirements for an electronic computer in his 1945 papers. 
+<P>
+<LI>Also known as "stored-program computer" - both program instructions and data are 
+    kept in electronic memory.  Differs from earlier computers which were programmed  
+    through "hard wiring".
+<P>
+<LI>Since then, virtually all computers have followed this basic design: 
+   
+</UL>
+<P>
+<TABLE CELLPADDING=0 CELLSPACING=0>
+<TR VALIGN=top>
+<TD>
+<IMG SRC=images/vonNeumann1.gif WIDTH=293 HEIGHT=277 BORDER=0
+ALT='von Neumann architecture'></TD>
+<TD><UL>
+<LI>Comprised of four main components:
+    <UL>
+    <LI>Memory
+    <LI>Control Unit
+    <LI>Arithmetic Logic Unit
+    <LI>Input/Output
+    </UL>
+<P>
+<LI>Read/write, random access memory is used to store both program instructions
+    and data
+    <UL>
+    <LI>Program instructions are coded data which tell the computer to do 
+        something
+    <LI>Data is simply information to be used by the program
+    </UL>
+<P>
+<LI>Control unit fetches instructions/data from memory, decodes 
+    the instructions and then <B><I>sequentially</I></B> coordinates operations
+    to accomplish the programmed task.
+<P>
+<LI>Aritmetic Unit performs basic arithmetic operations
+<P>
+<LI>Input/Output is the interface to the human operator
+</UL></TD>
+<TD ALIGN=center><IMG SRC=images/vonNeumann2.jpg WIDTH=221 HEIGHT=287 BORDER=0 HSPACE=20><BR><I>John von Neumann circa 1940s <BR>(Source: LANL archives)</I></TD>
+</TR></TABLE>
+<P>
+<UL>
+<P>
+<LI>More info: <A HREF=http://en.wikipedia.org/wiki/John_von_Neumann TARGET=_blank>
+    http://en.wikipedia.org/wiki/John_von_Neumann</A>
+<P>
+<LI>So what? Who cares?  
+    <UL>
+    <LI>Well, parallel computers still follow this basic design,
+        just multiplied in units. The basic, fundamental architecture remains the 
+        same.
+    </UL>
+</UL>
+
+<!--========================================================================-->
+<P>
+<A NAME=Flynn> <BR><BR> </A>
+<TABLE BORDER=1 CELLPADDING=5 CELLSPACING=0 WIDTH=100%>
+<TR><TD BGCOLOR=#98ABCE>
+<SPAN class=heading1>Concepts and Terminology</SPAN></TD>
+</TD></TR></TABLE>
+<H2>Flynn's Classical Taxonomy</H2>
+
+<UL>
+<P>
+<LI>There are different ways to classify parallel computers. Examples available
+    <A HREF=parallelClassifications.pdf TARGET=_blank>HERE</A>. (Source:
+    <A HREF=http://vedyadhara.ignou.ac.in/wiki/images/8/8e/B1U2mcse-011.pdf
+    TARGET=_blank>
+    http://vedyadhara.ignou.ac.in/wiki/images/8/8e/B1U2mcse-011.pdf</A>)
+<P>
+<LI>One of the more widely used classifications, in use since 1966, is called 
+    Flynn's Taxonomy.
+<P>
+<LI>Flynn's taxonomy distinguishes multi-processor computer architectures 
+    according
+    to how they can be classified along the two independent dimensions of
+    <B><I>Instruction Stream</I></B> and <B><I>Data Stream</I></B>.  
+    Each of these dimensions can have only one of two possible states:
+    <B><I>Single</I></B> or <B><I>Multiple</I></B>.
+<P>
+<LI>The matrix below defines the 4 possible classifications according to Flynn:
+<P>
+<TABLE BORDER=1 CELLSPACING=0 CELLPADDING=5>
+<TR ALIGN=center>
+<TD BGCOLOR=#77cc88><H4><FONT COLOR=blue>S I S D  </FONT>
+<P>Single Instruction Stream<BR>Single Data Stream</H4></TD>
+<TD BGCOLOR=#88bcee><H4><FONT COLOR=blue>S I M D  </FONT>
+<P>Single Instruction Stream<BR>Multiple Data Stream</H4></TD>
+</TR><TR ALIGN=center>
+<TD BGCOLOR=#ccbcee><H4><FONT COLOR=blue>M I S D </FONT>
+<P>Multiple Instruction Stream<BR>Single Data Stream</H4></TD>
+<TD BGCOLOR=#cc6666><H4><FONT COLOR=blue>M I M D </FONT>
+<P>Multiple Instruction Stream<BR>Multiple Data Stream</H4></TD>
+</TR></TABLE>
+</UL>
+<P>
+<TABLE BORDER=0 CELLPADDING=0 CELLSPACING=0> 
+<TR VALIGN=top>
+<TD>
+<IMG SRC=../images/arrowBullet.gif ALIGN=top HSPACE=3>
+<SPAN CLASS=heading3>Single Instruction, Single Data (SISD):</SPAN>
+<UL>
+<LI>A serial (non-parallel) computer
+<LI><B>Single Instruction:</B> Only one instruction stream is
+    being acted on by the CPU during any one clock cycle
+<LI><B>Single Data:</B> Only one data stream is being used as input during any one clock cycle
+<LI>Deterministic execution     
+<LI>This is the oldest type of computer
+<LI>Examples: older generation mainframes, minicomputers, workstations and single
+    processor/core PCs.
+</UL>
+</TD>
+<TD><IMG SRC=images/sisd.gif WIDTH=188 HEIGHT=224 BORDER=0 HSPACE=10
+ALT='SISD'></TD>
+</TR></TABLE>
+
+<UL>
+<TABLE BORDER=0 CELLPADDING=5 CELLSPACING=3 BGCOLOR=#EEEEEE> 
+<TR VALIGN=top ALIGN=center>
+<TD><IMG SRC=images/univac1.LLNL.200pix.jpg WIDTH=262 HEIGHT=200 BORDER=0>
+<BR><B>UNIVAC1</B></TD>
+<TD><IMG SRC=images/ibm.360.200pix.jpg WIDTH=300 HEIGHT=200 BORDER=0>
+<BR><B>IBM 360</B></TD>
+<TD><IMG SRC=images/cray1.LLNL.200pix.jpg WIDTH=200 HEIGHT=200 BORDER=0>
+<BR><B>CRAY1</B></TD>
+</TR><TR VALIGN=top ALIGN=center>
+<TD><IMG SRC=images/cdc7600.LLNL.200pix.jpg WIDTH=262 HEIGHT=200 BORDER=0>
+<BR><B>CDC 7600</B></TD>
+<TD><IMG SRC=images/pdp1.LLNL.200pix.jpg WIDTH=298 HEIGHT=200 BORDER=0>
+<BR><B>PDP1</B></TD>
+<TD><IMG SRC=images/dellLaptop.200pix.jpg WIDTH=201 HEIGHT=200 BORDER=0>
+<BR><B>Dell Laptop</B></TD>
+</TR></TABLE>
+</UL>
+<P>
+
+<TABLE BORDER=0 CELLPADDING=0 CELLSPACING=0> 
+<TR VALIGN=top>
+<TD>
+<IMG SRC=../images/arrowBullet.gif ALIGN=top HSPACE=3>
+<SPAN CLASS=heading3>Single Instruction, Multiple Data (SIMD):</SPAN>
+<UL>
+<LI>A type of parallel computer
+<LI><B>Single Instruction:</B> All processing units execute the same instruction at        any given clock cycle
+<LI><B>Multiple Data:</B> Each processing unit can operate on a different data
+    element
+<LI>Best suited for specialized problems characterized by a high degree of 
+    regularity, such as graphics/image processing.
+<LI>Synchronous (lockstep) and deterministic execution
+<LI>Two varieties: Processor Arrays and Vector Pipelines
+<LI>Examples: 
+    <UL TYPE=circle>
+    <LI>Processor Arrays: Thinking Machines CM-2, MasPar MP-1 & MP-2, 
+        ILLIAC IV 
+    <LI>Vector Pipelines: IBM 9000, Cray X-MP, Y-MP & C90, Fujitsu VP, NEC SX-2, 
+        Hitachi S820, ETA10
+    </UL>
+<LI>Most modern computers, particularly those with graphics processor units 
+   (GPUs) employ SIMD instructions and execution units.
+</UL>
+</TD>
+<TD><BR><BR><IMG SRC=images/simd.gif WIDTH=438 HEIGHT=245 BORDER=0 HSPACE=10 
+ALT='SIMD'>
+</TD>
+</TR></TABLE>
+
+<UL>
+<TABLE BORDER=0 CELLPADDING=5 CELLSPACING=3 BGCOLOR=#EEEEEE WIDTH=975> 
+<TR VALIGN=top ALIGN=center>
+<TD><IMG SRC=images/illiacIV.200pix.jpg WIDTH=293 HEIGHT=200 BORDER=0>
+<BR><B>ILLIAC IV</B></TD>
+<TD><IMG SRC=images/MasPar.200pix.jpg WIDTH=172 HEIGHT=200 BORDER=0>
+<BR><B>MasPar</B></TD>
+<TD><BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+<IMG SRC=images/simd2.gif WIDTH=400 HEIGHT=147 BORDER=0></TD>
+</TR></TABLE>
+<TABLE BORDER=0 CELLPADDING=5 CELLSPACING=3 BGCOLOR=#EEEEEE WIDTH=975> 
+<TR VALIGN=top ALIGN=center>
+<TD><IMG SRC=images/crayXMP.200pix.jpg WIDTH=150 HEIGHT=200 BORDER=0>
+<BR><B>Cray X-MP</B></TD>
+<TD><IMG SRC=images/crayYMP.200pix.jpg WIDTH=282 HEIGHT=200 BORDER=0>
+<BR><B>Cray Y-MP</B></TD>
+<TD><IMG SRC=images/cm2.200pix.jpg WIDTH=298 HEIGHT=200 BORDER=0>
+<BR><B>Thinking Machines CM-2</TD>
+<TD><IMG SRC=images/cellProcessor.200pix.jpg WIDTH=179 HEIGHT=200 BORDER=0>
+<BR><B>Cell Processor (GPU)</B></TD>
+</TR></TABLE>
+</UL>
+<P>
+
+<TABLE BORDER=0 CELLPADDING=0 CELLSPACING=0> 
+<TR VALIGN=top>
+<TD>
+<IMG SRC=../images/arrowBullet.gif ALIGN=top HSPACE=3>
+<SPAN CLASS=heading3>Multiple Instruction, Single Data (MISD):</SPAN>
+<UL>
+<LI>A type of parallel computer
+<LI><B>Multiple Instruction:</B> Each processing unit operates on the data 
+    independently via separate instruction streams.
+<LI><B>Single Data:</B> A single data stream is fed into multiple processing units. 
+<LI>Few (if any) actual examples of this class of parallel computer have ever
+    existed.
+<LI>Some conceivable uses might be:
+    <UL>
+    <LI>multiple frequency filters operating on a single signal stream
+    <LI>multiple cryptography algorithms attempting to crack a single coded 
+        message.
+    </UL>
+</UL>
+</TD>
+<TD><BR><BR>
+<IMG SRC=images/misd3.gif WIDTH=251 HEIGHT=207 BORDER=0 HSPACE=20 ALT='MISD'>
+</TD>
+<TD ALIGN=right><BR><BR>
+<IMG SRC=images/misd.gif WIDTH=438 HEIGHT=207 BORDER=0 ALT='MISD'>
+</TD>
+</TR></TABLE>
+<P>
+
+<P>
+<TABLE BORDER=0 CELLPADDING=0 CELLSPACING=0> 
+<TR VALIGN=top>
+<TD>
+<IMG SRC=../images/arrowBullet.gif ALIGN=top HSPACE=3>
+<SPAN CLASS=heading3>Multiple Instruction, Multiple Data (MIMD):</SPAN>
+<UL>
+<LI>A type of parallel computer
+<LI><B>Multiple Instruction:</B> Every processor may be executing a different 
+    instruction stream
+<LI><B>Multiple Data:</B> Every processor may be working with a different data 
+    stream
+<LI>Execution can be synchronous or asynchronous, deterministic or 
+    non-deterministic
+<LI>Currently, the most common type of parallel computer - most modern
+    supercomputers fall into this category.
+<LI>Examples: most current supercomputers, networked parallel computer 
+    clusters and "grids", multi-processor SMP computers, multi-core PCs.
+<LI>Note: many MIMD architectures also include SIMD execution sub-components
+</UL>
+</TD>
+<TD><BR><BR>
+<IMG SRC=images/mimd.gif WIDTH=438 HEIGHT=245 BORDER=0 HSPACE=10 ALT='MIMD'>
+</TD>
+</TR></TABLE>
+
+<UL>
+<TABLE BORDER=0 CELLPADDING=5 CELLSPACING=3 BGCOLOR=#EEEEEE WIDTH=950> 
+<TR VALIGN=top ALIGN=center>
+<TD><IMG SRC=images/ibmPower5Cluster.200pix.jpg WIDTH=301 HEIGHT=200 BORDER=0>
+<BR><B>IBM POWER5</B></TD>
+<TD><IMG SRC=images/alphaserverCluster.200pix.jpg WIDTH=302 HEIGHT=200 BORDER=0>
+<BR><B>HP/Compaq Alphaserver</B></TD>
+<TD><IMG SRC=images/ia32Cluster.200pix.jpg WIDTH=299 HEIGHT=200 BORDER=0>
+<BR><B>Intel IA32</B></TD>
+</TR></TABLE>
+<TABLE BORDER=0 CELLPADDING=5 CELLSPACING=3 BGCOLOR=#EEEEEE WIDTH=950> 
+<TR VALIGN=top ALIGN=center>
+<TD><IMG SRC=images/opteronCluster.200pix.jpg WIDTH=299 HEIGHT=200 BORDER=0>
+<BR><B>AMD Opteron</B></TD>
+<TD><IMG SRC=images/crayXT3Cluster.200pix.jpg WIDTH=300 HEIGHT=200 BORDER=0>
+<BR><B>Cray XT3</B></TD>
+<TD><IMG SRC=images/bglCluster.200pix.jpg WIDTH=301 HEIGHT=200 BORDER=0>
+<BR><B>IBM BG/L</B></TD>
+</TR></TABLE>
+</UL>
+<P>
+
+<!--========================================================================-->
+
+<A NAME=Terminology> <BR><BR> </A>
+<TABLE BORDER=1 CELLPADDING=5 CELLSPACING=0 WIDTH=100%>
+<TR><TD BGCOLOR=#98ABCE>
+<SPAN class=heading1>Concepts and Terminology</SPAN></TD>
+</TD></TR></TABLE>
+<H2>Some General Parallel Terminology</H2>
+
+<UL>
+<LI>Like everything else, parallel computing has its own "jargon".  Some of the 
+    more commonly used terms associated with parallel computing are listed below.
+<P>
+<LI>Most of these will be discussed in more detail later.
+<P>
+<DL>
+<DT><B>Supercomputing / High Performance Computing (HPC)</B>
+<DD>Using the world's fastest and largest computers to solve large problems. 
+<P>
+<DT><B>Node </B>
+<DD>A standalone "computer in a box". Usually comprised of multiple CPUs/processors/cores, memory, network interfaces, etc. Nodes are networked 
+together to comprise a supercomputer.
+<P>
+<DT><B>CPU / Socket / Processor / Core </B>
+<DD>This varies, depending upon who you talk to. In the past, a CPU (Central Processing Unit) was a singular execution component for a computer. Then, multiple CPUs were incorporated into a node. Then, individual CPUs were subdivided into multiple "cores", each being a unique execution unit. CPUs with multiple cores are sometimes called "sockets" - vendor dependent. The result is a node with multiple CPUs, each containing multiple cores. The nomenclature is confused at times. Wonder why?
+<P>
+<IMG SRC=images/nodeSocketCores.jpg WIDTH=800 HEIGTH=375 BORDER=0>
+<P>
+<DT><B>Task </B>
+<DD>A logically discrete section of computational work.  A task is typically a 
+    program or program-like set of instructions that is executed by a processor.
+    A parallel program consists of multiple tasks running on multiple processors.
+<P>
+<DT><B>Pipelining</B>
+<DD>Breaking a task into steps performed by different processor units, with inputs streaming through, much like an assembly line; a type of parallel computing.
+<P>
+<DT><B>Shared Memory </B>
+<DD>From a strictly hardware point of view, describes a computer architecture
+    where all processors have direct (usually bus based) access to common 
+    physical memory.  In a programming sense, it describes a model where
+    parallel tasks all have the same "picture" of memory and can directly
+    address and access the same logical memory locations regardless 
+    of where the physical memory actually exists.
+<P>
+<DT><B>Symmetric Multi-Processor (SMP)</B>
+<DD>Hardware architecture where multiple processors share a single address space and access to all resources; shared memory computing.
+<P>
+<DT><B>Distributed Memory </B>
+<DD>In hardware, refers to network based memory access for physical memory that 
+    is not common. As a programming model, tasks can only logically "see" 
+    local machine memory and must use communications to access memory on other
+    machines where other tasks are executing.
+<P>
+<DT><B>Communications </B>
+<DD>Parallel tasks typically need to exchange data.  There are several ways this can be accomplished, such as through a shared memory bus or over a network, however the actual event of data exchange is commonly referred to as communications regardless of the method employed.
+<P>
+<DT><B>Synchronization </B>
+<DD>The coordination of parallel tasks in real time, very often associated with
+communications. Often implemented by establishing a synchronization point within an application where a task may not proceed further until another task(s) reaches the same or logically equivalent point.
+<P>
+Synchronization usually involves waiting by at least one task, and can therefore cause a parallel application's wall clock execution time to increase.
+<P>
+<DT><B>Granularity </B>
+<DD> In parallel computing, granularity is a qualitative measure of the ratio
+    of computation to communication. 
+    <UL>
+    <LI><B><I>Coarse: </I></B> relatively large amounts of computational work  
+        are done between communication events
+    <LI><B><I>Fine:</I></B> relatively small amounts of computational work are 
+        done between communication events
+    </UL>
+<P><DT><B>Observed Speedup </B>
+<DD>Observed speedup of a code which has been parallelized, defined as:
+<P>
+<TABLE BORDER=1 CELLPADDING=5 CELLSPACING=0>
+<TR><TD ALIGN=center>
+<PRE>wall-clock time of serial execution
+-----------------------------------
+ wall-clock time of parallel execution</PRE></TD>
+</TR></TABLE>
+<P>
+One of the simplest and most widely used indicators for a parallel program's performance.
+<P>
+<DT><B>Parallel Overhead </B>
+<DD>The amount of time required to coordinate parallel tasks, as opposed to     
+    doing useful work. Parallel overhead can include factors such as:
+    <UL>
+    <LI>Task start-up time
+    <LI>Synchronizations
+    <LI>Data communications
+    <LI>Software overhead imposed by parallel languages, libraries, 
+        operating system, etc.
+    <LI>Task termination time
+    </UL>
+<P>
+<DT><B>Massively Parallel </B>
+<DD>Refers to the hardware that comprises a given parallel system - having many processors. The meaning of "many" keeps increasing, but currently, the largest
+parallel computers can be comprised of processors numbering in the hundreds of thousands.
+<P>
+<DT><B>Embarrassingly Parallel</B> 
+<DD>Solving many similar, but independent tasks
+simultaneously; little to no need for coordination between the tasks.
+<P>
+<DT><B>Scalability</B>
+<DD>Refers to a parallel system's (hardware and/or software) ability to demonstrate a proportionate increase in parallel speedup with the addition of more resources. Factors that contribute to scalability include:
+    <UL>
+    <LI>Hardware - particularly memory-cpu bandwidths and network communication
+        properties
+    <LI>Application algorithm
+    <LI>Parallel overhead related
+    <LI>Characteristics of your specific application
+    </UL>
+</DL>
+</UL>
+
+<!--========================================================================-->
+
+<A NAME=LimitsCosts> <BR><BR> </A>
+<TABLE BORDER=1 CELLPADDING=5 CELLSPACING=0 WIDTH=100%>
+<TR><TD BGCOLOR=#98ABCE>
+<SPAN class=heading1>Concepts and Terminology</SPAN></TD>
+</TD></TR></TABLE>
+<H2>Limits and Costs of Parallel Programming</H2>
+
+<IMG SRC=../images/arrowBullet.gif ALIGN=top HSPACE=3>
+<SPAN CLASS=heading3>Amdahl's Law:</SPAN>
+<P>
+<TABLE CELLPADDING=0 CELLSPACING=0>
+<TR VALIGN=top>
+<TD><UL>
+<P>
+<LI><B>Amdahl's Law</B> states that potential program
+    speedup is defined by the fraction of code (P) that can be parallelized:
+<P>
+<TABLE BORDER=1 CELLSPACING=0 CELLPADDING=5>
+<TR VALIGN=top><TD><PRE><B>
+                     1
+    speedup   =   -------- 
+                   1  - P
+
+</B></PRE></TD></TR></TABLE>
+<P>
+<LI>If none of the code can be parallelized, P = 0 and the speedup = 1 (no
+     speedup).  
+<P>
+<LI>If all of the code is parallelized, P = 1 and the speedup is
+     infinite (in theory).
+<P>
+<LI>If 50% of the code can be parallelized, maximum speedup = 2, meaning
+    the code will run twice as fast.
+<P>
+<LI>Introducing the number of processors performing the parallel fraction of 
+    work, the relationship can be modeled by:
+<P>
+<TABLE BORDER=1 CELLSPACING=0 CELLPADDING=5>
+<TR VALIGN=top><TD><PRE><B>
+                       1  
+    speedup   =   ------------ 
+                    P   +  S
+                   ---
+                    N
+
+</B></PRE></TD></TR></TABLE>
+<P>
+    where P = parallel fraction, N = number of processors  and S = serial 
+    fraction.
+<P>
+<LI>It soon becomes obvious that there are limits to the scalability of 
+     parallelism.  For example: 
+<P>
+<TABLE BORDER=1 CELLSPACING=0 CELLPADDING=5>
+<TR VALIGN=top><TD><PRE><B>
+                       speedup
+             --------------------------------
+    N        P = .50      P = .90     P = .99
+  -----      -------      -------     -------
+     10         1.82         5.26        9.17
+    100         1.98         9.17       50.25     
+  1,000         1.99         9.91       90.99
+ 10,000         1.99         9.91       99.02
+100,000         1.99         9.99       99.90
+
+</B></PRE></TD></TR></TABLE>
+</UL></TD>
+<TD><IMG SRC=images/amdahl1.gif WIDTH=509 HEIGHT=390 BORDER=1 HSPACE=10>
+<BR>
+<IMG SRC=images/amdahl2.gif WIDTH=509 HEIGHT=391 BORDER=1 HSPACE=10></TD>
+</TR></TABLE>
+
+<UL>
+<P>
+<LI>However, certain problems demonstrate increased performance by increasing
+     the problem size.  For example:
+<PRE><B>
+    2D Grid Calculations     85 seconds   85%
+    Serial fraction          15 seconds   15%
+</B></PRE>
+     We can increase the problem size by doubling the grid dimensions and
+     halving the time step. This results in four times the number of grid 
+     points and twice the number of time steps. The timings then look like:
+<PRE><B>
+    2D Grid Calculations     680 seconds   97.84%
+    Serial fraction           15 seconds    2.16%
+</B></PRE>
+<P>
+<LI>Problems that increase the percentage of parallel time with their size
+     are more <B><I>scalable</I></B> than problems with a fixed percentage of
+     parallel time.
+</UL>
+<P>
+
+<IMG SRC=../images/arrowBullet.gif ALIGN=top HSPACE=3>
+<SPAN CLASS=heading3>Complexity:</SPAN>
+<UL>
+<P>
+<LI>In general, parallel applications are much more complex than corresponding
+    serial applications, perhaps an order of magnitude.  Not only do you have
+    multiple instruction streams executing at the same time, but you also have
+    data flowing between them.
+<P>
+<LI>The costs of complexity are measured in programmer time in virtually every
+    aspect of the software development cycle:
+    <UL>
+    <LI>Design
+    <LI>Coding
+    <LI>Debugging
+    <LI>Tuning
+    <LI>Maintenance
+    </UL>
+<P>
+<LI>Adhering to "good" software development practices is essential when 
+    when working with parallel applications - especially if somebody besides
+    you will have to work with the software.
+</UL>
+<P>
+
+<IMG SRC=../images/arrowBullet.gif ALIGN=top HSPACE=3>
+<SPAN CLASS=heading3>Portability:</SPAN>
+<UL>
+<P>
+<LI>Thanks to standardization in several APIs, such as MPI, POSIX threads,
+    and OpenMP, portability issues with parallel programs are not as
+    serious as in years past.  However...
+<P>
+<LI>All of the usual portability issues associated with serial programs
+    apply to parallel programs.  For example, if you use vendor "enhancements"
+    to Fortran, C or C++, portability will be a problem.
+<P>
+<LI>Even though standards exist for several APIs, implementations will differ
+    in a number of details, sometimes to the point of requiring code 
+    modifications in order to effect portability.
+<P>
+<LI>Operating systems can play a key role in code portability issues.  
+<P>
+<LI>Hardware architectures are characteristically highly variable and can
+    affect portability.
+</UL>
+<P>
+
+<IMG SRC=../images/arrowBullet.gif ALIGN=top HSPACE=3>
+<SPAN CLASS=heading3>Resource Requirements:</SPAN>
+<UL>
+<P>
+<LI>The primary intent of parallel programming is to decrease execution
+    wall clock time, however in order to accomplish this, more CPU time
+    is required.  For example, a parallel code that runs in 1 hour on 8
+    processors actually uses 8 hours of CPU time.
+<P>
+<LI>The amount of memory required can be greater for parallel codes than
+    serial codes, due to the need to replicate data and for overheads
+    associated with parallel support libraries and subsystems.
+<P>
+<LI>For short running parallel programs, there can actually be a decrease
+    in performance compared to a similar serial implementation.  The overhead 
+    costs associated with setting up the parallel environment, task creation,
+    communications and task termination can comprise a significant portion of
+    the total execution time for short runs.
+</UL>
+<P>
+
+<IMG SRC=../images/arrowBullet.gif ALIGN=top HSPACE=3>
+<SPAN CLASS=heading3>Scalability:</SPAN>
+<UL>
+<P>
+<LI>Two types of scaling based on time to solution:
+    <UL>
+    <LI><B>Strong scaling:</B> The total problem size stays fixed as more
+        processors are added.
+    <LI><B>Weak scaling:</B> The problem size <I>per processor</I> stays fixed as
+        more processors are added.
+    </UL>  
+<P>
+<LI>The ability of a parallel program's performance to scale is a result
+    of a number of interrelated factors.  Simply adding more processors
+    is rarely the answer.
+<P>
+<LI>The algorithm may have inherent limits to scalability.  At some point,
+    adding more resources causes performance to decrease.  Many parallel 
+    solutions demonstrate this characteristic at some point.
+<P>
+<LI>Hardware factors play a significant role in scalability.  Examples:
+    <UL>
+    <LI>Memory-cpu bus bandwidth on an SMP machine
+    <LI>Communications network bandwidth
+    <LI>Amount of memory available on any given machine or set of machines
+    <LI>Processor clock speed
+    </UL>    
+<P>
+<LI>Parallel support libraries and subsystems software can limit scalability
+    independent of your application.
+</UL>
+
+<!--========================================================================-->
+
+<A NAME=MemoryArch> <BR><BR> </A>
+<A NAME=SharedMemory> </A>
+<TABLE BORDER=1 CELLPADDING=5 CELLSPACING=0 WIDTH=100%>
+<TR><TD BGCOLOR=#98ABCE>
+<SPAN class=heading1>Parallel Computer Memory Architectures</SPAN></TD>
+</TD></TR></TABLE>
+<H2>Shared Memory</H2>
+
+<IMG SRC=../images/arrowBullet.gif ALIGN=top HSPACE=3>
+<SPAN CLASS=heading3>General Characteristics:</SPAN>
+<P>
+<TABLE CELLPADDING=0 CELLSPACING=0>
+<TR VALIGN=top>
+<TD><UL>
+<LI>Shared memory parallel computers vary widely, but generally have in common 
+    the ability for all processors to access all memory as global address space. 
+<P>
+<LI>Multiple processors can operate independently but share the same memory 
+    resources.
+<P>
+<LI>Changes in a memory location effected by one processor are visible to all
+    other processors.
+<P>
+<LI>Historically, shared memory machines have been classified as  
+    <B><I>UMA</I></B> and <B><I>NUMA</I></B>, based upon memory access times.
+<P>
+</UL>
+<P>
+
+<IMG SRC=../images/arrowBullet.gif ALIGN=top HSPACE=3>
+<SPAN CLASS=heading3>Uniform Memory Access (UMA):</SPAN>
+    <UL>
+    <LI>Most commonly represented today by <B><I>Symmetric Multiprocessor 
+       (SMP)</I></B> machines
+    <LI>Identical processors 
+    <LI>Equal access and access times to memory 
+    <LI>Sometimes called CC-UMA - Cache Coherent UMA.
+        Cache coherent means if one processor updates a location in shared 
+        memory, all 
+        the other processors know about the update.  Cache coherency is 
+        accomplished at the hardware level. 
+    </UL>
+<P>
+
+<IMG SRC=../images/arrowBullet.gif ALIGN=top HSPACE=3>
+<SPAN CLASS=heading3>Non-Uniform Memory Access (NUMA):</SPAN>
+    <UL>
+    <LI>Often made by physically linking two or more SMPs 
+    <LI>One SMP can directly access memory of another SMP 
+    <LI>Not all processors have equal access time to all memories 
+    <LI>Memory access across link is slower
+    <LI>If cache coherency is maintained, then may also be called CC-NUMA - 
+        Cache Coherent NUMA 
+    </UL>
+<P>
+<IMG SRC=../images/arrowBullet.gif ALIGN=top HSPACE=3>
+<SPAN CLASS=heading3>Advantages:</SPAN>
+    <UL>
+    <LI>Global address space provides a user-friendly programming perspective 
+        to memory
+    <LI>Data sharing between tasks is both fast and uniform due to the proximity 
+        of memory to CPUs
+    </UL>
+</TD>
+<TD ALIGN=center><IMG SRC=images/shared_mem.gif WIDTH=414 HEIGHT=285 BORDER=0
+ALT='Shared memory architecture'>
+<BR><B>Shared Memory (UMA)</B><BR><BR><BR>
+<IMG SRC=images/numa.gif WIDTH=484 HEIGHT=196 BORDER=0 ALT='NUMA'>
+<BR><B>Shared Memory (NUMA)</B>
+</TD>
+</TR></TABLE>
+<P>
+
+<IMG SRC=../images/arrowBullet.gif ALIGN=top HSPACE=3>
+<SPAN CLASS=heading3>Disadvantages:</SPAN>
+<UL>
+<LI>Primary disadvantage is the lack of scalability between memory and CPUs.
+    Adding more CPUs can geometrically increases traffic on the shared
+    memory-CPU path, and for cache coherent systems, geometrically increase 
+    traffic associated with cache/memory management. 
+<LI>Programmer responsibility for synchronization constructs that ensure
+    "correct" access of global memory. 
+</UL>
+
+
+<!--========================================================================-->
+<P>
+<A NAME=DistributedMemory> <BR><BR> </A>
+<TABLE BORDER=1 CELLPADDING=5 CELLSPACING=0 WIDTH=100%>
+<TR><TD BGCOLOR=#98ABCE>
+<SPAN class=heading1>Parallel Computer Memory Architectures</SPAN></TD>
+</TD></TR></TABLE>
+<H2>Distributed Memory</H2>
+
+<IMG SRC=../images/arrowBullet.gif ALIGN=top HSPACE=3>
+<SPAN CLASS=heading3>General Characteristics:</SPAN>
+<UL>
+<P>
+<LI>Like shared memory systems, distributed memory systems vary widely but 
+    share a common characteristic. Distributed memory systems require a 
+    communication network to connect inter-processor memory.
+<P>
+<IMG SRC=images/distributed_mem.gif WIDTH=484 HEIGHT=196 BORDER=0 HSPACE=10
+ALT='Distributed memory architecture'>
+<P>
+<LI>Processors have their own local memory.  Memory addresses in one 
+    processor do not map to another processor, so there is no concept of
+    global address space across all processors.
+<P>
+<LI>Because each processor has its own local memory, it operates 
+    independently. Changes it makes to its local memory have no effect
+    on the memory of other processors.  Hence, the concept of cache
+    coherency does not apply.
+<P>
+<LI>When a processor needs access to data in another processor, it is 
+    usually the task of the programmer to explicitly define how and when
+    data is communicated.  Synchronization between tasks is likewise the
+    programmer's responsibility.
+<P>
+<LI>The network "fabric" used for data transfer varies widely, though it can
+    can be as simple as Ethernet.
+</UL>
+<P>
+
+<IMG SRC=../images/arrowBullet.gif ALIGN=top HSPACE=3>
+<SPAN CLASS=heading3>Advantages:</SPAN>
+    <UL>
+    <LI>Memory is scalable with the number of processors. Increase the number of    
+        processors and the size of memory increases proportionately. 
+    <LI>Each processor can rapidly access its own memory without interference
+        and without the overhead incurred with trying to maintain global cache
+        coherency.
+    <LI>Cost effectiveness: can use commodity, off-the-shelf processors and
+        networking.
+    </UL>
+<P>
+
+<IMG SRC=../images/arrowBullet.gif ALIGN=top HSPACE=3>
+<SPAN CLASS=heading3>Disadvantages:</SPAN>
+    <UL>
+    <LI>The programmer is responsible for many of the details associated with
+        data communication between processors. 
+    <LI>It may be difficult to map existing data structures, based on global
+        memory, to this memory organization. 
+    <LI>Non-uniform memory access times - data residing on a remote node
+        takes longer to access than node local data.
+    </UL>
+</UL>
+
+
+<!--========================================================================-->
+<P>
+<A NAME=HybridMemory> <BR><BR> </A>
+<TABLE BORDER=1 CELLPADDING=5 CELLSPACING=0 WIDTH=100%>
+<TR><TD BGCOLOR=#98ABCE>
+<SPAN class=heading1>Parallel Computer Memory Architectures</SPAN></TD>
+</TD></TR></TABLE>
+<H2>Hybrid Distributed-Shared Memory</H2>
+
+<IMG SRC=../images/arrowBullet.gif ALIGN=top HSPACE=3>
+<SPAN CLASS=heading3>General Characteristics:</SPAN>
+<UL>
+<P>
+<LI>The largest and fastest computers in the world today employ both shared
+    and distributed memory architectures.
+<P>
+<TABLE BORDER=0 CELLPADDING=0 CELLSPACING=0>
+<TR VALIGN=top>
+<TD><IMG SRC=images/hybrid_mem.gif WIDTH=484 HEIGHT=196 BORDER=0 HSPACE=10 
+ALT='Hybrid memory architecture'></TD>
+<TD><IMG SRC=images/hybrid_mem2.gif WIDTH=484 HEIGHT=196 BORDER=0 HSPACE=10 
+ALT='Hybrid memory architecture'></TD>
+</TR></TABLE>
+<P>
+<LI>The shared memory component can be a shared memory machine and/or
+    graphics processing units (GPU).
+<P>
+<LI>The distributed memory component is the networking of multiple shared memory/GPU
+    machines, which know only about their own memory - not the memory on another
+    machine. Therefore, network communications are required to move data from one
+    machine to another.
+<P>
+<LI>Current trends seem to indicate that this type of memory architecture
+    will continue to prevail and increase at the high end of computing for
+    the foreseeable future.
+</UL>
+<P>
+
+<IMG SRC=../images/arrowBullet.gif ALIGN=top HSPACE=3>
+<SPAN CLASS=heading3>Advantages and Disadvantages:</SPAN>
+<UL>
+<LI>Whatever is common to both shared and distributed memory architectures. 
+<LI>Increased scalability is an important advantage
+<LI>Increased programmer complexity is an important disadvantage
+</UL>
+
+
+<!--========================================================================-->
+<P>
+<A NAME=Models> <BR><BR> </A>
+<A NAME=ModelsOverview> </A>
+<TABLE BORDER=1 CELLPADDING=5 CELLSPACING=0 WIDTH=100%>
+<TR><TD BGCOLOR=#98ABCE>
+<SPAN class=heading1>Parallel Programming Models</SPAN></TD>
+</TD></TR></TABLE>
+<H2>Overview</H2>
+
+<UL>
+<P>
+<LI>There are several parallel programming models in common use:
+    <UL>
+    <LI>Shared Memory (without threads)
+    <LI>Threads
+    <LI>Distributed Memory / Message Passing
+    <LI>Data Parallel
+    <LI>Hybrid
+    <LI>Single Program Multiple Data (SPMD)
+    <LI>Multiple Program Multiple Data (MPMD)
+    </UL>
+<P>
+<LI><B>Parallel programming models exist as an abstraction above hardware
+    and memory architectures.</B>
+<P>
+<LI>Although it might not seem apparent, these models are <B>NOT</B> specific
+    to a particular type of machine or memory architecture.  In fact, any
+    of these models can (theoretically) be implemented on any underlying
+    hardware.  Two examples from the past are discussed below.
+<P>
+<TABLE BORDER=0 CELLSPACING=0 CELLPADDING=0>
+<TR VALIGN=top>
+<TD><UL>
+    <P>
+    <LI>SHARED memory model on a DISTRIBUTED memory machine: 
+        Kendall Square Research (KSR) ALLCACHE approach.  
+    <P> Machine memory was physically distributed across networked machines, but
+        appeared to the user as a single shared memory (global address space).
+        Generically, this approach is referred to as "virtual shared memory".
+</UL>
+</TD>
+<TD><IMG SRC=images/ksr1.gif WIDTH=198 HEIGHT=130 HSPACE=10 ALT='KSR1'></TD>
+</TR><TR VALIGN=top>
+<TD><UL>
+    <LI>DISTRIBUTED memory model on a SHARED memory machine: 
+        Message Passing Interface (MPI) on SGI Origin 2000.
+    <P> The SGI Origin 2000 employed the CC-NUMA type of shared memory architecture,
+        where every task has direct access to global address space spread across all
+        machines.  However, the ability to send and receive messages using MPI, as
+        is commonly done over a network of distributed memory machines, was 
+        implemented and commonly used. 
+    </UL>
+</TD>
+<TD><IMG SRC=images/sgiOrigin2000.jpg WIDTH=198 HEIGHT=149 HSPACE=10 ALT='SGI Origin 2000'></TD>
+</TR></TABLE>
+<P>
+<LI><B>Which model to use?</B> 
+    This is often a combination of what is available and personal
+    choice.  There is no "best" model, although there certainly are better
+    implementations of some models over others.
+<P>
+<LI>The following sections describe each of the models mentioned above, and
+    also discuss some of their actual implementations.
+</UL>
+
+
+<!--========================================================================-->
+<P>
+<A NAME=ModelsShared> <BR><BR> </A>
+<TABLE BORDER=1 CELLPADDING=5 CELLSPACING=0 WIDTH=100%>
+<TR><TD BGCOLOR=#98ABCE>
+<SPAN class=heading1>Parallel Programming Models</SPAN></TD>
+</TD></TR></TABLE>
+<H2>Shared Memory Model (without threads)</H2>
+
+<UL>
+<P>
+<LI>In this programming model, tasks share a common address space,  
+    which they read and write to asynchronously. 
+<P>
+<LI>Various mechanisms such as locks / semaphores may be used to control
+    access to the shared memory. 
+<P>
+<LI>An advantage of this model from the programmer's point of view is that the
+    notion of data "ownership" is lacking, so there is no need to specify 
+    explicitly the communication of data between tasks.  Program 
+    development can often be simplified.
+<P>
+<LI>An important disadvantage in terms of performance is that it becomes
+    more difficult to understand and manage data locality:
+    <UL>
+    <LI>Keeping data local to the processor that works on it conserves memory
+        accesses, cache refreshes and bus traffic that occurs when multiple
+        processors use the same data.
+    <LI>Unfortunately, controlling data locality is hard to understand and 
+        may be beyond the control of the average user.
+    </UL>
+</UL>
+<P>
+
+<IMG SRC=../images/arrowBullet.gif ALIGN=top HSPACE=3>
+<SPAN CLASS=heading3>Implementations:</SPAN>
+<UL>
+    <P>
+    <LI>On stand-alone shared memory machines, native operating systems, 
+        compilers and/or hardware provide support for shared memory programming.
+        For example, the POSIX standard provides an API for using shared memory.
+    <P>
+    <LI>On distributed shared memory machines, memory
+        is physically distributed across a network of machines, but made 
+        global through specialized hardware and software.
+    </UL>
+</UL>
+
+<!--========================================================================-->
+<P>
+<A NAME=ModelsThreads> <BR><BR> </A>
+<TABLE BORDER=1 CELLPADDING=5 CELLSPACING=0 WIDTH=100%>
+<TR><TD BGCOLOR=#98ABCE>
+<SPAN class=heading1>Parallel Programming Models</SPAN></TD>
+</TD></TR></TABLE>
+<H2>Threads Model</H2>
+
+<UL>
+<P>
+<LI>This programming model is a type of shared memory programming.
+<P>
+<LI>In the threads model of parallel programming, a single "heavy weight" 
+    process can have multiple "light weight", concurrent execution paths.
+<P>
+<LI>For example:
+
+<IMG SRC=images/threads_model.gif ALIGN=right WIDTH=348 HEIGHT=238 BORDER=0
+HSPACE=10 VSPACE=10 ALT='Threads Model'>
+    <UL>
+    <P>
+    <LI>The main program <TT><B>a.out</B></TT> is scheduled to run by the
+        native operating system. <TT>a.out</TT> loads and acquires all of the
+        necessary system and user resources to run. This is the "heavy weight"
+        process.
+    <P>
+    <LI><TT>a.out</TT> performs some serial work, and then creates
+        a number of tasks (threads) that can be scheduled and run by the
+        operating system concurrently.  
+    <P>
+    <LI>Each thread has local data, but also, shares the entire resources of 
+        <TT>a.out</TT>.  This saves the overhead associated with
+        replicating a program's resources for each thread ("light weight").  
+        Each thread also benefits from a global memory view because it shares the
+        memory space of <TT>a.out</TT>.      
+    <P>
+    <LI>A thread's work may best be described as a subroutine within
+        the main program.  Any thread can execute any subroutine at the
+        same time as other threads.
+    <P>
+    <LI>Threads communicate with each other through global memory (updating
+        address locations).  This requires synchronization constructs to ensure
+        that more than one thread is not updating the same global address at
+        any time.
+    <P>
+    <LI>Threads can come and go, but <TT>a.out</TT> remains present 
+        to provide the necessary shared resources until the
+        application has completed.
+    </UL>
+    <P>
+</UL>
+<P>
+
+<IMG SRC=../images/arrowBullet.gif ALIGN=top HSPACE=3>
+<SPAN CLASS=heading3>Implementations:</SPAN>
+<UL>
+<LI>From a programming perspective, threads implementations commonly 
+    comprise:
+    <UL TYPE=circle>
+    <LI>A library of subroutines that are called from within 
+        parallel source code
+    <LI>A set of compiler directives imbedded in either serial 
+        or parallel source code
+    </UL>
+<P>
+    In both cases, the programmer is responsible for determining the 
+    parallelism (although compilers can sometimes help).
+<P>
+<LI>Threaded implementations are not new in computing.  Historically,
+    hardware vendors have implemented their own proprietary versions of
+    threads. These implementations differed substantially from each other
+    making it difficult for programmers to develop portable threaded
+    applications. 
+<P>
+<LI>Unrelated standardization efforts have resulted in 
+    two very different implementations of threads:
+    <B><I>POSIX Threads</I></B> and <B><I>OpenMP</I></B>.
+<P>
+<LI><B>POSIX Threads</B> 
+    <UL>
+    <LI>Library based; requires parallel coding 
+    <LI>Specified by the IEEE POSIX 1003.1c standard (1995).
+    <LI>C Language only 
+    <LI>Commonly referred to as Pthreads.  
+    <LI>Most hardware vendors now offer Pthreads in addition to their
+        proprietary threads implementations.        
+    <LI>Very explicit parallelism; requires significant programmer attention 
+        to detail.
+    </UL>
+<P>
+<LI><B>OpenMP</B>  
+    <UL>
+    <LI>Compiler directive based; can use serial code
+    <LI>Jointly defined and endorsed by a group of major computer hardware
+        and software vendors. 
+        The OpenMP Fortran API was released October 28, 1997. The C/C++ API 
+        was released in late 1998.
+    <LI>Portable / multi-platform, including Unix and Windows platforms
+    <LI>Available in C/C++ and Fortran implementations
+    <LI>Can be very easy and simple to use - provides for "incremental 
+        parallelism"
+    </UL>
+<P>
+<LI>Microsoft has its own implementation for threads, which is not related
+    to the UNIX POSIX standard or OpenMP.
+</UL>
+<P>
+
+<IMG SRC=../images/arrowBullet.gif ALIGN=top HSPACE=3>
+<SPAN CLASS=heading3>More Information:</SPAN>
+<UL>
+<LI>POSIX Threads tutorial: 
+<A HREF=https://computing.llnl.gov/tutorials/pthreads/ TARGET=pthreads>
+computing.llnl.gov/tutorials/pthreads</A>
+<LI>OpenMP tutorial: 
+<A HREF=https://computing.llnl.gov/tutorials/openMP/ TARGET=openMP>
+computing.llnl.gov/tutorials/openMP</A>
+</UL>
+
+<!--========================================================================-->
+
+<A NAME=ModelsMessage> <BR><BR> </A>
+<TABLE BORDER=1 CELLPADDING=5 CELLSPACING=0 WIDTH=100%>
+<TR><TD BGCOLOR=#98ABCE>
+<SPAN class=heading1>Parallel Programming Models</SPAN></TD>
+</TD></TR></TABLE>
+<H2>Distributed Memory / Message Passing Model</H2>
+
+<UL>
+<P>
+<LI>This model demonstrates the following characteristics:
+<IMG SRC=images/msg_pass_model.gif ALIGN=right WIDTH=446 HEIGHT=310 BORDER=0
+HSPACE=10 VSPACE=10 ALT='Message Passing Model'>
+
+    <UL>
+    <P>
+    <LI>A set of tasks that use their own local memory during computation.
+        Multiple tasks can reside on the same physical machine and/or 
+        across an arbitrary number of machines.
+    <P>
+    <LI>Tasks exchange data through communications by sending and 
+        receiving messages.
+    <P>
+    <LI>Data transfer usually requires cooperative operations to be performed 
+        by each process. For example, a send operation must have a matching 
+        receive operation.
+    </UL> 
+</UL>
+<P>
+
+<IMG SRC=../images/arrowBullet.gif ALIGN=top HSPACE=3>
+<SPAN CLASS=heading3>Implementations:</SPAN>
+<UL>
+<LI>From a programming perspective, message passing implementations usually 
+    comprise a library of subroutines. Calls to these subroutines
+    are imbedded in source code. The programmer is responsible for determining 
+    all parallelism.
+<P>
+<LI>Historically, a variety of message passing libraries have been 
+    available since the 1980s. These implementations differed substantially      
+    from each other making it difficult for programmers to develop portable
+    applications. 
+<P>
+<LI>In 1992, the MPI Forum was formed with the primary goal of establishing
+    a standard interface for message passing implementations.  
+<P>
+<LI>Part 1 of the <B>Message Passing Interface (MPI)</B> was released in
+    1994. Part 2 (MPI-2) was released in 1996 and MPI-3 in 2012.
+    All MPI specifications are available on the web at
+    <A HREF=http://www.mpi-forum.org/docs/
+    TARGET=_blank>http://www.mpi-forum.org/docs/</A>.
+<P>
+<LI>MPI is the "de facto" industry 
+    standard for message passing, replacing virtually all other 
+    message passing implementations used for production work.
+    MPI implementations exist for virtually all popular parallel computing 
+    platforms. Not all implementations include everything in MPI-1, MPI-2 
+    or MPI-3.
+</UL>
+<P>
+
+<IMG SRC=../images/arrowBullet.gif ALIGN=top HSPACE=3>
+<SPAN CLASS=heading3>More Information:</SPAN>
+<UL>
+<LI>MPI tutorial: 
+<A HREF=https://computing.llnl.gov/tutorials/mpi/ TARGET=mpi>
+computing.llnl.gov/tutorials/mpi</A>
+</UL>
+
+<!--========================================================================-->
+
+<A NAME=ModelsData> <BR><BR> </A>
+<TABLE BORDER=1 CELLPADDING=5 CELLSPACING=0 WIDTH=100%>
+<TR><TD BGCOLOR=#98ABCE>
+<SPAN class=heading1>Parallel Programming Models</SPAN></TD>
+</TD></TR></TABLE>
+<H2>Data Parallel Model</H2>
+
+<UL>
+<P>
+<LI>May also be referred to as the Partitioned Global Address Space (PGAS)
+    model.
+<P>
+<LI>The data parallel model demonstrates the following characteristics: 
+
+<IMG SRC=images/data_parallel_model.gif ALIGN=right WIDTH=409 HEIGHT=362
+BORDER=0 HSPACE=10 VSPACE=10 ALT='Data Parallel Model'>
+    <UL>
+    <P>
+    <LI>Address space is treated globally
+    <P>
+    <LI>Most of the parallel work focuses on performing operations on a
+        data set.  The data set is typically organized into a common
+        structure, such as an array or cube.
+    <P>
+    <LI>A set of tasks work collectively on the same data structure, however,
+        each task works on a different partition of the same data structure.
+    <P>
+    <LI>Tasks perform the same operation on their partition of work, for
+        example, "add 4 to every array element".
+    </UL>
+<P>
+<LI>On shared memory architectures, all tasks may have access to the data
+    structure through global memory.  
+<P>
+<LI>On distributed memory architectures the data structure is split up and 
+     resides as "chunks" in the local memory of each task.
+</UL>
+<BR CLEAR>
+<P>
+
+<IMG SRC=../images/arrowBullet.gif ALIGN=top HSPACE=3>
+<SPAN CLASS=heading3>Implementations:</SPAN>
+<UL>
+<P>
+<LI>Currently, there are several relatively popular, and sometimes developmental,
+    parallel programming implementations based on the Data Parallel / PGAS model.
+<P>
+<LI><B>Coarray Fortran:</B> a small set of extensions to Fortran 95 for
+    SPMD parallel programming. Compiler dependent. More information: 
+    <A HREF=http://www.co-array.org/ TARGET=_blank>http://www.co-array.org/</A>
+<P>
+<LI><B>Unified Parallel C (UPC):</B> an extension to the C programming language
+    for SPMD parallel programming. Compiler dependent. More information: 
+    <A HREF=http://upc.lbl.gov/ TARGET=_blank>http://upc.lbl.gov/</A>
+<P>
+<LI><B>Global Arrays:</B> provides a shared memory style programming environment in
+    the context of distributed array data structures. Public domain library with
+    C and Fortran77 bindings. More information: 
+    <A HREF=http://www.emsl.pnl.gov/docs/global/ TARGET=_blank>
+    http://www.emsl.pnl.gov/docs/global/</A>
+<P>
+<LI><B>X10:</B> a PGAS based parallel programming language being developed by 
+    IBM at the Thomas J. Watson Research Center. More information: 
+    <A HREF=http://x10-lang.org/ TARGET=_blank>http://x10-lang.org/</A>
+<P>
+<LI><B>Chapel:</B> an open source parallel programming language project
+    being led by Cray. More information: 
+    <A HREF=http://chapel.cray.com/ TARGET=_blank>http://chapel.cray.com/</A>
+</UL>
+
+<!--========================================================================-->
+
+<A NAME=Hybrid> <BR><BR> </A>
+<TABLE BORDER=1 CELLPADDING=5 CELLSPACING=0 WIDTH=100%>
+<TR><TD BGCOLOR=#98ABCE>
+<SPAN class=heading1>Parallel Programming Models</SPAN></TD>
+</TD></TR></TABLE>
+<H2>Hybrid Model</H2>
+
+<UL>
+<LI>A hybrid model combines more than one of the previously described
+    programming models.
+
+<IMG SRC=images/hybrid_model.gif ALIGN=right WIDTH=485 HEIGHT=241
+BORDER=0 HSPACE=10 VSPACE=10 ALT='Hybrid Model'>
+
+<P>
+<LI>Currently, a common example of a hybrid model is the combination
+    of the message passing model (MPI) with the threads model (OpenMP).
+    <UL>
+    <LI>Threads perform computationally intensive kernels using local,
+        on-node data
+    <LI>Communications between processes on different nodes occurs
+        over the network using MPI
+    </UL> 
+<P>
+<LI>This hybrid model lends itself well to the increasingly common hardware
+    environment of clustered multi/many-core machines. 
+<P>
+<LI>Another similar and increasingly popular example of a hybrid model is 
+    using MPI with GPU (Graphics Processing Unit) programming.
+    <UL>
+    <LI>GPUs perform computationally intensive kernels using local,
+        on-node data
+    <LI>Communications between processes on different nodes occurs
+        over the network using MPI
+    </UL>
+</UL>
+
+<!--========================================================================-->
+
+<A NAME=SPMD-MPMD> <BR><BR> </A>
+<TABLE BORDER=1 CELLPADDING=5 CELLSPACING=0 WIDTH=100%>
+<TR><TD BGCOLOR=#98ABCE>
+<SPAN class=heading1>Parallel Programming Models</SPAN></TD>
+</TD></TR></TABLE>
+<H2>SPMD and MPMD</H2>
+
+<IMG SRC=../images/arrowBullet.gif ALIGN=top HSPACE=3>
+<SPAN CLASS=heading3>Single Program Multiple Data (SPMD):</SPAN>
+<UL>
+<P>
+<LI>SPMD is actually a "high level" programming model that can be
+    built upon any combination of the previously mentioned parallel   
+programming models.
+<IMG SRC=images/spmd_model.gif ALIGN=right WIDTH=395 HEIGHT=110
+BORDER=0 HSPACE=10 VSPACE=10 ALT='SPMD Model'>
+
+<P>
+<LI>SINGLE PROGRAM: All tasks execute their copy of the same program
+    simultaneously. This program can be threads, message passing,
+    data parallel or hybrid.
+<P>
+<LI>MULTIPLE DATA: All tasks may use different data
+<P>
+<LI>SPMD programs usually have the necessary logic programmed into them to 
+    allow different tasks to branch or conditionally execute only those
+    parts of the program they are designed to execute. That is, tasks 
+    do not necessarily have to execute the entire program - perhaps only a 
+    portion of it.
+<P>
+<LI>The SPMD model, using message passing or hybrid programming,
+    is probably the most commonly used parallel programming model
+    for multi-node clusters.
+</UL>
+<P>
+
+<IMG SRC=../images/arrowBullet.gif ALIGN=top HSPACE=3>
+<SPAN CLASS=heading3>Multiple Program Multiple Data (MPMD):</SPAN>
+<UL>
+<P>
+<LI>Like SPMD, MPMD is actually a "high level" programming model that can 
+    be built upon any combination of the previously mentioned parallel   
+    programming models.
+
+<IMG SRC=images/mpmd_model.gif ALIGN=right WIDTH=395 HEIGHT=110
+BORDER=0 HSPACE=10 VSPACE=10 ALT='MPMD Model'>
+
+<P>
+<LI>MULTIPLE PROGRAM: Tasks may execute different programs
+    simultaneously. The programs can be threads, message passing,
+    data parallel or hybrid.
+<P>
+<LI>MULTIPLE DATA: All tasks may use different data
+<P>
+<LI>MPMD applications are not as common as SPMD applications, but may
+    be better suited for certain types of problems, particularly those
+    that lend themselves better to functional decomposition 
+    than domain decomposition (discussed later under <A HREF=#DesignPartitioning>
+    Partioning</A>).
+</UL>
+
+<!--========================================================================-->
+<P>
+<A NAME=Designing> <BR><BR> </A>
+<A NAME=DesignAutomatic> </A>
+<TABLE BORDER=1 CELLPADDING=5 CELLSPACING=0 WIDTH=100%>
+<TR><TD BGCOLOR=#98ABCE>
+<SPAN class=heading1>Designing Parallel Programs</SPAN></TD>
+</TD></TR></TABLE>
+<H2>Automatic vs. Manual Parallelization</H2>
+
+<UL>
+<P>
+<LI>Designing and developing parallel programs has characteristically been a
+    very manual process.  The programmer is typically responsible for 
+    both identifying and actually implementing parallelism. 
+<P>
+<LI>Very often, manually developing parallel codes is a time consuming,
+    complex, error-prone and <I><B>iterative</B></I> process.
+<P>
+<LI>For a number of years now, various tools have been available to assist
+    the programmer with converting serial programs into parallel programs.
+    The most common type of tool used to automatically parallelize a serial
+    program is a parallelizing compiler or pre-processor.
+<P>
+<LI>A parallelizing compiler generally works in two different ways:
+    <UL>
+    <P>
+    <LI>Fully Automatic
+        <UL TYPE=circle>
+        <LI>The compiler analyzes the source code and
+            identifies opportunities for parallelism.  
+        <LI>The analysis includes
+            identifying inhibitors to parallelism and possibly a cost 
+            weighting on whether or not the parallelism would actually
+            improve performance.
+        <LI>Loops (do, for) are the most frequent target for
+            automatic parallelization.
+        </UL>
+    <P>
+    <LI>Programmer Directed
+        <UL TYPE=circle>
+        <LI>Using "compiler directives" or possibly compiler flags,
+            the programmer explicitly tells the compiler how to
+            parallelize the code.
+        <LI>May be able to be used in conjunction with some degree of 
+            automatic parallelization also.
+        </UL>
+    </UL>
+<P>
+<LI>The most common compiler generated parallelization is done using
+    on-node shared memory and threads (such as OpenMP).
+<P>
+<LI>If you are beginning with an existing serial code and have time
+    or budget constraints, then automatic parallelization may be 
+    the answer.  However, there are several important caveats that
+    apply to automatic parallelization:
+    <UL>
+    <LI>Wrong results may be produced
+    <LI>Performance may actually degrade
+    <LI>Much less flexible than manual parallelization
+    <LI>Limited to a subset (mostly loops) of code
+    <LI>May actually not parallelize code if the compiler analysis suggests there
+        are inhibitors or the code is too complex
+    </UL><P>
+<LI>The remainder of this section applies to the manual method of 
+    developing parallel codes.
+</UL>
+
+
+<!--========================================================================-->
+<P>
+<A NAME=DesignUnderstand> <BR><BR> </A>
+<TABLE BORDER=1 CELLPADDING=5 CELLSPACING=0 WIDTH=100%>
+<TR><TD BGCOLOR=#98ABCE>
+<SPAN class=heading1>Designing Parallel Programs</SPAN></TD>
+</TD></TR></TABLE>
+<H2>Understand the Problem and the Program</H2>
+
+<UL>
+<P>
+<LI>Undoubtedly, the first step in developing parallel software is to
+    first understand the problem that you wish to solve in parallel.
+    If you are starting with a serial program, this necessitates 
+    understanding the existing code also. 
+<P>
+<LI>Before spending time in an attempt to develop a parallel solution
+    for a problem, determine whether or not the problem is one that can
+    actually be parallelized.  
+<UL>
+<P>
+<LI>Example of Parallelizable Problem: 
+<P>
+<TABLE BORDER=1 CELLPADDING=5 CELLSPACING=0 WIDTH=75%>
+<TR><TD><B>
+    Calculate the potential energy for each of several thousand 
+    independent conformations of a molecule.
+    When done, find the minimum energy conformation.
+</B></TD></TR></TABLE>
+<P>
+    This problem is able to be solved in parallel. Each of the 
+    molecular conformations is independently determinable.
+    The calculation of the minimum energy conformation is also a
+    parallelizable problem. 
+<P>
+<LI>Example of a Non-parallelizable Problem: 
+<P>
+<TABLE BORDER=1 CELLPADDING=5 CELLSPACING=0 WIDTH=75%>
+<TR><TD><B>
+    Calculation of the Fibonacci series (0,1,1,2,3,5,8,13,21,...) by use of 
+    the formula: 
+    <PRE>
+    F(n) = F(n-1) + F(n-2)     </PRE>
+</B></TD></TR></TABLE>
+<P> This is a non-parallelizable problem because the calculation of the 
+    Fibonacci sequence as shown would entail
+    dependent calculations rather than independent ones. 
+    The calculation of the F(n) value uses those of
+    both F(n-1) and F(n-2).  These three terms cannot be calculated
+    independently and therefore, not in parallel.
+</UL> 
+</UL>
+<P>
+
+<TABLE BORDER=0 CELLPADDING=0 CELLSPACING=0>
+<TR VALIGN=top>
+<TD>
+<UL>
+<LI>Identify the program's 
+    <FONT STYLE="background-color: yellow"><I><B>hotspots</B></I></FONT>:
+    <UL>
+    <LI>Know where most of the real work is being done.  
+        The majority of scientific and technical programs usually 
+        accomplish most of their work in a few places. 
+    <LI>Profilers and performance analysis tools can help here
+    <LI>Focus on parallelizing the hotspots and ignore those sections
+        of the program that account for little CPU usage. 
+    </UL>
+<P>
+<LI>Identify <FONT STYLE="background-color: yellow"><I><B>bottlenecks</B></I></FONT>
+    in the program:
+    <UL>
+    <LI>Are there areas that are disproportionately slow, or cause 
+        parallelizable work to halt or be deferred?
+        For example, I/O is usually something that slows a program down.
+    <LI>May be possible to restructure the program or use a different
+        algorithm to reduce or eliminate unnecessary slow areas
+    </UL>
+<P>
+<LI>Identify inhibitors to parallelism.  One common class of inhibitor
+    is <I>data dependence</I>, as demonstrated by the Fibonacci sequence
+    above.  
+<P>
+<LI>Investigate other algorithms if possible.  This may be the single most
+    important consideration when designing a parallel application.
+<P>
+<LI>Take advantage of optimized third party parallel software and highly
+    optimized math libraries available from leading vendors (IBM's ESSL, 
+    Intel's MKL, AMD's AMCL, etc.).
+</TD>
+<TD><IMG SRC=images/hotspotBottleneck.jpg WIDTH=400 HEIGHT=368 HSPACE=20></TD>
+</TR></TABLE>
+</UL>
+
+<!--========================================================================-->
+
+<A NAME=DesignPartitioning> <BR><BR> </A>
+<TABLE BORDER=1 CELLPADDING=5 CELLSPACING=0 WIDTH=100%>
+<TR><TD BGCOLOR=#98ABCE>
+<SPAN class=heading1>Designing Parallel Programs</SPAN></TD>
+</TD></TR></TABLE>
+<H2>Partitioning</H2>
+
+<UL>
+<P>
+<LI>One of the first steps in designing a parallel program is to break the
+    problem into discrete "chunks" of work that can be distributed to
+    multiple tasks.  This is known as decomposition or partitioning.
+<P>
+<LI>There are two basic ways to partition computational work among parallel 
+    tasks: <B><I>domain decomposition</I></B> and 
+    <B><I>functional decomposition</I></B>. 
+</UL>
+<P>
+
+<IMG SRC=../images/arrowBullet.gif ALIGN=top HSPACE=3>
+<SPAN CLASS=heading3>Domain Decomposition:</SPAN>
+    <UL>
+    <P>
+    <LI>In this type of partitioning, the data associated with a problem
+        is decomposed.  Each parallel task then works on a portion of
+        of the data.
+    <P><IMG SRC=images/domain_decomp.gif WIDTH=388 HEIGHT=216 BORDER=0
+       <ALT='Domain Decomposition'>
+    <P>
+<A NAME=distributions> </A>
+    <LI>There are different ways to partition data:
+    <P><IMG SRC=images/distributions.gif WIDTH=502 HEIGHT=386 BORDER=0
+       <ALT='Different types of domain decomposition'>
+    </UL>
+<P>
+
+<IMG SRC=../images/arrowBullet.gif ALIGN=top HSPACE=3>
+<SPAN CLASS=heading3>Functional Decomposition:</SPAN>
+    <UL>
+    <P>
+    <LI>In this approach, the focus is on the computation that is to be      
+        performed rather than on the data manipulated by the computation.
+        The problem is decomposed according to the work that must be done.
+        Each task then performs a portion of the overall work.
+    <P><IMG SRC=images/functional_decomp.gif WIDTH=587 HEIGHT=353 BORDER=0
+       <ALT='Functional Decomposition'>
+    <P>
+    <LI>Functional decomposition lends itself well to problems that can be
+        split into different tasks.  For example:
+        <DL>
+        <P>
+        <DT><B>Ecosystem Modeling</B>
+        <BR>Each program calculates the population
+            of a given group, where each group's growth depends on that of its
+            neighbors. As time progresses, each process calculates
+            its current state, then exchanges information with the neighbor  
+            populations. All tasks then progress to calculate the state at the
+            next time step.
+        <P>
+        <IMG SRC=images/functional_ex1.gif WIDTH=567 HEIGHT=221 BORDER=0
+        ALT='Functional decomposition example'>
+        <P>
+        <DT><B>Signal Processing</B>
+        <BR>An audio signal data set is passed
+            through four distinct computational filters. Each filter is a 
+            separate process. The first segment of data must pass through the
+            first filter before progressing to the second. When it does, the
+            second segment of data passes through the first filter. By the time
+            the fourth segment of data is in the first filter, all four
+            tasks are busy.
+        <P>
+        <IMG SRC=images/functional_ex2.gif WIDTH=703 HEIGHT=272 BORDER=0
+        ALT='Functional decomposition example'>
+        <P>
+        <DT><B>Climate Modeling</B>
+        <BR>Each model component can be thought of as a separate task.
+            Arrows represent exchanges of data between components during
+            computation: the atmosphere model generates wind velocity data 
+            that are used by the ocean model, the ocean model generates sea
+            surface temperature data that are used by the atmosphere model, 
+            and so on.
+        <P>
+        <IMG SRC=images/functional_ex3.gif WIDTH=372 HEIGHT=257 BORDER=0
+        ALT='Functional decomposition example'>
+        </DL>
+<P>
+<LI>Combining these two types of problem decomposition is common and natural.
+<P>
+</UL>
+
+<!--========================================================================-->
+
+<A NAME=DesignCommunications> <BR><BR> </A>
+<TABLE BORDER=1 CELLPADDING=5 CELLSPACING=0 WIDTH=100%>
+<TR><TD BGCOLOR=#98ABCE>
+<SPAN class=heading1>Designing Parallel Programs</SPAN></TD>
+</TD></TR></TABLE>
+<H2>Communications</H2>
+
+<IMG SRC=../images/arrowBullet.gif ALIGN=top HSPACE=3>
+<SPAN CLASS=heading3>Who Needs Communications?</SPAN>
+<UL>
+<P>The need for communications between tasks depends upon your problem:
+<P>
+<LI><B>You DON'T need communications</B>
+    <UL>
+    <LI>Some types of problems can be decomposed and executed in parallel
+    with virtually no need for tasks to share data.  For example, imagine an
+    image processing operation where every pixel in a black and white image
+    needs to have its color reversed.   The image data can easily be 
+    distributed to multiple tasks that then act independently of each other
+    to do their portion of the work.  
+    <LI>These types of problems are often called <B><I>embarrassingly
+    parallel</I></B>
+    because they are so straight-forward.  Very little inter-task communication
+    is required.
+    </UL>
+<P>
+<LI><B>You DO need communications</B>
+    <UL>
+    <LI>Most parallel applications are not quite so simple, and do require 
+    tasks to 
+    share data with each other.  For example, a 3-D heat diffusion problem
+    requires a task to know the temperatures calculated by the tasks that have
+    neighboring data.  Changes to neighboring data has a direct effect on that
+    task's data.
+    </UL>
+</UL>
+<P>
+
+<IMG SRC=../images/arrowBullet.gif ALIGN=top HSPACE=3>
+<SPAN CLASS=heading3>Factors to Consider:</SPAN>
+<UL>
+<P>
+There are a number of important factors to consider when designing your
+program's inter-task communications:
+<P>
+<LI><B>Cost of communications</B>
+    <UL>
+    <LI>Inter-task communication virtually always implies overhead.
+    <LI>Machine cycles and resources that could be used for computation
+        are instead used to package and transmit data.
+    <LI>Communications frequently require some type of synchronization
+        between tasks, which can result in tasks spending time "waiting"
+        instead of doing work.
+    <LI>Competing communication traffic can saturate the available network
+        bandwidth, further aggravating performance problems.
+    </UL>
+<P>
+<LI><B>Latency vs. Bandwidth</B>
+    <UL>
+    <LI><B><I>latency</I></B> is the time it takes to send a minimal (0 byte)
+        message from point A to point B.  Commonly expressed as microseconds.
+    <LI><B><I>bandwidth</I></B> is the amount of data that can be communicated
+        per unit of time.  Commonly expressed as megabytes/sec or gigabytes/sec.
+    <LI>Sending many small messages can cause latency to dominate communication
+        overheads.  Often it is more efficient to package small messages into a
+        larger message, thus increasing the effective communications bandwidth.
+    </UL>
+<P>
+<LI><B>Visibility of communications</B>
+    <UL>
+    <LI>With the Message Passing Model, communications are explicit and
+        generally quite visible and under the control of the programmer.  
+    <LI>With the Data Parallel Model, communications often occur
+        transparently to the programmer, particularly on distributed 
+        memory architectures.  The programmer may not even be able to
+        know exactly how inter-task communications are being accomplished.
+    </UL>
+<P>
+<LI><B>Synchronous vs. asynchronous communications</B>
+    <UL>
+    <LI>Synchronous communications require some type of "handshaking"
+        between tasks that are sharing data.  This can be explicitly
+        structured in code by the programmer, or it may happen at a
+        lower level unknown to the programmer.
+    <LI>Synchronous communications are often referred to as
+        <B><I>blocking</I></B> communications since other work must
+        wait until the communications have completed.
+    <LI>Asynchronous communications allow tasks to transfer data independently
+        from one another. For example, task 1 can prepare and send a
+        message to task 2, and then immediately begin doing other work.
+        When task 2 actually receives the data doesn't matter. 
+    <LI>Asynchronous communications are often referred to as
+        <B><I>non-blocking</I></B> communications since other work can
+        be done while the communications are taking place.
+    <LI>Interleaving computation with communication is the single greatest
+        benefit for using asynchronous communications.
+    </UL>
+<P>
+<LI><B>Scope of communications</B>
+    <UL>
+    <LI>Knowing which tasks must communicate with each other is critical during
+        the design stage of a parallel code. Both of the two scopings 
+        described below can be implemented synchronously or asynchronously.
+    <LI><B><I>Point-to-point</I></B> - involves two tasks with one task
+        acting as the sender/producer of data, and the other acting as 
+        the receiver/consumer.
+    <LI><B><I>Collective</I></B> - involves data sharing between more than
+        two tasks, which are often specified as being members in a common 
+        group, or collective. Some common variations (there are more):
+    <P>
+    <IMG SRC=images/collective_comm.gif WIDTH=400 HEIGHT=317 BORDER=0
+    ALT='Collective communications examples'> 
+    </UL>
+<P>
+<LI><B>Efficiency of communications</B>
+    <UL>
+    <LI>Very often, the programmer will have a choice with regard to
+        factors that can affect communications performance.  Only a
+        few are mentioned here.        
+    <LI>Which implementation for a given model should be used?  Using
+        the Message Passing Model as an
+        example, one MPI implementation may be faster on a given
+        hardware platform than another.
+    <LI>What type of communication operations should be used?  As
+        mentioned previously, asynchronous communication operations
+        can improve overall program performance.
+    <LI>Network media - some platforms may offer more than one network
+        for communications.  Which one is best?
+    </UL>
+<P>
+<P>
+<LI><B>Overhead and Complexity</B>
+<P>    
+    <IMG SRC=images/helloWorldParallelCallgraph.gif WIDTH=914 HEIGHT=497 
+    BORDER=0 ALT='Callgraph of parallel hello world program'>
+<P>
+<LI>Finally, realize that this is only a partial list of things to consider!!!
+</UL>
+
+
+<!--========================================================================-->
+<P>
+<A NAME=DesignSynchronization> <BR><BR> </A>
+<TABLE BORDER=1 CELLPADDING=5 CELLSPACING=0 WIDTH=100%>
+<TR><TD BGCOLOR=#98ABCE>
+<SPAN class=heading1>Designing Parallel Programs</SPAN></TD>
+</TD></TR></TABLE>
+<H2>Synchronization</H2>
+
+<UL>
+<LI>Managing the sequence of work and the tasks performing it is a critical
+    design consideration for most parallel programs.
+<P>
+<LI>Can be a significant factor in program performance (or lack of it)
+<P>
+<LI>Often requires "serialization" of segments of the program.
+</UL>
+
+<IMG SRC=../images/arrowBullet.gif ALIGN=top HSPACE=3>
+<SPAN CLASS=heading3>Types of Synchronization:</SPAN>
+<UL>
+<P>
+<LI><B>Barrier</B>
+    <UL>
+    <LI>Usually implies that all tasks are involved
+    <LI>Each task performs its work until it reaches the barrier.  It then
+        stops, or "blocks".        
+    <LI>When the last task reaches the barrier, all tasks are synchronized.
+    <LI>What happens from here varies.  Often, a serial section of work must
+        be done.  In other cases, the tasks are automatically released to
+        continue their work.  
+    </UL>
+<P>
+<LI><B>Lock / semaphore</B>
+    <UL>
+    <LI>Can involve any number of tasks
+    <LI>Typically used to serialize (protect) access to global data
+        or a section of code. Only one task at a time may use (own) the 
+        lock / semaphore / flag.
+    <LI>The first task to acquire the lock "sets" it.  This task can then
+        safely (serially) access the protected data or code.
+    <LI>Other tasks can attempt to acquire the lock but must wait until the
+        task that owns the lock releases it.
+    <LI>Can be blocking or non-blocking
+    </UL>
+<P>
+<LI><B>Synchronous communication operations</B>
+    <UL>
+    <LI>Involves only those tasks executing a communication operation
+    <LI>When a task performs a communication operation, some form of
+        coordination is required with the other task(s) participating in
+        the communication.  For example, before a task can perform a
+        send operation, it must first receive an acknowledgment from the
+        receiving task that it is OK to send.  
+    <LI>Discussed previously in the Communications section.
+    </UL>
+</UL>
+
+
+<!--========================================================================-->
+<P>
+<A NAME=DesignDependencies> <BR><BR> </A>
+<TABLE BORDER=1 CELLPADDING=5 CELLSPACING=0 WIDTH=100%>
+<TR><TD BGCOLOR=#98ABCE>
+<SPAN class=heading1>Designing Parallel Programs</SPAN></TD>
+</TD></TR></TABLE>
+<H2>Data Dependencies</H2>
+
+<IMG SRC=../images/arrowBullet.gif ALIGN=top HSPACE=3>
+<SPAN CLASS=heading3>Definition:</SPAN>
+<UL>
+<P>
+<LI>A <B><I>dependence</I></B> exists between program statements when
+    the order of statement execution affects the results of the program. 
+<P>
+<LI>A <B><I>data dependence</I></B> results from multiple use of the same
+    location(s) in storage by different tasks.
+<P>
+<LI>Dependencies are important to parallel programming because they are one
+    of the primary inhibitors to parallelism.
+</UL>
+<P>
+
+<IMG SRC=../images/arrowBullet.gif ALIGN=top HSPACE=3>
+<SPAN CLASS=heading3>Examples:</SPAN>
+<P>
+<UL>
+<LI><B>Loop carried data dependence</B>
+<P>
+<TABLE BORDER=1 CELLSPACING=0 CELLPADDING=5>
+<TR VALIGN=top>
+<TD><PRE><B>
+DO 500 J = MYSTART,MYEND
+   A(J) = A(J-1) * 2.0
+500 CONTINUE
+</B></PRE></TD>
+</TR></TABLE>
+<P>
+    The value of A(J-1) must be computed before the value of A(J),
+    therefore A(J) exhibits a data dependency on A(J-1).
+    Parallelism is inhibited.
+<P> If Task 2 has A(J) and task 1 has A(J-1), 
+    computing the correct value of A(J) necessitates: 
+    <UL TYPE=circle>
+    <LI>Distributed memory architecture - task 2 must obtain the value 
+        of A(J-1) from task 1 after task 1 finishes its computation
+    <LI>Shared memory architecture - task 2 must read A(J-1) after 
+        task 1 updates it 
+    </UL>
+<P>
+<LI><B>Loop independent data dependence</B>
+<P>
+<TABLE BORDER=1 CELLSPACING=0 CELLPADDING=5>
+<TR VALIGN=top>
+<TD><PRE><B>
+task 1        task 2
+------        ------
+
+X = 2         X = 4
+  .             .
+  .             .
+Y = X**2      Y = X**3
+</B></PRE></TD>
+</TR></TABLE>
+<P>
+    As with the previous example, parallelism is inhibited. 
+    The value of Y is dependent on: 
+    <UL TYPE=circle>
+    <LI>Distributed memory architecture - if or when the value of X is
+        communicated between the tasks. 
+    <LI>Shared memory architecture - which task last stores the value of X.
+    </UL>
+<P>
+<LI>Although all data dependencies are important to identify when designing
+    parallel programs, loop carried dependencies are particularly important
+    since loops are possibly the most common target of parallelization efforts.
+
+</UL>
+<P>
+
+<IMG SRC=../images/arrowBullet.gif ALIGN=top HSPACE=3>
+<SPAN CLASS=heading3>How to Handle Data Dependencies:</SPAN>
+<UL>
+<P>
+<LI>Distributed memory architectures - communicate required data at  
+    synchronization points.
+<P>
+<LI>Shared memory architectures -synchronize read/write operations between
+    tasks. 
+</UL>
+
+
+<!--========================================================================-->
+<P>
+<A NAME=DesignLoadBalance> <BR><BR> </A>
+<TABLE BORDER=1 CELLPADDING=5 CELLSPACING=0 WIDTH=100%>
+<TR><TD BGCOLOR=#98ABCE>
+<SPAN class=heading1>Designing Parallel Programs</SPAN></TD>
+</TD></TR></TABLE>
+<H2>Load Balancing</H2>
+
+<UL>
+<P>
+<LI>Load balancing refers to the practice of distributing approximately equal
+    amounts of work among tasks
+    so that <B><I>all</I></B> tasks are kept busy <B><I>all</I></B> of the time.  
+    It can be considered a minimization of task idle time.
+<P>
+<LI>Load balancing is important to parallel programs for performance
+    reasons.  For example, if all tasks are subject to a barrier
+    synchronization point, the slowest task will determine the overall
+    performance.
+<P>
+<IMG SRC=images/load_bal1.gif WIDTH=403 HEIGHT=188 BORDER=0 ALT='Load Imbalance'>
+<P>
+</UL>
+
+<IMG SRC=../images/arrowBullet.gif ALIGN=top HSPACE=3>
+<SPAN CLASS=heading3>How to Achieve Load Balance:</SPAN>
+<UL>
+<P>
+<LI><B>Equally partition the work each task receives</B>
+    <UL>
+    <LI>For array/matrix operations where each task performs similar
+        work, evenly distribute the data set among the tasks.
+    <LI>For loop iterations where the work done in each iteration
+        is similar, evenly distribute the iterations across the tasks.
+    <LI>If a heterogeneous mix of machines with varying performance
+        characteristics are being used, be sure to use some type of performance
+        analysis tool to detect any load imbalances.  Adjust work accordingly.
+    </UL><P>
+<LI><B>Use dynamic work assignment</B>
+    <UL>
+    <LI>Certain classes of problems result in load imbalances even if data
+        is evenly distributed among tasks:
+        <UL TYPE=circle>
+        <LI>Sparse arrays - some tasks will have actual data to work on
+            while others have mostly "zeros".
+        <LI>Adaptive grid methods - some tasks may need to refine their
+            mesh while others don't.
+        <LI><I>N</I>-body simulations - where some particles may migrate
+            to/from their original task domain to another task's; where
+            the particles owned by some tasks require more work than 
+            those owned by other tasks.
+        </UL>
+    <LI>When the amount of work each task will perform is intentionally
+        variable, or is unable to be predicted, it may be helpful to use
+        a <B><I>scheduler - task pool</I></B> approach.  As each task finishes
+        its work, it queues to get a new piece of work.  
+    <LI>It may become necessary to design an algorithm which detects and handles
+        load imbalances as they occur dynamically within the code.
+    </UL>
+</UL>
+
+
+<!--========================================================================-->
+<P>
+<A NAME=DesignGranularity> <BR><BR> </A>
+<TABLE BORDER=1 CELLPADDING=5 CELLSPACING=0 WIDTH=100%>
+<TR><TD BGCOLOR=#98ABCE>
+<SPAN class=heading1>Designing Parallel Programs</SPAN></TD>
+</TD></TR></TABLE>
+<H2>Granularity</H2>
+
+<IMG SRC=../images/arrowBullet.gif ALIGN=top HSPACE=3>
+<SPAN CLASS=heading3>Computation / Communication Ratio:</SPAN>
+<UL>
+<P>
+<LI>In parallel computing, granularity is a qualitative measure of the ratio
+    of computation to communication. 
+<P>
+<LI>Periods of computation are typically separated from periods of 
+    communication by synchronization events.
+</UL>
+<P>
+
+<TABLE BORDER=0 CELLPADDING=0 CELLSPACING=0>
+<TR VALIGN=top>
+<TD>
+<IMG SRC=../images/arrowBullet.gif ALIGN=top HSPACE=3>
+<SPAN CLASS=heading3>Fine-grain Parallelism:</SPAN>
+     <UL> 
+     <P>
+     <LI>Relatively small amounts of computational work are done between 
+         communication events 
+     <P>
+     <LI>Low computation to communication ratio  
+     <P>
+     <LI>Facilitates load balancing 
+     <P>
+     <LI>Implies high communication overhead and less opportunity for
+         performance enhancement
+     <P>
+     <LI>If granularity is too fine it is possible that the overhead
+         required for communications and synchronization between tasks
+         takes longer than the computation. 
+     </UL>
+<P>
+
+<IMG SRC=../images/arrowBullet.gif ALIGN=top HSPACE=3>
+<SPAN CLASS=heading3>Coarse-grain Parallelism:</SPAN>
+     <UL>
+     <P>
+     <LI>Relatively large amounts of computational work are done between  
+         communication/synchronization events 
+     <P>
+     <LI>High computation to communication ratio
+     <P>
+     <LI>Implies more opportunity for performance increase
+     <P>
+     <LI>Harder to load balance efficiently
+     </UL>
+<P>
+
+<IMG SRC=../images/arrowBullet.gif ALIGN=top HSPACE=3>
+<SPAN CLASS=heading3>Which is Best?</SPAN>
+<UL>
+<P>
+<LI>The most efficient granularity is dependent on the algorithm and the 
+    hardware environment in which it runs.
+<P>
+<LI>In most cases the overhead associated with communications and 
+    synchronization is high relative to execution speed
+    so it is advantageous to have coarse granularity.
+<P>
+<LI>Fine-grain parallelism can help reduce overheads due to load imbalance.
+</UL>
+</TD>
+
+<TD>
+<IMG SRC=images/granularity1.gif WIDTH=173 HEIGHT=540 BORDER=0
+ALT='Granularity'> 
+</TD>
+</TR></TABLE>
+
+<!--========================================================================-->
+
+<A NAME=DesignIO> <BR><BR> </A>
+<TABLE BORDER=1 CELLPADDING=5 CELLSPACING=0 WIDTH=100%>
+<TR><TD BGCOLOR=#98ABCE>
+<SPAN class=heading1>Designing Parallel Programs</SPAN></TD>
+</TD></TR></TABLE>
+<H2>I/O</H2>
+
+<IMG SRC=images/memoryAccessTimes.gif WIDTH=555 HEIGHT=258 BORDER=0 ALIGN=right
+HSPACE=25>
+<IMG SRC=../images/arrowBullet.gif ALIGN=top HSPACE=3>
+<SPAN CLASS=heading3>The Bad News:</SPAN>
+<P>
+<UL>
+<LI>I/O operations are generally regarded as inhibitors to parallelism. 
+<P>
+<LI>I/O operations require orders of magnitude more time than memory operations.
+<P>
+<LI>Parallel I/O systems may be immature or not available for all platforms.
+<P>
+<LI>In an environment where all tasks see the same file space, write
+    operations can result in file overwriting.
+<P>
+<LI>Read operations can be affected by the file server's ability to handle
+    multiple read requests at the same time.
+<P>
+<LI>I/O that must be conducted over the network (NFS, non-local) can cause
+    severe bottlenecks and even crash file servers.
+</UL>
+<P>
+
+<IMG SRC=../images/arrowBullet.gif ALIGN=top HSPACE=3>
+<SPAN CLASS=heading3>The Good News:</SPAN>
+<UL>
+<P>
+<LI>Parallel file systems are available.  For example:
+    <UL>
+    <LI>GPFS: General Parallel File System for AIX (IBM) 
+    <LI>Lustre: for Linux clusters (Intel)
+    <LI>PVFS/PVFS2: Parallel Virtual File System for Linux clusters
+        (Clemson/Argonne/Ohio State/others)
+    <LI>PanFS: Panasas ActiveScale File System for Linux clusters (Panasas,
+        Inc.)
+    <LI>HP SFS: HP StorageWorks Scalable File Share. Lustre based parallel file
+        system (Global File System for Linux) product from HP
+    </UL>
+<P>
+<LI>The parallel I/O programming interface specification for MPI has been
+    available since 1996 as part of MPI-2. Vendor and "free" implementations 
+    are now commonly available.
+<P>
+<LI>A few pointers:
+    <UL>
+    <P>
+    <LI>Rule #1: Reduce overall I/O as much as possible
+    <P>
+    <LI>If you have access to a parallel file system, use it.
+    <P>
+    <LI>Writing large chunks of data rather than small chunks is usually
+        significantly more efficient.
+    <P>
+    <LI>Confine I/O to specific serial portions of the job, and then use
+        parallel communications to distribute data to parallel tasks.
+        For example, Task 1 could read an input file and then communicate
+        required data to other tasks.  Likewise, Task 1 could perform
+        write operation after receiving required data from all other tasks.
+    <P>
+    <LI>Aggregate I/O operations across tasks - rather than having many tasks
+        perform I/O, have a subset of tasks perform it.
+     </UL>
+</UL>
+
+<!--========================================================================-->
+
+<A NAME=DesignDebug> <BR><BR> </A>
+<TABLE BORDER=1 CELLPADDING=5 CELLSPACING=0 WIDTH=100%>
+<TR><TD BGCOLOR=#98ABCE>
+<SPAN class=heading1>Designing Parallel Programs</SPAN></TD>
+</TD></TR></TABLE>
+<H2>Debugging</H2>
+
+<UL>
+<P>
+<LI>Debugging parallel codes can be incredibly difficult, particularly as codes
+    scale upwards.
+<P>
+<LI>The good news is that there are some excellent debuggers available to assist:
+    <UL>
+    <LI>Threaded - pthreads and OpenMP
+    <LI>MPI
+    <LI>GPU / accelerator
+    <LI>Hybrid
+    </UL>
+<P>
+<LI>Livermore Computing users have access to several parallel debugging tools
+    installed on LC's clusters:
+    <UL>
+    <LI>TotalView from RogueWave Software
+    <LI>DDT from Allinea
+    <LI>Inspector from Intel
+    <LI>Stack Trace Analysis Tool (STAT) - locally developed
+    </UL>
+<P>
+<LI>All of these tools have a learning curve associated with them - some more than
+    others.
+<P>
+<LI>For details and getting started information, see:
+    <UL>
+    <LI>LC's "Supported Software and Computing Tools" web pages at
+        <A HREF=https://computing.llnl.gov/?set=code&page=software_tools
+        TARGET=_blank>https://computing.llnl.gov/?set=code&page=software_tools</A>
+    <LI>TotalView tutorial:  <A HREF=https://computing.llnl.gov/tutorials/totalview/
+        TARGET=_blank>https://computing.llnl.gov/tutorials/totalview/</A>
+    </UL>
+<P>
+<IMG SRC=images/debug1.gif WIDTH=1000 HEIGHT=509 BORDER=0>
+</UL>
+
+<!--========================================================================-->
+
+<A NAME=DesignPerformance> <BR><BR> </A>
+<TABLE BORDER=1 CELLPADDING=5 CELLSPACING=0 WIDTH=100%>
+<TR><TD BGCOLOR=#98ABCE>
+<SPAN class=heading1>Designing Parallel Programs</SPAN></TD>
+</TD></TR></TABLE>
+<H2>Performance Analysis and Tuning</H2>
+
+<UL>
+<P>
+<LI>As with debugging, analyzing and tuning parallel program performance
+    can be much more challenging than for serial programs.
+<P>
+<LI>Fortunately, there are a number of excellent tools for parallel program
+    performance analysis and tuning.
+<P>
+<LI>Livermore Computing users have access to several such tools, most of which
+    are available on all production clusters.
+<P>
+<LI>Some starting points for tools installed on LC systems: 
+    <UL>
+    <LI>LC's "Supported Software and Computing Tools" web pages at
+        <A HREF=https://computing.llnl.gov/?set=code&page=software_tools
+        TARGET=_blank>https://computing.llnl.gov/?set=code&page=software_tools</A>
+    <LI>TAU:
+        <A HREF=http://www.cs.uoregon.edu/research/tau/docs.php
+        TARGET=_blank>http://www.cs.uoregon.edu/research/tau/docs.php</A>
+    <LI>HPCToolkit:
+        <A HREF=http://hpctoolkit.org/documentation.html
+        TARGET=_blank>http://hpctoolkit.org/documentation.html</A>
+    <LI>Open|Speedshop:
+        <A HREF=http://www.openspeedshop.org/wp/
+        TARGET=_blank>http://www.openspeedshop.org/wp/</A>
+    <LI>Vampir / Vampirtrace:
+        <A HREF=http://vampir.eu/
+        TARGET=_blank>http://vampir.eu/</A>
+    <LI>Valgrind:
+        <A HREF=http://valgrind.org/
+        TARGET=_blank>http://valgrind.org/</A>
+    <LI>PAPI:
+        <A HREF=http://icl.cs.utk.edu/papi/
+        TARGET=_blank>http://icl.cs.utk.edu/papi/</A>
+    <LI>mpitrace
+        <A HREF=https://computing.llnl.gov/tutorials/bgq/index.html#mpitrace
+        TARGET=_blank>
+        https://computing.llnl.gov/tutorials/bgq/index.html#mpitrace</A>
+    <LI>mpiP:
+        <A HREF=http://mpip.sourceforge.net/
+        TARGET=_blank>http://mpip.sourceforge.net/</A>
+    <LI>memP:
+        <A HREF=http://memp.sourceforge.net/
+        TARGET=_blank>http://memp.sourceforge.net/</A>
+    </UL>
+<P>
+<IMG SRC=images/perfAnalysis.jpg WIDTH=981 HEIGHT=627 BORDER=0>
+</UL>
+
+<!---------------------------- Removed 5/7/14 -------------------------------------
+    <LI>A dated, but potentially useful LC whitepaper on the subject of "High Performance Tools and Technologies" describes a large number of tools, and a number of performance related topics applicable to code developers. Find it at:
+<A HREF=../performance_tools/HighPerformanceToolsTechnologiesLC.pdf TARGET=toolspaper>computing.llnl.gov/tutorials/performance_tools/HighPerformanceToolsTechnologiesLC.pdf</A>.
+    <LI><A HREF=../performance_tools TARGET=W2>Performance 
+    Analysis Tools Tutorial</A>
+------------------------------ Removed 5/7/14 ------------------------------------->
+
+
+<!--========================================================================-->
+
+<A NAME=Examples> <BR><BR> </A><A NAME=ExamplesArray> </A>
+<TABLE BORDER=1 CELLPADDING=5 CELLSPACING=0 WIDTH=100%>
+<TR><TD BGCOLOR=#98ABCE>
+<SPAN class=heading1>Parallel Examples</SPAN></TD>
+</TD></TR></TABLE>
+<H2>Array Processing</H2>
+
+<TABLE BORDER=0 CELLPADDING=0 CELLSPACING=0>
+<TR VALIGN=top>
+<TD>
+<UL>
+<P>
+<LI>This example demonstrates calculations on 2-dimensional array 
+    elements, with the computation on each array element being
+    independent from other array elements.
+<P>
+<LI>The serial program calculates one element at a time in sequential
+    order.
+<P>
+<LI>Serial code could be of the form:
+<P>
+<TABLE BORDER=1 CELLPADDING=5 CELLSPACING=0>
+<TR><TD><PRE><B>
+do j = 1,n
+do i = 1,n
+  a(i,j) = fcn(i,j)
+end do
+end do
+
+</B></PRE>
+</TD></TR></TABLE>
+<P>
+<LI>The calculation of elements is independent of one another -
+    leads to an embarrassingly parallel</A> situation.
+<P>
+<LI>The problem should be computationally intensive.
+</UL>
+</TD>
+<TD>
+<IMG SRC=images/array_proc1.gif WIDTH=297 HEIGHT=369 BORDER=0 HSPACE=20
+ALT='Embarrassingly parallel array calculation'>
+</TD>
+</TR></TABLE>
+
+
+<P><HR><P>
+<H2>Array Processing <BR>Parallel Solution 1</H2>
+
+<TABLE BORDER=0 CELLPADDING=0 CELLSPACING=0>
+<TR VALIGN=top>
+<TD>
+<UL>
+<P>
+<LI>Arrays elements are distributed so that each processor owns a 
+    portion of an array (subarray).
+<P>
+<LI>Independent calculation of array elements ensures there is no
+    need for communication between tasks.
+<P>
+<LI>Distribution scheme is chosen by other criteria, e.g. unit stride 
+    (stride of 1) through the subarrays.  Unit stride maximizes
+    cache/memory usage.
+<P>
+<LI>Since it is desirable to have unit stride through the subarrays, the
+    choice of a distribution scheme depends on the programming language.
+    See the <A HREF=#distributions>Block - Cyclic Distributions Diagram</A>
+    for the options.
+<P>
+<LI>After the array is distributed, each task 
+    executes the portion of the loop corresponding to the data it owns.
+    For example, with Fortran block distribution:
+<P>
+<TABLE BORDER=1 CELLPADDING=5 CELLSPACING=0>
+<TR><TD><PRE><B>
+do j = mystart, myend
+do i = 1,n
+  a(i,j) = fcn(i,j)
+end do
+end do
+
+</B></PRE>
+</TD></TR></TABLE>
+<P>
+<LI>Notice that only the outer loop variables are different from the serial 
+    solution.
+</UL>
+</TD>
+<TD>
+<IMG SRC=images/array_proc2.gif WIDTH=297 HEIGHT=247 BORDER=0 HSPACE=20
+ALT='Embarrassingly parallel array calculation data decomposition'>
+</TD>
+</TR></TABLE>
+<P>
+
+<IMG SRC=../images/arrowBullet.gif ALIGN=top HSPACE=3>
+<SPAN CLASS=heading3>One Possible Solution:</SPAN>
+<UL>
+<P>
+<LI>Implement as a Single Program Multiple Data (SPMD) model.
+<P>
+<LI>Master process initializes array, sends info to worker
+    processes and receives results.
+<P>
+<LI>Worker process receives info, performs its share of
+    computation and sends results to master.
+<P>
+<LI>Using the Fortran storage scheme, perform block 
+    distribution of the array.
+<P>
+<LI>Pseudo code solution:
+    <B><FONT COLOR=red>red</FONT></B> highlights changes for 
+    parallelism.
+<P>
+<TABLE BORDER=1 CELLPADDING=5 CELLSPACING=0>
+<TR><TD><PRE><B><FONT COLOR=red>
+find out if I am MASTER or WORKER
+   
+if I am MASTER
+   
+  initialize the array
+  send each WORKER info on part of array it owns
+  send each WORKER its portion of initial array
+   
+  receive from each WORKER results 
+   
+else if I am WORKER
+  receive from MASTER info on part of array I own
+  receive from MASTER my portion of initial array
+</FONT COLOR>
+  # calculate my portion of array
+  do j = <FONT COLOR=red>my first column,my last column </FONT COLOR>
+  do i = 1,n
+    a(i,j) = fcn(i,j)
+  end do
+  end do
+<FONT COLOR=red>
+  send MASTER results 
+
+endif
+</FONT></B></PRE>
+</TD></TR></TABLE>
+<P>
+<LI>Example MPI Program in C: &nbsp;
+<A HREF=../mpi/samples/C/mpi_array.c TARGET=arrayc>mpi_array.c</A>
+<P>
+<LI>Example MPI Program in Fortran: &nbsp;
+<A HREF=../mpi/samples/Fortran/mpi_array.f TARGET=arrayf>mpi_array.f</A>
+
+</UL>
+
+<P><HR><P>
+<H2>Array Processing <BR>Parallel Solution 2: Pool of Tasks</H2>
+
+<UL>
+<P>
+<LI>The previous array solution demonstrated static load balancing: 
+    <UL>
+    <LI>Each task has a fixed amount of work to do 
+    <LI>May be significant idle time for faster or more lightly loaded 
+        processors - slowest tasks determines overall performance.
+    </UL>
+<P>
+<LI>Static load balancing is not usually a major concern if all tasks
+    are performing the same amount of work on identical machines. 
+<P>
+<LI>If you have a load balance problem (some tasks work faster than
+    others), you may benefit by using a "pool of tasks"
+    scheme.
+</UL>
+<P>
+
+<IMG SRC=../images/arrowBullet.gif ALIGN=top HSPACE=3>
+<SPAN CLASS=heading3>Pool of Tasks Scheme:</SPAN>
+<P>
+<UL>
+<P>
+<LI>Two processes are employed
+<P>
+Master Process: 
+    <UL TYPE=circle>
+    <LI>Holds pool of tasks for worker processes to do
+    <LI>Sends worker a task when requested
+    <LI>Collects results from workers
+    </UL>
+<P>
+Worker Process: repeatedly does the following
+    <UL TYPE=circle>
+    <LI>Gets task from master process
+    <LI>Performs computation 
+    <LI>Sends results to master
+    </UL>
+<P>
+<LI>Worker processes do not know before runtime which portion of array
+    they will handle or how many tasks they will perform.
+<P>
+<LI>Dynamic load balancing occurs at run time: the faster tasks will 
+    get more work to do.     
+<P>
+<LI>Pseudo code solution:
+    <FONT COLOR=red><B>red</B></FONT COLOR> highlights changes for 
+    parallelism.
+<P>
+<TABLE BORDER=1 CELLPADDING=5 CELLSPACING=0>
+<TR><TD><PRE><B><FONT COLOR=red>
+find out if I am MASTER or WORKER
+
+if I am MASTER
+
+  do until no more jobs
+    if request send to WORKER next job
+    else receive results from WORKER
+  end do
+
+else if I am WORKER
+
+  do until no more jobs
+    request job from MASTER
+    receive from MASTER next job
+</FONT>
+    calculate array element: a(i,j) = fcn(i,j)
+<FONT COLOR=red>
+    send results to MASTER
+  end do
+
+endif
+</FONT>
+</B></PRE>
+</TD></TR></TABLE>
+</UL>
+<P>
+
+<IMG SRC=../images/arrowBullet.gif ALIGN=top HSPACE=3>
+<SPAN CLASS=heading3>Discussion:</SPAN>
+<UL>
+<P>
+<LI>In the above pool of tasks example, each task calculated an individual
+    array element as a job.  The computation to communication ratio is 
+    finely granular.
+<P>
+<LI>Finely granular solutions incur more communication overhead in order
+    to reduce task idle time.
+<P>
+<LI>A more optimal solution might be to distribute more work with each job.
+    The "right" amount of work is problem dependent.
+</UL>
+
+
+<!--========================================================================-->
+
+<A NAME=ExamplesPI> <BR><BR> </A>
+<TABLE BORDER=1 CELLPADDING=5 CELLSPACING=0 WIDTH=100%>
+<TR><TD BGCOLOR=#98ABCE>
+<SPAN class=heading1>Parallel Examples</SPAN></TD>
+</TD></TR></TABLE>
+<H2>PI Calculation</H2> 
+
+<TABLE BORDER=0 CELLSPACING=0 CELLPADDING=0>
+<TR VALIGN=top>
+<TD>
+<UL>
+<P>
+<LI>The value of PI can be calculated in a number of ways. Consider the 
+    following method of approximating PI</A>
+    <OL>
+    <LI>Inscribe a circle in a square
+    <LI>Randomly generate points in the square
+    <LI>Determine the number of points in the square that are also in the circle
+    <LI>Let r be the number of points in the circle divided by the number of
+        points in the square
+    <LI>PI ~ 4 r
+    <LI>Note that the more points generated, the better the approximation
+    </OL>
+
+<P>
+<LI>Serial pseudo code for this procedure:
+<P>
+<TABLE BORDER=1 CELLPADDING=5 CELLSPACING=0>
+<TR><TD><PRE><B>
+npoints = 10000
+circle_count = 0
+
+do j = 1,npoints
+  generate 2 random numbers between 0 and 1
+  xcoordinate = random1
+  ycoordinate = random2
+  if (xcoordinate, ycoordinate) inside circle
+  then circle_count = circle_count + 1
+end do
+
+PI = 4.0*circle_count/npoints
+
+</B></PRE>
+</TD></TR></TABLE>
+
+
+<P>
+<LI>Note that most of the time in running this program would be
+     spent executing the loop
+<P>
+<LI>Leads to an embarrassingly parallel solution
+     <UL>
+     <LI>Computationally intensive
+     <LI>Minimal communication
+     <LI>Minimal I/O
+     </UL>
+</UL>
+</TD>
+<TD>
+<IMG SRC=images/pi1.gif WIDTH=400 HEIGHT=517 BORDER=0 HSPACE=20
+ALT='One method of determining PI'>
+</TD></TR></TABLE>
+
+
+<P><HR><P>
+<H2>PI Calculation<BR>Parallel Solution</H2>
+
+<TABLE BORDER=0 CELLSPACING=0 CELLPADDING=0>
+<TR VALIGN=top>
+<TD>
+<UL>
+<P>
+<LI>Parallel strategy: break the loop into portions that can be
+    executed by the tasks.
+<P>
+<LI>For the task of approximating PI: 
+    <UL>
+    <LI>Each task executes its portion of the loop a number of times.
+    <LI>Each task can do its work without requiring any information
+        from the other tasks (there are no data dependencies). 
+    <LI>Uses the SPMD model.  One task acts as master and collects
+        the results.
+    </UL>
+<P>
+<LI>Pseudo code solution:
+    <FONT COLOR=red><B>red</B></FONT COLOR> highlights changes for 
+    parallelism.
+<P>
+<TABLE BORDER=1 CELLPADDING=5 CELLSPACING=0>
+<TR><TD><PRE><B>
+npoints = 10000
+circle_count = 0
+<FONT COLOR=red>
+p = number of tasks
+num = npoints/p
+
+find out if I am MASTER or WORKER </FONT COLOR>
+
+do j = 1,<FONT COLOR=red>num </FONT COLOR>
+  generate 2 random numbers between 0 and 1
+  xcoordinate = random1
+  ycoordinate = random2
+  if (xcoordinate, ycoordinate) inside circle
+  then circle_count = circle_count + 1
+end do
+<FONT COLOR=red>
+if I am MASTER
+
+  receive from WORKERS their circle_counts
+  compute PI (use MASTER and WORKER calculations)
+
+else if I am WORKER
+
+  send to MASTER circle_count
+
+endif
+</FONT>
+</B></PRE>
+</TD></TR></TABLE>
+</UL>
+</TD>
+<TD>
+<IMG SRC=images/pi2.gif WIDTH=400 HEIGHT=475 BORDER=0 HSPACE=20
+ALT='One method of determining PI'>
+</TD></TR></TABLE>
+<UL>
+<P>
+<LI>Example MPI Program in C: &nbsp;
+<A HREF=../mpi/samples/C/mpi_pi_reduce.c TARGET=pic>mpi_pi_reduce.c</A>
+<P>
+<LI>Example MPI Program in Fortran: &nbsp;
+<A HREF=../mpi/samples/Fortran/mpi_pi_reduce.f TARGET=pif>mpi_pi_reduce.f</A>
+</UL>
+
+<!--========================================================================-->
+
+<A NAME=ExamplesHeat> <BR><BR> </A>
+<TABLE BORDER=1 CELLPADDING=5 CELLSPACING=0 WIDTH=100%>
+<TR><TD BGCOLOR=#98ABCE>
+<SPAN class=heading1>Parallel Examples</SPAN></TD>
+</TD></TR></TABLE>
+<H2>Simple Heat Equation</H2>
+
+<TABLE BORDER=0 CELLSPACING=0 CELLPADDING=0>
+<TR VALIGN=top>
+<TD><UL>
+<P>
+<LI>Most problems in parallel computing require communication among
+    the tasks.
+    A number of common problems require communication with "neighbor" 
+    tasks.
+<P>
+<LI>The heat equation describes the temperature change over time,
+    given initial temperature distribution and boundary conditions.
+<P>
+<LI>A finite differencing scheme is employed to solve the 
+    heat equation numerically on a square region.
+<P>
+<LI>The initial temperature is zero on the boundaries and high in the middle.
+<P>
+<LI>The boundary temperature is held at zero.
+<P>
+<LI>For the fully explicit problem, a time stepping algorithm is used.
+     The elements of a 2-dimensional array represent the temperature at
+     points on the square.
+<P>
+<LI>The calculation of an element is dependent upon neighbor element 
+    values.
+<P>
+<IMG SRC=images/heat_equation2.gif WIDTH=276 HEIGHT=114 BORDER=0 
+ALT='Heat equation'>
+<P>
+<LI>A serial program would contain code like:
+<P>
+<TABLE BORDER=1 CELLPADDING=5 CELLSPACING=0>
+<TR><TD><PRE><B>
+do iy = 2, ny - 1
+do ix = 2, nx - 1
+  u2(ix, iy) =
+    u1(ix, iy)  +
+      cx * (u1(ix+1,iy) + u1(ix-1,iy) - 2.*u1(ix,iy)) +
+      cy * (u1(ix,iy+1) + u1(ix,iy-1) - 2.*u1(ix,iy))
+end do
+end do
+</B></PRE>
+</UL></TD></TR></TABLE>
+
+<TD><IMG SRC=images/heat_initial.gif WIDTH=300 HEIGHT=301 BORDER=0
+HSPACE=20 ALT='Initial heat conditions'>
+
+<IMG SRC=images/heat_equation.gif WIDTH=261 HEIGHT=258 BORDER=0
+HSPACE=20 VSPACE=20 ALT='Heat equation'>
+</TD></TR></TABLE>
+
+<P><HR><P>
+<H2>Simple Heat Equation<BR>Parallel Solution</H2>
+<P>
+
+<IMG SRC=images/heat_partitioned.gif WIDTH=300 HEIGHT=301 BORDER=0 ALIGN=right
+HSPACE=20 ALT='Heat equation - partitioned data'>
+<UL>
+<P>
+<LI>Implement as an SPMD model
+<P>
+<LI>The entire array is partitioned and distributed as subarrays to all
+    tasks. Each task owns a portion of the total array.
+<P>
+<LI>Determine data dependencies
+    <UL>
+    <LI><A HREF="images/heat_interior.gif"  TARGET=W6>interior 
+        elements</A> belonging to a task are independent of other tasks
+    <LI><A HREF="images/heat_edge.gif" TARGET=W7>border
+         elements</A> are dependent upon
+         a neighbor task's data, necessitating communication.
+    </UL>
+<P>
+<LI>Master process sends initial info to workers, and then waits
+    to collect results from all workers
+<P>
+<LI>Worker process calculates solution within specified number of time steps,
+    communicating as necessary with neighbor processes
+<P>
+<LI>Pseudo code solution:
+    <FONT COLOR=red><B>red</B></FONT COLOR> highlights changes for parallelism.
+<P>
+<TABLE BORDER=1 CELLPADDING=5 CELLSPACING=0>
+<TR><TD><PRE><B><FONT COLOR=red>
+find out if I am MASTER or WORKER
+
+if I am MASTER
+  initialize array
+  send each WORKER starting info and subarray
+  receive results from each WORKER
+
+else if I am WORKER
+  receive from MASTER starting info and subarray
+
+  do t = 1, nsteps
+    update time
+    send neighbors my border info
+    receive from neighbors their border info
+ </FONT>
+    update my portion of solution array
+     <FONT COLOR=red>
+  end do
+ 
+  send MASTER results
+      
+endif
+</FONT>
+</B></PRE>
+</TD></TR></TABLE>
+<P>
+<LI>Example MPI Program in C: &nbsp;
+<A HREF=../mpi/samples/C/mpi_heat2D.c TARGET=heatc>mpi_heat2D.c</A>
+<P>
+<LI>Example MPI Program in Fortran: &nbsp;
+<A HREF=../mpi/samples/Fortran/mpi_heat2D.f TARGET=heatf>mpi_heat2D.f</A>
+</UL>
+
+
+
+<!-----------------------------------------------------------------------
+<P><HR><P> 
+<H2>Simple Heat Equation<BR>
+Parallel Solution 2: Overlapping Communication and Computation</H2>
+
+<UL>
+<P>
+<LI>In the previous solution, it was assumed that blocking communications
+    were used by the worker tasks.  Blocking communications wait for the 
+    communication process to complete before continuing to the next 
+    program instruction.
+<P>
+<LI>In the previous solution, neighbor tasks communicated border
+    data, then each process updated its portion of the array.
+<P>
+<LI>Computing times can often be reduced by using non-blocking
+    communication.  Non-blocking communications allow work to be performed 
+    while communication is in progress.
+<P>
+<LI>Each task could update the interior of its part of the solution
+    array while the communication of border data is occurring, and
+    update its border after communication has completed.
+<P>
+<LI>Pseudo code for the second solution:
+    <FONT COLOR=red><B>red</B></FONT COLOR> highlights changes for 
+    non-blocking communications.
+<P>
+<TABLE BORDER=1 CELLPADDING=5 CELLSPACING=0>
+<TR><TD><PRE><B>
+find out if I am MASTER or WORKER
+ 
+if I am MASTER
+  initialize array
+  send each WORKER starting info and subarray
+    
+  do until all WORKERS converge
+    gather from all WORKERS convergence data
+    broadcast to all WORKERS convergence signal
+  end do
+ 
+  receive results from each WORKER
+ 
+else if I am WORKER
+  receive from MASTER starting info and subarray
+ 
+  do until solution converged
+    update time
+    <FONT COLOR=red>
+    non-blocking send neighbors my border info
+    non-blocking receive neighbors border info
+
+    update interior of my portion of solution array
+    wait for non-blocking communication complete
+    update border of my portion of solution array
+    </FONT>
+    determine if my solution has converged
+      send MASTER convergence data
+      receive from MASTER convergence signal
+  end do
+  
+  send MASTER results
+       
+endif
+
+</B></PRE>
+</TD></TR></TABLE>
+</UL>
+------------------------------------------------------------------------>
+
+<!--========================================================================-->
+
+<A NAME=ExamplesWave> <BR><BR> </A>
+<TABLE BORDER=1 CELLPADDING=5 CELLSPACING=0 WIDTH=100%>
+<TR><TD BGCOLOR=#98ABCE>
+<SPAN class=heading1>Parallel Examples</SPAN></TD>
+</TD></TR></TABLE>
+<H2>1-D Wave Equation</H2>
+
+<UL>
+<P>
+<LI>In this example, the amplitude along a uniform, vibrating string is 
+    calculated after a specified amount of time has elapsed.
+<P>
+<LI>The calculation involves:
+    <UL>
+    <LI>the amplitude on the y axis
+    <LI>i as the position index along the x axis
+    <LI>node points imposed along the string
+    <LI>update of the amplitude at discrete time steps. 
+    </UL>
+</UL>
+<P>
+<IMG SRC=images/wave1.gif WIDTH=621 HEIGHT=226 BORDER=0 ALT='Wave equation'>
+<UL>
+<P>
+<LI>The equation to be solved is the one-dimensional wave equation: 
+<PRE><NOBR><B>
+    A(i,t+1) = (2.0 * A(i,t)) - A(i,t-1) 
+        + (c * (A(i-1,t) - (2.0 * A(i,t)) + A(i+1,t))) 
+    </B></NOBR></PRE>
+where c is a constant
+<P>
+<LI>Note that amplitude will depend on previous timesteps (t, t-1) and  
+    neighboring points (i-1, i+1).  Data dependence will mean that a
+    parallel solution will involve communications.
+</UL>
+
+<P><HR><P> 
+<H2>1-D Wave Equation<BR>Parallel Solution</H2>
+
+<UL>
+<P>
+<LI>Implement as an SPMD model 
+<P>
+<LI>The entire amplitude array is partitioned and distributed as
+    subarrays to all tasks. Each task owns a portion of
+    the total array.
+<P>
+<LI>Load balancing: all points require equal work, so the points should 
+    be divided equally 
+<P>
+<LI>A block decomposition would have the work partitioned into the number 
+    of tasks as chunks, allowing each task to own mostly contiguous data points.
+<P>
+<LI>Communication need only occur on data borders.  The larger the block size
+    the less the communication. 
+</UL>
+<P>
+<IMG SRC=images/wave2.gif WIDTH=600 HEIGHT=245 BORDER=0 
+ALT='Wave equation partition'>
+<UL>
+<P>
+<LI>Pseudo code solution:
+<P>
+<TABLE BORDER=1 CELLPADDING=5 CELLSPACING=0>
+<TR><TD><PRE><B>
+find out number of tasks and task identities
+
+#Identify left and right neighbors
+left_neighbor = mytaskid - 1
+right_neighbor = mytaskid +1
+if mytaskid = first then left_neigbor = last
+if mytaskid = last then right_neighbor = first
+
+find out if I am MASTER or WORKER
+if I am MASTER
+  initialize array
+  send each WORKER starting info and subarray
+else if I am WORKER`
+  receive starting info and subarray from MASTER
+endif
+
+#Update values for each point along string
+#In this example the master participates in calculations
+do t = 1, nsteps
+  send left endpoint to left neighbor
+  receive left endpoint from right neighbor
+  send right endpoint to right neighbor
+  receive right endpoint from left neighbor
+
+#Update points along line
+  do i = 1, npoints
+    newval(i) = (2.0 * values(i)) - oldval(i) 
+    + (sqtau * (values(i-1) - (2.0 * values(i)) + values(i+1))) 
+  end do
+
+end do
+
+#Collect results and write to file
+if I am MASTER
+  receive results from each WORKER
+  write results to file
+else if I am WORKER
+  send results to MASTER
+endif
+
+</TD></TR></TABLE>
+<P>
+<LI>Example MPI Program in C: &nbsp;
+<A HREF=../mpi/samples/C/mpi_wave.c TARGET=wavec>mpi_wave.c</A>
+<P>
+<LI>Example MPI Program in Fortran: &nbsp;
+<A HREF=../mpi/samples/Fortran/mpi_wave.f TARGET=wavef>mpi_wave.f</A>
+</UL>
+<BR><BR>
+
+<P><HR><P>
+
+<B>This completes the tutorial.</B>
+<P>
+<TABLE BORDER=0 CELLPADDING=0 CELLSPACING=0>
+<TR VALIGN=top>
+<TD><A HREF=../evaluation/index.html TARGET=evalForm>
+    <IMG SRC=../images/evaluationForm.gif 
+    BORDER=0 ALT='Evaluation Form'></A> &nbsp; &nbsp; &nbsp;</TD>
+<TD>Please complete the online evaluation form. </TD>
+</TR>
+</TABLE>
+<P>
+<B>Where would you like to go now?</B>
+<UL>
+<LI><A HREF=../agenda/index.html>Agenda</A>
+<LI><A HREF=#top>Back to the top</A>
+</UL>
+
+<!--========================================================================-->
+
+<A NAME=References> <BR><BR> </A>
+<TABLE BORDER=1 CELLPADDING=5 CELLSPACING=0 WIDTH=100%>
+<TR><TD BGCOLOR=#98ABCE>
+<SPAN class=heading1>References and More Information</SPAN></TD>
+</TD></TR></TABLE>
+
+<UL>
+<LI>Author: <A HREF=mailto:blaiseb@llnl.gov>Blaise Barney</A>, Livermore
+    Computing.
+<P>
+<LI>A search on the WWW for "parallel programming" or "parallel computing"
+    will yield a wide variety of information.
+<P>
+<LI>Recommended reading:
+    <UL>
+    <LI>"Designing and Building Parallel Programs".  Ian Foster.
+    <BR><A HREF=http://www-unix.mcs.anl.gov/dbpp/>
+        http://www-unix.mcs.anl.gov/dbpp/</A>
+    <LI>"Introduction to Parallel Computing". Ananth Grama, Anshul Gupta,
+        George Karypis, Vipin Kumar.
+    <BR><A HREF=http://www-users.cs.umn.edu/~karypis/parbook/>
+        http://www-users.cs.umn.edu/~karypis/parbook/</A>
+    <LI>"Overview of Recent Supercomputers". A.J. van der Steen, Jack Dongarra.
+    <BR><A HREF=OverviewRecentSupercomputers.2008.pdf>
+        OverviewRecentSupercomputers.2008.pdf</A>
+    </UL>
+<P>
+<LI>Photos/Graphics have been
+    created by the author, created by other LLNL employees, 
+    obtained from non-copyrighted, government or public domain (such as
+    http://commons.wikimedia.org/) sources,
+    or used with the permission of authors from other presentations and
+    web pages.
+<P>
+<LI>History: These materials have evolved from the following
+    sources, which are no longer maintained or available.
+    <UL>
+    <LI>Tutorials located in the Maui High Performance Computing Center's  
+        "SP Parallel Programming Workshop".
+    <LI>Tutorials located at the Cornell Theory Center's "Education and 
+        Training" web page.
+    </UL>
+</UL>
+
+<!-------------------------------------------------------------------------->
+
+<SCRIPT LANGUAGE="JavaScript">PrintFooter("UCRL-MI-133316")</SCRIPT>
+
+<BR><BR><BR><BR><BR><BR><BR><BR><BR><BR><BR><BR><BR><BR><BR><BR>
+<BR><BR><BR><BR><BR><BR><BR><BR><BR><BR><BR><BR><BR><BR><BR><BR>
+<BR><BR><BR><BR><BR><BR><BR><BR><BR><BR><BR><BR><BR><BR><BR><BR>
+<BR><BR><BR><BR><BR><BR><BR><BR><BR><BR><BR><BR><BR><BR><BR><BR>
+
+</BODY>
+</HTML>
+

@@ -1,0 +1,62 @@
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+
+<!-- Mirrored from course.cse.ust.hk/comp4021/hkust/lectures/svg_animation_examples_new/flash/Anim08_motion2.html by HTTrack Website Copier/3.x [XR&CO'2014], Wed, 03 Jun 2015 10:27:26 GMT -->
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=big5" />
+<title>Anim08_motion2</title>
+</head>
+<body bgcolor="#ffffff">
+<h3>Flash Example - Rotate Using ActionScript</h3><br>
+<!--url's used in the movie-->
+<!--text used in the movie-->
+<!-- saved from url=(0013)about:internet -->
+<object classid="clsid:d27cdb6e-ae6d-11cf-96b8-444553540000" codebase="http://fpdownload.macromedia.com/pub/shockwave/cabs/flash/swflash.cab#version=7,0,0,0" width="550" height="100" id="Anim08_motion2" align="middle">
+<param name="allowScriptAccess" value="sameDomain" />
+<param name="movie" value="Anim08_motion2.swf" /><param name="quality" value="high" /><param name="bgcolor" value="#ffffff" /><embed src="Anim08_motion2.swf" quality="high" bgcolor="#ffffff" width="550" height="100" name="Anim08_motion2" align="middle" allowScriptAccess="sameDomain" type="application/x-shockwave-flash" pluginspage="http://www.macromedia.com/go/getflashplayer" />
+</object>
+<table border="1">
+<tr>
+	<th align="left">
+	Timeline<br>
+	<img src="png/Anim08_motion2.png" \>
+	</th>
+</tr>
+<tr>
+	<th align="left">ActionScript in frame 1</th>
+</tr>
+<tr>
+	<td>ball_object._x = ball_object._x + 10 ;<br>
+	ball_object._rotation = ball_object._rotation + 22.93 ;</td>
+</tr>
+<tr>
+	<th align="left">ActionScript in frame 2</th>
+</tr>
+<tr>
+	<td>if (ball_object._x < 470 ){<br>
+		&nbsp;&nbsp;&nbsp;gotoAndPlay(1);<br>
+	} else {<br>
+		&nbsp;&nbsp;&nbsp;stop();<br>
+	}</td>
+</tr>
+</table>
+
+<h3>Notes</h3>
+<ul>
+<li>The <i>ball_object</i> is the instance name of the movie clip in this particular
+Flash example.</li>
+<!--<li>The <i>_x</i> parameter of an object sets the x position of that object</li>-->
+<li>The <i>_x</i> property sets the x coordinate of the object</li>
+<!--<li>The <i>_rotation</i> parameter of an object sets the rotation angle of the
+object, in clockwise direction, using degrees.</li>-->
+<li>The <i>_rotation</i> property specifies the rotation of the object in degrees from its original orientation 
+<ul>
+	<li>Values from 0 to 180 represents clockwise rotation</li>
+	<li>Values from 0 to -180 represents counterclockwise rotation</li>
+</ul>
+</li>
+</ul>
+
+</body>
+
+<!-- Mirrored from course.cse.ust.hk/comp4021/hkust/lectures/svg_animation_examples_new/flash/Anim08_motion2.html by HTTrack Website Copier/3.x [XR&CO'2014], Wed, 03 Jun 2015 10:27:26 GMT -->
+</html>

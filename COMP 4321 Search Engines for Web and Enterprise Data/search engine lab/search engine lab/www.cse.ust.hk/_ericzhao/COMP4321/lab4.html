@@ -1,0 +1,784 @@
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+
+
+<!-- Mirrored from www.cse.ust.hk/~ericzhao/COMP4321/lab4.html by HTTrack Website Copier/3.x [XR&CO'2014], Mon, 29 Dec 2014 05:52:52 GMT -->
+<head>
+
+<title>
+
+COMP4321 Labs : Search Engines for Web and Enterprise Data</title>
+
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+
+
+
+<link rel="stylesheet" href="css/admin_1.1.css" type="text/css" />
+
+<link rel="stylesheet" href="css/admin_1.1-bg.css" type="text/css" />
+
+<link rel="stylesheet" href="css/eric_css.css" type="text/css" />
+
+<!-- TODO: based on the $cf['site']['theme'] to select a static theme.... -->
+
+<link type="text/css" href="lib/jqueryui/theme/ui.all.css" rel="Stylesheet" /> 
+
+<script type="text/javascript" src="lib/jquery/jquery-1.3.1.min.js"></script>	
+
+
+
+<script type="text/javascript" src="lib/jqueryui/jquery-ui-personalized-1.6rc6.min.js"></script>
+
+<!--
+
+<script type="text/javascript" src="lib/jquery.jeditable.mini.js"></script>	
+
+-->
+
+<script>		
+
+		$(function(){	
+
+		// main entry point
+
+		
+
+		$('#theme-switcher').themeswitcher( {		
+
+				loadTheme: "Smoothness",				
+
+				cookieName: '' /* not used cookie here... */
+
+			}
+
+		 );
+
+
+
+		// Test: Do the simple layout of the content....
+
+		// Initially, reLayout the screen 		
+
+		// Each time the window is resized, reLayout the screen			
+
+		function redoLayout() {		
+
+			// assume 10 px margin between 
+
+			//  [ ------------------------------ Wrap ------------------------------------]
+
+			//  [ -- sidebar --] [-- 10px --] [----------------- main ------------------]
+
+			var bodyWidth = $("body:first").width(); // first body's width...			
+
+			var sidebarWidth = $("#sidebar").width(); // sidebar's width...
+
+			var mainWidthThreshold = 250;
+
+						
+
+			var mainWidth = bodyWidth - sidebarWidth - 10; ; 			
+
+			if ( mainWidth > mainWidthThreshold ) {			
+
+				$("#wrap").width(bodyWidth);
+
+				$("#main").width(mainWidth);
+
+			}
+
+		}		
+
+		redoLayout();
+
+		$(window).resize( function() {
+
+			redoLayout();
+
+		});
+
+		
+
+		
+
+			
+
+	});
+
+</script>
+
+
+
+
+
+<!-- For Query table style... -->
+
+<style>
+
+
+
+table td { 
+
+	border: 1px solid;
+
+	padding: 2px;
+
+	
+
+}
+
+	
+
+</style>
+
+</head>
+
+
+
+<body>
+
+
+
+<!-- Load the jquery theme switcher tool.... -->
+
+<script type="text/javascript" src="../../../jqueryui.com/themeroller/themeswitchertool/index.html"></script>
+
+	
+
+	<div id="wrap">
+
+
+
+		<!-- header -->
+
+
+
+		<div id="header">
+
+			<span id="slogan" class="jeditable_line"> Fall 2014 </span>
+
+			<!-- tabs -->		
+
+			<!--
+
+			<ul>
+
+				<li><a href="#"><span>Site-Tab1</span></a></li>
+
+				<li><a href="#"><span>Site-Tab2</span></a></li>				
+
+			</ul>
+
+			-->
+
+		</div>
+
+
+
+
+
+		<div id="header-logo">
+
+			<div id="logo" class="jeditable_line"><a href="../../_dlee/4321/index.html">COMP4321</a> <span class=red>Labs</span></div>			
+
+			<div id="header-educ" class="jeditable_line_fixed_height">Search Engines for Web and Enterprise Data</div>
+
+		</div>
+
+
+
+		
+
+		<!-- For the display, currently just hack, using theme-switcher to achieve the effect
+
+		TODO: port to a static theme mapping later on....
+
+		-->
+
+		<div id="theme-switcher" style="display:none;"></div>
+
+		
+
+		
+
+		<!-- Style is now integrated with JQueryUI css framework -->
+
+		<!-- side bar -->
+
+		<div class="ui-widget ui-corner-all ui-helper-reset" id="sidebar" >			
+
+						
+
+			
+
+			<h1 class="ui-widget-header ui-helper-reset">Main Menu</h1>					
+
+			<!--<ul class="ui-widget-content ui-helper-reset" id="contentManagamentMenu">-->
+            <ul class="navbar">
+								
+
+												
+
+								<li class="ui-state-default ui-corner-all" >
+
+									<span class="ui-icon ui-icon-star"  ></span>												
+
+									<a href="index-2.html"  id="modify_title_html_1251527068" >Information</a>								
+
+									<br />								
+
+									
+
+									
+
+									
+
+								</li>	
+
+								
+
+																
+
+								<li class="ui-state-default ui-corner-all" >
+
+									<span class="ui-icon ui-icon-star"  ></span>												
+
+									<a href="lab1.html"  id="modify_title_html_1251529887" >Lab1</a>								
+
+									<br />								
+
+									
+
+									
+
+									
+
+								</li>	
+ 
+								
+
+																
+
+								<li class="ui-state-default ui-corner-all" >
+
+									<span class="ui-icon ui-icon-star"  ></span>												
+
+									<a href="lab2.html"  id="modify_title_html_1251530023" >Lab2</a>								
+
+									<br />								
+
+									
+
+									
+
+									
+
+								</li>	
+
+								
+
+																
+
+								<li class="ui-state-default ui-corner-all" >
+
+									<span class="ui-icon ui-icon-star"  ></span>												
+
+									<a href="lab3.html"  id="modify_title_html_1251530035" >Lab3</a>								
+
+									<br />								
+
+									
+
+									
+
+									
+
+								</li>	
+
+								
+
+																
+
+								<li class="ui-state-default ui-corner-all" >
+
+									<span class="ui-icon ui-icon-star"  ></span>												
+
+									<a href="lab4.html"  id="modify_title_html_1251529936" >Lab4</a>								
+
+									<br />								
+
+									
+
+									
+
+									
+
+								</li>	
+
+								
+
+																
+
+								<li class="ui-state-default ui-corner-all" >
+
+									<span class="ui-icon ui-icon-star"  ></span>												
+
+									<a href="project.html"  id="modify_title_html_1251529946" >Term Project</a>								
+
+									<br />								
+
+									
+
+									
+
+									
+
+								</li>	
+<li class="ui-state-default ui-corner-all" >
+<span class="ui-icon ui-icon-star"  ></span>
+<a href="http://www.cse.ust.hk/~ericzhao/COMP4321/Password_Only/homework_exam/schedule.html"  id="modify_title_html_1251529946" >HW and Exam</font></a>
+<br />
+</li>
+<li class="ui-state-default ui-corner-all" >
+<span class="ui-icon ui-icon-star"  ></span>
+<a href="news_page.html"  id="modify_title_html_1251529946" ><font color="red">News</font></a>
+<br />
+</li>
+								
+
+								
+
+
+
+			</ul>	
+
+			
+
+		</div> <!-- END sidebar -->
+
+		
+
+		
+
+
+
+		
+
+		<div id="main" >
+
+		
+
+		
+
+			
+
+										
+
+						<!-- Wrapper for the editor -->
+
+						<div class="ui-widget ui-corner-all ui-helper-reset"  >			
+
+							<h1 class="ui-widget-header ui-helper-reset">Lab4</h1>
+
+											
+
+							<h1 style="FONT-FAMILY: ; TEXT-ALIGN: center"><span style="font-family: times new roman,times;"><strong><span style="font-size: x-large;"><span style="font-size: xx-large;"><span style="color: #ff0000;">Lab4</span> - <span style="color: #000000;">JavaServer Pages</span></span></span></strong> 
+
+<hr />
+
+</span></h1>
+
+<ul>
+
+<li>
+
+<h2><span style="font-family: times new roman,times;"><span style="font-size: x-large;"><a href="#Introduction"><strong>Introduction</strong></a></span></span></h2>
+
+</li>
+
+<li>
+
+<h2><span style="font-family: times new roman,times;"><span style="font-size: x-large;"><strong><a style="FONT-FAMILY: " href="#mechanism"><span style="font-family: times new roman,times;">Working mechanism of JSP</span></a></strong></span></span></h2>
+
+</li>
+
+<li>
+
+<h2><span style="font-family: times new roman,times;"><span style="font-size: x-large;"><a style="FONT-FAMILY: " href="#selected_topics"><span style="font-family: times new roman,times;"><strong>Selected</strong> Topics on JSP</span></a></span></span></h2>
+
+</li>
+
+<li>
+
+<h2><span style="font-family: times new roman,times;"><span style="font-size: x-large;"><a style="FONT-FAMILY: " href="#example"><span style="font-family: times new roman,times;">ExamplES</span></a></span></span></h2>
+
+</li>
+
+<li>
+
+<h2><span style="font-family: times new roman,times;"><span style="font-size: x-large;"><a href="#Exercise"><strong style="FONT-FAMILY: "><span style="font-family: times new roman,times;">Exercise</span></strong></a></span></span></h2>
+
+</li>
+
+<li>
+
+<h2><span style="font-family: times new roman,times;"><span style="font-size: x-large;"><a href="#links"><strong style="FONT-FAMILY: "><span style="font-family: times new roman,times;">Useful links</span></strong></a></span></span></h2>
+
+</li>
+
+</ul>
+
+<p><span style="font-family: times new roman,times;"><strong style="FONT-FAMILY: "></strong></span></p>
+
+<p style="FONT-FAMILY: ">&nbsp;</p>
+
+<hr style="TEXT-ALIGN: center" />
+
+<h2>&nbsp;&nbsp;<span style="font-family: times new roman,times;">&nbsp;</span><span style="font-family: times new roman,times;"><span style="font-size: small;"><a style="FONT-FAMILY: " name="Introduction"></a><span style="font-size: x-large;"><span style="font-family: times new roman,times;">Introduction</span></span></span></span></h2>
+
+<p><span style="font-family: times new roman,times;"><span style="font-size: medium;"><span style="font-family: times new roman,times;">A web search engine usually provides a friendly user interface for users to input their queries and for displaying the search results to the user. In this lab, we focus on the JavaServer Pages(JSP) as the server side language to generate some simple pages for the search engine. For a web search engine, you should design the pages&nbsp;containing functions which include retrieving the query from user input, performing stemming and stopword removal on the input query, connecting to the database to retrieve the indexed pages, calculating the scores of the pages for the query and outputting the results to the user. Since JSP puts Java inside HTML pages and as a result we can use our implemented components in previous labs directly into our project, JSP is a good candidate for the server side language of our project. </span></span></span></p>
+
+<hr style="TEXT-ALIGN: center" />
+
+<h2><span style="font-family: times new roman,times;">&nbsp;&nbsp;</span><span style="font-family: times new roman,times;"><span style="font-size: x-large;"><span style="font-size: x-large;"><span style="font-family: times new roman,times;"><span style="font-size: x-large;"><a style="FONT-FAMILY: " name="mechanism"></a><span style="font-family: times new roman,times;">Working mechanism of JSP</span></span></span></span></span><span style="font-size: x-large;"><span style="font-family: times new roman,times;">&nbsp; </span></span></span></h2>
+
+<p style="FONT-FAMILY: "><span style="font-family: times new roman,times;">&nbsp;<span style="font-size: medium;"><img style="vertical-align: middle;" src="http://www.cse.ust.hk/~ericzhao/COMP4321/images/lab4_jsp.jpg" alt="" /></span></span></p>
+
+<hr style="TEXT-ALIGN: center" />
+
+<p>&nbsp;</p>
+
+<h2>&nbsp;<span style="font-family: times new roman,times;"><span style="font-size: x-large;"><span style="font-size: x-large;"><span style="font-family: times new roman,times;"><span style="font-size: x-large;"><a style="FONT-FAMILY: " name="selected_topics"></a><span style="font-family: times new roman,times;">Selected</span><span style="font-family: times new roman,times;"> Topics on JSP</span></span></span></span></span></span></h2>
+
+<p><span style="font-family: times new roman,times;"><span style="font-size: medium;"><strong><span style="text-decoration: underline;"><span style="font-size: large;"><span style="font-family: times new roman,times;">JSP Constructs</span></span></span></strong></span></span></p>
+
+<ul>
+
+<li><span style="font-family: times new roman,times;"><span style="font-size: medium;"><span style="font-family: times new roman,times;">expression<em> <span style="font-size: 13.5pt; color: #333333; font-family: " lang="EN">&lt;%= Java-expression %&gt;</span></em><!--Java-expression--><!--Java-expression--><span><!--Java-expression--><!--Java-expression--><!--Java-expression--></span><!--Java-expression--><!--Java-expression--><!--Java-expression--><!--Java-expression--></span></span></span></li>
+
+</ul>
+
+<p style="padding-left: 30px;"><span style="font-family: times new roman,times;"><span style="font-size: medium;"><span style="font-family: times new roman,times;">The expression is evaluated, converted into a string, and sent to the output stream of the servlet.</span></span></span></p>
+
+<ul>
+
+<li><span style="font-family: times new roman,times;"><span style="font-size: medium;"><span style="font-family: times new roman,times;">scriptlet&nbsp;<em><span style="font-size: 13.5pt; color: #333333; font-family: " lang="EN">&lt;% Java-statement %&gt;</span><span style="font-size: 13.5pt; color: #333333; font-family: " lang="EN"><!--ava-statement--></span><!--ava-statement--><!--ava-statement--><!--ava-statement--><!--ava-statement--></em></span></span></span></li>
+
+</ul>
+
+<p style="padding-left: 30px;"><span style="font-family: times new roman,times;"><span style="font-size: medium;"><span style="font-family: times new roman,times;">A JSP scriptlet enables you to insert a Java statement into the servlet&rsquo;s jspService method, which is invoked by the service method.</span></span></span></p>
+
+<ul>
+
+<li><span style="font-family: times new roman,times;"><span style="font-size: medium;"><span style="font-family: times new roman,times;">declaration <span style="font-size: 13.5pt; color: #333333; font-family: " lang="EN"><em>&lt;%! Java method or field declaration %&gt;</em></span><!--Java method or field declaration--><!--Java method or field declaration--><!--Java method or field declaration--><!--Java method or field declaration--></span></span></span></li>
+
+</ul>
+
+<p style="padding-left: 30px;"><span style="font-family: times new roman,times;"><span style="font-size: medium;"><span style="font-family: times new roman,times;">A JSP declaration is for declaring methods or fields into the servlet. </span></span></span><span style="font-family: times new roman,times;"><span style="font-size: medium;"><span style="font-family: times new roman,times;">It is not a good idea to declare variable here since these are declarations, and will only be evaluated once when the page is loaded.</span></span></span></p>
+
+<p><span style="font-family: times new roman,times;"><span style="font-size: medium;"><strong><span style="text-decoration: underline;"><span style="font-size: large;"><span style="font-family: times new roman,times;">Comments</span></span></span></strong></span></span></p>
+
+<ul>
+
+<li><span style="font-family: times new roman,times;"><span style="font-size: medium;"><span style="font-family: times new roman,times;">HTML comments <em><!-- HTML Comment --> <span style="font-size: 13.5pt; color: #333333; font-family: " lang="EN"><!-- HTML Comment --></span><!-- HTML Comment --><span style="font-size: 13.5pt; color: #333333; font-family: " lang="EN"><!-- HTML Comment --></span></em><!-- HTML Comment --><!-- HTML Comment --><!-- HTML Comment --><!-- HTML Comment --></span></span></span></li>
+
+</ul>
+
+<p style="padding-left: 30px;"><span style="font-family: times new roman,times;"><span style="font-size: medium;"><span style="font-family: times new roman,times;">The comment will&nbsp;appear in the resultant HTML file.</span></span></span></p>
+
+<ul>
+
+<li><span style="font-family: times new roman,times;"><span style="font-size: medium;"><span style="font-family: times new roman,times;">JSP comments <span style="font-size: 13.5pt; color: #333333; font-family: " lang="EN"><em>&lt;%-- JSP Comment --%&gt;</em></span><span style="font-size: 9pt; color: #333333; font-family: Verdana; mso-fareast-font-family: SimSun; mso-fareast-language: ZH-CN; mso-ansi-language: EN; mso-bidi-language: AR-SA; mso-bidi-font-family: 'Times New Roman';" lang="EN"> </span><em><!-- JSP Comment  --><!-- JSP Comment  --><!-- JSP Comment  --><!-- JSP Comment  --></em></span></span></span></li>
+
+</ul>
+
+<p style="padding-left: 30px;"><span style="font-family: times new roman,times;"><span style="font-size: medium;"><span style="font-family: times new roman,times;">The comment will appear in the generated servlet but not the resultant HTML.</span></span></span></p>
+
+<p style="FONT-FAMILY: "><span style="font-family: times new roman,times;">&nbsp;<span style="font-size: medium;"><strong><span style="text-decoration: underline;"><span style="font-size: large;">JSP Predefined variables</span></span></strong></span></span></p>
+
+<ul>
+
+<li style="FONT-FAMILY: "><span style="font-family: times new roman,times;"><span style="font-size: medium;"><em>request</em> - </span><span style="font-size: medium;">represents the client&rsquo;s request, which is an instance of HttpServletRequest. You can use it to access request parameters, HTTP headers such as cookies, hostname, etc.</span></span></li>
+
+<li><span style="font-family: times new roman,times;"><span style="font-size: medium;"><span style="font-family: times new roman,times;"><em>response</em> - represents the servlet&rsquo;s response, which is an instance of HttpServletResponse. You can use it to set response type and send output to the client.</span></span></span></li>
+
+<li><span style="font-family: times new roman,times;"><span style="font-size: medium;"><span style="font-family: times new roman,times;"><em>out</em> - represents the character output stream, which is an instance of PrintWriter obtained from <em>response.getWriter()</em>. You can use it to send character content to the client.</span></span></span></li>
+
+<li><span style="font-family: times new roman,times;"><span style="font-size: medium;"><span style="font-family: times new roman,times;"><em>session</em> - represents the HttpSession object associated with the request, obtained from <em>request.getSession()</em>.</span></span></span></li>
+
+<li><span style="font-family: times new roman,times;"><span style="font-size: medium;"><span style="font-family: times new roman,times;"><em>application</em> - represents the ServletContext object for storing persistent data for all clients. The difference between session and application is that session is tied to one client, but application is for all clients to share persistent data.</span></span></span></li>
+
+<li><span style="font-family: times new roman,times;"><span style="font-size: medium;"><span style="font-family: times new roman,times;"><em>config</em> - represents the ServletConfig object for the page.</span></span></span></li>
+
+<li><span style="font-family: times new roman,times;"><span style="font-size: medium;"><span style="font-family: times new roman,times;"><em>pagecontext</em> - represents the PageContext object. PageContext is a new class introduced in JSP to give a central point of access to many page attributes. </span></span></span></li>
+
+<li><span style="font-family: times new roman,times;"><span style="font-size: medium;"><span style="font-family: times new roman,times;"><em>page</em> -&nbsp;is an alternative to this.&nbsp;</span></span></span></li>
+
+</ul>
+
+<p style="FONT-FAMILY: "><span style="font-family: times new roman,times;"><span style="font-size: medium;"><strong><span style="text-decoration: underline;"><span style="font-size: large;">JSP Directives</span></span></strong></span>&nbsp;</span></p>
+
+<p><span style="font-family: times new roman,times;"><span style="font-size: medium;"><span style="font-family: times new roman,times;">A JSP directive is a statement that gives the JSP engine information about the JSP page. For example, if your JSP page uses a Java class from a package other than the java.lang package, you have to use a directive to import this package. The general syntax for a JSP directive is as follows:</span></span></span></p>
+
+<p style="TEXT-ALIGN: center"><span style="font-family: times new roman,times;"><span style="font-size: medium;"><em><!--directive attribute1 = "value1" attribute2 = "value2" ... attributen = "valuen"--></em></span></span></p>
+
+<ul>
+
+<li><span style="font-family: times new roman,times;"><span style="font-size: medium;"><em>page</em> - lets you provide information for the page, such as importing classes and setting up content type. The page directive can appear anywhere in the JSP file.</span> </span> 
+
+<ul>
+
+<li><span style="font-family: times new roman,times;"><span style="font-size: medium;">Attributes for page Directives :</span> </span> 
+
+<ul>
+
+<li><span style="font-family: times new roman,times;"><span style="font-size: medium;"><span style="font-family: times new roman,times;"><em>import</em> - specifies one or more packages to be imported for this page. For example, the directive <!--page import="java.util.*, java.text.*"-->imports java.util.* and java.text.*. </span></span></span></li>
+
+<li><span style="font-family: times new roman,times;"><span style="font-size: medium;"><span style="font-family: times new roman,times;"><em>contentType</em> - specifies the MIME type for the resultant JSP page. By default, the content type is text/html for JSP. The default content type for servlets is text/plain. </span></span></span></li>
+
+<li><span style="font-family: times new roman,times;"><span style="font-size: medium;"><span style="font-family: times new roman,times;"><em>session</em> - specifies a boolean value to indicate whether the page is part of the session. By default, session is true.</span></span></span></li>
+
+<li><span style="font-family: times new roman,times;"><span style="font-size: medium;"><span style="font-family: times new roman,times;"><em>buffer</em> - specifies the output stream buffer size. By default, it is 8KB. For example, the directive <!--page buffer="10KB"-->specifies that the <em>output</em> buffer size is 10KB. The directive <!--page buffer="none"-->specifies that a buffer is not used. </span></span></span></li>
+
+<li><span style="font-family: times new roman,times;"><span style="font-size: medium;"><span style="font-family: times new roman,times;"><em>autoFlush</em> - specifies a Boolean value to indicate whether the output buffer should be automatically flushed when it is full or whether an exception should be raised when the buffer overflows. By default, this attribute is true. In this case, the buffer attribute cannot be null. </span></span></span></li>
+
+<li><span style="font-family: times new roman,times;"><span style="font-size: medium;"><span style="font-family: times new roman,times;"><em>isThreadSafe</em> - specifies a Boolean value to indicate whether the page can be accessed simultaneously without data corruption. By default, it is true. If it is set to false, the JSP page will be translated to a servlet that implements the SingleThreadModel interface. </span></span></span></li>
+
+<li><span style="font-family: times new roman,times;"><span style="font-size: medium;"><span style="font-family: times new roman,times;"><em>errorPage</em> - specifies a JSP page that is processed when an exception occurs in the current page. For example, the directive <!--page errorPage="HandleError.jsp"-->specifies that HandleError.jsp is processed when an exception occurs. </span></span></span></li>
+
+<li><span style="font-family: times new roman,times;"><span style="font-size: medium;"><span style="font-family: times new roman,times;"><em>isErrorPage</em> - specifies a boolean value to indicate whether the page can be used as an error page. By default, this attribute is false.</span></span></span></li>
+
+</ul>
+
+</li>
+
+</ul>
+
+</li>
+
+<li><span style="font-family: times new roman,times;"><span style="font-size: medium;"><span style="font-family: times new roman,times;"><em>include</em> - lets you insert a file to the servlet when the page is translated to a servlet. The include directive must be placed where you want the file to be inserted.</span></span></span></li>
+
+<li><span style="font-family: times new roman,times;"><span style="font-size: medium;"><span style="font-family: times new roman,times;"><em>tablib</em> - lets you define custom tags. </span></span></span></li>
+
+</ul>
+
+<hr style="TEXT-ALIGN: center" />
+
+<h2><span style="font-family: times new roman,times;">&nbsp;</span><span style="font-family: times new roman,times;"><span style="font-size: x-large;"><span style="font-size: x-large;"><span style="font-family: times new roman,times;"><span style="font-size: x-large;"><a style="FONT-FAMILY: " name="example"></a><span style="font-family: times new roman,times;">Examples</span></span></span></span></span></span></h2>
+
+<ul>
+
+<li>
+
+<div style="FONT-FAMILY: ; TEXT-ALIGN: left"><span style="font-family: times new roman,times;"><span style="font-size: medium;">Example1: <a href="http://www.cse.ust.hk/~ericzhao/COMP4321/lab4/example1/example1.jsp">example1.jsp</a></span></span></div>
+
+</li>
+
+</ul>
+
+<p style="PADDING-LEFT: 30px"><span style="font-family: times new roman,times;"><span style="font-size: medium;">It is a simple example demonstrating JSP constructs,&nbsp;JSP comments, and &nbsp;JSP directives.</span></span></p>
+
+<ul>
+
+<li>
+
+<div style="FONT-FAMILY: ; TEXT-ALIGN: left"><span style="font-family: times new roman,times;"><span style="font-size: medium;">Example2: <a href="http://www.cse.ust.hk/~ericzhao/COMP4321/lab4/example2/form.html">form.html</a>, <a href="http://www.cse.ust.hk/~ericzhao/COMP4321/lab4/example2/example2.jsp">example2.jsp</a></span></span></div>
+
+</li>
+
+</ul>
+
+<p style="PADDING-LEFT: 30px"><span style="font-family: times new roman,times;"><span style="font-size: medium;">It is an example demonstrating <span style="text-decoration: underline;">Form</span> Processing in JSP</span></span></p>
+
+<ul>
+
+<li>
+
+<div style="FONT-FAMILY: ; TEXT-ALIGN: left"><span style="font-family: times new roman,times;"><span style="font-size: medium;">Example3: <a href="http://www.cse.ust.hk/~ericzhao/COMP4321/lab4/example3/example3.jsp">example3.jsp</a></span></span></div>
+
+</li>
+
+</ul>
+
+<p style="PADDING-LEFT: 30px"><span style="font-family: times new roman,times;"><span style="font-size: medium;">It is an example demonstrating the usage of <span style="text-decoration: underline;">Cookies</span> in JSP</span></span></p>
+
+<ul>
+
+<li>
+
+<div style="FONT-FAMILY: ; TEXT-ALIGN: left"><span style="font-family: times new roman,times;"><span style="font-size: medium;">Example4: <a href="http://www.cse.ust.hk/~ericzhao/COMP4321/lab4/example4/example4.jsp">example4.jsp</a></span></span></div>
+
+</li>
+
+</ul>
+
+<p style="PADDING-LEFT: 30px"><span style="font-family: times new roman,times;"><span style="font-size: medium;">It is an example demonstrating the usage of <span style="text-decoration: underline;">Sessions</span> in JSP</span></span></p>
+
+<ul>
+
+<li>
+
+<div style="FONT-FAMILY: ; TEXT-ALIGN: left"><span style="font-family: times new roman,times;"><span style="font-size: medium;">To set up and publish the jsp, follow these steps:</span></span></div>
+
+<ol>
+
+<li><span style="font-family: times new roman,times;"><span style="font-size: medium;">
+
+<div style="FONT-FAMILY: ; TEXT-ALIGN: left"><span style="font-family: times new roman,times;"><span style="font-size: medium;"><span style="font-family: times new roman,times;"><span style="font-size: medium;">Connect to <strong>comp4321.cs.ust.hk</strong> using SSH.</span></span></span></span></div> In case you do not use CSD machine (for example, at home), you should first log into <strong>username@csl2wk01.cse.ust.hk</strong>, by SSH first, then continue logging to <strong>comp4321.cs.ust.hk by</strong> SSH.
+
+</span></span></li>
+
+<li>
+
+<div style="FONT-FAMILY: ; TEXT-ALIGN: left"><span style="font-family: times new roman,times;"><span style="font-size: medium;">In <em>/comp4321/<strong>your_account</strong>/</em>, create a folder named "<strong>public_html</strong>"</span></span></div>
+
+<ul>
+
+<li>
+
+<div style="FONT-FAMILY: ; TEXT-ALIGN: left"><span style="font-family: times new roman,times;"><span style="font-size: medium;">"cd <em>/comp4321/<strong>your_account</strong>/</em>"</span></span></div>
+
+</li>
+
+<li>
+
+<div style="FONT-FAMILY: ; TEXT-ALIGN: left"><span style="font-family: times new roman,times;"><span style="font-size: medium;">"mkdir public_html"</span></span></div>
+
+</li>
+
+</ul>
+
+</li>
+
+<li>
+
+<div style="FONT-FAMILY: ; TEXT-ALIGN: left"><span style="font-family: times new roman,times;"><span style="font-size: medium;">Place the jsp into public_html and set its permission so that the tomcat user can read it. For example,&nbsp;to publish&nbsp;example 1,</span></span></div>
+
+<ul>
+
+<li>
+
+<div style="FONT-FAMILY: ; TEXT-ALIGN: left"><span style="font-family: times new roman,times;"><span style="font-size: medium;">"cd public_html"</span></span></div>
+
+</li>
+
+<li>
+
+<div style="FONT-FAMILY: ; TEXT-ALIGN: left"><span style="font-family: times new roman,times;"><span style="font-size: medium;">"wget http://www.cs.ust.hk/~ericzhao/COMP4321/lab4/example1/example1.jsp"</span></span></div>
+
+</li>
+
+<li>
+
+<div style="FONT-FAMILY: ; TEXT-ALIGN: left"><span style="font-family: times new roman,times;"><span style="font-size: medium;">"chmod g+r example1.jsp"</span></span></div>
+
+</li>
+
+</ul>
+
+</li>
+
+<li>
+
+<div style="FONT-FAMILY: ; TEXT-ALIGN: left"><span style="font-family: times new roman,times;"><span style="font-size: medium;">Then enter the url "<a href="http://comp4321.cse.ust.hk:8080/~your_account/example1.jsp">http://comp4321.cse.ust.hk:8080/~your_account/example1.jsp</a>" on the web browser to view the page</span></span></div>
+
+</li>
+
+</ol></li>
+
+</ul>
+
+<hr style="TEXT-ALIGN: center" />
+
+<h2 style="text-align: left;">&nbsp;<span style="font-family: times new roman,times;"><span style="font-size: x-large;"><a style="FONT-FAMILY: " name="Exercise"></a><span style="font-family: times new roman,times;">Exercise</span></span></span></h2>
+
+<p style="text-align: left;"><span style="font-family: times new roman,times;"><span style="font-size: medium;"><span style="font-family: times new roman,times;">You should write a HTML file called <strong>lab4.html</strong>.&nbsp;It contains one text input box for entering a list of words. The user is expected to separate each word by space. For example, the user may type "information retrieval computer science".</span></span></span></p>
+
+<p style="text-align: left;"><span style="font-family: times new roman,times;"><span style="font-size: medium;"><span style="font-family: times new roman,times;">You should write a JSP file named lab4.jsp. It gets the string in the input box from the web page lab4.html. The program should divide it into a list of words, and output it line by line on the browser.</span></span></span></p>
+
+<p>&nbsp;</p>
+
+<p style="text-align: left;">&nbsp;</p>
+
+<p><span style="font-family: times new roman,times;"><span style="font-size: medium;">The following web page screen shots show the expected result of your program.</span></span></p>
+
+<p>&nbsp;</p>
+
+<p>&nbsp;</p>
+
+<p style="text-align: center;"><span style="font-family: times new roman,times;"><span style="font-size: large;"><img title="input" src="http://www.cse.ust.hk/~ericzhao/COMP4321/images/lab4_input.jpg" alt="input" /></span></span></p>
+
+<p style="text-align: center;"><strong><span style="text-decoration: underline;"><span style="font-family: times new roman,times;"><span style="font-size: large;">Figure 1: The outlook of the web page lab4.html</span></span></span></strong></p>
+
+<p style="text-align: center;"><span style="font-family: times new roman,times;"><span style="font-size: large;">&nbsp;<img title="output" src="http://www.cse.ust.hk/~ericzhao/COMP4321/images/lab4_output.jpg" alt="output" /></span></span></p>
+
+<p style="text-align: center;">&nbsp;</p>
+
+<p style="text-align: center;"><span style="font-family: times new roman,times;"><span style="font-size: large;">&nbsp;<strong><span style="text-decoration: underline;">Figure 2: Expected output after user clicking the button "Enter"</span></strong></span></span></p>
+
+<p style="text-align: left;">&nbsp;</p>
+
+<p style="text-align: left;"><span style="font-family: times new roman,times;"><span style="font-size: medium;"><span style="font-family: times new roman,times;"><span style="font-size: large;"><span style="text-decoration: underline;"><strong>Submission</strong></span></span></span></span></span></p>
+no need to submit
+<p>&nbsp;</p>
+
+<!--<p style="text-align: left;"><span style="font-family: times new roman,times;"><span style="font-size: medium;"><span style="font-family: times new roman,times;">Put the following information on top of the file lab4.jsp, where "lab4.html address" is the address to access your lab4.html (i.e. "http://comp4321.cse.ust.hk/~your_account/lab4.html"). </span></span></span></p>
+
+<p><span style="font-size: x-small; font-family: Arial;">/* <br />COMP4321 Lab4 Exercise<br />Student Name:<br />Student ID:<br />Section:<br />Email:<br />lab4.html address:<br />*/</span></p>
+
+<p><span style="font-family: times new roman,times;"><span style="font-size: medium;">Put your files lab4.html and lab4.jsp to the suitable place in your CS account such that I could test it by visiting the web page: http://comp4321.cse.ust.hk:8080/~your_account/lab4.html.<br /><br />Submit your program lab4.html and lab4.jsp&nbsp;via <a href="https://course.cse.ust.hk/cass/submit.html">CASS system</a> before next lab. Assignment Name is <span style="color: #ff0000;">Lab4</span><span style="color: #3333ff; font-style: italic;"><span style="color: #000000;">.<br /></span></span><span style="color: #3333ff;"><span style="color: #000000;">Refer to </span></span><a href="http://cssystem.cse.ust.hk/home.php?docbase=UGuides/cass&amp;req_url=UGuides/cass/student.html">CASS  Course Assignment Submission System</a> for more information about the usage of CASS. <br /></span></span></p>
+
+<p style="text-align: left;">&nbsp;</p>
+
+<hr style="text-align: left;" />
+
+<h2 style="text-align: left;">&nbsp;<span style="font-family: times new roman,times;"><span style="font-size: x-large;"><span style="font-size: x-large;"><a style="FONT-FAMILY: " name="links"></a><span style="font-family: times new roman,times;">Useful links</span></span></span></span></h2>-->
+
+<p class="MsoNormal" style="text-align: left;"><span style="font-family: times new roman,times;"><span style="font-size: medium;"><span lang="EN-US">1.&nbsp;Slides on JSP: <a style="FONT-FAMILY: " href="http://www.cse.ust.hk/~ericzhao/COMP4321/resources/35slide.ppt"><span style="font-family: times new roman,times;"><span style="font-size: medium;">Tutorial about how to write JSP program</span></span></a>
+<p class="MsoNormal" style="text-align: left;"><span style="font-family: times new roman,times;"><span style="font-family: times new roman,times;"><span style="font-size: medium;">2. JSP tutorial: </span></span><a style="FONT-FAMILY: " href="http://www.jsptut.com/"><span style="font-family: times new roman,times;"><span style="font-size: medium;"><span style="font-family: times new roman,times;">http://www.jsptut.com/</span></span></span></a></span></p>
+
+<p style="text-align: left;"><span style="font-size: medium;"><span style="font-family: times new roman,times;">3. JSP official page: </span></span><a href="http://java.sun.com/products/jsp/"><span style="font-size: medium;"><span style="font-family: times new roman,times;">http://java.sun.com/products/jsp/</span></span></a></p>
+
+<hr style="text-align: left;" />								
+
+											
+
+						</div>						
+
+				
+
+	
+
+	
+
+			
+
+		
+
+				
+
+		</div>	
+
+		
+
+	</div> <!-- END of main column: wrap -->
+
+		
+
+		
+
+	<br />
+
+	<br />
+
+	
+
+	<div class="footer jeditable_textarea" id="footer_textarea">Hong Kong University of Science and Technology - Department of Computer Science and Engineering</div>
+
+</body>
+
+
+<!-- Mirrored from www.cse.ust.hk/~ericzhao/COMP4321/lab4.html by HTTrack Website Copier/3.x [XR&CO'2014], Mon, 29 Dec 2014 05:52:52 GMT -->
+</html>

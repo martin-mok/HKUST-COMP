@@ -1,0 +1,638 @@
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+
+
+<!-- Mirrored from www.cse.ust.hk/~ericzhao/COMP4321/ by HTTrack Website Copier/3.x [XR&CO'2014], Mon, 29 Dec 2014 05:52:37 GMT -->
+<head>
+<title>
+
+COMP4321 Labs : Search Engines for Web and Enterprise Data</title>
+
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+
+
+
+<link rel="stylesheet" href="css/admin_1.1.css" type="text/css" />
+
+<link rel="stylesheet" href="css/admin_1.1-bg.css" type="text/css" />
+
+<link rel="stylesheet" href="css/eric_css.css" type="text/css" />
+
+<!-- TODO: based on the $cf['site']['theme'] to select a static theme.... -->
+
+<link type="text/css" href="lib/jqueryui/theme/ui.all.css" rel="Stylesheet" /> 
+
+<script type="text/javascript" src="lib/jquery/jquery-1.3.1.min.js"></script>	
+
+
+
+<script type="text/javascript" src="lib/jqueryui/jquery-ui-personalized-1.6rc6.min.js"></script>
+
+<!--
+
+<script type="text/javascript" src="lib/jquery.jeditable.mini.js"></script>	
+
+-->
+
+<script>		
+
+		$(function(){	
+
+		// main entry point
+
+		
+
+		$('#theme-switcher').themeswitcher( {		
+
+				loadTheme: "Smoothness",				
+
+				cookieName: '' /* not used cookie here... */
+
+			}
+
+		 );
+
+
+
+		// Test: Do the simple layout of the content....
+
+		// Initially, reLayout the screen 		
+
+		// Each time the window is resized, reLayout the screen			
+
+		function redoLayout() {		
+
+			// assume 10 px margin between 
+
+			//  [ ------------------------------ Wrap ------------------------------------]
+
+			//  [ -- sidebar --] [-- 10px --] [----------------- main ------------------]
+
+			var bodyWidth = $("body:first").width(); // first body's width...			
+
+			var sidebarWidth = $("#sidebar").width(); // sidebar's width...
+
+			var mainWidthThreshold = 250;
+
+						
+
+			var mainWidth = bodyWidth - sidebarWidth - 10; ; 			
+
+			if ( mainWidth > mainWidthThreshold ) {			
+
+				$("#wrap").width(bodyWidth);
+
+				$("#main").width(mainWidth);
+
+			}
+
+		}		
+
+		redoLayout();
+
+		$(window).resize( function() {
+
+			redoLayout();
+
+		});
+
+		
+
+		
+
+			
+
+	});
+
+</script>
+
+
+
+
+
+<!-- For Query table style... -->
+
+<style>
+
+
+
+table td { 
+
+	border: 1px solid;
+
+	padding: 2px;
+
+	
+
+}
+
+	
+
+</style>
+
+</head>
+
+
+
+<body>
+
+
+
+<!-- Load the jquery theme switcher tool.... -->
+
+<script type="text/javascript" src="../../../jqueryui.com/themeroller/themeswitchertool/index.html"></script>
+
+	
+
+	<div id="wrap">
+
+
+
+		<!-- header -->
+
+
+
+		<div id="header">
+
+			<span id="slogan" class="jeditable_line"> Fall 2014 </span>
+
+			<!-- tabs -->		
+
+			<!--
+
+			<ul>
+
+				<li><a href="#"><span>Site-Tab1</span></a></li>
+
+				<li><a href="#"><span>Site-Tab2</span></a></li>				
+
+			</ul>
+
+			-->
+
+		</div>
+
+
+
+
+
+		<div id="header-logo">
+
+			<div id="logo" class="jeditable_line"><a href="../../_dlee/4321/index.html">COMP4321</a> <span class=red>Labs</span></div>			
+
+			<!--<div id="header-educ" class="jeditable_line_fixed_height">Search Engines for Web and Enterprise Data</div>   -->
+
+		</div>
+
+
+
+		
+
+		<!-- For the display, currently just hack, using theme-switcher to achieve the effect
+
+		TODO: port to a static theme mapping later on....
+
+		-->
+
+		<div id="theme-switcher" style="display:none;"></div>
+
+		
+
+		
+
+		<!-- Style is now integrated with JQueryUI css framework -->
+
+		<!-- side bar -->
+
+		<div class="ui-widget ui-corner-all ui-helper-reset" id="sidebar" >			
+
+						
+
+			
+
+			<h1 class="ui-widget-header ui-helper-reset">Main Menu</h1>					
+
+			<!--<ul class="ui-widget-content ui-helper-reset" id="contentManagamentMenu">-->
+            <ul class="navbar">
+								
+
+												
+
+								<li class="ui-state-default ui-corner-all" >
+
+									<span class="ui-icon ui-icon-star"  ></span>										
+
+									<a href="index-2.html"  id="modify_title_html_1251527068" >Information</a>								
+
+									<br />								
+
+									
+
+									
+
+									
+
+								</li>	
+
+								
+
+																
+
+								<li class="ui-state-default ui-corner-all" >
+
+									<span class="ui-icon ui-icon-star"  ></span>												
+
+									<a href="lab1.html"  id="modify_title_html_1251529887" >Lab1</a>								
+
+									<br />								
+
+									
+
+									
+
+									
+
+								</li>	
+ 
+								
+
+																
+
+								<li class="ui-state-default ui-corner-all" >
+
+									<span class="ui-icon ui-icon-star"  ></span>												
+
+									<a href="lab2.html"  id="modify_title_html_1251530023" >Lab2</a>								
+
+									<br />								
+
+									
+
+									
+
+									
+
+								</li>	
+
+								
+
+																
+
+								<li class="ui-state-default ui-corner-all" >
+
+									<span class="ui-icon ui-icon-star"  ></span>												
+
+									<a href="lab3.html"  id="modify_title_html_1251530035" >Lab3</a>								
+
+									<br />								
+
+									
+
+									
+
+									
+
+								</li>	
+
+								
+
+																
+
+								<li class="ui-state-default ui-corner-all" >
+
+									<span class="ui-icon ui-icon-star"  ></span>												
+
+									<a href="lab4.html"  id="modify_title_html_1251529936" >Lab4</a>								
+
+									<br />								
+
+									
+
+									
+
+									
+
+								</li>	
+
+								
+
+																
+
+								<li class="ui-state-default ui-corner-all" >
+
+									<span class="ui-icon ui-icon-star"  ></span>												
+
+									<a href="project.html"  id="modify_title_html_1251529946" >Term Project</a>								
+
+									<br />								
+
+
+<li class="ui-state-default ui-corner-all" >
+
+                                                                <span class="ui-icon ui-icon-star"  ></span>
+
+
+                                                                   <a href=
+"../../../home.cse.ust.hk/_ericzhao/COMP4321/Password_Only/homework_exam/schedule.html"  id="modify_title_html_1251529946" >HW and Exam</font></a>
+
+
+                                                                        <br />
+
+
+
+
+                                                                </li>
+									
+<li class="ui-state-default ui-corner-all" >
+
+                                                                <span class="ui-icon ui-icon-star"  ></span>                                            
+ 
+
+                                                                   <a href=
+"news_page.html"  id="modify_title_html_1251529946" ><font color="red">News</font></a>         
+ 
+
+                                                                        <br /> 
+									
+
+									
+
+								</li>	
+
+								
+
+								
+
+
+
+			</ul>	
+
+			
+
+		</div> <!-- END sidebar -->
+
+		
+
+		
+
+
+
+		
+
+		<div id="main" >
+
+		
+
+		
+
+			
+
+										
+
+						<!-- Wrapper for the editor -->
+
+						<div class="ui-widget ui-corner-all ui-helper-reset"  >			
+
+							<h1 class="ui-widget-header ui-helper-reset">Information</h1>
+
+											
+
+							<p style="text-align: center;"><span style="font-size: large;"><strong>COMP4321 - Search Engines for Web and Enterprise Data</strong></span></p>
+
+<p style="text-align: center;"><span style="font-size: large;"><strong><br /></strong></span></p>
+
+<p style="text-align: left;">
+
+<table class="red" border="0" align="left">
+
+<tbody>
+
+<tr>
+
+<td style="width: 100px;"><span style="font-size: medium;"><span style="color: #000000;">Instructor:</span></span></td>
+
+<td><span style="font-size: medium;"><span style="color: #000000;">Prof. Dik-Lun LEE</span></span></td>
+
+</tr>
+
+<tr>
+
+<td><span style="font-size: medium;"><span style="color: #000000;">Email:</span></span></td>
+
+<td>
+
+<p><span style="font-size: medium;"><a href="mailto:dlee@cse.ust.hk"><span style="color: #000000;">dlee@cse.ust.hk</span></a></span></p>
+
+</td>
+
+</tr>
+
+<tr>
+
+<td style="width: 120px;"><span style="font-size: medium;"><span style="color: #000000;">Office:</span></span></td>
+
+<td style="width: 300px;"><span style="font-size: medium;"><span style="color: #000000;">Room 3534</span></span></td>
+
+</tr>
+
+<tr>
+
+<td><span style="font-size: medium;"><span style="color: #000000;">Office Hour:</span></span></td>
+
+<td><span style="font-size: medium;"><span lang="EN-US"><span style="color: #000000;">by email appointment</span></span></span></td>
+</tr>
+
+<tr>
+
+<td><span style="font-size: medium;"><span style="color: #000000;">Webpage</span></span></td>
+
+<td>
+
+<p><span style="font-size: medium;"><a href="../../_dlee/index.html"><span style="color: #000000;">http://www.cse.ust.hk/~dlee</span></a></span><span style="font-size: medium;"><br /></span></p>
+
+</td>
+
+</tr>
+
+</tbody>
+
+</table>
+
+</p>
+
+<p style="text-align: left;"><span style="font-size: medium;"><br /></span></p>
+
+<p style="text-align: left;">&nbsp;</p>
+
+<p style="text-align: left;">&nbsp;</p>
+
+<p style="text-align: left;">&nbsp;</p>
+
+<p style="text-align: left;">&nbsp;</p>
+
+<p style="text-align: left;">&nbsp;</p>
+
+<p style="text-align: left;">&nbsp;</p>
+
+<p style="text-align: left;">
+
+<table border="0" align="left">
+
+<tbody>
+
+<tr>
+
+<td style="width: 120px;"><span style="font-size: medium;"><span style="color: #000000;">TA:</span></span></td>
+
+<td style="width: 300px;"><span style="font-size: medium;"><span style="color: #000000;">Mr. Eric Zhao</span></span></td>
+
+</tr>
+
+<tr>
+
+<td><span style="font-size: medium;"><span style="color: #000000;">Email:</span></span></td>
+
+<td>
+
+<p><span style="font-size: medium;"><a href="mailto:ericzhao@cse.ust.hk"><span style="color: #000000;">ericzhao@cse.ust.hk</span></a></span></p>
+
+</td>
+
+</tr>
+
+<tr>
+
+<td><span style="font-size: medium;"><span style="color: #000000;">Office:</span></span></td>
+
+<td><span style="font-size: medium;"><span style="color: #000000;">Room 4212</span></span></td>
+
+</tr>
+
+<tr>
+
+<td><span style="font-size: medium;"><span style="color: #000000;">Office Hour:</span></span></td>
+
+<td><span style="font-size: medium;">
+
+<p class="MsoNormal"><span lang="EN-US"><span style="color: #000000;">by email appointment</span></span></p>
+
+</span></td>
+
+</tr>
+
+</tbody>
+
+</table>
+
+</p>
+
+<p style="text-align: left;">&nbsp;</p>
+
+<p style="text-align: left;">&nbsp;</p>
+
+<p style="text-align: left;">&nbsp;</p>
+
+<p style="text-align: left;">&nbsp;</p>
+
+<p style="text-align: left;">&nbsp;</p>
+
+<p style="text-align: left;">&nbsp;</p>
+
+<p style="text-align: left;">
+
+<table style="width: 300px;" border="0">
+
+<tbody>
+
+<tr>
+
+<td>&nbsp;</td>
+
+<td><span style="font-family: times new roman,times;"><span style="font-size: medium;">Date</span></span></td>
+<td><span style="font-family: times new roman,times;"><span style="font-size: medium;">Venue</span></span></td>
+
+</tr>
+
+<tr>
+
+<td><span style="font-family: times new roman,times;"><span style="font-size: medium;">Lab1</span></span></td>
+
+<td><span style="font-family: times new roman,times;"><span style="font-size: medium;">15/9</span></span></td>
+<td><span style="font-family: times new roman,times;"><span style="font-size: medium;">Room 4214 (Lift 19)</span></span></td>
+
+</tr>
+
+<tr>
+
+<td><span style="font-family: times new roman,times;"><span style="font-size: medium;">Lab2</span></span></td>
+
+<td><span style="font-family: times new roman,times;"><span style="font-size: medium;">22/9</span></span></td>
+<td><span style="font-family: times new roman,times;"><span style="font-size: medium;">Room 4214 (Lift 19)</span></span></td>
+
+</tr>
+
+<tr>
+
+<td><span style="font-family: times new roman,times;"><span style="font-size: medium;">Lab3</span></span></td>
+
+<td><span style="font-family: times new roman,times;"><span style="font-size: medium;">29/9</span></span></td>
+<td><span style="font-family: times new roman,times;"><span style="font-size: medium;">Room 4214 (Lift 19)</span></span></td>
+
+</tr>
+
+<tr>
+
+<td><span style="font-family: times new roman,times;"><span style="font-size: medium;">Lab4</span></span></td>
+
+<td><span style="font-family: times new roman,times;"><span style="font-size: medium;">6/10</span></span></td>
+<td><span style="font-family: times new roman,times;"><span style="font-size: medium;">Room 4214 (Lift 19)</span></span></td>
+
+</tr>
+
+</tbody>
+
+</table>
+
+</p>								
+
+											
+
+						</div>						
+
+				
+
+	
+
+	
+
+			
+
+		
+
+				
+
+		</div>	
+
+		
+
+	</div> <!-- END of main column: wrap -->
+
+		
+
+		
+
+	<br />
+
+	<br />
+
+	
+
+	<div class="footer jeditable_textarea" id="footer_textarea">Hong Kong University of Science and Technology - Department of Computer Science and Engineering</div>
+
+</body>
+
+
+<!-- Mirrored from www.cse.ust.hk/~ericzhao/COMP4321/ by HTTrack Website Copier/3.x [XR&CO'2014], Mon, 29 Dec 2014 05:52:51 GMT -->
+</html>

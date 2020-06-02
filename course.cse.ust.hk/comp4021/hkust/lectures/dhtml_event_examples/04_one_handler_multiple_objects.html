@@ -1,0 +1,48 @@
+<html>
+<script language="JavaScript">
+
+/*
+ This is an example of one event handler being used 
+ with multiple objects. 
+
+ Works in both IE and FF.
+
+*/
+
+function handle_event(obj) {
+    obj.style.background="red"; // Change the bg colour
+}
+
+</script>
+
+
+
+<!-- Mirrored from course.cse.ust.hk/comp4021/hkust/lectures/dhtml_event_examples/04_one_handler_multiple_objects.html by HTTrack Website Copier/3.x [XR&CO'2014], Wed, 03 Jun 2015 10:24:18 GMT -->
+<body>
+
+<h2>Click on any object</h2>
+
+<p style="background:lightgrey;"
+   onclick="handle_event(this)">
+I'm a paragraph!
+</p>
+
+<br />
+
+<div style="background:lightgrey;"
+   onclick="handle_event(this)">
+I'm a div!
+</div>
+
+<br />
+
+<span style="background:lightgrey;"
+   onclick="handle_event(this)">
+I'm a span!
+</span>
+
+
+</body>
+
+<!-- Mirrored from course.cse.ust.hk/comp4021/hkust/lectures/dhtml_event_examples/04_one_handler_multiple_objects.html by HTTrack Website Copier/3.x [XR&CO'2014], Wed, 03 Jun 2015 10:24:18 GMT -->
+</html>

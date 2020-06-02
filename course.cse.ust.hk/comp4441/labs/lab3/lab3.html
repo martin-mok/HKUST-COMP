@@ -1,0 +1,140 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+
+<!-- Mirrored from course.cse.ust.hk/comp4441/labs/lab3/lab3.html by HTTrack Website Copier/3.x [XR&CO'2014], Wed, 03 Jun 2015 09:38:15 GMT -->
+<head>
+  <title>COMP4441 Lab3</title>
+  <meta content="text/html; charset=iso-8859-1"
+ http-equiv="content-type">
+  <style type="text/css">
+<!--body { font-family: arial, helvetica, sans-serif; }pre { font-size: small; }#highlight { font-size: larger; }-->
+
+  </style>
+</head>
+<body>
+<h1><span style="font-weight: 400;">COMP 4441 Computer Music</span></h1>
+<h1><span style="font-weight: 400;">Lab 3: More Additive Synthesis</span></h1>
+<hr>
+<h2>What to do?</h2>
+<p align="left">In this lab, you will add more control to the additive
+synthesis process and synthesize a more realistic <a
+ href="trumpetC4.wav">trumpet</a> tone.</p>
+<h2>Constructing more detailed amplitude envelopes</h2>
+<p>The following figure shows the original amplitude envelope (solid
+black line) of the 1st harmonic of a trumpet tone. The orange
+straight
+line shows the amplitude envelope constructed in previous labs
+and&nbsp; the blue dashed line shows the amplitude envelope that we are
+going to implement in this lab.</p>
+<p align="center"><img src="harmonic.png" border="0" height="456"
+ width="641"></p>
+<h2>Changing the orc file</h2>
+<ul>
+  <li>Implement the new orc file based on the <a href="sinewave.orc">
+sinewave.orc</a>.</li>
+  <li>Since we are not implementing the amplitude envelope based on a
+single
+amplitude value, make <b>ifreq</b> equal to <b>p4</b>. </li>
+  <li>We are accepting five amplitude values instead of a single
+value, so make five variables <b>iampl1 .. iampl5</b> equal to <b>p5
+..
+p9</b>.</li>
+  <li>Modify the variable <b>aenv</b> to a more complicated
+lines segment envelope by changing the the line to:</li>
+</ul>
+<span lang="ZH-HK"></span>
+<p align="center">aenv linseg 0, idur/6, iamp1,idur/6, iamp2, idur/6,
+iamp3, idur/6, iamp4, idur/6, iamp5, idur/6, 0</p>
+<ul>
+  <li>The final orc file should look like <a href="trumpetC4.orc">this</a>.</li>
+</ul>
+<h2 align="left">Changing the sco file</h2>
+<ul>
+  <li>
+    <p align="left">Implement the new sco file based on <a
+ href="sinewave.sco">sinewave.sco</a>.</p>
+  </li>
+  <li>
+    <p align="left">It is always a good practice to update the
+commented
+header line:</p>
+  </li>
+</ul>
+<p align="center">; start dur freq iamp1 iamp2 iamp3 iamp4 iamp5</p>
+<ul>
+  <li>
+    <p align="left">You should have no problems filling in the
+variables <b> start</b>, <b>dur</b> and <b>freq</b>. </p>
+  </li>
+  <li>
+    <p align="left">Using the pvan+ program, you need to switch to the <b>"Harmonics&quot; </b>
+	tab.</p>
+  </li>
+  <li>
+    <p align="left">Slide the <b>"Show time&quot;</b> slider to until the time 
+	showed is closest (<em>no need to be very exact</em>) to the following time for each time instance,<br>
+1.8147 (duration of the tone) / 6 * 1 = <b>0.30245</b><br>
+1.8147 (duration of the tone) / 6 * 2 = <b>0.6049</b><br>
+1.8147 (duration of the tone) / 6 * 3 = <b>0.90735</b><br>
+1.8147 (duration of the tone) / 6 * 4 = <b>1.2098</b><br>
+1.8147 (duration of the tone) / 6 * 5 = <b>1.51225</b></p>
+  </li>
+  <li>
+    <p align="left">After changing for each time instance, you may
+notice the spectral snapshot has changed. Choose <strong>Data =&gt; Copy current </strong>
+	<b>spectral snapshot</b> <b>=&gt; Tab separated</b>
+from <strong style="font-weight: 400">the</strong> menu. Paste the
+copied data in a text editor. A series of numbers are the amplitudes of each harmonic at that time instance (e.g. 0.30245).&nbsp; Fill in the <b>ampl1</b>
+of the ten harmonics using the first ten numbers.</p>
+  </li>
+  <li>
+    <p align="left">You score file should look like <a
+ href="trumpetC4-temp.sco"> this</a>.</p>
+  </li>
+  <li>
+    <p align="left">Fill in the <b>ampl2</b> to <b>ampl5</b> by
+repeating the process above.</p>
+  </li>
+  <li>
+    <p align="left">The finished score should look like <a
+ href="trumpetC4.sco"> this</a>.</p>
+  </li>
+  <li>
+    <p align="left">You may compare the synthesized tone with the tone
+in the previous lab. You may realize the tone synthesized in <a
+ href="trumpetC4-lab3.wav">this lab</a> is more realistic.</p>
+  </li>
+</ul>
+<h2 align="left">Lab Assignment</h2>
+<ul>
+  <li>
+    <p align="left">Repeat the above process, synthesize the <a
+ href="clarinet.wav">clarinet tone </a>we have synthesized in lab 1.</p>
+  </li>
+  <li>
+    <p align="left">The synthesized tone should sound like <a
+ href="clarinet-syn.wav">this</a>.</p>
+  </li>
+</ul>
+<h2><font face="Arial Unicode MS">CASS - Course Assignment Submission
+System</font></h2>
+<p><font face="Arial Unicode MS">If you have finished your assignment
+and demonstrated to your TAs, you don't need to submit your files to
+CASS. But if you don't attend the labs or you
+cannot finish the assignment in the lab, you need to submit the source
+code using the
+<a href="../../../cass/submit.html">CASS</a>. </font>
+</p>
+<hr>
+<h2><font face="Arial Unicode MS">Demonstration and Submission</font></h2>
+<p><font face="Arial Unicode MS">Please submit your files
+"<a href="../answers/additive.html">additive.orc</a>" and "<a href="../answers/additive-2.html">additive.sco</a>" using
+<a href="../../../cass/submit.html">CASS</a> before <b>Monday (20-Oct-2014)</b>. For any questions, please contact
+your TAs by email (<b>*Only for question asking. Submissions please go to CASS.*</b> ronmo@cse.ust.hk, bwuaa@cse.ust.hk).
+ DO NOT submit the wav file; submitting the orc and sco
+files will be enough. Thank you.
+</font> </p>
+</body>
+
+<!-- Mirrored from course.cse.ust.hk/comp4441/labs/lab3/lab3.html by HTTrack Website Copier/3.x [XR&CO'2014], Wed, 03 Jun 2015 09:38:17 GMT -->
+</html>

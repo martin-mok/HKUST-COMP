@@ -1,0 +1,36 @@
+<html>
+<body>
+<svg xmlns="http://www.w3.org/2000/svg"
+     xmlns:xlink="http://www.w3.org/1999/xlink"
+     version="1.1"
+     baseProfile="full"
+     width="400" height="300">
+<defs><g id="box">
+<rect x="30" y="70" width="30" height="20"  />
+</g></defs>
+
+<!-- x,y axes at origin -->
+<line x1="0" y1="0" x2="0" y2="10" style="stroke:black"/>
+<line x1="0" y1="0" x2="10" y2="0" style="stroke:black"/>
+
+<use xlink:href="#box"  style="stroke:red;fill:pink" />
+<text x="35" y="85">(1)</text>
+
+<use xlink:href="#box" style="stroke:red;fill:pink"
+transform="translate(50,0)" />
+<text x="35" y="85" transform="translate(50,0)">(2)</text>
+
+<use xlink:href="#box" style="stroke:red;fill:pink"
+transform="rotate(-30) translate(50,0)" />
+<text x="35" y="85" transform="rotate(-30) translate(50,0)">(3)</text>
+
+<use xlink:href="#box" style="stroke:black;fill:yellow"
+transform="rotate(-30)" />
+<text x="35" y="85" transform="rotate(-30)">(a)</text>
+
+<use xlink:href="#box" style="stroke:black;fill:yellow"
+transform="translate(50,0) rotate(-30)" />
+<text x="35" y="85" transform="translate(50,0) rotate(-30)">(b)</text>
+</svg>
+</body>
+</html>

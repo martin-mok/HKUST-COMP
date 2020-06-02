@@ -1,0 +1,566 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+<link rel="author" href="mailto:webmasters@gnu.org" />
+<link rel="icon" type="image/png" href="/graphics/gnu-head-mini.png" />
+<meta name="ICBM" content="42.256233,-71.006581" />
+
+
+<!-- Parent-Version: 1.77 -->
+
+<!-- This is the template document for GNU web pages.  We use
+     server side includes (#include) for common elements, for
+     instance, the very first line of the file.  If you're reading
+     this in its expanded form, you can retrieve the original source,
+     with the SSI statements intact, from
+     http://web.cvs.savannah.gnu.org/viewvc/*checkout*/www/server/standards/boilerplate.html?root=www&content-type=text%2Fplain
+-->
+
+<!-- Instructions for adapting this boilerplate to a new project: -->
+
+<!-- 1. In the line above starting "Parent-Version:", remove the
+        "$Revision...$" from around the revision number,
+        leaving just Parent-Version: and the number. -->
+
+<!-- 2. Replace "baz" with the name of your project.
+        You should be able to do this with search and replace;
+        making sure that the search is case insensitive and
+        that the case of the replacement matches the case
+        of the string found. In Emacs, query-replace will do this
+        when case-fold-search and case-replace are both non-nil
+        and both search and replacement string are given in lower case. -->
+
+<!-- 3. Of course update the actual information according to your project,
+        such as mailing lists, project locations, and maintainer name.  -->
+
+<!-- 4. You can use the patch-from-parent script to semi-automate
+        merging future changes to the boilerplate with your file:
+        http://web.cvs.savannah.gnu.org/viewvc/*checkout*/www/server/standards/patch-from-parent?root=www&content-type=text%2Fplain
+        -->
+
+<!-- If you would like to make sure your page validates with HTML5, that
+     would be a good thing.  To do that, change the first line from
+     to /server/html5-header.html before trying the validation.  Maybe
+     someday we will be able to make /server/header be HTML5.  -->
+
+<title>Bison
+- GNU Project - Free Software Foundation</title>
+<!-- begin /server/gnun/initial-translations-list.html -->
+<!-- HTML head: set a flag for further expansion in body-include*.html. -->
+<!-- end /server/gnun/initial-translations-list.html -->
+
+<!-- start of server/banner.html -->
+<!-- start of head-include-2.html -->
+
+
+
+
+
+
+
+<link rel="stylesheet" href="/combo.css" media="screen" />
+<link rel="stylesheet" href="/mini.css" media="handheld" />
+<link rel="stylesheet" href="/layout.css" media="screen" />
+
+<link rel="stylesheet" href="/print.css" media="print" />
+
+<style type="text/css" media="print,screen">
+.promo-banner {
+    background-color: #2569B8;
+  }
+  #fundraiserbanner2014 {
+    background-color: #2569B8;
+  }
+  #fundraiserbanner2014 .manualprogressbar {
+    width: 19%;
+  }
+<!--
+ .promo-banner {
+    padding: 1em 5%;
+  }
+  #fundraiserbanner2014 .manualprogressbar {
+    height: 2em;
+    background: #FFFFFF;
+    position: absolute;
+    top: 0%;
+  }
+
+  #fundraiserbanner2014 {
+    width: 100%;
+    padding-bottom: 2.2em;
+    display: block;
+  }
+
+  #fundraiserbanner2014 .content {
+    margin: 0 auto;
+    width: 100%;
+  }
+
+  #fundraiserbanner2014 .text {
+    color:#ffffff;
+    text-align:justify; 
+  }
+
+  #fundraiserbanner2014 .text a {
+    text-decoration: underline;
+    color: inherit;
+  }
+
+  #fundraiserbanner2014 .barandbuttonwrapper {
+    width: 100%;
+    position: relative;
+  }
+
+  #fundraiserbanner2014 .progressbarsleeve {
+    display:inline;
+    position: absolute;
+    width: 75%;
+    height: 2em;
+    border: 1px solid black;
+    margin-bottom: .8em;
+  }
+
+  #fundraiserbanner2014 .goal {
+    position: absolute;
+    line-height: 2em;
+    color: white;
+    font-family: inherit;
+  }
+
+  #fundraiserbanner2014 .sofar {
+    position: absolute;
+    line-height: 2em;
+    color: black;
+    font-family: inherit;
+  }
+
+  #fundraiserbanner2014 .btn {
+    position: absolute;
+    display:inline;
+    background:#FFFFFF;
+    border-top: 1px solid black;
+    border-bottom: 1px solid black;    
+    height: 2em;
+    width: 25%;
+    text-align: center;
+    line-height: 2em;
+    text-decoration: none;
+    color: black;
+    font-family: inherit;
+  }
+
+  #fundraiserbanner2014 .btn:hover {
+    background: #e1F1e1;
+    text-decoration: none;
+    box-shadow: none;
+    font-weight: bold;
+  }
+--><!--
+  #fundraiserbanner2014 .manualprogressbar {
+    left: 0%;
+  }
+  #fundraiserbanner2014 .progressbarsleeve {
+    left: 0%;
+  }
+  #fundraiserbanner2014 .btn {
+    left: 75%;
+    border-right: 1px solid black;
+  }
+  #fundraiserbanner2014 .goal {
+    right: .4em;
+  }
+
+  #fundraiserbanner2014 .sofar {
+    right: .25em;
+  }
+-->
+/* TRANSLATORS: you can adjust promo banner style for your language here. */
+  #fundraiserbanner2014 .btn:hover:after {
+    content: "!";
+  } 
+</style>
+<!-- end of head-include-2.html -->
+
+</head>
+<body>
+<div class="inner">
+<!-- start of server/body-include-1.html -->
+
+<div id="toplinks">
+ <a href="#content">Skip to main text</a>
+</div> <!-- /toplinks -->
+
+<div id="searcher">
+ <form method="get" action="//www.gnu.org/cgi-bin/estseek.cgi">
+  <div>
+  <input name="phrase" id="phrase" type="text" size="18" accesskey="s"
+         value="Why GNU/Linux?" onfocus="this.value=''" />
+  <input type="submit" value="Search" />
+  </div>
+ </form>
+</div><!-- /searcher -->
+
+<!-- if initial translation list isn't included before banner.html,
+     then the file may use an old boilerplate that contains
+     div#translations in its body, and we mustn't duplicate it here. -->
+<!-- begin /server/gnun/initial-translations-list.html -->
+<!-- HTML body: expand when this file is previously included in HTML head
+                    unless already expanded.  -->
+<div id="translations">
+<p>
+<span dir="ltr" class="original"><a href="/software/bison/">English</a>&nbsp;[en]</span>
+</p>
+</div>
+<!-- end /server/gnun/initial-translations-list.html -->
+
+
+<!-- end of server/body-include-1.html -->
+
+<!-- start of server/body-include-2 -->
+
+<div id="header">
+<div id="fsf-frame">
+<p id="join-fsf"><a href="https://www.fsf.org/associate/support_freedom?referrer=4052">JOIN&nbsp;THE&nbsp;FSF</a></p>
+<div id="fssbox">
+<p><a href="http://www.fsf.org/fss">Free Software Supporter</a></p>
+<form action="https://crm.fsf.org/civicrm/profile/create&amp;reset=1&amp;gid=31" method="post">
+ <div>
+  <input name="postURL" type="hidden" value="" />
+  <input type="hidden" name="group[25]" value="1" />
+  <input name="cancelURL" type="hidden" value="https://crm.fsf.org/civicrm/profile?reset=1&amp;gid=31" />
+  <input name="_qf_default" type="hidden" value="Edit:cancel" />
+ </div>
+ <p>
+  <input type="text" id="frmEmail" name="email-Primary" size="18" maxlength="80"
+         value="email address" onfocus="this.value=''"/>
+  <input type="submit" name="_qf_Edit_next" value="Sign up" />
+ </p>
+</form>
+</div><!-- /fssbox -->
+</div><!-- /fsf-frame -->
+
+<div id="gnu-banner">
+ <a href="/">
+ <img src="/graphics/heckert_gnu.small.png" alt=" [A GNU head] " /><strong>GNU</strong> Operating System</a>
+</div><!-- /gnu-banner -->
+
+<p id="fsf-support">Sponsored by the <a href="#mission-statement">Free Software Foundation</a></p>
+
+</div><!-- /header -->
+
+<!-- Promotional Banner -->
+<div class="promo-banner">
+  <div id="fundraiserbanner2014">
+    <div class="content">
+      <div class="text">
+	<p><strong>Thanks to your support, 2015 marks 30 years of the
+	FSF!</strong> In the next 30 years, we want to do even more to
+	defend computer user rights. To kick off in that direction,
+	we're setting our highest-ever fundraising goal of $525,000 by
+	January 31st. <a href="https://www.fsf.org/appeal/">Read more</a>.</p>
+      </div>
+      <div class="barandbuttonwrapper">
+	<div class="progressbarsleeve">
+	  <span class="goal">$525K</span>
+	  <div class="manualprogressbar">
+<span class="sofar"><span class="gnun-split"></span>19%
+(<span class="gnun-split"></span>101K)</span>
+	  </div>
+	</div>
+	<a class="btn" href="https://donate.fsf.org">Count me in</a>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- End of promotional Banner -->
+
+<div id="navigation">
+
+ <ul>
+  <li id="tabAboutGNU"><a href="/gnu/gnu.html">About&nbsp;GNU</a></li>
+  <li id="tabPhilosophy"><a href="/philosophy/philosophy.html">Philosophy</a></li>
+  <li id="tabLicenses"><a href="/licenses/licenses.html">Licenses</a></li>
+  <li id="tabEducation"><a href="/education/education.html">Education</a></li>
+  <li id="tabSoftware"><a href="/software/software.html">Software</a></li>
+  <li id="tabDoc"><a href="/doc/doc.html">Documentation</a></li>
+  <li id="tabHelp"><a href="/help/help.html">Help&nbsp;GNU</a></li>
+ </ul>
+
+</div><!--  /navigation -->
+<!-- end of server/body-include-2 -->
+
+<div id="content">
+<!-- end of server/banner.html -->
+
+<h2>GNU Bison</h2>
+
+<h3>Introduction to Bison</h3>
+
+<p>
+  Bison is a general-purpose parser generator that converts an
+  annotated context-free grammar into a deterministic LR or
+  generalized LR (GLR) parser employing
+  <abbr title="lookahead LR">LALR</abbr>(1) parser tables.  As an
+  experimental feature, Bison can also
+  generate <abbr title="Inadequacy Elimination LR">IELR</abbr>(1) or
+  canonical LR(1) parser tables.  Once you are proficient with Bison,
+  you can use it to develop a wide range of language parsers, from
+  those used in simple desk calculators to complex programming
+  languages.
+</p>
+
+<p>
+  Bison is upward compatible with Yacc: all properly-written Yacc
+  grammars ought to work with Bison with no change.  Anyone familiar
+  with Yacc should be able to use Bison with little trouble.  You need
+  to be fluent in C or C++ programming in order to use Bison.  Java is
+  also supported as an experimental feature.
+</p>
+
+<h3 id="download">Downloading
+  Bison</h3>
+
+<p>Bison
+can be found on the main GNU ftp server:
+<a href="http://ftp.gnu.org/gnu/bison/">http://ftp.gnu.org/gnu/bison/</a>
+(via HTTP) and
+<a href="ftp://ftp.gnu.org/gnu/bison/">ftp://ftp.gnu.org/gnu/bison/</a>
+(via FTP).  It can also be found
+on the <a href="/prep/ftp.html">GNU mirrors</a>;
+please
+<a href="http://ftpmirror.gnu.org/bison/">use
+a mirror</a> if possible.</p>
+
+
+<h3 id="documentation">Documentation</h3>
+
+<p><a href="manual/">Documentation for
+Bison</a>
+is available online, as
+is <a href="/manual/">documentation for most GNU software</a>.  You may
+also find more information about
+Bison
+by running
+<em>info&nbsp;bison</em>
+or
+<em>man&nbsp;bison</em>,
+or by looking at
+<em>/usr/share/doc/bison/</em>,
+<em>/usr/local/doc/bison/</em>,
+or similar directories on your system.  A brief summary is available by
+running <em>bison&nbsp;--help</em>.</p>
+
+
+<h3 id="mail">Mailing lists</h3>
+
+<p>Bison
+has the following mailing lists:</p>
+
+<ul>
+<li><a href="https://lists.gnu.org/mailman/listinfo/bug-bison">bug-bison</a>
+is used to discuss most aspects of
+Bison,
+including development and enhancement requests, as well as bug reports.</li>
+<li><a
+href="https://lists.gnu.org/mailman/listinfo/help-bison">help-bison</a> is
+for general user help and discussion.</li>
+<li><a
+href="http://lists.gnu.org/mailman/listinfo/bison-patches">bison-patches</a>
+is for patches to the source code, to improve or fix bugs in Bison.
+We prefer patches against the latest Savannah sources.</li>
+</ul>
+
+<p>Announcements about
+Bison
+and most other GNU software are made on
+<a href="http://lists.gnu.org/mailman/listinfo/info-gnu">info-gnu</a>
+(<a href="http://lists.gnu.org/archive/html/info-gnu/">archive</a>).</p>
+
+<p>Security reports that should not be made immediately public can be
+sent directly to the maintainer.  If there is no response to an urgent
+issue, you can escalate to the general
+<a href="http://lists.gnu.org/mailman/listinfo/security">security</a>
+mailing list for advice.</p>
+
+<h3 id="contribute">Getting involved</h3>
+
+<p>Development of
+Bison,
+and GNU in general, is a volunteer effort, and you can contribute.  For
+information, please read <a href="/help/">How to help GNU</a>.  If you'd
+like to get involved, it's a good idea to join the discussion mailing
+list (see above).</p>
+
+
+<dl>
+<dt>Test releases</dt>
+
+<dd>Trying the latest test release (when available) is always
+appreciated.  Test releases of
+Bison
+can be found at
+<a href="http://alpha.gnu.org/gnu/bison/">http://alpha.gnu.org/gnu/bison/</a>
+(via HTTP) and
+<a href="ftp://alpha.gnu.org/gnu/bison/">ftp://alpha.gnu.org/gnu/bison/</a>
+(via FTP).</dd>
+
+
+<dt>Development</dt>
+
+<dd>For development sources, issue trackers, and other
+information, please see the
+<a href="http://savannah.gnu.org/projects/bison/">Bison
+project page</a>
+at <a href="http://savannah.gnu.org">savannah.gnu.org</a>.</dd>
+
+
+<dt>Translating
+  Bison</dt>
+
+<dd>To translate
+Bison's
+messages into other languages, please see the <a
+href="http://translationproject.org/domain/bison.html">Translation Project
+page for
+Bison</a>.
+If you have a new translation of the message strings,
+or updates to the existing strings, please have the changes made in this
+repository.  Only translations from this site will be incorporated into
+Bison.
+For more information, see the <a
+href="http://translationproject.org/html/welcome.html">Translation
+Project</a>.</dd>
+
+
+<dt>Maintainer</dt>
+
+<dd>Bison
+is currently being maintained by
+Akim Demaille and Paul Eggert.
+Please use the mailing lists for contact.</dd>
+
+
+</dl>
+
+
+<h3 id="license">Licensing</h3>
+
+<p>Bison
+is free software; you can redistribute it and/or modify it under the
+terms of the <a href="http://www.gnu.org/licenses/gpl.html"
+rel="license">GNU General Public License</a> as published by the Free
+Software Foundation; either version&nbsp;3 of the License, or (at your
+option) any later version.</p>
+
+</div><!-- for id="content", starts in the include above -->
+
+              <!-- begin server/footer-text.html -->
+<div id="fsf-links">
+ <ul>
+  <li><a href="/">GNU&nbsp;home&nbsp;page</a></li>
+  <li><a href="http://www.fsf.org/">FSF&nbsp;home&nbsp;page</a></li>
+  <li><a href="/graphics/graphics.html">GNU&nbsp;Art</a></li>
+  <li><a href="/fun/fun.html">GNU&nbsp;Fun</a></li>
+  <li><a href="/people/people.html">GNU's&nbsp;Who?</a></li>
+  <li><a href="http://directory.fsf.org">Free&nbsp;Software&nbsp;Directory</a></li>
+  <li><a href="/server/sitemap.html">Site&nbsp;map</a></li>
+ </ul>
+</div><!-- /fsf-links -->
+
+<div id="mission-statement">
+
+<blockquote>
+<p><a href="http://www.fsf.org"><img id="fsfbanner"
+src="/graphics/fsf-logo-notext.png" alt=" [FSF logo] "/></a><strong>&ldquo;Our
+mission is to preserve, protect and promote the freedom to use, study,
+copy, modify, and redistribute computer software, and to defend the
+rights of Free Software users.&rdquo;</strong></p>
+</blockquote>
+
+<p>The <a href="http://www.fsf.org">Free Software Foundation</a> is
+the principal organizational sponsor of the GNU Operating System.
+<strong>Support GNU and the FSF</strong> by <a
+href="http://shop.fsf.org/">buying manuals and gear</a>, <a
+href="https://my.fsf.org/associate/support_freedom?referrer=4052">
+<strong>joining the FSF</strong></a> as an associate member, or making
+a <strong>donation</strong>, either <a
+href="http://donate.fsf.org/">directly to the FSF</a> or <a
+href="http://flattr.com/thing/313733/gnuproject-on-Flattr">via
+Flattr</a>.</p>
+
+<p id="backtotop"><a href="#header">back to top</a></p>
+
+</div><!-- /mission-statement -->
+<!-- end server/footer-text.html -->
+
+
+<div id="footer">
+<div class="unprintable">
+
+<p>Please send general FSF &amp; GNU inquiries to
+<a href="mailto:gnu@gnu.org">&lt;gnu@gnu.org&gt;</a>.
+There are also <a href="/contact/">other ways to contact</a>
+the FSF.  Broken links and other corrections or suggestions can be sent
+to <a href="mailto:bug-bison@gnu.org">&lt;bug-bison@gnu.org&gt;</a>.</p>
+
+<p><!-- TRANSLATORS: Ignore the original text in this paragraph,
+        replace it with the translation of these two:
+
+        We work hard and do our best to provide accurate, good quality
+        translations.  However, we are not exempt from imperfection.
+        Please send your comments and general suggestions in this regard
+        to <a href="mailto:web-translators@gnu.org">
+        &lt;web-translators@gnu.org&gt;</a>.</p>
+
+        <p>For information on coordinating and submitting translations of
+        our web pages, see <a
+        href="/server/standards/README.translations.html">Translations
+        README</a>. -->
+Please see the <a
+href="/server/standards/README.translations.html">Translations
+README</a> for information on coordinating and submitting translations
+of this article.</p>
+</div>
+
+<!-- Regarding copyright, in general, standalone pages (as opposed to
+     files generated as part of manuals) on the GNU web server should
+     be under CC BY-ND 3.0 US.  Please do NOT change or remove this
+     without talking with the webmasters or licensing team first.
+     Please make sure the copyright date is consistent with the
+     document.  For web pages, it is ok to list just the latest year the
+     document was modified, or published.
+
+     If you wish to list earlier years, that is ok too.
+     Either "2001, 2002, 2003" or "2001-2003" are ok for specifying
+     years, as long as each year in the range is in fact a copyrightable
+     year, i.e., a year in which the document was published (including
+     being publicly visible on the web or in a revision control system).
+
+     There is more detail about copyright years in the GNU Maintainers
+     Information document, www.gnu.org/prep/maintain. -->
+
+<p>Copyright &copy; 2014 Free Software Foundation, Inc.</p>
+
+<p>This page is licensed under a <a rel="license"
+href="http://creativecommons.org/licenses/by-nd/3.0/us/">Creative
+Commons Attribution-NoDerivs 3.0 United States License</a>.</p>
+
+<!-- start of server/bottom-notes.html -->
+<div class="unprintable">
+<p><a href="http://www.fsf.org/about/dmca-notice">Copyright Infringement Notification</a></p>
+
+
+</div>
+<!-- end of server/bottom-notes.html -->
+
+
+<p class="unprintable">Updated:
+<!-- timestamp start -->
+$Date: 2014/08/06 15:37:12 $
+<!-- timestamp end -->
+</p>
+</div>
+</div>
+</body>
+</html>

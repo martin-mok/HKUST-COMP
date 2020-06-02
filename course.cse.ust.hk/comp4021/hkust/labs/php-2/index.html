@@ -1,0 +1,370 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+
+<!-- Mirrored from course.cse.ust.hk/comp4021/hkust/labs/php-2/index.html by HTTrack Website Copier/3.x [XR&CO'2014], Wed, 03 Jun 2015 09:36:27 GMT -->
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <title>COMP4021 Lab 7 - Chat System</title>
+  <link rel="stylesheet" type="text/css" href="../lab.html" />
+</head>
+
+<body>
+
+  <h1>
+    <span class="lab">COMP4021 Lab 7</span>
+    <span class="title">Chat System</span>
+  </h1>
+
+  <h2>Overview</h2>
+
+  <ul>
+    <li>In the last lab, we have learned a chat system with a Flash front end and a PHP back end. Flash is just one way of doing things (i.e., using flash to display text messages). It used to be very important. Although its importance is diminishing, still there is a lot of websites using flash. It is still useful to learn something about flash, e.g., people still need to maintain old websites that use flash. However, we can use JQuery to display, which will make homework muck easier. In this lab, we will learn a chat system without using flash. The architecture of this program is similar to what we have learnt in the last lab with slight difference.
+      <ol>
+        <li><a href="#section1">Implementation of the server side</a>
+          <ul class="none">
+              <li>1.1. <a href="#section1.1">Handling user login</a></li>
+              <li>1.2. <a href="#section1.2">Adding a message to the chat room</a></li>
+              <li>1.3. <a href="#section1.3">Handling requests from the client side</a></li>
+          </ul>
+        </li>
+        <li><a href="#section2">Implementation of the client side</a>
+          <ul class="none">
+            <li>2.1.<a href="#section2.1">Plotting the interface</a></li>
+            <li>2.2.<a href="#section2.2">Client.js</a></li>
+              <ul>
+                <li>2.2.1. <a href="#section2.2.1">Handling user login</a></li>
+                <li>2.2.2 <a href="#section2.2.2">Sending a message to the server</a></li>
+                <li>2.2.3. <a href="#section2.3">Getting messages from the server</a></li>
+              </ul>
+            
+          </ul>
+        </li>
+      </ol>
+    </li>
+    <li>The starting code, <a href="CHATROOM.zip">CHATROOM.zip</a>, is given to you.</li>
+  </ul>
+
+  <!-- <h2>Basic idea</h2>
+
+  <img src="images/overall.png" alt="Overall Idea" /> -->
+
+  <h2>Apache Server Setup</h2>
+
+  <ul>
+    <ol type="I">
+        <li> Using Computers in Lab 4210</li>
+        <ul>
+          <li>Due to installation restrictions in the teaching lab, you have to use Virtual PC to install and run your Apache server</li>
+            <li>To work with the pre-installed Virtual PC for the lab:
+              <ul>
+                <li>Copy <tt>D:\image\comp4021.vmc</tt> and <tt>D:\image\comp4021.vhd</tt> to <tt>D:\temp</tt></li>
+                <li>Double-click on <tt>comp4021.vmc</tt> in <tt>D:\temp</tt> to start the Virtual PC</li>
+                <li>Wait for the Virtual PC to boot up,We will work inside the Virtual PC after it has booted up</li>
+              </ul>
+          </li>
+          <li>Download the right WAMP server for php through <a href="http://www.wampserver.com/en/">here</a>. Install it on your virtual machine.
+          <li>After installation, start the Wamp server.</li>
+          <li><b><font color="#ff0000">Notice that, if you are running Skype, the wamp server cannot work correctly. So please stop Skype, or any applications that might be occupying port 80. A post discussing this issue is <a href="http://forums.phpfreaks.com/topic/144389-solved-wamp-server-offline/">here</a>.</font></b></li>
+          </li>
+        </ul>
+        
+        <li>Using your own computer</li>
+          <ol>
+            <li>Windows system
+              <ul>
+                <li>Download the right WAMP server for php through <a href="http://www.wampserver.com/en/">here</a>. Install it on your virtual machine.
+          <li>After installation, start the Wamp server.</li>
+          <li><b><font color="#ff0000">Notice that, if you are running Skype, the wamp server cannot work correctly. So please stop Skype, or any applications that might be occupying port 80. A post discussing this issue is <a href="http://forums.phpfreaks.com/topic/144389-solved-wamp-server-offline/">here</a>.</font></b></li>
+              </ul>
+            </li>
+
+            <li>
+                Mac OS X
+              <ul>
+                <li>Using command line to enable the bulit-in Apache Web Server</li>
+                <li>Or, you can download and install XAMPP server for mac</li>
+              </ul>
+            </li>
+           </ol>   
+    </ol>
+
+  <li>In the teaching lab, the computer's system is Windows. So we only talk about how to use WAMP server</li>
+<ul>
+  <li>After booting up the wamp server, copy the file <tt>helloworld.php</tt> <a href="helloworld.zip">here</a> to <tt>www</tt> directory under where you install your Wamp server to check wether the server works</li>
+    <li>Make your browser point to this location, <tt>http://localhost/helloworld.php</tt>
+      <ul>
+        <li>You should see a message 'Hello World' in your browser</li>
+      </ul>
+    </li>
+    <li>For this lab you can use the chatroom starting files by extracting the files and putting them into the <tt>www</tt> directory</li>
+</ul>
+    </ol>
+    
+
+  </ul>
+
+  <!-- <h2>Implementation</h2>
+
+  <ul>
+    <li>Here is the basic interface of the chat system developed in this lab:
+      <a name="interface"></a>
+      <p><img src="images/chatgui.png" alt="The GUI" /></p>
+    </li>
+    <li>The window is divided into two frames
+      <p><img src="images/structure.png" alt="The GUI Structure" /></p>
+    </li>
+    <li>The upper frame contains the file <tt>chat.swf</tt> which displays the current messages inside the chat room</li>
+    <li>The lower frame displays the interface for login (<tt>login.html</tt>) or message input (<tt>client.php</tt>)</li>
+    <li>You need to first provide a user name in order to enter the chat room in the login page (<tt>login.html</tt>)</li>
+    <li>The chat room area will be updated immediately if you enter a message in the message input page</li>
+    <li>The basic flow of the whole operation is:
+      <ul>
+        <li><b>Step 1</b> - Load the main page, <tt>chatroom.html</tt></li>
+        <li><b>Step 2</b> - After entering the username in <tt>login.html</tt>, the name is sent to <tt>login.php</tt> and the browser is redirected to <tt>client.php</tt></li>
+        <li><b>Step 3</b> - The user enters a message in <tt>client.php</tt>, the message is sent to <tt>add_message.php</tt> for processing in the server</li>
+      </ul>
+    </li>
+  </ul> -->
+
+  <h2>Information Flow</h2>
+
+  <ul>
+    <li>Here is an illustration of the flow of information for the system
+      <p><img src="images/flow.png" alt="Program Flow" height="70%" width="70%"/></p>
+    </li>
+
+    <li>The basic flow of the whole operation is:
+      <ul>
+        <li><b>Step 1</b> - Load the main page, <tt>chatroom.html</tt></li>
+        <li><b>Step 2</b> - After entering the username, the name is sent to <tt>login.php</tt> </li>
+        <li><b>Step 3</b> - The user enters a message, the message is sent to <tt>add_message.php</tt> for processing in the server</li>
+      </ul>
+    </li>
+    <!-- <li>Here is the detailed flow of information among <tt>message.php</tt>, <tt>chat.swf</tt>, and <tt>server.php</tt>
+      <p><img src="images/html2swf_flow.png" alt="HTML to SWF Flow" /></p>
+    </li> -->
+  </ul>
+
+  <h2 id="section1">1. Implementation of the Server Side</h2>
+
+  <ul>
+    <li>There are three files mainly responsible for handling the operations in the server side</li>
+    <li>These files are <tt>login.php</tt>, <tt>add_message.php</tt> and <tt>server.php</tt></li>
+    <li>Because they are designed to be used for server side operations only, the output from these files are not for displaying in the client side, i.e. these files are invisible from the user's point of view</li>
+    <li>Note that we could have combined both the server operations and client display together in one file</li>
+    <li>However, in this lab, we choose to use separate files for server-side operations and client-side display, so that you can understand the system easily</li>
+  </ul>
+
+  <h3 id="section1.1">1.1. login.php - Handling user login</h3>
+
+  <ul>
+    <li>After the user enters a name in <tt>login.html</tt>, the name will be sent to this file as form data</li>
+    <li>The purpose of this php script is to set the value of this user name into a <b>cookie</b></li>
+    <li>This can be easily done by calling the <tt>setcookie</tt> function in php, for example,
+      <pre><span class="comment">// Transfer from form data into cookie</span>
+setcookie("name", $_POST["name"]);</pre>
+    </li>
+    <li>The above code sets the value from the form data "name" to a cookie with the same name</li>
+    <li>After setting the cookie, every page requested by the client in the same session can also access this cookie, i.e. we can retrieve the user name in another php script, such as <tt>add_message.php</tt></li>
+    <!-- <li>After setting the cookie, the page is redirected to <tt>client.php</tt>, which is the message input page for the user</li>
+    <li>This can be done by a <tt>Location</tt> HTTP header command, for example,
+      <pre>header("Location: client.php");</pre>
+    </li> -->
+  </ul>
+
+  <h3 id="section1.2"><span style="color: red">1.2. add_message.php - Adding a message to the chat room</span></h3>
+
+  <ul>
+    <li>This php script is responsible for updating the content of our chat room</li>
+    <li>The messages inside the chat room are stored in a single XML file called <tt>chatroom.xml</tt> located in the server.
+    When add_message.php receives the input coming from the clint side, it will add the new message to the end of the XML file</li>
+    <li>A new message consists of three values: username, message content and time stamp. A new message is saved as an array in the XML file
+      <!-- <pre>&lt;message name="<span class="todo">... name here ...</span>"&gt;<span class="todo">... message content here ...</span>&lt;/message&gt;</pre> -->
+      <pre>
+      {
+        "username": "Alice", 
+        "message": "Welcome to the CHAT system", 
+        "time": 1428768636
+      }
+      </pre>
+      
+    </li>
+    <li><span style="color: red">You need to add the code for adding a message to the XML file in this lab</span></li>
+    <!-- <li>Here is the content of XML file <tt>chatroom.xml</tt> for the chat messages in the interface figure <a href="#interface">above</a>
+      <p><img src="images/xml.png" alt="The XML" /></p>
+    </li> -->
+    <ul>
+      <li>The name is retrieved from the cookie set in <tt>login.php</tt> and the content is retrieved from form data</li>
+        <li>To open an XML file, you can use the following:
+          <pre>$f = fopen("chatroomxml", "r");</pre>
+        </li>
+        <!-- <li>Then we can add a new message element to the messages group by:
+              <pre><span class="comment">// Get the 'messages' element as the current element</span>
+$messages_element = $xmlh-&gt;getElement("messages");
+
+<span class="comment">// Create a 'message' element for each message</span>
+$message_element = $xmlh-&gt;addElement($messages_element, "message");</pre>
+    </li> -->
+        <li>read the file content</li>
+        <pre>$info = fgets($f);</pre>
+
+    <li>If the file is empty, write the first message array into the xml file. 
+      <pre>
+        if ($info == "") {
+        $data = array(
+            // one chat log, records the user name, message content and time stamp
+        0 => array(
+      "username"  => $name,
+      "message"   => $message,
+      "time"    => time(),
+    )
+  );
+
+       <span class="comment">// write to the file</span>
+	file_put_contents("chatroom.xml", json_encode($data));
+      </pre>
+
+
+
+      If not empty, fetch the existed log in xml file, add the new message and then write back to the file.
+      <pre>
+	<span class="comment">// fetch the existed log</span>
+        $d = json_decode($info, true);
+
+	<span class="comment">// update the data array $data, similiar to above. write by yourself</span>
+		
+        
+        <span class="comment">// add the new message</span>
+        array_push($d, $data);
+
+        <span class="comment">// write back to the file</span>
+        file_put_contents("chatroom.xml", json_encode($d));
+        </pre>  
+     
+    </li>
+    <li>Remember to close it:
+      <pre>fclose($f);</pre>
+    </li>
+    <li>After updating the <tt>chatroom.xml</tt>, the page is waiting for the next message input</li>
+  </ul>
+    </ul>
+    
+
+  <h3 id="section1.3">1.3. server.php - Handling requests from the client side</h3>
+
+  <ul>
+    <li>This file is used as the server connection. The main purpose of this file is to output the chatroom messages from <tt>chatroom.xml</tt>  to client side</li>
+    <li>When this file is requested by the client, the output is sent to the client. The Javascript code in client.js finds the new messages in the XML output and then displays the messages in the chatting area</li>
+    <li><span style="color: red">You need to add the code here, which is similiar to code in addmessage.php </span></li>
+      <pre>
+// open the chatroom.xml
+$f = fopen("chatroom.xml", "r"):
+
+// read content of the file
+$info = fgets($f);
+
+// output to the polling request
+echo $info;
+
+//close the file
+fclose($f);
+      </pre>
+  </ul>
+
+  <h2 id="section2">2. Implementation of the Client Side</h2>
+
+  <ul>
+    <li>In the client side, the user can see the output of these two files:
+      <ul>
+        <li><tt>chatroom.html</tt></li>
+        <li><tt>client.js</tt></li>
+        <!-- <li><tt>message.php</tt></li>
+        <li><tt>chat.swf</tt></li> -->
+      </ul>
+    </li>
+    <li>They are mainly responsible for accepting the user input and displaying the chatroom messages</li>
+    <li>After the user has entered data in a form, the data will be sent to one of the php scripts located in the server</li>
+  </ul>
+
+  <h3 id="section2.1">2.1. chatroom.html </h3>
+
+  <ul>
+    <li>This is a very simple file which plots the login and the chat log.
+      <p><img src="images/login.png" alt="The Login Page" height="30%" width="30%"/></p>
+    </li>
+
+  </ul>
+
+  <h3 id="section2.2">2.2. client.js </h3>
+
+
+  <!-- <h3 id="section2.3">2.3. message.php - Getting messages from the server</h3>
+
+  <ul>
+    <li>This is the chat room display of the system
+      <p><img src="images/upper.png" alt="The Chatroom" /></p>
+    </li>
+    <li>The messages are displayed as text elements in Flash</li>
+    <li>In this lab, we use AJAX techniques to handle the request and response, i.e. we send request to the server and process the response using JavaScript</li>
+  </ul> --> 
+    <h4 id="section2.2.1">2.2.1. Handling user login</h4>
+      <ul>
+        <li><!-- $("#login").click(function() --> User login is handled. The input user name can only contain letters or digits.</li>
+        <li>Using AJAX send request to login.php, write the user name into the cookie</li>
+        <li><span style="color: red">You need to add the code for check whether the user name contains illegal charaters in this lab. The user name can only contain letters and digits </span></li>
+          <ul>
+            <li>if user name contains illegal characters, the window will pop out</li>
+            <p><img src="images/invalidusername.png"  height="1000%" width="30%"/></p>
+          </ul>
+      </ul>
+
+  <h4 id="section2.2.2">2.2.2. Sending a message to the server</h4>
+    <ul>
+      <li>This is the main user input of the chat room
+      <p><img src="images/client.png" alt="The User Input" height="1000%" width="30%"/></p>
+    </li>
+    <li>The input from this form is sent to <tt>add_message.php</tt> so that the content of <tt>chatroom.xml</tt> can be updated</li>
+    </ul>
+
+
+  <h4 id="section2.2.3">2.2.3. Getting messages from the server</h4>
+    <h5 id="section2.2.3.1">2.2.3.1. Polling</h5>
+    <ul>
+      <li> Keep executing function updateMsg(), constantly check whether the content in server.php changed</li>
+      <li> UpdateMsg():update the chatting area. Request the server.php to fetch the chat log, then add to the chatting area </li>
+    </ul>
+
+    <h5 id="section2.2.3.2">2.2.3.2.Passing information to chat area for displaying</h5>
+    <ul>
+      <li>addMessages(xml):passing information to chatting area for displaying. </li>
+      <li>appendLog(msg):translate text of each log to html element in the chatting area. Display the text of message in the chatting area. The following is the ActionScript code of appendLog(msg): </li>
+      <pre>
+        function appendLog(msg) {
+            var d = log[0]
+            var doScroll = d.scrollTop == d.scrollHeight - d.clientHeight;
+            msg.appendTo(log)
+            if (doScroll) {
+                d.scrollTop = d.scrollHeight - d.clientHeight;
+            }
+        }
+      </pre>
+
+    </ul>
+
+    <!-- <ul>
+      <li></li>
+    </ul> -->
+
+ 
+  <h2>Submission</h2>
+
+    <li>This work is the start of your PHP Forum assignment</li>
+    <li>It is essential that you complete it, and keep a copy of it for further development</li>
+  </ul>
+
+</body>
+
+<!-- Mirrored from course.cse.ust.hk/comp4021/hkust/labs/php-2/index.html by HTTrack Website Copier/3.x [XR&CO'2014], Wed, 03 Jun 2015 09:36:28 GMT -->
+</html>

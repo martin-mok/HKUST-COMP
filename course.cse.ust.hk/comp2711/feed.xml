@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+ <id>urn:iweb:778B7B91-8E4B-41DE-B2BB-0D244F97F43B</id>
+ <title>Page list Atom feed</title>
+ <updated>2015-01-14T11:05:55+08:00</updated>
+ <link rel="self" href="feed.xml"/>
+ <generator>iWeb</generator>
+ <author>
+  <name>iWeb</name>
+ </author>
+ <entry>
+  <id>urn:iweb:51D70BC7-B710-4193-ACC6-129A8A934060</id>
+  <title>Home</title>
+  <title xmlns="urn:iweb:">Home</title>
+  <in-navbar xmlns="urn:iweb:">51D70BC7-B710-4193-ACC6-129A8A934060</in-navbar>
+  <link rel="alternate" href="Home.html"/>
+  <updated>2015-01-14T11:05:55.001+08:00</updated>
+  <content>Home</content>
+ </entry>
+ <entry>
+  <id>urn:iweb:DC214345-B3E6-4796-B1DD-2B61DD774FCE</id>
+  <title>Teaching Team</title>
+  <title xmlns="urn:iweb:">Teaching Team</title>
+  <in-navbar xmlns="urn:iweb:">DC214345-B3E6-4796-B1DD-2B61DD774FCE</in-navbar>
+  <link rel="alternate" href="Teaching_Team.html"/>
+  <updated>2015-01-14T11:05:55.002+08:00</updated>
+  <content>Teaching Team</content>
+ </entry>
+ <entry>
+  <id>urn:iweb:416ECF00-9CD5-4B6B-AB25-C7DB6926482B</id>
+  <title>Class Schedule</title>
+  <title xmlns="urn:iweb:">Class Schedule</title>
+  <in-navbar xmlns="urn:iweb:">416ECF00-9CD5-4B6B-AB25-C7DB6926482B</in-navbar>
+  <link rel="alternate" href="Class_Schedule.html"/>
+  <updated>2015-01-14T11:05:55.003+08:00</updated>
+  <content>Class Schedule</content>
+ </entry>
+ <entry>
+  <id>urn:iweb:C1F74790-D656-4DAE-AA47-38229901359A</id>
+  <title>Course Description</title>
+  <title xmlns="urn:iweb:">Course Description</title>
+  <in-navbar xmlns="urn:iweb:">C1F74790-D656-4DAE-AA47-38229901359A</in-navbar>
+  <link rel="alternate" href="Course_Description.html"/>
+  <updated>2015-01-14T11:05:55.004+08:00</updated>
+  <content>Course Description</content>
+ </entry>
+ <entry>
+  <id>urn:iweb:1B1B9AFD-2C94-45BD-870D-6C6DCA0EB522</id>
+  <title>Learning Outcomes</title>
+  <title xmlns="urn:iweb:">Learning Outcomes</title>
+  <in-navbar xmlns="urn:iweb:">1B1B9AFD-2C94-45BD-870D-6C6DCA0EB522</in-navbar>
+  <link rel="alternate" href="Learning_Outcomes.html"/>
+  <updated>2015-01-14T11:05:55.005+08:00</updated>
+  <content>Learning Outcomes</content>
+ </entry>
+ <entry>
+  <id>urn:iweb:FD1B2BE8-F5A2-40DA-9155-626F3D6D8DF3</id>
+  <title>Textbook</title>
+  <title xmlns="urn:iweb:">Textbook</title>
+  <in-navbar xmlns="urn:iweb:">FD1B2BE8-F5A2-40DA-9155-626F3D6D8DF3</in-navbar>
+  <link rel="alternate" href="Textbook.html"/>
+  <updated>2015-01-14T11:05:55.006+08:00</updated>
+  <content>Textbook</content>
+ </entry>
+ <entry>
+  <id>urn:iweb:248D60F6-73D8-4145-A0AA-310B09B6F6C8</id>
+  <title>Assessment Tasks</title>
+  <title xmlns="urn:iweb:">Assessment Tasks</title>
+  <in-navbar xmlns="urn:iweb:">248D60F6-73D8-4145-A0AA-310B09B6F6C8</in-navbar>
+  <link rel="alternate" href="Assessment_Tasks.html"/>
+  <updated>2015-01-14T11:05:55.007+08:00</updated>
+  <content>Assessment Tasks</content>
+ </entry>
+</feed>

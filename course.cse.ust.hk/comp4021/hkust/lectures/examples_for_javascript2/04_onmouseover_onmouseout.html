@@ -1,0 +1,38 @@
+<!--
+COMP303 JavaScript Example
+
+onmouseover and onmouseout example
+-->
+
+<html>
+
+<!-- Mirrored from course.cse.ust.hk/comp4021/hkust/lectures/examples_for_javascript2/04_onmouseover_onmouseout.html by HTTrack Website Copier/3.x [XR&CO'2014], Wed, 03 Jun 2015 10:08:25 GMT -->
+<head>
+<script language= "JavaScript">
+
+<!--
+
+function change_colour( new_colour ) {
+document.getElementById("pretty_layer").style.background=new_colour;
+}
+
+-->
+
+</script>
+</head>
+
+<body>
+
+<div id="pretty_layer" 
+	style="position:absolute; background:yellow; 
+	left:300; top:100; width:100; font-size:22pt"
+	onmouseover="change_colour('red');"
+	onmouseout="change_colour('yellow');">
+Move your mouse over this layer...
+Then move it out...
+</div>
+
+</body> 
+
+<!-- Mirrored from course.cse.ust.hk/comp4021/hkust/lectures/examples_for_javascript2/04_onmouseover_onmouseout.html by HTTrack Website Copier/3.x [XR&CO'2014], Wed, 03 Jun 2015 10:08:25 GMT -->
+</html>

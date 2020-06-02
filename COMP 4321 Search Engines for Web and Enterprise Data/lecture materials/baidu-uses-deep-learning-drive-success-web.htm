@@ -1,0 +1,1194 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>How Baidu Uses Deep Learning to Drive Success on the Web</title>
+    <meta name="viewport" content="width=device-width">
+	<meta name="designer" content="The UK Edge - http://www.theukedge.com">
+	<link rel="shortcut icon" href="http://2s7gjr373w3x22jf92z99mgm5w.wpengine.netdna-cdn.com/wp-content/themes/datanami/img/Datanami_favicon.png" />
+    <!-- Bootstrap -->
+	
+<!-- This site is optimized with the Yoast WordPress SEO plugin v1.7.1 - https://yoast.com/wordpress/plugins/seo/ -->
+<link rel="original-source" href="" />
+<meta name="description" content="The Chinese Web giant Baidu is investing heavily in deep learning technologies as it seeks to drive intelligence from big data using high performance compu"/>
+<link rel="canonical" href="http://www.datanami.com/2014/09/22/baidu-uses-deep-learning-drive-success-web/" />
+<meta property="og:locale" content="en_US" />
+<meta property="og:type" content="article" />
+<meta property="og:title" content="How Baidu Uses Deep Learning to Drive Success on the Web" />
+<meta property="og:description" content="The Chinese Web giant Baidu is investing heavily in deep learning technologies as it seeks to drive intelligence from big data using high performance compu" />
+<meta property="og:url" content="http://www.datanami.com/2014/09/22/baidu-uses-deep-learning-drive-success-web/" />
+<meta property="og:site_name" content="Datanami" />
+<meta property="article:publisher" content="https://www.facebook.com/pages/Datanami/124760547631010" />
+<meta property="article:tag" content="artificial intelligence" />
+<meta property="article:tag" content="deep learning" />
+<meta property="article:tag" content="deep neural networks" />
+<meta property="article:tag" content="machine learning" />
+<meta property="article:section" content="Features" />
+<meta property="article:published_time" content="2014-09-22T14:48:26+00:00" />
+<meta property="og:image" content="http://www.datanami.com/wp-content/uploads/2014/09/baidu.png" />
+<meta name="twitter:card" content="summary"/>
+<meta name="twitter:description" content="The Chinese Web giant Baidu is investing heavily in deep learning technologies as it seeks to drive intelligence from big data using high performance compu"/>
+<meta name="twitter:title" content="How Baidu Uses Deep Learning to Drive Success on the Web"/>
+<meta name="twitter:site" content="@datanami"/>
+<meta name="twitter:domain" content="Datanami"/>
+<meta name="twitter:creator" content="@datanami"/>
+<!-- / Yoast WordPress SEO plugin. -->
+
+<link rel="alternate" type="application/rss+xml" title="Datanami &raquo; How Baidu Uses Deep Learning to Drive Success on the Web Comments Feed" href="http://www.datanami.com/2014/09/22/baidu-uses-deep-learning-drive-success-web/feed/" />
+<link rel='stylesheet' id='nivo-slider-css'  href='http://2s7gjr373w3x22jf92z99mgm5w.wpengine.netdna-cdn.com/wp-content/themes/datanami/functions/shortcodes-ultimate/css/nivoslider.css' type='text/css' media='all' />
+<link rel='stylesheet' id='jcarousel-css'  href='http://2s7gjr373w3x22jf92z99mgm5w.wpengine.netdna-cdn.com/wp-content/themes/datanami/functions/shortcodes-ultimate/css/jcarousel.css' type='text/css' media='all' />
+<link rel='stylesheet' id='shortcodes-ultimate-css'  href='http://2s7gjr373w3x22jf92z99mgm5w.wpengine.netdna-cdn.com/wp-content/themes/datanami/functions/shortcodes-ultimate/css/style.css' type='text/css' media='all' />
+<link rel='stylesheet' id='tribe-events-full-pro-calendar-style-css'  href='http://2s7gjr373w3x22jf92z99mgm5w.wpengine.netdna-cdn.com/wp-content/plugins/events-calendar-pro/resources/tribe-events-pro-full.min.css?ver=3.9' type='text/css' media='all' />
+<link rel='stylesheet' id='tribe-events-calendar-pro-style-css'  href='http://2s7gjr373w3x22jf92z99mgm5w.wpengine.netdna-cdn.com/wp-content/plugins/events-calendar-pro/resources/tribe-events-pro-theme.min.css?ver=3.9' type='text/css' media='all' />
+<link rel='stylesheet' id='tribe-events-calendar-full-pro-mobile-style-css'  href='http://2s7gjr373w3x22jf92z99mgm5w.wpengine.netdna-cdn.com/wp-content/plugins/events-calendar-pro/resources/tribe-events-pro-full-mobile.min.css?ver=3.9' type='text/css' media='only screen and (max-width: 768px)' />
+<link rel='stylesheet' id='tribe-events-calendar-pro-mobile-style-css'  href='http://2s7gjr373w3x22jf92z99mgm5w.wpengine.netdna-cdn.com/wp-content/plugins/events-calendar-pro/resources/tribe-events-pro-theme-mobile.min.css?ver=3.9' type='text/css' media='only screen and (max-width: 768px)' />
+<link rel='stylesheet' id='bootstrap-css'  href='http://2s7gjr373w3x22jf92z99mgm5w.wpengine.netdna-cdn.com/wp-content/themes/datanami/css/bootstrap.min.css?ver=4.1' type='text/css' media='all' />
+<link rel='stylesheet' id='font-awesome-css'  href='http://2s7gjr373w3x22jf92z99mgm5w.wpengine.netdna-cdn.com/wp-content/themes/datanami/css/font-awesome.css?ver=4.1' type='text/css' media='all' />
+<link rel='stylesheet' id='hpcwire-css'  href='http://2s7gjr373w3x22jf92z99mgm5w.wpengine.netdna-cdn.com/wp-content/themes/datanami/style.css?ver=4.1' type='text/css' media='all' />
+<link rel='stylesheet' id='wordpress-popular-posts-css'  href='http://2s7gjr373w3x22jf92z99mgm5w.wpengine.netdna-cdn.com/wp-content/plugins/wordpress-popular-posts/style/wpp.css?ver=3.2.1' type='text/css' media='all' />
+<link rel='stylesheet' id='genericons-css'  href='http://2s7gjr373w3x22jf92z99mgm5w.wpengine.netdna-cdn.com/wp-content/plugins/jetpack/_inc/genericons/genericons/genericons.css?ver=3.1' type='text/css' media='all' />
+<link rel='stylesheet' id='jetpack_css-css'  href='http://2s7gjr373w3x22jf92z99mgm5w.wpengine.netdna-cdn.com/wp-content/plugins/jetpack/css/jetpack.css?ver=3.3' type='text/css' media='all' />
+<!-- This site uses the Yoast Google Analytics plugin v5.2.7 - Universal enabled - https://yoast.com/wordpress/plugins/google-analytics/ -->
+<script type="text/javascript">
+	(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+		(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+		m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+	})(window,document,'script','//www.google-analytics.com/analytics.js','__gaTracker');
+
+	__gaTracker('create', 'UA-1289278-8', 'auto');
+	__gaTracker('set', 'forceSSL', true);
+	__gaTracker('require', 'displayfeatures');
+	__gaTracker('send','pageview');
+
+</script>
+<!-- / Yoast Google Analytics --><script type='text/javascript' src='http://2s7gjr373w3x22jf92z99mgm5w.wpengine.netdna-cdn.com/wp-includes/js/jquery/jquery.js?ver=1.11.1'></script>
+<script type='text/javascript' src='http://2s7gjr373w3x22jf92z99mgm5w.wpengine.netdna-cdn.com/wp-includes/js/jquery/jquery-migrate.min.js?ver=1.2.1'></script>
+<script type='text/javascript' src='http://2s7gjr373w3x22jf92z99mgm5w.wpengine.netdna-cdn.com/wp-content/themes/datanami/functions/shortcodes-ultimate/js/flowplayer-3.2.6.min.js'></script>
+<script type='text/javascript' src='http://2s7gjr373w3x22jf92z99mgm5w.wpengine.netdna-cdn.com/wp-content/themes/datanami/functions/shortcodes-ultimate/js/nivoslider.js'></script>
+<script type='text/javascript' src='http://2s7gjr373w3x22jf92z99mgm5w.wpengine.netdna-cdn.com/wp-content/themes/datanami/functions/shortcodes-ultimate/js/jcarousel.js'></script>
+<script type='text/javascript' src='http://2s7gjr373w3x22jf92z99mgm5w.wpengine.netdna-cdn.com/wp-content/themes/datanami/functions/shortcodes-ultimate/js/init.js'></script>
+<script type='text/javascript' src='http://2s7gjr373w3x22jf92z99mgm5w.wpengine.netdna-cdn.com/wp-content/themes/datanami/functions/shortcodes-ultimate/js/jquery.minitwitter.js'></script>
+<script type='text/javascript' src='http://2s7gjr373w3x22jf92z99mgm5w.wpengine.netdna-cdn.com/wp-content/plugins/datanami-dfp-integration/js/ros-dfp.js?ver=20141105'></script>
+<script type='text/javascript' src='http://2s7gjr373w3x22jf92z99mgm5w.wpengine.netdna-cdn.com/wp-content/themes/datanami/js/bootstrap.min.js?ver=1'></script>
+<script type='text/javascript' src='http://2s7gjr373w3x22jf92z99mgm5w.wpengine.netdna-cdn.com/wp-content/themes/datanami/js/holder.js?ver=1'></script>
+<script type='text/javascript' src='https://ajax.googleapis.com/ajax/libs/jqueryui/1.8.18/jquery-ui.min.js?ver=4.1'></script>
+<link rel='shortlink' href='http://wp.me/p4AgBk-1sj' />
+<!-- Stream WordPress user activity plugin v2.0.1 -->
+				<!-- WordPress Popular Posts v3.2.1 -->
+				<script type="text/javascript">//<![CDATA[
+
+					// Create XMLHttpRequest object and set variables
+					var xhr = ( window.XMLHttpRequest )
+					  ? new XMLHttpRequest()
+					  : new ActiveXObject( "Microsoft.XMLHTTP" ),
+					url = 'http://www.datanami.com/wp-admin/admin-ajax.php',
+					params = 'action=update_views_ajax&token=84064e4bb3&id=5599';
+					// Set request method and target URL
+					xhr.open( "POST", url, true );
+					// Set request header
+					xhr.setRequestHeader( "Content-type", "application/x-www-form-urlencoded" );
+					// Hook into onreadystatechange
+					xhr.onreadystatechange = function() {
+						if ( 4 == xhr.readyState && 200 == xhr.status ) {
+							if ( window.console && window.console.log ) {
+								window.console.log( xhr.responseText );
+							}
+						}
+					}
+					// Send request
+					xhr.send( params );
+
+				//]]></script>
+				<!-- End WordPress Popular Posts v3.2.1 -->
+					<!--[if lt IE 9]>
+		<script src="//cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7/html5shiv.js"></script>
+	<![endif]-->
+  </head>
+  <body class="single single-post postid-5599 single-format-standard tribe-theme-datanami page-template-single-php">
+    <div id="main" class="container">
+		<header id="masthead">
+							<div class="row-fluid">
+					<div class="span9 pull-right">
+												<div id="text-2" class="widget widget_text">			<div class="textwidget"><p><!-- DAT-TOP-LB-728x90 --></p>
+<div id='div-gpt-ad-1404326031787-3' style='width:728px; height:90px;'>
+<script type='text/javascript'>
+googletag.cmd.push(function() { googletag.display('div-gpt-ad-1404326031787-3'); });
+</script>
+</div>
+</div>
+		</div>										</div>
+				</div>
+						<div id="main-head" class="row-fluid">
+				<div class="span5">
+					<div id="branding">
+						<a href="http://www.datanami.com" alt="Datanami"><img src="http://2s7gjr373w3x22jf92z99mgm5w.wpengine.netdna-cdn.com/wp-content/themes/datanami/img/logo.png"></a>
+						<p>Big Data • Big Analytics • Big Insight</p>
+					</div>
+				</div>
+									<div id="right-of-logo"class="span7">
+					<!-- translation -->
+         <div style="">
+            <img src="http://2s7gjr373w3x22jf92z99mgm5w.wpengine.netdna-cdn.com/wp-content/themes/datanami/img/sixFlags.png" alt="Language Flags" style="width:154px; height:14px; border:none; margin-bottom:5px; display:inline;" />
+            <div id="google_translate_element" style="margin-bottom:5px;"></div>
+            <p style="padding:0px; margin:0px; font-size:12px;"><a href="/termsofuse.html#translation">Translation Disclaimer</a></p>
+            <script>
+            function googleTranslateElementInit() {
+            new google.translate.TranslateElement({
+            pageLanguage: 'en',
+            includedLanguages: 'zh-CN,fr,de,ja,ko,es',
+            gaTrack: true,
+            gaId: 'UA-1289278-7',
+            layout: google.translate.TranslateElement.InlineLayout.SIMPLE
+            }, 'google_translate_element');
+            }
+            </script>
+            <script src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
+         </div>
+													<div id="search-2" class="widget widget_search"><form method="get" id="searchform" class="form-inline" action="http://www.datanami.com/" >
+            <div><input type="text" value="Search this site" name="s" id="s"  onfocus="if(this.value==this.defaultValue)this.value='';" onblur="if(this.value=='')this.value=this.defaultValue;"/><input type="submit" id="searchsubmit" class="btn" value="Search" />
+            </div>
+            </form></div>											</div>
+							</div>
+			<div id="utilities" class="row-fluid">
+				<div class="span8">
+					<nav class="menu-secondary-menu-container"><ul id="menu-secondary-menu" class="nav nav-pills"><li id="menu-item-2573" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-home menu-item-2573"><a href="http://www.datanami.com/" onclick="__gaTracker('send', 'event', 'outbound-widget-int', 'http://www.datanami.com/', 'Home');" >Home</a></li>
+<li id="menu-item-2574" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-2574"><a href="http://www.datanami.com/about/" onclick="__gaTracker('send', 'event', 'outbound-widget-int', 'http://www.datanami.com/about/', 'About');" >About</a></li>
+<li id="menu-item-2699" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-2699"><a href="http://www.datanami.com/whitepaper/" onclick="__gaTracker('send', 'event', 'outbound-widget-int', 'http://www.datanami.com/whitepaper/', 'Whitepapers');" >Whitepapers</a></li>
+<li id="menu-item-2700" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-2700"><a href="http://www.datanami.com/events/" onclick="__gaTracker('send', 'event', 'outbound-widget-int', 'http://www.datanami.com/events/', 'Events');" >Events</a></li>
+<li id="menu-item-4333" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-4333"><a href="http://www.datanami.com/subscribe/" onclick="__gaTracker('send', 'event', 'outbound-widget-int', 'http://www.datanami.com/subscribe/', 'Subscribe');" >Subscribe</a></li>
+</ul></nav>				</div>
+				<div class="span4">
+											<div id="text-9" class="widget widget_text">			<div class="textwidget"><div id="follow-datanami">Follow Datanami: <a href="http://www.facebook.com/pages/Datanami/124760547631010" onclick="__gaTracker('send', 'event', 'outbound-widget', 'http://www.facebook.com/pages/Datanami/124760547631010', '');" ><i class="icon-facebook"></i></a> <a href="http://www.twitter.com/datanami" onclick="__gaTracker('send', 'event', 'outbound-widget', 'http://www.twitter.com/datanami', '');" ><i class="icon-twitter"></i></a> <a href="http://www.linkedin.com/groups/Big-Data-News-Network-4166980" onclick="__gaTracker('send', 'event', 'outbound-widget', 'http://www.linkedin.com/groups/Big-Data-News-Network-4166980', '');" ><i class="icon-linkedin"></i></a> <a href="http://www.datanami.com/feed/" onclick="__gaTracker('send', 'event', 'outbound-widget-int', 'http://www.datanami.com/feed/', '');" ><i class="icon-rss"></i></a></div>
+</div>
+		</div>									</div>
+			</div>
+			<nav class="menu-main-menu-container"><ul id="menu-main-menu" class="nav nav-pills"><li id="menu-item-42" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-home menu-item-42"><a href="http://www.datanami.com/" onclick="__gaTracker('send', 'event', 'outbound-widget-int', 'http://www.datanami.com/', 'Home');" >Home</a></li>
+<li id="menu-item-41" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-has-children menu-item-41 dropdown"><a href="#" data-toggle="dropdown" data-target="#" class="dropdown-toggle">Features <span class="caret"></span></a>
+<ul class="dropdown-menu">
+	<li id="menu-item-43" class="menu-item menu-item-type-taxonomy menu-item-object-category current-post-ancestor current-menu-parent current-post-parent menu-item-43"><a href="http://www.datanami.com/category/features/" onclick="__gaTracker('send', 'event', 'outbound-widget-int', 'http://www.datanami.com/category/features/', 'Features Archive');" >Features Archive</a></li>
+	<li id="menu-item-44" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-44"><a href="http://www.datanami.com/category/news-in-brief/" onclick="__gaTracker('send', 'event', 'outbound-widget-int', 'http://www.datanami.com/category/news-in-brief/', 'News Archive');" >News Archive</a></li>
+	<li id="menu-item-45" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-45"><a href="http://www.datanami.com/this-just-in/" onclick="__gaTracker('send', 'event', 'outbound-widget-int', 'http://www.datanami.com/this-just-in/', 'This Just In');" >This Just In</a></li>
+	<li id="menu-item-46" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-46"><a href="http://www.datanami.com/special-strata-coverage/" onclick="__gaTracker('send', 'event', 'outbound-widget-int', 'http://www.datanami.com/special-strata-coverage/', 'Special Strata Coverage');" >Special Strata Coverage</a></li>
+</ul>
+</li>
+<li id="menu-item-48" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-has-children menu-item-48 dropdown"><a href="#" data-toggle="dropdown" data-target="#" class="dropdown-toggle">Sectors <span class="caret"></span></a>
+<ul class="dropdown-menu">
+	<li id="menu-item-64" class="menu-item menu-item-type-taxonomy menu-item-object-sector menu-item-64"><a href="http://www.datanami.com/sector/academia/" onclick="__gaTracker('send', 'event', 'outbound-widget-int', 'http://www.datanami.com/sector/academia/', 'Academia');" >Academia</a></li>
+	<li id="menu-item-65" class="menu-item menu-item-type-taxonomy menu-item-object-sector menu-item-65"><a href="http://www.datanami.com/sector/biosciences/" onclick="__gaTracker('send', 'event', 'outbound-widget-int', 'http://www.datanami.com/sector/biosciences/', 'Biosciences');" >Biosciences</a></li>
+	<li id="menu-item-66" class="menu-item menu-item-type-taxonomy menu-item-object-sector menu-item-66"><a href="http://www.datanami.com/sector/financial-services/" onclick="__gaTracker('send', 'event', 'outbound-widget-int', 'http://www.datanami.com/sector/financial-services/', 'Financial Services');" >Financial Services</a></li>
+	<li id="menu-item-67" class="menu-item menu-item-type-taxonomy menu-item-object-sector menu-item-67"><a href="http://www.datanami.com/sector/government/" onclick="__gaTracker('send', 'event', 'outbound-widget-int', 'http://www.datanami.com/sector/government/', 'Government');" >Government</a></li>
+	<li id="menu-item-68" class="menu-item menu-item-type-taxonomy menu-item-object-sector menu-item-68"><a href="http://www.datanami.com/sector/healthcare/" onclick="__gaTracker('send', 'event', 'outbound-widget-int', 'http://www.datanami.com/sector/healthcare/', 'Healthcare');" >Healthcare</a></li>
+	<li id="menu-item-69" class="menu-item menu-item-type-taxonomy menu-item-object-sector menu-item-69"><a href="http://www.datanami.com/sector/manufacturing/" onclick="__gaTracker('send', 'event', 'outbound-widget-int', 'http://www.datanami.com/sector/manufacturing/', 'Manufacturing');" >Manufacturing</a></li>
+	<li id="menu-item-71" class="menu-item menu-item-type-taxonomy menu-item-object-sector menu-item-71"><a href="http://www.datanami.com/sector/retail/" onclick="__gaTracker('send', 'event', 'outbound-widget-int', 'http://www.datanami.com/sector/retail/', 'Retail');" >Retail</a></li>
+	<li id="menu-item-72" class="menu-item menu-item-type-taxonomy menu-item-object-sector menu-item-72"><a href="http://www.datanami.com/sector/science/" onclick="__gaTracker('send', 'event', 'outbound-widget-int', 'http://www.datanami.com/sector/science/', 'Science');" >Science</a></li>
+	<li id="menu-item-70" class="menu-item menu-item-type-taxonomy menu-item-object-sector menu-item-70"><a href="http://www.datanami.com/sector/other/" onclick="__gaTracker('send', 'event', 'outbound-widget-int', 'http://www.datanami.com/sector/other/', 'Other');" >Other</a></li>
+</ul>
+</li>
+<li id="menu-item-49" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-has-children menu-item-49 dropdown"><a href="#" data-toggle="dropdown" data-target="#" class="dropdown-toggle">Applications <span class="caret"></span></a>
+<ul class="dropdown-menu">
+	<li id="menu-item-58" class="menu-item menu-item-type-taxonomy menu-item-object-application menu-item-58"><a href="http://www.datanami.com/application/complex-event-processing/" onclick="__gaTracker('send', 'event', 'outbound-widget-int', 'http://www.datanami.com/application/complex-event-processing/', 'Complex Event Processing');" >Complex Event Processing</a></li>
+	<li id="menu-item-59" class="menu-item menu-item-type-taxonomy menu-item-object-application menu-item-59"><a href="http://www.datanami.com/application/data-mining/" onclick="__gaTracker('send', 'event', 'outbound-widget-int', 'http://www.datanami.com/application/data-mining/', 'Data Mining');" >Data Mining</a></li>
+	<li id="menu-item-60" class="menu-item menu-item-type-taxonomy menu-item-object-application menu-item-60"><a href="http://www.datanami.com/application/enterprise-analytics/" onclick="__gaTracker('send', 'event', 'outbound-widget-int', 'http://www.datanami.com/application/enterprise-analytics/', 'Enterprise Analytics');" >Enterprise Analytics</a></li>
+	<li id="menu-item-61" class="menu-item menu-item-type-taxonomy menu-item-object-application menu-item-61"><a href="http://www.datanami.com/application/predictive-analytics/" onclick="__gaTracker('send', 'event', 'outbound-widget-int', 'http://www.datanami.com/application/predictive-analytics/', 'Predictive Analytics');" >Predictive Analytics</a></li>
+	<li id="menu-item-62" class="menu-item menu-item-type-taxonomy menu-item-object-application menu-item-62"><a href="http://www.datanami.com/application/research-analytics/" onclick="__gaTracker('send', 'event', 'outbound-widget-int', 'http://www.datanami.com/application/research-analytics/', 'Research Analytics');" >Research Analytics</a></li>
+	<li id="menu-item-63" class="menu-item menu-item-type-taxonomy menu-item-object-application menu-item-63"><a href="http://www.datanami.com/application/visualization/" onclick="__gaTracker('send', 'event', 'outbound-widget-int', 'http://www.datanami.com/application/visualization/', 'Visualization');" >Visualization</a></li>
+</ul>
+</li>
+<li id="menu-item-50" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-has-children menu-item-50 dropdown"><a href="#" data-toggle="dropdown" data-target="#" class="dropdown-toggle">Technologies <span class="caret"></span></a>
+<ul class="dropdown-menu">
+	<li id="menu-item-51" class="menu-item menu-item-type-taxonomy menu-item-object-technology menu-item-51"><a href="http://www.datanami.com/technology/cloud/" onclick="__gaTracker('send', 'event', 'outbound-widget-int', 'http://www.datanami.com/technology/cloud/', 'Cloud');" >Cloud</a></li>
+	<li id="menu-item-52" class="menu-item menu-item-type-taxonomy menu-item-object-technology menu-item-52"><a href="http://www.datanami.com/technology/frameworks/" onclick="__gaTracker('send', 'event', 'outbound-widget-int', 'http://www.datanami.com/technology/frameworks/', 'Frameworks');" >Frameworks</a></li>
+	<li id="menu-item-53" class="menu-item menu-item-type-taxonomy menu-item-object-technology menu-item-53"><a href="http://www.datanami.com/technology/middleware/" onclick="__gaTracker('send', 'event', 'outbound-widget-int', 'http://www.datanami.com/technology/middleware/', 'Middleware');" >Middleware</a></li>
+	<li id="menu-item-54" class="menu-item menu-item-type-taxonomy menu-item-object-technology menu-item-54"><a href="http://www.datanami.com/technology/network/" onclick="__gaTracker('send', 'event', 'outbound-widget-int', 'http://www.datanami.com/technology/network/', 'Network');" >Network</a></li>
+	<li id="menu-item-55" class="menu-item menu-item-type-taxonomy menu-item-object-technology menu-item-55"><a href="http://www.datanami.com/technology/processors/" onclick="__gaTracker('send', 'event', 'outbound-widget-int', 'http://www.datanami.com/technology/processors/', 'Processors');" >Processors</a></li>
+	<li id="menu-item-56" class="menu-item menu-item-type-taxonomy menu-item-object-technology menu-item-56"><a href="http://www.datanami.com/technology/storage/" onclick="__gaTracker('send', 'event', 'outbound-widget-int', 'http://www.datanami.com/technology/storage/', 'Storage');" >Storage</a></li>
+	<li id="menu-item-57" class="menu-item menu-item-type-taxonomy menu-item-object-technology menu-item-57"><a href="http://www.datanami.com/technology/systems/" onclick="__gaTracker('send', 'event', 'outbound-widget-int', 'http://www.datanami.com/technology/systems/', 'Systems');" >Systems</a></li>
+</ul>
+</li>
+<li id="menu-item-73" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-has-children menu-item-73 dropdown"><a href="#" data-toggle="dropdown" data-target="#" class="dropdown-toggle">Vendors <span class="caret"></span></a>
+<ul class="dropdown-menu">
+	<li id="menu-item-4159" class="menu-item menu-item-type-taxonomy menu-item-object-vendor menu-item-4159"><a href="http://www.datanami.com/vendor/amazon/" onclick="__gaTracker('send', 'event', 'outbound-widget-int', 'http://www.datanami.com/vendor/amazon/', 'Amazon');" >Amazon</a></li>
+	<li id="menu-item-4160" class="menu-item menu-item-type-taxonomy menu-item-object-vendor menu-item-4160"><a href="http://www.datanami.com/vendor/appro/" onclick="__gaTracker('send', 'event', 'outbound-widget-int', 'http://www.datanami.com/vendor/appro/', 'Appro');" >Appro</a></li>
+	<li id="menu-item-4391" class="menu-item menu-item-type-taxonomy menu-item-object-vendor menu-item-4391"><a href="http://www.datanami.com/vendor/brocade/" onclick="__gaTracker('send', 'event', 'outbound-widget-int', 'http://www.datanami.com/vendor/brocade/', 'Brocade');" >Brocade</a></li>
+	<li id="menu-item-4161" class="menu-item menu-item-type-taxonomy menu-item-object-vendor menu-item-4161"><a href="http://www.datanami.com/vendor/ca-technologies-2/" onclick="__gaTracker('send', 'event', 'outbound-widget-int', 'http://www.datanami.com/vendor/ca-technologies-2/', 'CA Technologies');" >CA Technologies</a></li>
+	<li id="menu-item-4162" class="menu-item menu-item-type-taxonomy menu-item-object-vendor menu-item-4162"><a href="http://www.datanami.com/vendor/cloudera-2/" onclick="__gaTracker('send', 'event', 'outbound-widget-int', 'http://www.datanami.com/vendor/cloudera-2/', 'Cloudera');" >Cloudera</a></li>
+	<li id="menu-item-4163" class="menu-item menu-item-type-taxonomy menu-item-object-vendor menu-item-4163"><a href="http://www.datanami.com/vendor/convey-computer/" onclick="__gaTracker('send', 'event', 'outbound-widget-int', 'http://www.datanami.com/vendor/convey-computer/', 'Convey Computer');" >Convey Computer</a></li>
+	<li id="menu-item-4164" class="menu-item menu-item-type-taxonomy menu-item-object-vendor menu-item-4164"><a href="http://www.datanami.com/vendor/couchbase/" onclick="__gaTracker('send', 'event', 'outbound-widget-int', 'http://www.datanami.com/vendor/couchbase/', 'Couchbase');" >Couchbase</a></li>
+	<li id="menu-item-4165" class="menu-item menu-item-type-taxonomy menu-item-object-vendor menu-item-4165"><a href="http://www.datanami.com/vendor/cray/" onclick="__gaTracker('send', 'event', 'outbound-widget-int', 'http://www.datanami.com/vendor/cray/', 'Cray');" >Cray</a></li>
+	<li id="menu-item-4166" class="menu-item menu-item-type-taxonomy menu-item-object-vendor menu-item-4166"><a href="http://www.datanami.com/vendor/datastax/" onclick="__gaTracker('send', 'event', 'outbound-widget-int', 'http://www.datanami.com/vendor/datastax/', 'DataStax');" >DataStax</a></li>
+	<li id="menu-item-4392" class="menu-item menu-item-type-taxonomy menu-item-object-vendor menu-item-4392"><a href="http://www.datanami.com/vendor/datatorrent/" onclick="__gaTracker('send', 'event', 'outbound-widget-int', 'http://www.datanami.com/vendor/datatorrent/', 'DataTorrent');" >DataTorrent</a></li>
+	<li id="menu-item-4167" class="menu-item menu-item-type-taxonomy menu-item-object-vendor menu-item-4167"><a href="http://www.datanami.com/vendor/ddn/" onclick="__gaTracker('send', 'event', 'outbound-widget-int', 'http://www.datanami.com/vendor/ddn/', 'DDN');" >DDN</a></li>
+	<li id="menu-item-4168" class="menu-item menu-item-type-taxonomy menu-item-object-vendor menu-item-4168"><a href="http://www.datanami.com/vendor/dell-2/" onclick="__gaTracker('send', 'event', 'outbound-widget-int', 'http://www.datanami.com/vendor/dell-2/', 'Dell');" >Dell</a></li>
+	<li id="menu-item-4169" class="menu-item menu-item-type-taxonomy menu-item-object-vendor menu-item-4169"><a href="http://www.datanami.com/vendor/emc/" onclick="__gaTracker('send', 'event', 'outbound-widget-int', 'http://www.datanami.com/vendor/emc/', 'EMC');" >EMC</a></li>
+	<li id="menu-item-4170" class="menu-item menu-item-type-taxonomy menu-item-object-vendor menu-item-4170"><a href="http://www.datanami.com/vendor/fujitsu/" onclick="__gaTracker('send', 'event', 'outbound-widget-int', 'http://www.datanami.com/vendor/fujitsu/', 'Fujitsu');" >Fujitsu</a></li>
+	<li id="menu-item-4171" class="menu-item menu-item-type-taxonomy menu-item-object-vendor menu-item-4171"><a href="http://www.datanami.com/vendor/fusion-io/" onclick="__gaTracker('send', 'event', 'outbound-widget-int', 'http://www.datanami.com/vendor/fusion-io/', 'Fusion-IO');" >Fusion-IO</a></li>
+	<li id="menu-item-4172" class="menu-item menu-item-type-taxonomy menu-item-object-vendor menu-item-4172"><a href="http://www.datanami.com/vendor/hds-2/" onclick="__gaTracker('send', 'event', 'outbound-widget-int', 'http://www.datanami.com/vendor/hds-2/', 'HDS');" >HDS</a></li>
+	<li id="menu-item-4173" class="menu-item menu-item-type-taxonomy menu-item-object-vendor menu-item-4173"><a href="http://www.datanami.com/vendor/hortonworks/" onclick="__gaTracker('send', 'event', 'outbound-widget-int', 'http://www.datanami.com/vendor/hortonworks/', 'Hortonworks');" >Hortonworks</a></li>
+	<li id="menu-item-4174" class="menu-item menu-item-type-taxonomy menu-item-object-vendor menu-item-4174"><a href="http://www.datanami.com/vendor/hp/" onclick="__gaTracker('send', 'event', 'outbound-widget-int', 'http://www.datanami.com/vendor/hp/', 'HP');" >HP</a></li>
+	<li id="menu-item-4175" class="menu-item menu-item-type-taxonomy menu-item-object-vendor menu-item-4175"><a href="http://www.datanami.com/vendor/hpcc-systems/" onclick="__gaTracker('send', 'event', 'outbound-widget-int', 'http://www.datanami.com/vendor/hpcc-systems/', 'HPCC Systems');" >HPCC Systems</a></li>
+	<li id="menu-item-4176" class="menu-item menu-item-type-taxonomy menu-item-object-vendor menu-item-4176"><a href="http://www.datanami.com/vendor/ibm/" onclick="__gaTracker('send', 'event', 'outbound-widget-int', 'http://www.datanami.com/vendor/ibm/', 'IBM');" >IBM</a></li>
+	<li id="menu-item-4177" class="menu-item menu-item-type-taxonomy menu-item-object-vendor menu-item-4177"><a href="http://www.datanami.com/vendor/isc-2/" onclick="__gaTracker('send', 'event', 'outbound-widget-int', 'http://www.datanami.com/vendor/isc-2/', 'ISC');" >ISC</a></li>
+	<li id="menu-item-4178" class="menu-item menu-item-type-taxonomy menu-item-object-vendor menu-item-4178"><a href="http://www.datanami.com/vendor/jaspersoft-2/" onclick="__gaTracker('send', 'event', 'outbound-widget-int', 'http://www.datanami.com/vendor/jaspersoft-2/', 'Jaspersoft');" >Jaspersoft</a></li>
+	<li id="menu-item-4179" class="menu-item menu-item-type-taxonomy menu-item-object-vendor menu-item-4179"><a href="http://www.datanami.com/vendor/karmasphere/" onclick="__gaTracker('send', 'event', 'outbound-widget-int', 'http://www.datanami.com/vendor/karmasphere/', 'Karmasphere');" >Karmasphere</a></li>
+	<li id="menu-item-4180" class="menu-item menu-item-type-taxonomy menu-item-object-vendor menu-item-4180"><a href="http://www.datanami.com/vendor/mapr/" onclick="__gaTracker('send', 'event', 'outbound-widget-int', 'http://www.datanami.com/vendor/mapr/', 'MapR');" >MapR</a></li>
+	<li id="menu-item-4181" class="menu-item menu-item-type-taxonomy menu-item-object-vendor menu-item-4181"><a href="http://www.datanami.com/vendor/marklogic/" onclick="__gaTracker('send', 'event', 'outbound-widget-int', 'http://www.datanami.com/vendor/marklogic/', 'MarkLogic');" >MarkLogic</a></li>
+	<li id="menu-item-4182" class="menu-item menu-item-type-taxonomy menu-item-object-vendor menu-item-4182"><a href="http://www.datanami.com/vendor/mellanox-2/" onclick="__gaTracker('send', 'event', 'outbound-widget-int', 'http://www.datanami.com/vendor/mellanox-2/', 'Mellanox');" >Mellanox</a></li>
+	<li id="menu-item-4183" class="menu-item menu-item-type-taxonomy menu-item-object-vendor menu-item-4183"><a href="http://www.datanami.com/vendor/microsoft/" onclick="__gaTracker('send', 'event', 'outbound-widget-int', 'http://www.datanami.com/vendor/microsoft/', 'Microsoft');" >Microsoft</a></li>
+	<li id="menu-item-4184" class="menu-item menu-item-type-taxonomy menu-item-object-vendor menu-item-4184"><a href="http://www.datanami.com/vendor/microstrategy/" onclick="__gaTracker('send', 'event', 'outbound-widget-int', 'http://www.datanami.com/vendor/microstrategy/', 'MicroStrategy');" >MicroStrategy</a></li>
+	<li id="menu-item-4185" class="menu-item menu-item-type-taxonomy menu-item-object-vendor menu-item-4185"><a href="http://www.datanami.com/vendor/netapp-2/" onclick="__gaTracker('send', 'event', 'outbound-widget-int', 'http://www.datanami.com/vendor/netapp-2/', 'NetApp');" >NetApp</a></li>
+	<li id="menu-item-4186" class="menu-item menu-item-type-taxonomy menu-item-object-vendor menu-item-4186"><a href="http://www.datanami.com/vendor/numascale-2/" onclick="__gaTracker('send', 'event', 'outbound-widget-int', 'http://www.datanami.com/vendor/numascale-2/', 'Numascale');" >Numascale</a></li>
+	<li id="menu-item-4187" class="menu-item menu-item-type-taxonomy menu-item-object-vendor menu-item-4187"><a href="http://www.datanami.com/vendor/nvidia-2/" onclick="__gaTracker('send', 'event', 'outbound-widget-int', 'http://www.datanami.com/vendor/nvidia-2/', 'NVIDIA');" >NVIDIA</a></li>
+	<li id="menu-item-4188" class="menu-item menu-item-type-taxonomy menu-item-object-vendor menu-item-4188"><a href="http://www.datanami.com/vendor/oracle/" onclick="__gaTracker('send', 'event', 'outbound-widget-int', 'http://www.datanami.com/vendor/oracle/', 'Oracle');" >Oracle</a></li>
+	<li id="menu-item-4189" class="menu-item menu-item-type-taxonomy menu-item-object-vendor menu-item-4189"><a href="http://www.datanami.com/vendor/panasas-2/" onclick="__gaTracker('send', 'event', 'outbound-widget-int', 'http://www.datanami.com/vendor/panasas-2/', 'Panasas');" >Panasas</a></li>
+	<li id="menu-item-4190" class="menu-item menu-item-type-taxonomy menu-item-object-vendor menu-item-4190"><a href="http://www.datanami.com/vendor/paraccel-2/" onclick="__gaTracker('send', 'event', 'outbound-widget-int', 'http://www.datanami.com/vendor/paraccel-2/', 'ParAccel');" >ParAccel</a></li>
+	<li id="menu-item-4191" class="menu-item menu-item-type-taxonomy menu-item-object-vendor menu-item-4191"><a href="http://www.datanami.com/vendor/pentaho/" onclick="__gaTracker('send', 'event', 'outbound-widget-int', 'http://www.datanami.com/vendor/pentaho/', 'Pentaho');" >Pentaho</a></li>
+	<li id="menu-item-4192" class="menu-item menu-item-type-taxonomy menu-item-object-vendor menu-item-4192"><a href="http://www.datanami.com/vendor/pervasive-software/" onclick="__gaTracker('send', 'event', 'outbound-widget-int', 'http://www.datanami.com/vendor/pervasive-software/', 'Pervasive Software');" >Pervasive Software</a></li>
+	<li id="menu-item-4193" class="menu-item menu-item-type-taxonomy menu-item-object-vendor menu-item-4193"><a href="http://www.datanami.com/vendor/platform-computing-2/" onclick="__gaTracker('send', 'event', 'outbound-widget-int', 'http://www.datanami.com/vendor/platform-computing-2/', 'Platform Computing');" >Platform Computing</a></li>
+	<li id="menu-item-4194" class="menu-item menu-item-type-taxonomy menu-item-object-vendor menu-item-4194"><a href="http://www.datanami.com/vendor/red-hat/" onclick="__gaTracker('send', 'event', 'outbound-widget-int', 'http://www.datanami.com/vendor/red-hat/', 'Red Hat');" >Red Hat</a></li>
+	<li id="menu-item-4195" class="menu-item menu-item-type-taxonomy menu-item-object-vendor menu-item-4195"><a href="http://www.datanami.com/vendor/revolution-analytics/" onclick="__gaTracker('send', 'event', 'outbound-widget-int', 'http://www.datanami.com/vendor/revolution-analytics/', 'Revolution Analytics');" >Revolution Analytics</a></li>
+	<li id="menu-item-4196" class="menu-item menu-item-type-taxonomy menu-item-object-vendor menu-item-4196"><a href="http://www.datanami.com/vendor/sap/" onclick="__gaTracker('send', 'event', 'outbound-widget-int', 'http://www.datanami.com/vendor/sap/', 'SAP');" >SAP</a></li>
+	<li id="menu-item-4197" class="menu-item menu-item-type-taxonomy menu-item-object-vendor menu-item-4197"><a href="http://www.datanami.com/vendor/sas-2/" onclick="__gaTracker('send', 'event', 'outbound-widget-int', 'http://www.datanami.com/vendor/sas-2/', 'SAS');" >SAS</a></li>
+	<li id="menu-item-4198" class="menu-item menu-item-type-taxonomy menu-item-object-vendor menu-item-4198"><a href="http://www.datanami.com/vendor/scalemp/" onclick="__gaTracker('send', 'event', 'outbound-widget-int', 'http://www.datanami.com/vendor/scalemp/', 'ScaleMP');" >ScaleMP</a></li>
+	<li id="menu-item-4199" class="menu-item menu-item-type-taxonomy menu-item-object-vendor menu-item-4199"><a href="http://www.datanami.com/vendor/scaleout-software/" onclick="__gaTracker('send', 'event', 'outbound-widget-int', 'http://www.datanami.com/vendor/scaleout-software/', 'ScaleOut Software');" >ScaleOut Software</a></li>
+	<li id="menu-item-4200" class="menu-item menu-item-type-taxonomy menu-item-object-vendor menu-item-4200"><a href="http://www.datanami.com/vendor/sgi/" onclick="__gaTracker('send', 'event', 'outbound-widget-int', 'http://www.datanami.com/vendor/sgi/', 'SGI');" >SGI</a></li>
+	<li id="menu-item-4201" class="menu-item menu-item-type-taxonomy menu-item-object-vendor menu-item-4201"><a href="http://www.datanami.com/vendor/simba-technologies/" onclick="__gaTracker('send', 'event', 'outbound-widget-int', 'http://www.datanami.com/vendor/simba-technologies/', 'Simba Technologies');" >Simba Technologies</a></li>
+	<li id="menu-item-4202" class="menu-item menu-item-type-taxonomy menu-item-object-vendor menu-item-4202"><a href="http://www.datanami.com/vendor/solarflare-2/" onclick="__gaTracker('send', 'event', 'outbound-widget-int', 'http://www.datanami.com/vendor/solarflare-2/', 'Solarflare');" >Solarflare</a></li>
+	<li id="menu-item-4203" class="menu-item menu-item-type-taxonomy menu-item-object-vendor menu-item-4203"><a href="http://www.datanami.com/vendor/spectralogic/" onclick="__gaTracker('send', 'event', 'outbound-widget-int', 'http://www.datanami.com/vendor/spectralogic/', 'SpectraLogic');" >SpectraLogic</a></li>
+	<li id="menu-item-4204" class="menu-item menu-item-type-taxonomy menu-item-object-vendor menu-item-4204"><a href="http://www.datanami.com/vendor/stackiq-2/" onclick="__gaTracker('send', 'event', 'outbound-widget-int', 'http://www.datanami.com/vendor/stackiq-2/', 'StackIQ');" >StackIQ</a></li>
+	<li id="menu-item-4205" class="menu-item menu-item-type-taxonomy menu-item-object-vendor menu-item-4205"><a href="http://www.datanami.com/vendor/sybase-2/" onclick="__gaTracker('send', 'event', 'outbound-widget-int', 'http://www.datanami.com/vendor/sybase-2/', 'Sybase');" >Sybase</a></li>
+	<li id="menu-item-4206" class="menu-item menu-item-type-taxonomy menu-item-object-vendor menu-item-4206"><a href="http://www.datanami.com/vendor/tableau/" onclick="__gaTracker('send', 'event', 'outbound-widget-int', 'http://www.datanami.com/vendor/tableau/', 'Tableau');" >Tableau</a></li>
+	<li id="menu-item-4207" class="menu-item menu-item-type-taxonomy menu-item-object-vendor menu-item-4207"><a href="http://www.datanami.com/vendor/talend/" onclick="__gaTracker('send', 'event', 'outbound-widget-int', 'http://www.datanami.com/vendor/talend/', 'Talend');" >Talend</a></li>
+	<li id="menu-item-4208" class="menu-item menu-item-type-taxonomy menu-item-object-vendor menu-item-4208"><a href="http://www.datanami.com/vendor/teradata/" onclick="__gaTracker('send', 'event', 'outbound-widget-int', 'http://www.datanami.com/vendor/teradata/', 'Teradata');" >Teradata</a></li>
+	<li id="menu-item-4209" class="menu-item menu-item-type-taxonomy menu-item-object-vendor menu-item-4209"><a href="http://www.datanami.com/vendor/tibco/" onclick="__gaTracker('send', 'event', 'outbound-widget-int', 'http://www.datanami.com/vendor/tibco/', 'TIBCO');" >TIBCO</a></li>
+	<li id="menu-item-4210" class="menu-item menu-item-type-taxonomy menu-item-object-vendor menu-item-4210"><a href="http://www.datanami.com/vendor/versant/" onclick="__gaTracker('send', 'event', 'outbound-widget-int', 'http://www.datanami.com/vendor/versant/', 'Versant');" >Versant</a></li>
+	<li id="menu-item-4393" class="menu-item menu-item-type-taxonomy menu-item-object-vendor menu-item-4393"><a href="http://www.datanami.com/vendor/xyratex-2/" onclick="__gaTracker('send', 'event', 'outbound-widget-int', 'http://www.datanami.com/vendor/xyratex-2/', 'Xyratex');" >Xyratex</a></li>
+	<li id="menu-item-4394" class="menu-item menu-item-type-taxonomy menu-item-object-vendor menu-item-4394"><a href="http://www.datanami.com/vendor/zettaset-2/" onclick="__gaTracker('send', 'event', 'outbound-widget-int', 'http://www.datanami.com/vendor/zettaset-2/', 'Zettaset');" >Zettaset</a></li>
+	<li id="menu-item-4211" class="menu-item menu-item-type-taxonomy menu-item-object-vendor menu-item-4211"><a href="http://www.datanami.com/vendor/startups-and-more/" onclick="__gaTracker('send', 'event', 'outbound-widget-int', 'http://www.datanami.com/vendor/startups-and-more/', 'Startups and More&#8230;');" >Startups and More&#8230;</a></li>
+</ul>
+</li>
+<li id="menu-item-79" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-79"><a href="http://www.datanami.com/job-bank/" onclick="__gaTracker('send', 'event', 'outbound-widget-int', 'http://www.datanami.com/job-bank/', 'Job Bank');" >Job Bank</a></li>
+</ul></nav>		</header>	<div id="content">
+		<div class="row-fluid">
+			<div id="left-sidebar" class="span3">
+			<div id="text-4" class="widget widget_text">			<div class="textwidget"><p><a href="http://hpcwire.com/" onclick="__gaTracker('send', 'event', 'outbound-widget', 'http://hpcwire.com/', '');"  target="new"><img src="http://2s7gjr373w3x22jf92z99mgm5w.wpengine.netdna-cdn.com/wp-content/uploads/2014/06/hpcwire_button.png" width="120" height="37" alt="HPCwire"></a></p>
+<p>         <a href="http://www.enterprisetech.com/" onclick="__gaTracker('send', 'event', 'outbound-widget', 'http://www.enterprisetech.com/', '');"  target="new"><img src="http://2s7gjr373w3x22jf92z99mgm5w.wpengine.netdna-cdn.com/wp-content/uploads/2014/06/ET_120x60.gif" style="width:120px; height:60px; margin-top:0; margin-bottom:0;" alt="Enterprise Tech"></a></p>
+<p>         <a href="http://www.hpcwire.jp/" onclick="__gaTracker('send', 'event', 'outbound-widget', 'http://www.hpcwire.jp/', '');" target="new"><img src="http://2s7gjr373w3x22jf92z99mgm5w.wpengine.netdna-cdn.com/wp-content/uploads/2014/06/HPCwire_Japan_Logo.gif" width="120" height="59" alt="HPCwire Japan"></a></p>
+</div>
+		</div><div id="text-5" class="widget widget_text">			<div class="textwidget"><div>
+<a href="http://www.datanami.com/" onclick="__gaTracker('send', 'event', 'outbound-widget-int', 'http://www.datanami.com/', 'Top News fromLeading SolutionProviders');" >Top News from<br />Leading Solution<br />Providers</a></p>
+</div>
+<div class="hpc-sol-prov-large-widget">
+<div class="provider">
+				<!-- DAT-LSB-BTN-120x60-17 --></p>
+<div id='div-gpt-ad-1405361276767-8' style='width:120px; height:60px;'>
+<script type='text/javascript'>
+googletag.cmd.push(function() { googletag.display('div-gpt-ad-1405361276767-8'); });
+</script>
+</div>
+</p></div>
+<div class="provider">
+				<!-- DAT-LSB-BTN-120x60-20 --></p>
+<div id='div-gpt-ad-1412939198041-0' style='width:120px; height:60px;'>
+<script type='text/javascript'>
+googletag.cmd.push(function() { googletag.display('div-gpt-ad-1412939198041-0'); });
+</script>
+</div>
+</p></div>
+<div class="provider">
+				<!-- DAT-LSB-BTN-120x60-1 --></p>
+<div id='div-gpt-ad-1405361276767-0' style='width:120px; height:60px;'>
+<script type='text/javascript'>
+googletag.cmd.push(function() { googletag.display('div-gpt-ad-1405361276767-0'); });
+</script>
+</div>
+</p></div>
+<div class="provider">
+				<!-- DAT-LSB-BTN-120x60-18 --></p>
+<div id='div-gpt-ad-1405361276767-9' style='width:120px; height:60px;'>
+<script type='text/javascript'>
+googletag.cmd.push(function() { googletag.display('div-gpt-ad-1405361276767-9'); });
+</script>
+</div>
+</p></div>
+<div class="provider">
+				<!-- DAT-LSB-BTN-120x60-4 --></p>
+<div id='div-gpt-ad-1405361276767-12' style='width:120px; height:60px;'>
+<script type='text/javascript'>
+googletag.cmd.push(function() { googletag.display('div-gpt-ad-1405361276767-12'); });
+</script>
+</div>
+</p></div>
+<div class="provider">
+				<!-- DAT-LSB-BTN-120x60-11 --></p>
+<div id='div-gpt-ad-1405361276767-2' style='width:120px; height:60px;'>
+<script type='text/javascript'>
+googletag.cmd.push(function() { googletag.display('div-gpt-ad-1405361276767-2'); });
+</script>
+</div>
+</p></div>
+<div class="provider">
+				<!-- DAT-LSB-BTN-120x60-16 --></p>
+<div id='div-gpt-ad-1405361276767-7' style='width:120px; height:60px;'>
+<script type='text/javascript'>
+googletag.cmd.push(function() { googletag.display('div-gpt-ad-1405361276767-7'); });
+</script>
+</div>
+</p></div>
+<div class="provider">
+				<!-- DAT-LSB-BTN-120x60-10 --></p>
+<div id='div-gpt-ad-1405361276767-1' style='width:120px; height:60px;'>
+<script type='text/javascript'>
+googletag.cmd.push(function() { googletag.display('div-gpt-ad-1405361276767-1'); });
+</script>
+</div>
+</p></div>
+<div class="provider">
+				<!-- DAT-LSB-BTN-120x60-7 --></p>
+<div id='div-gpt-ad-1405361276767-15' style='width:120px; height:60px;'>
+<script type='text/javascript'>
+googletag.cmd.push(function() { googletag.display('div-gpt-ad-1405361276767-15'); });
+</script>
+</div>
+</p></div>
+<div class="provider">
+				<!-- DAT-LSB-BTN-120x60-19 --></p>
+<div id='div-gpt-ad-1405389684285-0' style='width:120px; height:60px;'>
+<script type='text/javascript'>
+googletag.cmd.push(function() { googletag.display('div-gpt-ad-1405389684285-0'); });
+</script>
+</div>
+</p></div>
+<div class="provider">
+				<!-- DAT-LSB-BTN-120x60-12 --></p>
+<div id='div-gpt-ad-1405361276767-3' style='width:120px; height:60px;'>
+<script type='text/javascript'>
+googletag.cmd.push(function() { googletag.display('div-gpt-ad-1405361276767-3'); });
+</script>
+</div>
+</p></div>
+<div class="provider">
+				<!-- DAT-LSB-BTN-120x60-14 --></p>
+<div id='div-gpt-ad-1405361276767-5' style='width:120px; height:60px;'>
+<script type='text/javascript'>
+googletag.cmd.push(function() { googletag.display('div-gpt-ad-1405361276767-5'); });
+</script>
+</div>
+</p></div>
+<div class="provider">
+				<!-- DAT-LSB-BTN-120x60-8 --></p>
+<div id='div-gpt-ad-1405361276767-16' style='width:120px; height:60px;'>
+<script type='text/javascript'>
+googletag.cmd.push(function() { googletag.display('div-gpt-ad-1405361276767-16'); });
+</script>
+</div>
+</p></div>
+<div class="provider">
+				<!-- DAT-LSB-BTN-120x60-6 --></p>
+<div id='div-gpt-ad-1405361276767-14' style='width:120px; height:60px;'>
+<script type='text/javascript'>
+googletag.cmd.push(function() { googletag.display('div-gpt-ad-1405361276767-14'); });
+</script>
+</div>
+</p></div>
+<div class="provider">
+				<!-- DAT-LSB-BTN-120x60-9 --></p>
+<div id='div-gpt-ad-1405361276767-17' style='width:120px; height:60px;'>
+<script type='text/javascript'>
+googletag.cmd.push(function() { googletag.display('div-gpt-ad-1405361276767-17'); });
+</script>
+</div>
+</p></div>
+<div class="provider">
+				<!-- DAT-LSB-BTN-120x60-5 --></p>
+<div id='div-gpt-ad-1405361276767-13' style='width:120px; height:60px;'>
+<script type='text/javascript'>
+googletag.cmd.push(function() { googletag.display('div-gpt-ad-1405361276767-13'); });
+</script>
+</div>
+</p></div>
+<div class="provider">
+				<!-- DAT-LSB-BTN-120x60-13 --></p>
+<div id='div-gpt-ad-1405361276767-4' style='width:120px; height:60px;'>
+<script type='text/javascript'>
+googletag.cmd.push(function() { googletag.display('div-gpt-ad-1405361276767-4'); });
+</script>
+</div>
+</p></div>
+<div class="provider">
+				<!-- DAT-LSB-BTN-120x60-2 --></p>
+<div id='div-gpt-ad-1405361276767-10' style='width:120px; height:60px;'>
+<script type='text/javascript'>
+googletag.cmd.push(function() { googletag.display('div-gpt-ad-1405361276767-10'); });
+</script>
+</div>
+</p></div>
+<div class="provider">
+				<!-- DAT-LSB-BTN-120x60-3 --></p>
+<div id='div-gpt-ad-1405361276767-11' style='width:120px; height:60px;'>
+<script type='text/javascript'>
+googletag.cmd.push(function() { googletag.display('div-gpt-ad-1405361276767-11'); });
+</script>
+</div>
+</p></div>
+</p></div>
+</div>
+		</div>	</div>
+			<div id="post-content" class="span6">
+															<div id="post-5599" class="post-5599 post type-post status-publish format-standard has-post-thumbnail hentry category-features tag-artificial-intelligence tag-deep-learning tag-deep-neural-networks tag-machine-learning">
+							<div class="post-header">
+								<div class="date">
+									September 22, 2014								</div>
+								<h1>How Baidu Uses Deep Learning to Drive Success on the Web</h1>
+																	<div class="author">
+																												Alex Woodie										
+									</div>
+															</div><!--end post header-->
+							<div class="entry clear">
+																																																					<img width="200" height="107" src="http://2s7gjr373w3x22jf92z99mgm5w.wpengine.netdna-cdn.com/wp-content/uploads/2014/09/baidu-200x107.png" class="pull-left wp-post-image" alt="baidu" />																								<p>The Chinese Web giant Baidu is investing heavily in deep learning technologies as it seeks to drive intelligence from big data using high performance computing (HPC). From speech and facial recognition to language transaction and Web search, Baidu relies on deep learning and artificial intelligence technologies to improve a range of customer-facing applications.</p>
+<p>Dr. Ren Wu, a distinguished scientist at <a href="http://idl.baidu.com/" onclick="__gaTracker('send', 'event', 'outbound-article', 'http://idl.baidu.com/', 'Baidu&#039;s Deep Learning Institute');" >Baidu&#8217;s Deep Learning Institute</a> (IDL), discussed Baidu&#8217;s use of deep learning technologies in a keynote presentation at Tabor Communication&#8217;s recent <a href="http://www.enterprisehpc.com/" onclick="__gaTracker('send', 'event', 'outbound-article', 'http://www.enterprisehpc.com/', 'Enterprise HPC');" >Enterprise HPC</a> event in Carlsbad, California. In his keynote, titled &#8220;HPC &#8211; Turning Big Data Into Deep Insight,&#8221; Wu explains how Baidu was an early adopter of deep learning technology and has continued to aggressively develop its expertise in the field in reaction to its early success.</p>
+<p>The commitment to deep learning comes from the top, namely Robin Li, the co-founder, CEO, and chairman of <a href="http://www.baidu.com/" onclick="__gaTracker('send', 'event', 'outbound-article', 'http://www.baidu.com/', 'Baidu');" >Baidu</a> and the president of its IDL subsidiary. That executive-level support has resulted deep learning technologies becoming pervasive across Baidu. &#8220;We apply deep learning technology to every single application, and every single one has observed tremendous performance enhancements,&#8221; Wu told the audience.</p>
+<p>As Wu sees it, deep learning is critical for making sense of the mountain of data that&#8217;s being generated on the Internet. The company, which has been called &#8220;the Chinese <a href="http://www.google.com/" onclick="__gaTracker('send', 'event', 'outbound-article', 'http://www.google.com/', 'Google');" >Google</a>&#8221; (although Wu says Google is actually &#8220;the American Baidu&#8221;), stores 2,000 PB of data, and processes anywhere from 10 to 100 PB of data a day, according to Wu&#8217;s presentation. It indexes upward of 1 trillion pages, which are updated at the rate of 1 billion to 10 billion per day.</p>
+<p>The combination of big data and advances in HPC have enabled the field of deep learning to progress in ways that nobody had predicted, Wu said. &#8220;First it&#8217;s the Internet and the data explosion. We have much more data and labeled data, so we can now show our neural networks much more examples, so that a network can learn so many different things&#8221; that were previously not possible, he said. &#8220;That&#8217;s one side of the story. What I think is even more important is we have a lot more computational power in our hands. That computational power is the real driving force.&#8221;</p>
+<div id="attachment_5600" style="width: 366px" class="wp-caption alignright"><a href="http://2s7gjr373w3x22jf92z99mgm5w.wpengine.netdna-cdn.com/wp-content/uploads/2014/09/Wu-at-EHPC.png" onclick="__gaTracker('send', 'event', 'outbound-article-int', 'http://www.datanami.com/wp-content/uploads/2014/09/Wu-at-EHPC.png', '');" ><img class=" wp-image-5600" src="http://2s7gjr373w3x22jf92z99mgm5w.wpengine.netdna-cdn.com/wp-content/uploads/2014/09/Wu-at-EHPC.png" alt="Dr. Ren Wu, a distinguished scientist at Baidu's Deep Learning Institute (IDL), presenting his keynote at the recent Enterprise HPC event." width="356" height="285" /></a>
+<p class="wp-caption-text">Dr. Ren Wu, a distinguished scientist at Baidu&#8217;s Deep Learning Institute (IDL), presenting his keynote at the recent Enterprise HPC event.</p>
+</div>
+<p>The growth is computation power is evident when you consider that a <a href="http://www.qualcomm.com/" onclick="__gaTracker('send', 'event', 'outbound-article', 'http://www.qualcomm.com/', 'Qualcomm');" >Qualcomm</a> Snapdragon-based <a href="http://www.samsung.com/" onclick="__gaTracker('send', 'event', 'outbound-article', 'http://www.samsung.com/', 'Samsung');" >Samsung</a> Galaxy Note 3 has the equivalent processing power as the world&#8217;s top supercomputer in 1993, the Think Machine CM5/1024. It also stares you in the face when you realize that a pair of GPU-equipped <a href="http://www.apple.com/" onclick="__gaTracker('send', 'event', 'outbound-article', 'http://www.apple.com/', 'Apple');" >Apple</a> MacPro workstations today has more teraflops than the world&#8217;s largest supercomputer in 2000, <a href="http://www.ibm.com/" onclick="__gaTracker('send', 'event', 'outbound-article', 'http://www.ibm.com/', 'IBM');" >IBM</a>&#8216;s PowerPC-based ASCI White.</p>
+<p>When you take today&#8217;s massive computational power, and apply it to the field of deep learning, you suddenly are able to do things that just weren&#8217;t possible before. Instead of training a deep neural network on a sample of data, you can basically train it on your entire data set. While Baidu isn&#8217;t training its image search function against its entire 2 Exabyte data store, it is employing its massive data set to train machine learning models at scales that were never before imaginable.</p>
+<p>According to Wu&#8217;s presentation, Baidu is using 10,000 hours of voice data, consisting of more than 10 billion training samples, to train its GPU-powered deep neural network (DNN) HPC cluster. In the image recognition department, its training set is well over 100 million images. Its optical character recognition (OCR) training set also measures in the hundreds of millions, while its click through rate (CTR) model measures in the hundreds of billions. The training sessions run anywhere from weeks to months on Baidu&#8217;s clusters, Wu said.</p>
+<p><a href="http://2s7gjr373w3x22jf92z99mgm5w.wpengine.netdna-cdn.com/wp-content/uploads/2014/09/DNN-cluster.png" onclick="__gaTracker('send', 'event', 'outbound-article-int', 'http://www.datanami.com/wp-content/uploads/2014/09/DNN-cluster.png', '');" ><img class="alignleft  wp-image-5601" src="http://2s7gjr373w3x22jf92z99mgm5w.wpengine.netdna-cdn.com/wp-content/uploads/2014/09/DNN-cluster.png" alt="DNN cluster" width="375" height="277" /></a>So far, the investment in deep learning has paid off handsomely, delivering a 25 percent reduction in the error rate for speech recognition, a 30 percent error rate reduction for OCR, and 95 percent success rate for facial recognition. Considering that Baidu&#8217;s training data sets are growing at a 10x annual rate, the company should be able to continue to fine-tune the delivery of its data services going into the future.</p>
+<p>But growing at 10x brings its own set of challenges. At Baidu, the insatiable demand for data storage and processing is putting pressure on the company to expand its data center operations. In 2012, the company responded by committing to spend $1.6 billion on a pair of new data centers in Shanghai. At the time of the announcement, the datacenters were said to be the largest in the world.</p>
+<p>The executives at Baidu are on board with making this massive investment in deep learning because they see it as a key competitive differentiator. &#8220;When we first deployed our first few deep learning-based applications, we could foresee the need for computation to grow dramatically,&#8221; Wu said, adding that the two new data centers will facilitate the delivery of even more deep learning-based applications, including mobile applications that can perform this type of sophisticated image and speech recognition without being connected to Baidu&#8217;s servers.</p>
+<p>Only a handful of companies could pull off building this melding of hyperscale and mobile, and most of them are tightly clustered in Silicon Valley. Google, for example, has been gobbling up deep learning outfits lately with the goal of bolstering &#8220;Google Brain,&#8221; which is the unofficial name for Google&#8217;s deep learning research project.</p>
+<p>But Baidu is showing that big data innovation is occurring outside of the Valley. &#8220;What we really want to do here is to push the state of the art,&#8221; Wu said. &#8220;We want to see 100x or more performance compared to Google Brain, and we count on these things giving us even more competitive advantage.&#8221;</p>
+<p><strong>Related Items:</strong></p>
+<p><a href="http://www.datanami.com/2014/05/30/deep-neural-networks-power-big-gains-speech-recognition/" onclick="__gaTracker('send', 'event', 'outbound-article-int', 'http://www.datanami.com/2014/05/30/deep-neural-networks-power-big-gains-speech-recognition/', 'Deep Neural Networks Power Big Gains in Speech Recognition');" >Deep Neural Networks Power Big Gains in Speech Recognition</a></p>
+<p><a href="http://www.datanami.com/2014/03/10/how_paypal_makes_merchants_smarter_through_data_mining/" onclick="__gaTracker('send', 'event', 'outbound-article-int', 'http://www.datanami.com/2014/03/10/how_paypal_makes_merchants_smarter_through_data_mining/', 'How PayPal Makes Merchants Smarter through Data Mining');" >How PayPal Makes Merchants Smarter through Data Mining</a></p>
+<p><a href="http://www.datanami.com/2013/06/12/thinking_in_10x_and_other_google_directives/" onclick="__gaTracker('send', 'event', 'outbound-article-int', 'http://www.datanami.com/2013/06/12/thinking_in_10x_and_other_google_directives/', 'Thinking in 10x and Other Google Directives');" >Thinking in 10x and Other Google Directives</a></p>
+<p>&nbsp;</p>
+<p>&nbsp;
+<div class="sharedaddy sd-sharing-enabled">
+<div class="robots-nocontent sd-block sd-social sd-social-icon sd-sharing">
+<h3 class="sd-title">Share this:</h3>
+<div class="sd-content">
+<ul>
+<li class="share-twitter"><a href="http://www.datanami.com/2014/09/22/baidu-uses-deep-learning-drive-success-web/?share=twitter" onclick="__gaTracker('send', 'event', 'outbound-article-int', 'http://www.datanami.com/2014/09/22/baidu-uses-deep-learning-drive-success-web/?share=twitter', 'Click to share on Twitter');" rel="nofollow" data-shared="sharing-twitter-5599" class="share-twitter sd-button share-icon no-text"  title="Click to share on Twitter"><span></span><span class="sharing-screen-reader-text">Click to share on Twitter</span></a></li>
+<li class="share-facebook"><a href="http://www.datanami.com/2014/09/22/baidu-uses-deep-learning-drive-success-web/?share=facebook" onclick="__gaTracker('send', 'event', 'outbound-article-int', 'http://www.datanami.com/2014/09/22/baidu-uses-deep-learning-drive-success-web/?share=facebook', 'Share on Facebook');" rel="nofollow" data-shared="sharing-facebook-5599" class="share-facebook sd-button share-icon no-text"  title="Share on Facebook"><span></span><span class="sharing-screen-reader-text">Share on Facebook</span></a></li>
+<li class="share-google-plus-1"><a href="http://www.datanami.com/2014/09/22/baidu-uses-deep-learning-drive-success-web/?share=google-plus-1" onclick="__gaTracker('send', 'event', 'outbound-article-int', 'http://www.datanami.com/2014/09/22/baidu-uses-deep-learning-drive-success-web/?share=google-plus-1', 'Click to share on Google+');" rel="nofollow" data-shared="sharing-google-5599" class="share-google-plus-1 sd-button share-icon no-text"  title="Click to share on Google+"><span></span><span class="sharing-screen-reader-text">Click to share on Google+</span></a></li>
+<li class="share-linkedin"><a href="http://www.datanami.com/2014/09/22/baidu-uses-deep-learning-drive-success-web/?share=linkedin" onclick="__gaTracker('send', 'event', 'outbound-article-int', 'http://www.datanami.com/2014/09/22/baidu-uses-deep-learning-drive-success-web/?share=linkedin', 'Click to share on LinkedIn');" rel="nofollow" data-shared="sharing-linkedin-5599" class="share-linkedin sd-button share-icon no-text"  title="Click to share on LinkedIn"><span></span><span class="sharing-screen-reader-text">Click to share on LinkedIn</span></a></li>
+<li class="share-pocket"><a href="http://www.datanami.com/2014/09/22/baidu-uses-deep-learning-drive-success-web/?share=pocket" onclick="__gaTracker('send', 'event', 'outbound-article-int', 'http://www.datanami.com/2014/09/22/baidu-uses-deep-learning-drive-success-web/?share=pocket', 'Click to share on Pocket');" rel="nofollow" data-shared="" class="share-pocket sd-button share-icon no-text"  title="Click to share on Pocket"><span></span><span class="sharing-screen-reader-text">Click to share on Pocket</span></a></li>
+<li class="share-reddit"><a href="http://www.datanami.com/2014/09/22/baidu-uses-deep-learning-drive-success-web/?share=reddit" onclick="__gaTracker('send', 'event', 'outbound-article-int', 'http://www.datanami.com/2014/09/22/baidu-uses-deep-learning-drive-success-web/?share=reddit', 'Click to share on Reddit');" rel="nofollow" data-shared="" class="share-reddit sd-button share-icon no-text"  title="Click to share on Reddit"><span></span><span class="sharing-screen-reader-text">Click to share on Reddit</span></a></li>
+<li class="share-pinterest"><a href="http://www.datanami.com/2014/09/22/baidu-uses-deep-learning-drive-success-web/?share=pinterest" onclick="__gaTracker('send', 'event', 'outbound-article-int', 'http://www.datanami.com/2014/09/22/baidu-uses-deep-learning-drive-success-web/?share=pinterest', 'Click to share on Pinterest');" rel="nofollow" data-shared="" class="share-pinterest sd-button share-icon no-text"  title="Click to share on Pinterest"><span></span><span class="sharing-screen-reader-text">Click to share on Pinterest</span></a></li>
+<li class="share-tumblr"><a href="http://www.datanami.com/2014/09/22/baidu-uses-deep-learning-drive-success-web/?share=tumblr" onclick="__gaTracker('send', 'event', 'outbound-article-int', 'http://www.datanami.com/2014/09/22/baidu-uses-deep-learning-drive-success-web/?share=tumblr', 'Click to share on Tumblr');" rel="nofollow" data-shared="" class="share-tumblr sd-button share-icon no-text"  title="Click to share on Tumblr"><span></span><span class="sharing-screen-reader-text">Click to share on Tumblr</span></a></li>
+<li class="share-stumbleupon"><a href="http://www.datanami.com/2014/09/22/baidu-uses-deep-learning-drive-success-web/?share=stumbleupon" onclick="__gaTracker('send', 'event', 'outbound-article-int', 'http://www.datanami.com/2014/09/22/baidu-uses-deep-learning-drive-success-web/?share=stumbleupon', 'Click to share on StumbleUpon');" rel="nofollow" data-shared="" class="share-stumbleupon sd-button share-icon no-text"  title="Click to share on StumbleUpon"><span></span><span class="sharing-screen-reader-text">Click to share on StumbleUpon</span></a></li>
+<li class="share-end"></li>
+</ul>
+</div>
+</div>
+</div>
+																																	<div class="tags">
+										Tags: <a href="http://www.datanami.com/tag/artificial-intelligence/" rel="tag">artificial intelligence</a>, <a href="http://www.datanami.com/tag/deep-learning/" rel="tag">deep learning</a>, <a href="http://www.datanami.com/tag/deep-neural-networks/" rel="tag">deep neural networks</a>, <a href="http://www.datanami.com/tag/machine-learning/" rel="tag">machine learning</a>									</div>
+															</div><!--end entry-->
+							<div class="post-footer">
+								
+<div id="comments" class="clearfix">
+
+
+		
+		
+			<div id="comment_form_wrapper" style="display:none;">
+											<div id="respond" class="comment-respond">
+				<h3 id="reply-title" class="comment-reply-title">Join the discussion <small><a rel="nofollow" id="cancel-comment-reply-link" href="/2014/09/22/baidu-uses-deep-learning-drive-success-web/#respond" style="display:none;">Cancel reply</a></small></h3>
+									<form action="http://www.datanami.com/wp-comments-post.php" method="post" id="commentform" class="comment-form">
+																			<p class="comment-notes"><span id="email-notes">Your email address will not be published.</span> Required fields are marked <span class="required">*</span></p>							<p class="comment-form-author"><label for="author">Name <span class="required">*</span></label> <input id="author" name="author" type="text" value="" size="30" aria-required='true' /></p>
+<p class="comment-form-email"><label for="email">Email <span class="required">*</span></label> <input id="email" name="email" type="text" value="" size="30" aria-describedby="email-notes" aria-required='true' /></p>
+<p class="comment-form-url"><label for="url">Website</label> <input id="url" name="url" type="text" value="" size="30" /></p>
+												<p class="comment-form-comment"><label for="comment">Comment</label> <textarea id="comment" name="comment" cols="45" rows="8" aria-describedby="form-allowed-tags" aria-required="true"></textarea></p>												<p class="form-submit">
+							<input name="submit" type="submit" id="submit" class="submit" value="Post Comment" />
+							<input type='hidden' name='comment_post_ID' value='5599' id='comment_post_ID' />
+<input type='hidden' name='comment_parent' id='comment_parent' value='0' />
+						</p>
+						<p style="display: none;"><input type="hidden" id="akismet_comment_nonce" name="akismet_comment_nonce" value="91e37c5d2d" /></p><p class="comment-subscription-form"><input type="checkbox" name="subscribe_comments" id="subscribe_comments" value="subscribe" style="width: auto; -moz-appearance: checkbox; -webkit-appearance: checkbox;" /> <label class="subscribe-label" id="subscribe-label" for="subscribe_comments">Notify me of follow-up comments by email.</label></p><p class="comment-subscription-form"><input type="checkbox" name="subscribe_blog" id="subscribe_blog" value="subscribe" style="width: auto; -moz-appearance: checkbox; -webkit-appearance: checkbox;" /> <label class="subscribe-label" id="subscribe-blog-label" for="subscribe_blog">Notify me of new posts by email.</label></p><p style="display: none;"><input type="hidden" id="ak_js" name="ak_js" value="45"/></p>					</form>
+							</div><!-- #respond -->
+					</div>
+		<div id="gravity_form_wrapper" style="display:none;">
+			<h4>Only registered users may comment. Register using the form below.</h4>
+                <div class='gf_browser_gecko gform_wrapper' id='gform_wrapper_2' style='display:none'><a id='gf_2' name='gf_2' class='gform_anchor' ></a><form method='post' enctype='multipart/form-data' target='gform_ajax_frame_2' id='gform_2'  action='/2014/09/22/baidu-uses-deep-learning-drive-success-web/#gf_2'>
+                        <div class='gform_body'>
+                            <ul id='gform_fields_2' class='gform_fields top_label description_below'><li id='field_2_9' class='gfield               gfield_contains_required' ><label class='gfield_label'>Check off newsletters you would like to receive<span class='gfield_required'>*</span></label><div class='ginput_container'><ul class='gfield_checkbox' id='input_2_9'><li class='gchoice_9_1'><input name='input_9.1' type='checkbox'  value='hpcwire'  id='choice_9_1' tabindex='1'  /><label for='choice_9_1' id='label_9_1'>HPCwire</label></li><li class='gchoice_9_2'><input name='input_9.2' type='checkbox'  value='et'  id='choice_9_2' tabindex='2'  /><label for='choice_9_2' id='label_9_2'>EnterpriseTech</label></li><li class='gchoice_9_3'><input name='input_9.3' type='checkbox'  value='datanami' checked='checked' id='choice_9_3' tabindex='3'  /><label for='choice_9_3' id='label_9_3'>Datanami</label></li><li class='gchoice_9_4'><input name='input_9.4' type='checkbox'  value='tce'  id='choice_9_4' tabindex='4'  /><label for='choice_9_4' id='label_9_4'>Technology Conferences & Events</label></li><li class='gchoice_9_5'><input name='input_9.5' type='checkbox'  value='acjb'  id='choice_9_5' tabindex='5'  /><label for='choice_9_5' id='label_9_5'>Advanced Computing Job Bank</label></li><li class='gchoice_9_6'><input name='input_9.6' type='checkbox'  value='tps'  id='choice_9_6' tabindex='6'  /><label for='choice_9_6' id='label_9_6'>Technology Product Showcase</label></li></ul></div></li><li id='field_2_1' class='gfield               gfield_contains_required' ><label class='gfield_label' for='input_2_1'>Email<span class='gfield_required'>*</span></label><div class='ginput_container'><input name='input_1' id='input_2_1' type='text' value='' class='medium'  tabindex='7'  onchange='gf_apply_rules(2,[3,6,7,10,11,8]);' onkeyup='clearTimeout(__gf_timeout_handle); __gf_timeout_handle = setTimeout("gf_apply_rules(2,[3,6,7,10,11,8])", 300);' /></div></li><li id='field_2_2' class='gfield               gfield_contains_required' ><label class='gfield_label' for='input_2_2_3'>Name<span class='gfield_required'>*</span></label><div class='ginput_complex ginput_container' id='input_2_2'><span id='input_2_2_3_container' class='ginput_left'><input type='text' name='input_2.3' id='input_2_2_3' value='' tabindex='8' /><label for='input_2_2_3'>First</label></span><span id='input_2_2_6_container' class='ginput_right'><input type='text' name='input_2.6' id='input_2_2_6' value='' tabindex='9' /><label for='input_2_2_6'>Last</label></span><div class='gf_clear gf_clear_complex'></div></div></li><li id='field_2_3' class='gfield               gfield_contains_required' style='display:none;'><label class='gfield_label' for='input_2_3'>Organization<span class='gfield_required'>*</span></label><div class='ginput_container'><input name='input_3' id='input_2_3' type='text' value='' class='medium'  tabindex='10' onchange='gf_apply_rules(2,[4,5]);' onkeyup='clearTimeout(__gf_timeout_handle); __gf_timeout_handle = setTimeout("gf_apply_rules(2,[4,5])", 300);'  /></div></li><li id='field_2_4' class='gfield               gfield_contains_required' style='display:none;'><label class='gfield_label' for='input_2_4'>Job Function<span class='gfield_required'>*</span></label><div class='ginput_container'><select name='input_4' id='input_2_4'  class='medium gfield_select' tabindex='11' ><option value='Technology: CIO/CTO/CSO' >Technology: CIO/CTO/CSO</option><option value='Technology: Consultant' >Technology: Consultant</option><option value='Technology: Developer' >Technology: Developer</option><option value='Technology: Data Center Management' >Technology: Data Center Management</option><option value='Technology: Data Center Operations' >Technology: Data Center Operations</option><option value='Technology: Data Intelligence Management' >Technology: Data Intelligence Management</option><option value='Technology: Data Scientist/Analyst' >Technology: Data Scientist/Analyst</option><option value='Technology: Engineering' >Technology: Engineering</option><option value='Technology: HPC Managements' >Technology: HPC Managements</option><option value='Technology: HPC Operations' >Technology: HPC Operations</option><option value='Technology: IT Managements' >Technology: IT Managements</option><option value='Technology: IT Operations' >Technology: IT Operations</option><option value='Business: Business Development/Sales' >Business: Business Development/Sales</option><option value='Business: CEO/President/Owner' >Business: CEO/President/Owner</option><option value='Business: EVP/SVP/VP' >Business: EVP/SVP/VP</option><option value='Business: Management' >Business: Management</option><option value='Business: Marketing' >Business: Marketing</option><option value='Business: Operations' >Business: Operations</option><option value='Business: Product Management' >Business: Product Management</option><option value='Business: Other' >Business: Other</option><option value='Academia/Education' >Academia/Education</option><option value='Science' >Science</option><option value='Research &amp; Development' >Research &amp; Development</option><option value='Other' >Other</option></select></div></li><li id='field_2_5' class='gfield               gfield_contains_required' style='display:none;'><label class='gfield_label' for='input_2_5'>Industry<span class='gfield_required'>*</span></label><div class='ginput_container'><select name='input_5' id='input_2_5'  class='medium gfield_select' tabindex='12' ><option value='Aerospace' >Aerospace</option><option value='Automotive' >Automotive</option><option value='Education' >Education</option><option value='Financial Services' >Financial Services</option><option value='Government' >Government</option><option value='Hardware Vendor' >Hardware Vendor</option><option value='Healthcare/Life Sciences' >Healthcare/Life Sciences</option><option value='Manufacturing' >Manufacturing</option><option value='Media/Entertainment' >Media/Entertainment</option><option value='Oil/Gas/Energy' >Oil/Gas/Energy</option><option value='Research Center' >Research Center</option><option value='Retail' >Retail</option><option value='Software Vendor/ISV' >Software Vendor/ISV</option><option value='Transportation/Utilities' >Transportation/Utilities</option><option value='Telecom' >Telecom</option><option value='VAR/VAD/Integrator' >VAR/VAD/Integrator</option><option value='Other' >Other</option></select></div></li><li id='field_2_6' class='gfield               gfield_contains_required' style='display:none;'><label class='gfield_label' for='input_2_6'>Country<span class='gfield_required'>*</span></label><div class='ginput_container'><select name='input_6' id='input_2_6' onchange='gf_apply_rules(2,[10,11]);' class='medium gfield_select' tabindex='13' ><option value='United States' >United States</option><option value='Canada' >Canada</option><option value='Afghanistan' >Afghanistan</option><option value='Albania' >Albania</option><option value='Algeria' >Algeria</option><option value='American Samoa' >American Samoa</option><option value='Andorra' >Andorra</option><option value='Angola' >Angola</option><option value='Antigua and Barbuda' >Antigua and Barbuda</option><option value='Argentina' >Argentina</option><option value='Armenia' >Armenia</option><option value='Australia' >Australia</option><option value='Austria' >Austria</option><option value='Azerbaijan' >Azerbaijan</option><option value='Bahamas' >Bahamas</option><option value='Bahrain' >Bahrain</option><option value='Bangladesh' >Bangladesh</option><option value='Barbados' >Barbados</option><option value='Belarus' >Belarus</option><option value='Belgium' >Belgium</option><option value='Belize' >Belize</option><option value='Benin' >Benin</option><option value='Bermuda' >Bermuda</option><option value='Bhutan' >Bhutan</option><option value='Bolivia' >Bolivia</option><option value='Bosnia and Herzegovina' >Bosnia and Herzegovina</option><option value='Botswana' >Botswana</option><option value='Brazil' >Brazil</option><option value='Brunei' >Brunei</option><option value='Bulgaria' >Bulgaria</option><option value='Burkina Faso' >Burkina Faso</option><option value='Burundi' >Burundi</option><option value='Cambodia' >Cambodia</option><option value='Cameroon' >Cameroon</option><option value='Cape Verde' >Cape Verde</option><option value='Central African Republic' >Central African Republic</option><option value='Chad' >Chad</option><option value='Chile' >Chile</option><option value='China' >China</option><option value='Colombia' >Colombia</option><option value='Comoros' >Comoros</option><option value='Congo, Democratic Republic of the' >Congo, Democratic Republic of the</option><option value='Congo, Republic of the' >Congo, Republic of the</option><option value='Costa Rica' >Costa Rica</option><option value='C&ocirc;te d&#039;Ivoire' >C&ocirc;te d&#039;Ivoire</option><option value='Croatia' >Croatia</option><option value='Cuba' >Cuba</option><option value='Cyprus' >Cyprus</option><option value='Czech Republic' >Czech Republic</option><option value='Denmark' >Denmark</option><option value='Djibouti' >Djibouti</option><option value='Dominica' >Dominica</option><option value='Dominican Republic' >Dominican Republic</option><option value='East Timor' >East Timor</option><option value='Ecuador' >Ecuador</option><option value='Egypt' >Egypt</option><option value='El Salvador' >El Salvador</option><option value='Equatorial Guinea' >Equatorial Guinea</option><option value='Eritrea' >Eritrea</option><option value='Estonia' >Estonia</option><option value='Ethiopia' >Ethiopia</option><option value='Fiji' >Fiji</option><option value='Finland' >Finland</option><option value='France' >France</option><option value='Gabon' >Gabon</option><option value='Gambia' >Gambia</option><option value='Georgia' >Georgia</option><option value='Germany' >Germany</option><option value='Ghana' >Ghana</option><option value='Greece' >Greece</option><option value='Greenland' >Greenland</option><option value='Grenada' >Grenada</option><option value='Guam' >Guam</option><option value='Guatemala' >Guatemala</option><option value='Guinea' >Guinea</option><option value='Guinea-Bissau' >Guinea-Bissau</option><option value='Guyana' >Guyana</option><option value='Haiti' >Haiti</option><option value='Honduras' >Honduras</option><option value='Hong Kong' >Hong Kong</option><option value='Hungary' >Hungary</option><option value='Iceland' >Iceland</option><option value='India' >India</option><option value='Indonesia' >Indonesia</option><option value='Iran' >Iran</option><option value='Iraq' >Iraq</option><option value='Ireland' >Ireland</option><option value='Israel' >Israel</option><option value='Italy' >Italy</option><option value='Jamaica' >Jamaica</option><option value='Japan' >Japan</option><option value='Jordan' >Jordan</option><option value='Kazakhstan' >Kazakhstan</option><option value='Kenya' >Kenya</option><option value='Kiribati' >Kiribati</option><option value='North Korea' >North Korea</option><option value='South Korea' >South Korea</option><option value='Kuwait' >Kuwait</option><option value='Kyrgyzstan' >Kyrgyzstan</option><option value='Laos' >Laos</option><option value='Latvia' >Latvia</option><option value='Lebanon' >Lebanon</option><option value='Lesotho' >Lesotho</option><option value='Liberia' >Liberia</option><option value='Libya' >Libya</option><option value='Liechtenstein' >Liechtenstein</option><option value='Lithuania' >Lithuania</option><option value='Luxembourg' >Luxembourg</option><option value='Macedonia' >Macedonia</option><option value='Madagascar' >Madagascar</option><option value='Malawi' >Malawi</option><option value='Malaysia' >Malaysia</option><option value='Maldives' >Maldives</option><option value='Mali' >Mali</option><option value='Malta' >Malta</option><option value='Marshall Islands' >Marshall Islands</option><option value='Mauritania' >Mauritania</option><option value='Mauritius' >Mauritius</option><option value='Mexico' >Mexico</option><option value='Micronesia' >Micronesia</option><option value='Moldova' >Moldova</option><option value='Monaco' >Monaco</option><option value='Mongolia' >Mongolia</option><option value='Montenegro' >Montenegro</option><option value='Morocco' >Morocco</option><option value='Mozambique' >Mozambique</option><option value='Myanmar' >Myanmar</option><option value='Namibia' >Namibia</option><option value='Nauru' >Nauru</option><option value='Nepal' >Nepal</option><option value='Netherlands' >Netherlands</option><option value='New Zealand' >New Zealand</option><option value='Nicaragua' >Nicaragua</option><option value='Niger' >Niger</option><option value='Nigeria' >Nigeria</option><option value='Norway' >Norway</option><option value='Northern Mariana Islands' >Northern Mariana Islands</option><option value='Oman' >Oman</option><option value='Pakistan' >Pakistan</option><option value='Palau' >Palau</option><option value='Palestine' >Palestine</option><option value='Panama' >Panama</option><option value='Papua New Guinea' >Papua New Guinea</option><option value='Paraguay' >Paraguay</option><option value='Peru' >Peru</option><option value='Philippines' >Philippines</option><option value='Poland' >Poland</option><option value='Portugal' >Portugal</option><option value='Puerto Rico' >Puerto Rico</option><option value='Qatar' >Qatar</option><option value='Romania' >Romania</option><option value='Russia' >Russia</option><option value='Rwanda' >Rwanda</option><option value='Saint Kitts and Nevis' >Saint Kitts and Nevis</option><option value='Saint Lucia' >Saint Lucia</option><option value='Saint Vincent and the Grenadines' >Saint Vincent and the Grenadines</option><option value='Samoa' >Samoa</option><option value='San Marino' >San Marino</option><option value='Sao Tome and Principe' >Sao Tome and Principe</option><option value='Saudi Arabia' >Saudi Arabia</option><option value='Senegal' >Senegal</option><option value='Serbia and Montenegro' >Serbia and Montenegro</option><option value='Seychelles' >Seychelles</option><option value='Sierra Leone' >Sierra Leone</option><option value='Singapore' >Singapore</option><option value='Slovakia' >Slovakia</option><option value='Slovenia' >Slovenia</option><option value='Solomon Islands' >Solomon Islands</option><option value='Somalia' >Somalia</option><option value='South Africa' >South Africa</option><option value='Spain' >Spain</option><option value='Sri Lanka' >Sri Lanka</option><option value='Sudan' >Sudan</option><option value='Sudan, South' >Sudan, South</option><option value='Suriname' >Suriname</option><option value='Swaziland' >Swaziland</option><option value='Sweden' >Sweden</option><option value='Switzerland' >Switzerland</option><option value='Syria' >Syria</option><option value='Taiwan' >Taiwan</option><option value='Tajikistan' >Tajikistan</option><option value='Tanzania' >Tanzania</option><option value='Thailand' >Thailand</option><option value='Togo' >Togo</option><option value='Tonga' >Tonga</option><option value='Trinidad and Tobago' >Trinidad and Tobago</option><option value='Tunisia' >Tunisia</option><option value='Turkey' >Turkey</option><option value='Turkmenistan' >Turkmenistan</option><option value='Tuvalu' >Tuvalu</option><option value='Uganda' >Uganda</option><option value='Ukraine' >Ukraine</option><option value='United Arab Emirates' >United Arab Emirates</option><option value='United Kingdom' >United Kingdom</option><option value='Uruguay' >Uruguay</option><option value='Uzbekistan' >Uzbekistan</option><option value='Vanuatu' >Vanuatu</option><option value='Vatican City' >Vatican City</option><option value='Venezuela' >Venezuela</option><option value='Vietnam' >Vietnam</option><option value='Virgin Islands, British' >Virgin Islands, British</option><option value='Virgin Islands, U.S.' >Virgin Islands, U.S.</option><option value='Yemen' >Yemen</option><option value='Zambia' >Zambia</option><option value='Zimbabwe' >Zimbabwe</option></select></div></li><li id='field_2_7' class='gfield               gfield_contains_required' style='display:none;'><label class='gfield_label' for='input_2_7'>City<span class='gfield_required'>*</span></label><div class='ginput_container'><input name='input_7' id='input_2_7' type='text' value='' class='medium'  tabindex='14'   /></div></li><li id='field_2_10' class='gfield               gfield_contains_required' style='display:none;'><label class='gfield_label' for='input_2_10'>State<span class='gfield_required'>*</span></label><div class='ginput_container'><select name='input_10' id='input_2_10'  class='medium gfield_select' tabindex='15' ><option value='Alabama' >Alabama</option><option value='Alaska' >Alaska</option><option value='Arizona' >Arizona</option><option value='Arkansas' >Arkansas</option><option value='California' >California</option><option value='Colorado' >Colorado</option><option value='Connecticut' >Connecticut</option><option value='Delaware' >Delaware</option><option value='District of Columbia' >District of Columbia</option><option value='Florida' >Florida</option><option value='Georgia' >Georgia</option><option value='Hawaii' >Hawaii</option><option value='Idaho' >Idaho</option><option value='Illinois' >Illinois</option><option value='Indiana' >Indiana</option><option value='Iowa' >Iowa</option><option value='Kansas' >Kansas</option><option value='Kentucky' >Kentucky</option><option value='Louisiana' >Louisiana</option><option value='Maine' >Maine</option><option value='Maryland' >Maryland</option><option value='Massachusetts' >Massachusetts</option><option value='Michigan' >Michigan</option><option value='Minnesota' >Minnesota</option><option value='Mississippi' >Mississippi</option><option value='Missouri' >Missouri</option><option value='Montana' >Montana</option><option value='Nebraska' >Nebraska</option><option value='Nevada' >Nevada</option><option value='New Hampshire' >New Hampshire</option><option value='New Jersey' >New Jersey</option><option value='New Mexico' >New Mexico</option><option value='New York' >New York</option><option value='North Carolina' >North Carolina</option><option value='North Dakota' >North Dakota</option><option value='Ohio' >Ohio</option><option value='Oklahoma' >Oklahoma</option><option value='Oregon' >Oregon</option><option value='Pennsylvania' >Pennsylvania</option><option value='Rhode Island' >Rhode Island</option><option value='South Carolina' >South Carolina</option><option value='South Dakota' >South Dakota</option><option value='Tennessee' >Tennessee</option><option value='Texas' >Texas</option><option value='Utah' >Utah</option><option value='Vermont' >Vermont</option><option value='Virginia' >Virginia</option><option value='Washington' >Washington</option><option value='West Virginia' >West Virginia</option><option value='Wisconsin' >Wisconsin</option><option value='Wyoming' >Wyoming</option><option value='Armed Forces Americas' >Armed Forces Americas</option><option value='Armed Forces Europe' >Armed Forces Europe</option><option value='Armed Forces Pacific' >Armed Forces Pacific</option></select></div></li><li id='field_2_11' class='gfield               gfield_contains_required' style='display:none;'><label class='gfield_label' for='input_2_11'>Province<span class='gfield_required'>*</span></label><div class='ginput_container'><select name='input_11' id='input_2_11'  class='medium gfield_select' tabindex='16' ><option value='Alberta' >Alberta</option><option value='British Columbia' >British Columbia</option><option value='Manitoba' >Manitoba</option><option value='New Brunswick' >New Brunswick</option><option value='Newfoundland &amp; Labrador' >Newfoundland &amp; Labrador</option><option value='Northwest Territories' >Northwest Territories</option><option value='Nova Scotia' >Nova Scotia</option><option value='Nunavut' >Nunavut</option><option value='Ontario' >Ontario</option><option value='Prince Edward Island' >Prince Edward Island</option><option value='Quebec' >Quebec</option><option value='Saskatchewan' >Saskatchewan</option><option value='Yukon' >Yukon</option></select></div></li><li id='field_2_8' class='gfield' style='display:none;'><label class='gfield_label'></label><div class='ginput_container'><ul class='gfield_checkbox' id='input_2_8'><li class='gchoice_8_1'><input name='input_8.1' type='checkbox'  value='namiss' checked='checked' id='choice_8_1' tabindex='17'  /><label for='choice_8_1' id='label_8_1'>Please check here to receive valuable email offers from Datanami on behalf of our select partners.</label></li></ul></div></li>
+                            </ul></div>
+        <div class='gform_footer top_label'> <input type='submit' id='gform_submit_button_2' class='gform_button button' value='Submit' tabindex='18' onclick='if(window["gf_submitting_2"]){return false;}  window["gf_submitting_2"]=true; '/><input type='hidden' name='gform_ajax' value='form_id=2&amp;title=&amp;description=&amp;tabindex=1' />
+            <input type='hidden' class='gform_hidden' name='is_submit_2' value='1' />
+            <input type='hidden' class='gform_hidden' name='gform_submit' value='2' />
+            <input type='hidden' class='gform_hidden' name='gform_unique_id' value='' />
+            <input type='hidden' class='gform_hidden' name='state_2' value='WyJbXSIsIjE1MTRlYmZkOWI2OGI5MzA2ZTk0ODhiOTY2ZTQ5MDI1Il0=' />
+            <input type='hidden' class='gform_hidden' name='gform_target_page_number_2' id='gform_target_page_number_2' value='0' />
+            <input type='hidden' class='gform_hidden' name='gform_source_page_number_2' id='gform_source_page_number_2' value='1' />
+            <input type='hidden' name='gform_field_values' value='' />
+            
+        </div>
+                        </form>
+                        </div>
+                <iframe style='display:none;width:0px;height:0px;' src='about:blank' name='gform_ajax_frame_2' id='gform_ajax_frame_2'></iframe>
+                <script type='text/javascript'>jQuery(document).ready(function($){gformInitSpinner( 2, 'http://www.datanami.com/wp-content/plugins/gravityforms/images/spinner.gif' );jQuery('#gform_ajax_frame_2').load( function(){var contents = jQuery(this).contents().find('*').html();var is_postback = contents.indexOf('GF_AJAX_POSTBACK') >= 0;if(!is_postback){return;}var form_content = jQuery(this).contents().find('#gform_wrapper_2');var is_redirect = contents.indexOf('gformRedirect(){') >= 0;var is_form = !(form_content.length <= 0 || is_redirect);if(is_form){jQuery('#gform_wrapper_2').html(form_content.html());jQuery(document).scrollTop(jQuery('#gform_wrapper_2').offset().top);if(window['gformInitDatepicker']) {gformInitDatepicker();}if(window['gformInitPriceFields']) {gformInitPriceFields();}var current_page = jQuery('#gform_source_page_number_2').val();gformInitSpinner( 2, 'http://www.datanami.com/wp-content/plugins/gravityforms/images/spinner.gif' );jQuery(document).trigger('gform_page_loaded', [2, current_page]);window['gf_submitting_2'] = false;}else if(!is_redirect){var confirmation_content = jQuery(this).contents().find('#gforms_confirmation_message').html();if(!confirmation_content){confirmation_content = contents;}setTimeout(function(){jQuery('#gform_wrapper_2').replaceWith('<' + 'div id=\'gforms_confirmation_message\' class=\'gform_confirmation_message_2\'' + '>' + confirmation_content + '<' + '/div' + '>');jQuery(document).scrollTop(jQuery('#gforms_confirmation_message').offset().top);jQuery(document).trigger('gform_confirmation_loaded', [2]);window['gf_submitting_2'] = false;}, 50);}else{jQuery('#gform_2').append(contents);if(window['gformRedirect']) {gformRedirect();}}jQuery(document).trigger('gform_post_render', [2, current_page]);} );} );</script><script type='text/javascript'> if(typeof gf_global == 'undefined') var gf_global = {"gf_currency_config":{"name":"U.S. Dollar","symbol_left":"$","symbol_right":"","symbol_padding":"","thousand_separator":",","decimal_separator":".","decimals":2},"base_url":"http:\/\/www.datanami.com\/wp-content\/plugins\/gravityforms","number_formats":[],"spinnerUrl":"http:\/\/www.datanami.com\/wp-content\/plugins\/gravityforms\/images\/spinner.gif"};jQuery(document).bind('gform_post_render', function(event, formId, currentPage){if(formId == 2) {if(window['jQuery']){if(!window['gf_form_conditional_logic'])window['gf_form_conditional_logic'] = new Array();window['gf_form_conditional_logic'][2] = {'logic' : {3: {"field":{"actionType":"show","logicType":"all","rules":[{"fieldId":"1","operator":"isnot","value":""},{"fieldId":"1","operator":"contains","value":"@"}]},"nextButton":null,"section":null},4: {"field":{"actionType":"show","logicType":"all","rules":[{"fieldId":"3","operator":"isnot","value":""}]},"nextButton":null,"section":null},5: {"field":{"actionType":"show","logicType":"all","rules":[{"fieldId":"3","operator":"isnot","value":""}]},"nextButton":null,"section":null},6: {"field":{"actionType":"show","logicType":"all","rules":[{"fieldId":"1","operator":"isnot","value":""},{"fieldId":"1","operator":"contains","value":"@"}]},"nextButton":null,"section":null},7: {"field":{"actionType":"show","logicType":"all","rules":[{"fieldId":"1","operator":"isnot","value":""},{"fieldId":"1","operator":"contains","value":"@"}]},"nextButton":null,"section":null},10: {"field":{"actionType":"show","logicType":"all","rules":[{"fieldId":"6","operator":"is","value":"United States"},{"fieldId":"1","operator":"isnot","value":""},{"fieldId":"1","operator":"contains","value":"@"}]},"nextButton":null,"section":null},11: {"field":{"actionType":"show","logicType":"all","rules":[{"fieldId":"6","operator":"is","value":"Canada"},{"fieldId":"1","operator":"isnot","value":""},{"fieldId":"1","operator":"contains","value":"@"}]},"nextButton":null,"section":null},8: {"field":{"actionType":"show","logicType":"all","rules":[{"fieldId":"1","operator":"isnot","value":""},{"fieldId":"1","operator":"contains","value":"@"}]},"nextButton":null,"section":null} }, 'dependents' : {3: ["3"],4: ["4"],5: ["5"],6: ["6"],7: ["7"],10: ["10"],11: ["11"],8: ["8"] }, 'animation' : 0 , 'defaults' : {"9":["choice_9_3"],"8":["choice_8_1"]} }; if(!window['gf_number_format'])window['gf_number_format'] = 'decimal_dot';jQuery(document).ready(function(){gf_apply_rules(2, ["3","4","5","6","7","10","11","8"], true);jQuery('#gform_wrapper_2').show();jQuery(document).trigger('gform_post_conditional_logic', [2, null, true]);} );} } } );jQuery(document).bind('gform_post_conditional_logic', function(event, formId, fields, isInit){} );</script><script type='text/javascript'> jQuery(document).ready(function(){jQuery(document).trigger('gform_post_render', [2, 1]) } ); </script>		</div>
+	</div><!-- end comments -->							</div><!--end post footer-->
+						</div><!--end post-->
+										<div class="navigation index">
+						<div class="alignleft"></div>
+						<div class="alignright"></div>
+					</div><!--end navigation-->
+					<div id="after-content-blocks">
+
+		
+		
+			<div id="text-14" class="widget widget_text">			<div class="textwidget"><p><!-- DAT-BTM-FB-468x60 --></p>
+<div id='div-gpt-ad-1404326031787-0' style='width:468px; height:60px;'>
+<script type='text/javascript'>
+googletag.cmd.push(function() { googletag.display('div-gpt-ad-1404326031787-0'); });
+</script>
+</div>
+</div>
+		</div>	
+	<div id="bottom-center-advertiser" class="clearfix">
+			</div>
+	
+</div>							</div><!--end post-content-->
+			<div id="right-sidebar" class="span4">
+			<ul class="nav nav-tabs" id="myTab">
+			<li class="active"><a href="#offTheWire" data-toggle="tab">This Just In</a></li>
+			<li><a href="#mostRead" data-toggle="tab">Most Read</a></li>
+			<!--<li><a href="#podcasts" data-toggle="tab">Podcasts</a></li>-->
+		</ul>
+	 
+		<div class="tab-content">
+			<div class="tab-pane active" id="offTheWire">
+									<div id="text-3" class="widget widget_text">			<div class="textwidget"><div class="this-just-in-widget">
+<h4 class="sidebar-title">December 23, 2014</h4>
+<ul class="triangle">
+<li>
+				<span class="this-just-in-title"><a href="http://www.datanami.com/this-just-in/cloudera-build-big-data-platform-avvo/" onclick="__gaTracker('send', 'event', 'outbound-widget-int', 'http://www.datanami.com/this-just-in/cloudera-build-big-data-platform-avvo/', 'Cloudera to Build Big Data Platform for Avvo');"  title="Cloudera to Build Big Data Platform for Avvo">Cloudera to Build Big Data Platform for Avvo</a></span>
+			</li>
+</ul>
+<h4 class="sidebar-title">December 19, 2014</h4>
+<ul class="triangle">
+<li>
+				<span class="this-just-in-title"><a href="http://www.datanami.com/this-just-in/red-hat-reports-third-quarter-results/" onclick="__gaTracker('send', 'event', 'outbound-widget-int', 'http://www.datanami.com/this-just-in/red-hat-reports-third-quarter-results/', 'Red Hat Reports Third Quarter Results');"  title="Red Hat Reports Third Quarter Results">Red Hat Reports Third Quarter Results</a></span>
+			</li>
+</ul>
+<h4 class="sidebar-title">December 17, 2014</h4>
+<ul class="triangle">
+<li>
+				<span class="this-just-in-title"><a href="http://www.datanami.com/this-just-in/mapr-forms-alliance-sas/" onclick="__gaTracker('send', 'event', 'outbound-widget-int', 'http://www.datanami.com/this-just-in/mapr-forms-alliance-sas/', 'MapR Forms Alliance with SAS');"  title="MapR Forms Alliance with SAS">MapR Forms Alliance with SAS</a></span>
+			</li>
+<li>
+				<span class="this-just-in-title"><a href="http://www.datanami.com/this-just-in/hortonworks-expands-certified-technology-program/" onclick="__gaTracker('send', 'event', 'outbound-widget-int', 'http://www.datanami.com/this-just-in/hortonworks-expands-certified-technology-program/', 'Hortonworks Expands Certified Technology Program');"  title="Hortonworks Expands Certified Technology Program">Hortonworks Expands Certified Technology Program</a></span>
+			</li>
+<li>
+				<span class="this-just-in-title"><a href="http://www.datanami.com/this-just-in/teradata-acquires-rainstor/" onclick="__gaTracker('send', 'event', 'outbound-widget-int', 'http://www.datanami.com/this-just-in/teradata-acquires-rainstor/', 'Teradata Acquires RainStor');"  title="Teradata Acquires RainStor">Teradata Acquires RainStor</a></span>
+			</li>
+<li>
+				<span class="this-just-in-title"><a href="http://www.datanami.com/this-just-in/rapidminer-streams-unveiled/" onclick="__gaTracker('send', 'event', 'outbound-widget-int', 'http://www.datanami.com/this-just-in/rapidminer-streams-unveiled/', 'RapidMiner Streams Unveiled');"  title="RapidMiner Streams Unveiled">RapidMiner Streams Unveiled</a></span>
+			</li>
+<li>
+				<span class="this-just-in-title"><a href="http://www.datanami.com/this-just-in/talend-expands-support-hp-haven-big-data-offerings/" onclick="__gaTracker('send', 'event', 'outbound-widget-int', 'http://www.datanami.com/this-just-in/talend-expands-support-hp-haven-big-data-offerings/', 'Talend Expands Support for HP Haven Big Data Offerings');"  title="Talend Expands Support for HP Haven Big Data Offerings">Talend Expands Support for HP Haven Big Data Offerings</a></span>
+			</li>
+</ul>
+<h4 class="sidebar-title">December 16, 2014</h4>
+<ul class="triangle">
+<li>
+				<span class="this-just-in-title"><a href="http://www.datanami.com/this-just-in/datahero-launches-google-analytics-integration/" onclick="__gaTracker('send', 'event', 'outbound-widget-int', 'http://www.datanami.com/this-just-in/datahero-launches-google-analytics-integration/', 'DataHero Launches Google Analytics Integration');"  title="DataHero Launches Google Analytics Integration">DataHero Launches Google Analytics Integration</a></span>
+			</li>
+<li>
+				<span class="this-just-in-title"><a href="http://www.datanami.com/this-just-in/fujitsu-selects-datameer-part-new-integrated-big-data-platform/" onclick="__gaTracker('send', 'event', 'outbound-widget-int', 'http://www.datanami.com/this-just-in/fujitsu-selects-datameer-part-new-integrated-big-data-platform/', 'Fujitsu Selects Datameer as Part of Their New Integrated Big Data Platform');"  title="Fujitsu Selects Datameer as Part of Their New Integrated Big Data Platform">Fujitsu Selects Datameer as Part of Their New Integrated Big Data Platform</a></span>
+			</li>
+<li>
+				<span class="this-just-in-title"><a href="http://www.datanami.com/this-just-in/logi-analytics-partners-talend/" onclick="__gaTracker('send', 'event', 'outbound-widget-int', 'http://www.datanami.com/this-just-in/logi-analytics-partners-talend/', 'Logi Analytics Partners with Talend');"  title="Logi Analytics Partners with Talend">Logi Analytics Partners with Talend</a></span>
+			</li>
+<li>
+				<span class="this-just-in-title"><a href="http://www.datanami.com/this-just-in/plexxi-introduces-new-starter-kits/" onclick="__gaTracker('send', 'event', 'outbound-widget-int', 'http://www.datanami.com/this-just-in/plexxi-introduces-new-starter-kits/', 'Plexxi Introduces New Starter Kits');"  title="Plexxi Introduces New Starter Kits">Plexxi Introduces New Starter Kits</a></span>
+			</li>
+</ul>
+<h4 class="sidebar-title">December 15, 2014</h4>
+<ul class="triangle">
+<li>
+				<span class="this-just-in-title"><a href="http://www.datanami.com/this-just-in/denodo-platform-5-5-now-available/" onclick="__gaTracker('send', 'event', 'outbound-widget-int', 'http://www.datanami.com/this-just-in/denodo-platform-5-5-now-available/', 'Denodo Platform 5.5 Now Available');"  title="Denodo Platform 5.5 Now Available">Denodo Platform 5.5 Now Available</a></span>
+			</li>
+<li>
+				<span class="this-just-in-title"><a href="http://www.datanami.com/this-just-in/aerospike-enhances-memory-nosql-database/" onclick="__gaTracker('send', 'event', 'outbound-widget-int', 'http://www.datanami.com/this-just-in/aerospike-enhances-memory-nosql-database/', 'Aerospike Enhances In-Memory NoSQL Database');"  title="Aerospike Enhances In-Memory NoSQL Database">Aerospike Enhances In-Memory NoSQL Database</a></span>
+			</li>
+</ul>
+<h4 class="sidebar-title">December 12, 2014</h4>
+<ul class="triangle">
+<li>
+				<span class="this-just-in-title"><a href="http://www.datanami.com/this-just-in/hortonworks-announces-pricing-initial-public-offering/" onclick="__gaTracker('send', 'event', 'outbound-widget-int', 'http://www.datanami.com/this-just-in/hortonworks-announces-pricing-initial-public-offering/', 'Hortonworks Announces Pricing of Initial Public Offering');"  title="Hortonworks Announces Pricing of Initial Public Offering">Hortonworks Announces Pricing of Initial Public Offering</a></span>
+			</li>
+<li>
+				<span class="this-just-in-title"><a href="http://www.datanami.com/this-just-in/cisco-unveils-new-analytics-portfolio/" onclick="__gaTracker('send', 'event', 'outbound-widget-int', 'http://www.datanami.com/this-just-in/cisco-unveils-new-analytics-portfolio/', 'Cisco Unveils New Analytics Portfolio');"  title="Cisco Unveils New Analytics Portfolio">Cisco Unveils New Analytics Portfolio</a></span>
+			</li>
+</ul>
+<h4 class="sidebar-title">December 11, 2014</h4>
+<ul class="triangle">
+<li>
+				<span class="this-just-in-title"><a href="http://www.datanami.com/this-just-in/cloudera-expand-presence-asia/" onclick="__gaTracker('send', 'event', 'outbound-widget-int', 'http://www.datanami.com/this-just-in/cloudera-expand-presence-asia/', 'Cloudera to Expand Presence in Asia');"  title="Cloudera to Expand Presence in Asia">Cloudera to Expand Presence in Asia</a></span>
+			</li>
+<li>
+				<span class="this-just-in-title"><a href="http://www.datanami.com/this-just-in/logi-analytics-partners-teradata/" onclick="__gaTracker('send', 'event', 'outbound-widget-int', 'http://www.datanami.com/this-just-in/logi-analytics-partners-teradata/', 'Logi Analytics Partners with Teradata');"  title="Logi Analytics Partners with Teradata">Logi Analytics Partners with Teradata</a></span>
+			</li>
+<li>
+				<span class="this-just-in-title"><a href="http://www.datanami.com/this-just-in/bluedata-grows-big-data-partner-ecosystem/" onclick="__gaTracker('send', 'event', 'outbound-widget-int', 'http://www.datanami.com/this-just-in/bluedata-grows-big-data-partner-ecosystem/', 'BlueData Grows Big Data Partner Ecosystem');"  title="BlueData Grows Big Data Partner Ecosystem">BlueData Grows Big Data Partner Ecosystem</a></span>
+			</li>
+</ul>
+<h4 class="sidebar-title">December 10, 2014</h4>
+<ul class="triangle">
+<li>
+				<span class="this-just-in-title"><a href="http://www.datanami.com/this-just-in/qubole-secures-13m-financing-expand-big-data-service-platform/" onclick="__gaTracker('send', 'event', 'outbound-widget-int', 'http://www.datanami.com/this-just-in/qubole-secures-13m-financing-expand-big-data-service-platform/', 'Qubole Secures $13M in Financing to Expand Big Data-as-a-Service Platform');"  title="Qubole Secures $13M in Financing to Expand Big Data-as-a-Service Platform">Qubole Secures $13M in Financing to Expand Big Data-as-a-Service Platform</a></span>
+			</li>
+<li>
+				<span class="this-just-in-title"><a href="http://www.datanami.com/this-just-in/cambridge-semantics-sparql-city-announce-collaboration/" onclick="__gaTracker('send', 'event', 'outbound-widget-int', 'http://www.datanami.com/this-just-in/cambridge-semantics-sparql-city-announce-collaboration/', 'Cambridge Semantics and SPARQL City Announce Collaboration');"  title="Cambridge Semantics and SPARQL City Announce Collaboration">Cambridge Semantics and SPARQL City Announce Collaboration</a></span>
+			</li>
+</ul>
+<ul class="triangle">
+<li>
+				<a href="http://www.datanami.com/this-just-in/" onclick="__gaTracker('send', 'event', 'outbound-widget-int', 'http://www.datanami.com/this-just-in/', 'More This Just In&hellip;');" >More This Just In&hellip;</a>
+			</li>
+</ul></div>
+</div>
+		</div>							</div>
+			<div class="tab-pane" id="mostRead">
+									
+<!-- WordPress Popular Posts Plugin v3.2.1 [W] [monthly] [views] [custom] [CAT] -->
+<div id="wpp-2" class="widget popular-posts">
+<h3 class="sidebar-title">Most Read Features</h3>
+<ul class="triangle">
+<li><a href="http://www.datanami.com/2014/11/21/spark-just-passed-hadoop-popularity-web-heres/" title="Spark Just Passed Hadoop in Popularity on the Web&#8211;Here&#8217;s Why" class="wpp-post-title" target="_self">Spark Just Passed Hadoop in Popularity on the Web&#8211;Here&#8217;s Why</a></li>
+<li><a href="http://www.datanami.com/2014/12/11/apache-spark-java-8-big-data-team-2015/" title="Apache Spark and Java 8: The Big Data Team for 2015" class="wpp-post-title" target="_self">Apache Spark and Java 8: The Big Data Team for 2015</a></li>
+<li><a href="http://www.datanami.com/2014/03/06/apache_spark_3_real-world_use_cases/" title="Apache Spark: 3 Real-World Use Cases" class="wpp-post-title" target="_self">Apache Spark: 3 Real-World Use Cases</a></li>
+<li><a href="http://www.datanami.com/2014/12/02/kafka-run-natively-hadoop/" title="Why Kafka Should Run Natively on Hadoop" class="wpp-post-title" target="_self">Why Kafka Should Run Natively on Hadoop</a></li>
+<li><a href="http://www.datanami.com/2014/11/25/land-thousand-big-data-lakes/" title="The Land of a Thousand Big Data Lakes" class="wpp-post-title" target="_self">The Land of a Thousand Big Data Lakes</a></li>
+<li><a href="http://www.datanami.com/2014/12/12/hadoop-hits-big-time-hortonworks-ipo/" title="Hadoop Hits the Big Time with Hortonworks IPO" class="wpp-post-title" target="_self">Hadoop Hits the Big Time with Hortonworks IPO</a></li>
+<li><a href="http://www.datanami.com/2014/12/10/nosql-database-scales-new-heights/" title="NoSQL Database Scales to New Heights" class="wpp-post-title" target="_self">NoSQL Database Scales to New Heights</a></li>
+<li><a href="http://www.datanami.com/2014/12/04/transforming-postgresqlinto-distributed-scale-database/" title="Transforming PostgreSQL into a Distributed, Scale-Out Database" class="wpp-post-title" target="_self">Transforming PostgreSQL into a Distributed, Scale-Out Database</a></li>
+<li><a href="http://www.datanami.com/2014/12/01/comscore-uses-hadoop-mapr-build-business/" title="How comScore Uses Hadoop and MapR to Build its Business" class="wpp-post-title" target="_self">How comScore Uses Hadoop and MapR to Build its Business</a></li>
+<li><a href="http://www.datanami.com/2014/12/08/big-data-remaking-customer-loyalty-programs/" title="How Big Data Is Remaking Customer Loyalty Programs" class="wpp-post-title" target="_self">How Big Data Is Remaking Customer Loyalty Programs</a></li>
+
+<li><a href="http://www.datanami.com/category/features/">More Features&hellip;</a></li></ul>
+</div>
+<!-- End WordPress Popular Posts Plugin v3.2.1 -->
+
+<!-- WordPress Popular Posts Plugin v3.2.1 [W] [monthly] [views] [custom] [CAT] -->
+<div id="wpp-3" class="widget popular-posts">
+<h3 class="sidebar-title">Most Read News In Brief</h3>
+<ul class="triangle">
+<li><a href="http://www.datanami.com/2012/04/10/six_big_name_schools_with_big_data_programs/" title="Six Big Name Schools with Big Data Programs" class="wpp-post-title" target="_self">Six Big Name Schools with Big Data Programs</a></li>
+<li><a href="http://www.datanami.com/2014/10/22/survey-mega-vendors-still-dominate-database-management-market/" title="Survey: Mega-Vendors Still Dominate Database Management Market" class="wpp-post-title" target="_self">Survey: Mega-Vendors Still Dominate Database Management Market</a></li>
+<li><a href="http://www.datanami.com/2013/11/27/hadoop_on_a_raspberry_pi/" title="Hadoop on a Raspberry Pi" class="wpp-post-title" target="_self">Hadoop on a Raspberry Pi</a></li>
+<li><a href="http://www.datanami.com/2014/12/01/nsa-releases-data-management-tool/" title="NSA Releases Data Management Tool" class="wpp-post-title" target="_self">NSA Releases Data Management Tool</a></li>
+<li><a href="http://www.datanami.com/2014/12/04/big-data-rankings-leaders-generated-6b-revenues/" title="Big Data Rankings: Leaders Generated $6B in Revenues" class="wpp-post-title" target="_self">Big Data Rankings: Leaders Generated $6B in Revenues</a></li>
+<li><a href="http://www.datanami.com/2014/11/24/datathons-emerge-training-recruitment-tool/" title="&#8216;Datathons&#8217; Emerge as Training, Recruitment Tool" class="wpp-post-title" target="_self">&#8216;Datathons&#8217; Emerge as Training, Recruitment Tool</a></li>
+<li><a href="http://www.datanami.com/2014/03/13/hadoop_and_nosql_now_data_warehouse-worthy_gartner/" title="Hadoop and NoSQL Now Data Warehouse-Worthy: Gartner" class="wpp-post-title" target="_self">Hadoop and NoSQL Now Data Warehouse-Worthy: Gartner</a></li>
+<li><a href="http://www.datanami.com/2014/12/09/mapr-claims-momentum-hadoop-subs-grow/" title="MapR Claims Momentum as Hadoop Subs Grow" class="wpp-post-title" target="_self">MapR Claims Momentum as Hadoop Subs Grow</a></li>
+<li><a href="http://www.datanami.com/2014/05/29/hadoop-market-grow-58-2020-report-says/" title="Hadoop Market to Grow 25x by 2020, Report Says" class="wpp-post-title" target="_self">Hadoop Market to Grow 25x by 2020, Report Says</a></li>
+<li><a href="http://www.datanami.com/2014/12/09/data-tools-aid-open-source-intelligence/" title="Data Tools Aid Open Source Intelligence" class="wpp-post-title" target="_self">Data Tools Aid Open Source Intelligence</a></li>
+
+<li><a href="http://www.datanami.com/category/news-in-brief/">More News In Brief&hellip;</a></li></ul>
+</div>
+<!-- End WordPress Popular Posts Plugin v3.2.1 -->
+
+<!-- WordPress Popular Posts Plugin v3.2.1 [W] [monthly] [views] [custom] -->
+<div id="wpp-4" class="widget popular-posts">
+<h3 class="sidebar-title">Most Read This Just In</h3>
+<ul class="triangle">
+<li><a href="http://www.datanami.com/this-just-in/nsa-releases-new-technology-open-source-community/" title="NSA Releases New Technology for Open Source Community" class="wpp-post-title" target="_self">NSA Releases New Technology for Open Source Community</a></li>
+<li><a href="http://www.datanami.com/this-just-in/esg-publishes-spotlight-mapr-distribution/" title="ESG Publishes Spotlight on MapR Distribution" class="wpp-post-title" target="_self">ESG Publishes Spotlight on MapR Distribution</a></li>
+<li><a href="http://www.datanami.com/this-just-in/hp-releases-range-new-operations-management-products/" title="HP Releases Range of New IT Operations Management Products" class="wpp-post-title" target="_self">HP Releases Range of New IT Operations Management Products</a></li>
+<li><a href="http://www.datanami.com/this-just-in/mapr-forms-alliance-sas/" title="MapR Forms Alliance with SAS" class="wpp-post-title" target="_self">MapR Forms Alliance with SAS</a></li>
+<li><a href="http://www.datanami.com/this-just-in/cisco-unveils-new-analytics-portfolio/" title="Cisco Unveils New Analytics Portfolio" class="wpp-post-title" target="_self">Cisco Unveils New Analytics Portfolio</a></li>
+<li><a href="http://www.datanami.com/this-just-in/qubole-secures-13m-financing-expand-big-data-service-platform/" title="Qubole Secures $13M in Financing to Expand Big Data-as-a-Service Platform" class="wpp-post-title" target="_self">Qubole Secures $13M in Financing to Expand Big Data-as-a-Service Platform</a></li>
+<li><a href="http://www.datanami.com/this-just-in/databricks-debuts-online-classes-teach-distributed-analytics-using-spark/" title="Databricks Debuts Online Classes to Teach Distributed Analytics Using Spark" class="wpp-post-title" target="_self">Databricks Debuts Online Classes to Teach Distributed Analytics Using Spark</a></li>
+<li><a href="http://www.datanami.com/this-just-in/cloudera-expand-presence-asia/" title="Cloudera to Expand Presence in Asia" class="wpp-post-title" target="_self">Cloudera to Expand Presence in Asia</a></li>
+<li><a href="http://www.datanami.com/this-just-in/splunk-announces-third-quarter-2015-financial-results/" title="Splunk Announces Third Quarter 2015 Financial Results" class="wpp-post-title" target="_self">Splunk Announces Third Quarter 2015 Financial Results</a></li>
+<li><a href="http://www.datanami.com/this-just-in/opentext-signs-definitive-agreement-acquire-actuate/" title="OpenText Signs Definitive Agreement to Acquire Actuate" class="wpp-post-title" target="_self">OpenText Signs Definitive Agreement to Acquire Actuate</a></li>
+
+<li><a href="http://www.datanami.com/this-just-in/">More This Just In&hellip;</a></li></ul>
+</div>
+<!-- End WordPress Popular Posts Plugin v3.2.1 -->
+							</div>
+			<!--<div class="tab-pane" id="podcasts">
+							</div>-->
+		</div>
+	
+	
+
+				
+			<div id="text-6" class="widget widget_text">			<div class="textwidget"><p><!-- DAT-RSB-MR-TOP-300x250 --></p>
+<div id='div-gpt-ad-1404326031787-2' style='width:300px; height:250px;'>
+<script type='text/javascript'>
+googletag.cmd.push(function() { googletag.display('div-gpt-ad-1404326031787-2'); });
+</script>
+</div>
+</div>
+		</div><div id="text-10" class="widget widget_text"><h3 class="sidebar-title">Sponsored Whitepapers</h3>			<div class="textwidget"><div class="whitepapers-widget">
+<ul>
+<li>
+<h4>
+					<a href="http://www.datanami.com/whitepaper/get-actionable-let-data-drive-decisions/" title="Get Actionable: Let Data Drive Decisions"><br />
+						Get Actionable: Let Data Drive Decisions					</a><br />
+				</h4>
+</li>
+<li>
+<h4>
+					<a href="http://www.datanami.com/whitepaper/spotlighton-managing-big-data-metadata/" title="SpotlightON: Managing Big Data with Metadata"><br />
+						SpotlightON: Managing Big Data with Metadata					</a><br />
+				</h4>
+</li>
+</ul>
+<ul class="triangle">
+<li>
+				<a href="http://www.datanami.com/whitepaper/" onclick="__gaTracker('send', 'event', 'outbound-widget-int', 'http://www.datanami.com/whitepaper/', 'View the Whitepaper Library');" >View the Whitepaper Library</a>
+			</li>
+</ul></div>
+</div>
+		</div><div id="text-13" class="widget widget_text">			<div class="textwidget"><p><!-- DAT-RSB-SKY-120x600 --></p>
+<div id='div-gpt-ad-1404326031787-1' style='width:120px; height:600px;'>
+<script type='text/javascript'>
+googletag.cmd.push(function() { googletag.display('div-gpt-ad-1404326031787-1'); });
+</script>
+</div>
+</div>
+		</div><div id="text-8" class="widget widget_text"><h3 class="sidebar-title">Job Bank</h3>			<div class="textwidget"><div class="jobbank-widget"><script language="JavaScript" src="http://feed2js.org//feed2js.php?src=http%3A%2F%2Fjobs.datanami.com%2Fsearch_rss.cfm&amp;num=6&amp;utf=y" charset="UTF-8" type="text/javascript"></script><br />
+<noscript><br />
+<a href="http://feed2js.org//feed2js.php?src=http%3A%2F%2Fjobs.datanami.com%2Fsearch_rss_hotjobs.cfm&amp;num=6&amp;utf=y&amp;html=y" onclick="__gaTracker('send', 'event', 'outbound-widget', 'http://feed2js.org//feed2js.php?src=http%3A%2F%2Fjobs.datanami.com%2Fsearch_rss_hotjobs.cfm&amp;num=6&amp;utf=y&amp;html=y', 'View RSS feed');" >View RSS feed</a><br />
+</noscript><br />
+<a href="http://www.datanami.com/job-bank/" onclick="__gaTracker('send', 'event', 'outbound-widget-int', 'http://www.datanami.com/job-bank/', 'View the Job Bank');" >View the Job Bank</a></div>
+</div>
+		</div><div id="text-11" class="widget widget_text"><h3 class="sidebar-title">Contributors</h3>			<div class="textwidget"><div style="overflow-y:auto;overflow-x:hidden; padding-left:10px;">
+<div class="big-contributor"><img src="http://www.enterprisetech.com/wp-content/uploads/2013/09/alex-woodie.jpg" width="50px" height="75px" alt="Alex Woodie" />
+<div class="contributor-name">Alex Woodie</div>
+<p>
+<div class="contributor-title">Editor in Chief</div>
+</div>
+<div class="contributor"><img src="http://www.enterprisetech.com/wp-content/uploads/2013/09/timothy-prickett-morgan.jpg" width="50px" height="75px" alt="Timothy Prickett Morgan" />
+<div class="contributor-name">Timothy Prickett Morgan</div>
+<p>
+<div class="contributor-title">Contributing Editor</div>
+</div>
+<div class="contributor"><img src="http://www.enterprisetech.com/wp-content/uploads/2013/09/nicole-hemsoth.jpg" width="50px" height="75px" alt="Nicole Hemsoth" />
+<div class="contributor-name">Nicole Hemsoth</div>
+<p>
+<div class="contributor-title">Founding Editor<br />Senior Contributor</div>
+</div>
+<div class="contributor"><img src="http://2s7gjr373w3x22jf92z99mgm5w.wpengine.netdna-cdn.com/wp-content/uploads/2014/05/leopold50x75.png" width="50px" height="75px" alt="George Leopold" />
+<div class="contributor-name">George Leopold</div>
+<p>
+<div class="contributor-title">Contributing Editor</div>
+</div>
+<div class="contributor"><img src="http://www.enterprisetech.com/wp-content/uploads/2013/08/SteveConway50x75.jpg" width="50px" height="75px" alt="Steve Conway" />
+<div class="contributor-name">Steve Conway</div>
+<p>
+<div class="contributor-title">IDC</div>
+</div>
+</div>
+</div>
+		</div><div id="tribe-events-adv-list-widget-2" class="widget tribe-events-adv-list-widget"><h3 class="sidebar-title">Featured Events</h3>	<ol class="hfeed vcalendar">
+					<li class="hentry vevent type-tribe_events post-6394 tribe-clearfix tribe-events-category-summit-2 tribe-events-venue-6399 tribe-events-organizer-6398">
+
+				
+				<h4 class="entry-title summary">
+					<a href="http://www.datanami.com/event/business-analytics-innovation-summit-las-vegas/" rel="bookmark">Business Analytics Innovation Summit, Las Vegas</a>
+				</h4>
+
+				
+				<img width="120" height="60" src="http://2s7gjr373w3x22jf92z99mgm5w.wpengine.netdna-cdn.com/wp-content/uploads/2014/12/BusinessAnalytics_LV_2015Jan.jpg" class="attachment-post-thumbnail wp-post-image" alt="Business Analytics Innovation Summit" />
+				
+				<div class="duration">
+					<span class="date-start dtstart">January 22, 2015<span class="value-title" title="2015-01-22PST12:00"></span></span> - <span class="date-end dtend">January 23, 2015<span class="value-title" title="2015-01-23PST11:59"></span></span>				</div>
+								<div class="vcard adr location">
+
+					
+					
+											<span class="locality">Las Vegas</span>
+					
+											<span class="region">NV</span>
+					
+					
+											<span class="country-name">United States</span>
+					
+					
+									</div>
+
+				
+			</li>
+					<li class="hentry vevent type-tribe_events post-6053 tribe-clearfix tribe-events-category-summit-2 tribe-events-venue-6055">
+
+				
+				<h4 class="entry-title summary">
+					<a href="http://www.datanami.com/event/re-work-deep-learning-summit/" rel="bookmark">RE.WORK Deep Learning Summit</a>
+				</h4>
+
+				
+				<img width="120" height="60" src="http://2s7gjr373w3x22jf92z99mgm5w.wpengine.netdna-cdn.com/wp-content/uploads/2014/10/rework_deep-learning.jpg" class="attachment-post-thumbnail wp-post-image" alt="Re.Work Deep Learning Summit" />
+				
+				<div class="duration">
+					<span class="date-start dtstart">January 29, 2015<span class="value-title" title="2015-01-29PST12:00"></span></span> - <span class="date-end dtend">January 30, 2015<span class="value-title" title="2015-01-30PST11:59"></span></span>				</div>
+								<div class="vcard adr location">
+
+					
+					
+											<span class="locality">San Francisco</span>
+					
+											<span class="region">CA</span>
+					
+					
+											<span class="country-name">United States</span>
+					
+					
+									</div>
+
+				
+			</li>
+					<li class="hentry vevent type-tribe_events post-6400 tribe-clearfix tribe-events-category-summit-2 tribe-events-venue-6402 tribe-events-organizer-6401">
+
+				
+				<h4 class="entry-title summary">
+					<a href="http://www.datanami.com/event/data-science-innovation-summit/" rel="bookmark">Data Science Innovation Summit</a>
+				</h4>
+
+				
+				<img width="120" height="60" src="http://2s7gjr373w3x22jf92z99mgm5w.wpengine.netdna-cdn.com/wp-content/uploads/2014/12/DataScienceInnovation_2015Feb.jpg" class="attachment-post-thumbnail wp-post-image" alt="Data Science Innovation Summit" />
+				
+				<div class="duration">
+					<span class="date-start dtstart">February 12, 2015<span class="value-title" title="2015-02-12PST12:00"></span></span> - <span class="date-end dtend">February 13, 2015<span class="value-title" title="2015-02-13PST11:59"></span></span>				</div>
+								<div class="vcard adr location">
+
+					
+					
+											<span class="locality">San Diego</span>
+					
+											<span class="region">CA</span>
+					
+					
+											<span class="country-name">United States</span>
+					
+					
+									</div>
+
+				
+			</li>
+					<li class="hentry vevent type-tribe_events post-6403 tribe-clearfix tribe-events-category-summit-2 tribe-events-venue-6404 tribe-events-organizer-6401">
+
+				
+				<h4 class="entry-title summary">
+					<a href="http://www.datanami.com/event/predictive-analytics-innovation-summit/" rel="bookmark">Predictive Analytics Innovation Summit</a>
+				</h4>
+
+				
+				<img width="120" height="60" src="http://2s7gjr373w3x22jf92z99mgm5w.wpengine.netdna-cdn.com/wp-content/uploads/2014/12/PredictiveAnalytics_2015Feb.jpg" class="attachment-post-thumbnail wp-post-image" alt="Predictive Analytics Innovation Summit" />
+				
+				<div class="duration">
+					<span class="date-start dtstart">February 12, 2015<span class="value-title" title="2015-02-12PST12:00"></span></span> - <span class="date-end dtend">February 13, 2015<span class="value-title" title="2015-02-13PST11:59"></span></span>				</div>
+								<div class="vcard adr location">
+
+					
+					
+											<span class="locality">San Diego</span>
+					
+											<span class="region">CA</span>
+					
+					
+											<span class="country-name">United States</span>
+					
+					
+									</div>
+
+				
+			</li>
+					<li class="hentry vevent type-tribe_events post-6408 tribe-clearfix tribe-events-category-expo tribe-events-venue-4712 tribe-events-organizer-5088">
+
+				
+				<h4 class="entry-title summary">
+					<a href="http://www.datanami.com/event/big-data-expo-new-york/" rel="bookmark">Big Data Expo New York</a>
+				</h4>
+
+				
+				<img width="120" height="60" src="http://2s7gjr373w3x22jf92z99mgm5w.wpengine.netdna-cdn.com/wp-content/uploads/2014/12/BigData-EAST-Web-120x60_2015.jpg" class="attachment-post-thumbnail wp-post-image" alt="Big Data Expo" />
+				
+				<div class="duration">
+					<span class="date-start dtstart">June 9, 2015<span class="value-title" title="2015-06-09PST12:00"></span></span> - <span class="date-end dtend">June 11, 2015<span class="value-title" title="2015-06-11PST11:59"></span></span>				</div>
+								<div class="vcard adr location">
+
+					
+					
+											<span class="locality">New York</span>
+					
+					
+					
+											<span class="country-name">United States</span>
+					
+					
+									</div>
+
+				
+			</li>
+			</ol><!-- .hfeed -->
+
+	<p class="tribe-events-widget-link">
+		<a href="http://www.datanami.com/events/" rel="bookmark">
+			View More&hellip;		</a>
+	</p>
+</div>		
+	
+			<div class="widget">
+		<h3 class="sidebar-title">Sponsored Multimedia</h3>
+		<div id="multimedia-s" class="carousel slide">
+		<div class="carousel-inner">
+										<div class="item active">
+				<div class="row-fluid">
+							<div class="span6">
+				<div id="post-5594" class="post-5594 multimedia type-multimedia status-publish has-post-thumbnail hentry">
+					<div class="entry">
+													<a href="http://www.datanami.com/multimedia/webcast-top-5-ways-reduce-complexity-hadoop-data-warehouse/" title="Webcast: Top 5 Ways to Reduce Complexity Between Hadoop and the Data Warehouse" class="thumbnail" >
+							   <img width="111" height="111" src="http://2s7gjr373w3x22jf92z99mgm5w.wpengine.netdna-cdn.com/wp-content/uploads/2014/09/Webinar_Datanami_111x111.gif" class="attachment-thumbnail wp-post-image" alt="Webcast Sponsored by Hortonworks &amp; Teradata" />							</a>
+							<h4><a href="http://www.datanami.com/multimedia/webcast-top-5-ways-reduce-complexity-hadoop-data-warehouse/" title="Webcast: Top 5 Ways to Reduce Complexity Between Hadoop and the Data Warehouse" class="thumbnail" >
+							   Webcast: Top 5 Ways to Reduce Complexity Between Hadoop and the Data Warehouse							   <div class="meta-in"><i class="icon-comment"></i> No Comments</div>
+							</a></h4>
+											</div>
+				</div><!--end post-->
+				</div>
+																		<div class="span6">
+				<div id="post-5574" class="post-5574 multimedia type-multimedia status-publish has-post-thumbnail hentry">
+					<div class="entry">
+													<a href="http://www.datanami.com/multimedia/best-data-big-data-new-forrester-veristorm-webinar-925/" title="The Best Data for Big Data. New Forrester-Veristorm Webinar 9/25" class="thumbnail" >
+							   <img width="111" height="111" src="http://2s7gjr373w3x22jf92z99mgm5w.wpengine.netdna-cdn.com/wp-content/uploads/2014/09/veristorm_111x111.png" class="attachment-thumbnail wp-post-image" alt="Veristorm" />							</a>
+							<h4><a href="http://www.datanami.com/multimedia/best-data-big-data-new-forrester-veristorm-webinar-925/" title="The Best Data for Big Data. New Forrester-Veristorm Webinar 9/25" class="thumbnail" >
+							   The Best Data for Big Data. New Forrester-Veristorm Webinar 9/25							   <div class="meta-in"><i class="icon-comment"></i> No Comments</div>
+							</a></h4>
+											</div>
+				</div><!--end post-->
+				</div>
+												</div>
+				</div>
+																		<div class="item ">
+				<div class="row-fluid">
+							<div class="span6">
+				<div id="post-5524" class="post-5524 multimedia type-multimedia status-publish has-post-thumbnail hentry">
+					<div class="entry">
+													<a href="http://www.datanami.com/multimedia/webinar-taming-enterprise-data-variety-challenges/" title="Webinar: Taming your Enterprise Data Variety Challenges" class="thumbnail" >
+							   <img width="111" height="111" src="http://2s7gjr373w3x22jf92z99mgm5w.wpengine.netdna-cdn.com/wp-content/uploads/2014/09/Tamr_111x111.png" class="attachment-thumbnail wp-post-image" alt="Tamr" />							</a>
+							<h4><a href="http://www.datanami.com/multimedia/webinar-taming-enterprise-data-variety-challenges/" title="Webinar: Taming your Enterprise Data Variety Challenges" class="thumbnail" >
+							   Webinar: Taming your Enterprise Data Variety Challenges							   <div class="meta-in"><i class="icon-comment"></i> No Comments</div>
+							</a></h4>
+											</div>
+				</div><!--end post-->
+				</div>
+																		<div class="span6">
+				<div id="post-2734" class="post-2734 multimedia type-multimedia status-publish has-post-thumbnail hentry">
+					<div class="entry">
+													<a href="http://www.datanami.com/multimedia/webinar_powering_research_with_knowledge_discovery_data_mining_kdd/" title="Powering Research with Knowledge Discovery &amp; Data Mining (KDD)" class="thumbnail" >
+							   <img width="111" height="111" src="http://2s7gjr373w3x22jf92z99mgm5w.wpengine.netdna-cdn.com/wp-content/uploads/2014/03/KDD_Webinar_111x111.gif" class="attachment-thumbnail wp-post-image" alt="Powering Research with Knowledge Discovery &amp; Data Mining (KDD)" />							</a>
+							<h4><a href="http://www.datanami.com/multimedia/webinar_powering_research_with_knowledge_discovery_data_mining_kdd/" title="Powering Research with Knowledge Discovery &amp; Data Mining (KDD)" class="thumbnail" >
+							   Powering Research with Knowledge Discovery &#038; Data Mining (KDD)							   <div class="meta-in"><i class="icon-comment"></i> No Comments</div>
+							</a></h4>
+											</div>
+				</div><!--end post-->
+				</div>
+												</div>
+				</div>
+																		<div class="item ">
+				<div class="row-fluid">
+							<div class="span6">
+				<div id="post-2735" class="post-2735 multimedia type-multimedia status-publish has-post-thumbnail hentry">
+					<div class="entry">
+													<a href="http://www.datanami.com/multimedia/video_using_eureqa_to_uncover_mathematical_patterns_hidden_in_your_data/" title="Using Eureqa to Uncover Mathematical Patterns Hidden in Your Data" class="thumbnail" >
+							   <img width="111" height="111" src="http://2s7gjr373w3x22jf92z99mgm5w.wpengine.netdna-cdn.com/wp-content/uploads/2013/06/nutonian_111x111.png" class="attachment-thumbnail wp-post-image" alt="Nutonian" />							</a>
+							<h4><a href="http://www.datanami.com/multimedia/video_using_eureqa_to_uncover_mathematical_patterns_hidden_in_your_data/" title="Using Eureqa to Uncover Mathematical Patterns Hidden in Your Data" class="thumbnail" >
+							   Using Eureqa to Uncover Mathematical Patterns Hidden in Your Data							   <div class="meta-in"><i class="icon-comment"></i> No Comments</div>
+							</a></h4>
+											</div>
+				</div><!--end post-->
+				</div>
+																		<div class="span6">
+				<div id="post-2737" class="post-2737 multimedia type-multimedia status-publish has-post-thumbnail hentry">
+					<div class="entry">
+													<a href="http://www.datanami.com/multimedia/hpcwire_live_atlanta_s_big_data_kick_off_week_meets_hpc_what_does_the_future_holds_for_hpc_-1/" title="HPCwire Live! Atlanta&#8217;s Big Data Kick Off Week Meets HPC: What does the future holds for HPC?" class="thumbnail" >
+							   <img width="111" height="111" src="http://2s7gjr373w3x22jf92z99mgm5w.wpengine.netdna-cdn.com/wp-content/uploads/2013/06/datanami_111x111.png" class="attachment-thumbnail wp-post-image" alt="Datanami" />							</a>
+							<h4><a href="http://www.datanami.com/multimedia/hpcwire_live_atlanta_s_big_data_kick_off_week_meets_hpc_what_does_the_future_holds_for_hpc_-1/" title="HPCwire Live! Atlanta&#8217;s Big Data Kick Off Week Meets HPC: What does the future holds for HPC?" class="thumbnail" >
+							   HPCwire Live! Atlanta&#8217;s Big Data Kick Off Week Meets HPC: What does the future holds for HPC?							   <div class="meta-in"><i class="icon-comment"></i> No Comments</div>
+							</a></h4>
+											</div>
+				</div><!--end post-->
+				</div>
+												</div>
+				</div>
+														</div><!--/carousel-inner-->
+
+			<a class="left carousel-control" href="#multimedia-s" data-slide="prev">‹</a>
+			<a class="right carousel-control" href="#multimedia-s" data-slide="next">›</a>
+		</div>
+		</div>
+		<div class="row-fluid">
+		<div id="rs-bl" class="span6">
+					</div>
+		<div id="rs-br" class="span6">
+					</div>
+	</div>
+</div>		</div><!--end row-fluid-->
+	</div><!--end content-->
+			<footer class="row-fluid">
+				<div class="span4 copyrights">
+					Copyright © 2014 Datanami. All Rights Reserved.
+				</div>
+				<div class="span8 disclaimer">
+					<div class="menu-footer-container"><ul id="menu-footer" class="menu"><li id="menu-item-4068" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-4068"><a href="#top">Back to Top</a></li>
+<li id="menu-item-4067" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-4067"><a href="http://www.datanami.com/about/contact/" onclick="__gaTracker('send', 'event', 'outbound-widget-int', 'http://www.datanami.com/about/contact/', 'Contact');" >Contact</a></li>
+<li id="menu-item-4066" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-4066"><a href="http://www.datanami.com/about/" onclick="__gaTracker('send', 'event', 'outbound-widget-int', 'http://www.datanami.com/about/', 'About Datanami');" >About Datanami</a></li>
+</ul></div>				</div>
+			</footer>
+		</div><!--end main -->
+		<script>
+			$(document).ready(function(){
+				var required = $('.gfield_contains_required');
+				var controlGroup = $('.gfield');
+				required.each(function(){
+					$(this).find('input').attr('required', 'true');
+					$(this).find('textarea').attr('required', 'true');
+					$(this).find('select').attr('required', 'true');
+				});
+				controlGroup.each(function(){
+					$(this).addClass('control-group');
+					$(this).find('input').after('<p class="help-block"></p>');
+					$(this).find('textarea').after('<p class="help-block"></p>');
+				});
+				$('.gfield_label').each(function(){
+					$(this).addClass('control-label');
+				});
+				$('.ginput_container').each(function(){
+					$(this).addClass('controls');    
+				});
+				$(this).bind('gform_post_render',function(){
+					$("input,select,textarea").not("[type=submit]").jqBootstrapValidation({
+						filter: function () {
+							return $(this).is(":visible");
+						},
+						preventSubmit: false,
+					}); 
+					$(this).find('.gfield_error').removeClass('gfield_error').addClass('error');
+					$('.validation_message').each(function(){
+						var sib = $(this).prev();
+						$(this).appendTo(sib);
+					});
+				});
+			});
+		</script>
+			<div style="display:none">
+	</div>
+<script type="text/javascript">
+<!--
+piCId = '1116';
+piAId = '22812';
+
+
+(function() {
+	function async_load(){
+		var s = document.createElement('script'); s.type = 'text/javascript';
+		s.src = ('https:' == document.location.protocol ? 'https://pi' : 'http://cdn') + '.pardot.com/pd.js';
+		var c = document.getElementsByTagName('script')[0]; c.parentNode.insertBefore(s, c);
+	}
+	if(window.attachEvent) { window.attachEvent('onload', async_load); }
+	else { window.addEventListener('load', async_load, false); }
+})();
+-->
+</script>		<script type="text/javascript">
+		jQuery(document).on( 'ready post-load', function(){
+			jQuery( 'a.share-twitter' ).on( 'click', function() {
+				window.open( jQuery(this).attr( 'href' ), 'wpcomtwitter', 'menubar=1,resizable=1,width=600,height=350' );
+				return false;
+			});
+		});
+		</script>
+				<script type="text/javascript">
+		jQuery(document).on( 'ready post-load', function(){
+			jQuery( 'a.share-facebook' ).on( 'click', function() {
+				window.open( jQuery(this).attr( 'href' ), 'wpcomfacebook', 'menubar=1,resizable=1,width=600,height=400' );
+				return false;
+			});
+		});
+		</script>
+				<script type="text/javascript">
+		jQuery(document).on( 'ready post-load', function(){
+			jQuery( 'a.share-google-plus-1' ).on( 'click', function() {
+				window.open( jQuery(this).attr( 'href' ), 'wpcomgoogle-plus-1', 'menubar=1,resizable=1,width=480,height=550' );
+				return false;
+			});
+		});
+		</script>
+				<script type="text/javascript">
+		jQuery(document).on( 'ready post-load', function(){
+			jQuery( 'a.share-linkedin' ).on( 'click', function() {
+				window.open( jQuery(this).attr( 'href' ), 'wpcomlinkedin', 'menubar=1,resizable=1,width=580,height=450' );
+				return false;
+			});
+		});
+		</script>
+				<script type="text/javascript">
+		jQuery(document).on( 'ready post-load', function(){
+			jQuery( 'a.share-pocket' ).on( 'click', function() {
+				window.open( jQuery(this).attr( 'href' ), 'wpcompocket', 'menubar=1,resizable=1,width=450,height=450' );
+				return false;
+			});
+		});
+		</script>
+							<script type="text/javascript">
+			jQuery(document).on('ready', function(){
+				jQuery('body').on('click', 'a.share-pinterest', function(e){
+					e.preventDefault();
+
+					// Load Pinterest Bookmarklet code
+					var s = document.createElement("script");
+					s.type = "text/javascript";
+					s.src = window.location.protocol + "//assets.pinterest.com/js/pinmarklet.js?r=" + ( Math.random() * 99999999 );
+					var x = document.getElementsByTagName("script")[0];
+					x.parentNode.insertBefore(s, x);
+
+					// Trigger Stats
+					var s = document.createElement("script");
+					s.type = "text/javascript";
+					s.src = this + ( this.toString().indexOf( '?' ) ? '&' : '?' ) + 'js_only=1';
+					var x = document.getElementsByTagName("script")[0];
+					x.parentNode.insertBefore(s, x);
+				});
+			});
+			</script>
+				<script type="text/javascript">
+		jQuery(document).on( 'ready post-load', function(){
+			jQuery( 'a.share-tumblr' ).on( 'click', function() {
+				window.open( jQuery(this).attr( 'href' ), 'wpcomtumblr', 'menubar=1,resizable=1,width=450,height=450' );
+				return false;
+			});
+		});
+		</script>
+		<script type='text/javascript' src='http://2s7gjr373w3x22jf92z99mgm5w.wpengine.netdna-cdn.com/wp-content/plugins/akismet/_inc/form.js?ver=3.0.4'></script>
+<link rel='stylesheet' id='gforms_reset_css-css'  href='http://2s7gjr373w3x22jf92z99mgm5w.wpengine.netdna-cdn.com/wp-content/plugins/gravityforms/css/formreset.css?ver=1.8.20' type='text/css' media='all' />
+<link rel='stylesheet' id='gforms_formsmain_css-css'  href='http://2s7gjr373w3x22jf92z99mgm5w.wpengine.netdna-cdn.com/wp-content/plugins/gravityforms/css/formsmain.css?ver=1.8.20' type='text/css' media='all' />
+<link rel='stylesheet' id='gforms_ready_class_css-css'  href='http://2s7gjr373w3x22jf92z99mgm5w.wpengine.netdna-cdn.com/wp-content/plugins/gravityforms/css/readyclass.css?ver=1.8.20' type='text/css' media='all' />
+<link rel='stylesheet' id='gforms_browsers_css-css'  href='http://2s7gjr373w3x22jf92z99mgm5w.wpengine.netdna-cdn.com/wp-content/plugins/gravityforms/css/browsers.css?ver=1.8.20' type='text/css' media='all' />
+<script type='text/javascript' src='http://2s7gjr373w3x22jf92z99mgm5w.wpengine.netdna-cdn.com/wp-content/plugins/datanami-pardot-integration/js/set-jquery-cookie.js?ver=1'></script>
+<script type='text/javascript' src='http://2s7gjr373w3x22jf92z99mgm5w.wpengine.netdna-cdn.com/wp-content/plugins/datanami-pardot-integration/js/show-hide-content.js?ver=1'></script>
+<script type='text/javascript' src='http://s0.wp.com/wp-content/js/devicepx-jetpack.js?ver=201501'></script>
+<script type='text/javascript' src='http://s.gravatar.com/js/gprofiles.js?ver=2014Decaa'></script>
+<script type='text/javascript'>
+/* <![CDATA[ */
+var WPGroHo = {"my_hash":""};
+/* ]]> */
+</script>
+<script type='text/javascript' src='http://2s7gjr373w3x22jf92z99mgm5w.wpengine.netdna-cdn.com/wp-content/plugins/jetpack/modules/wpgroho.js?ver=4.1'></script>
+<script type='text/javascript' src='http://2s7gjr373w3x22jf92z99mgm5w.wpengine.netdna-cdn.com/wp-content/plugins/gravityforms/js/conditional_logic.js?ver=1.8.20'></script>
+<script type='text/javascript' src='http://2s7gjr373w3x22jf92z99mgm5w.wpengine.netdna-cdn.com/wp-content/plugins/gravityforms/js/jquery.json-1.3.js?ver=1.8.20'></script>
+<script type='text/javascript' src='http://2s7gjr373w3x22jf92z99mgm5w.wpengine.netdna-cdn.com/wp-content/plugins/gravityforms/js/jquery.placeholders.2.1.1.min.js?ver=1.8.20'></script>
+<script type='text/javascript' src='http://2s7gjr373w3x22jf92z99mgm5w.wpengine.netdna-cdn.com/wp-content/plugins/gravityforms/js/gravityforms.js?ver=1.8.20'></script>
+
+	<script src="http://stats.wp.com/e-201401.js" type="text/javascript"></script>
+	<script type="text/javascript">
+	st_go({v:'ext',j:'1:3.3',blog:'67748970',post:'5599',tz:'-8'});
+	var load_cmc = function(){linktracker_init(67748970,5599,2);};
+	if ( typeof addLoadEvent != 'undefined' ) addLoadEvent(load_cmc);
+	else load_cmc();
+	</script>	</body>
+</html>

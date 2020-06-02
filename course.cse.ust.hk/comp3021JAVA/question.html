@@ -1,0 +1,85 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html>
+<!-- Mirrored from course.cse.ust.hk/comp3021/question.html by HTTrack Website Copier/3.x [XR&CO'2014], Wed, 03 Jun 2015 09:24:48 GMT -->
+<head>
+<meta content="text/html; charset=ISO-8859-1" http-equiv="content-type"><title>question.html</title>
+
+</head>
+<body>
+<font face="helvetica">
+</font>
+<div style="text-align: center;"><font face="helvetica"><big><big><big><span style="font-weight: bold;">Questions and Answers</span></big></big></big><br>
+</font></div>
+<ul>
+<li><font face="helvetica"><big>How and when
+to use the keyword <span style="font-style: italic;">this</span>?</big></font></li>
+<ul>
+<li><span style="font-style: italic;"><font face="helvetica">this</font></span>
+<font face="helvetica">is a reference to the <span style="font-style: italic;">current</span>
+object. Using <span style="font-style: italic;">this</span>
+keyword, you can refer to any member of the <span style="font-style: italic;">current</span> object from
+within an instance or a constructor.</font></li>
+</ul>
+<font face="helvetica"><br>
+<li><big>How and when to use the keyword <span style="font-style: italic;">super</span>?</big></li>
+</font>
+<ul>
+<li><span style="font-style: italic;"><font face="helvetica">super</font></span>
+<font face="helvetica">is used to refer the
+immediate <span style="font-style: italic;">parent</span>
+class object. <span style="font-style: italic;">super</span>
+can be used to refer the instance variables and invoke methods of the
+immediate parent class. <span style="font-style: italic;">super()</span>
+can be used to invoke the <span style="font-style: italic;">constructor</span>
+of the immediate parent class.</font></li>
+</ul>
+<font face="helvetica"><br>
+<li><big>Why should I override the <span style="font-style: italic;">toString()</span> function?</big></li>
+</font>
+<ul>
+<li><font face="helvetica">Suppose we want to
+print our Post object using
+System.out.println(post). If we don't override <span style="font-style: italic;">toString()</span>, its
+default behavior is to print "class name@ hash code", so we'll get
+something like "Post@12345f", which doesn't really make sense!</font></li>
+<li><font face="helvetica">So, we override <span style="font-style: italic;">toString()</span>
+to return proper and meaningful output. For
+example,&nbsp;System.out.println(post)
+can print something like "This post has ID xxx and Content yyy" based
+on the way we implement <span style="font-style: italic;">toString()</span>.</font></li>
+</ul>
+<font face="helvetica"><br>
+<li><big>Why should I override the <span style="font-style: italic;">equals()</span> and <span style="font-style: italic;">hashCode()</span>
+functions?</big></li>
+</font>
+<ul>
+<li><font face="helvetica">Suppose we have two
+User objects <span style="font-style: italic;">u1</span>
+and <span style="font-style: italic;">u2</span>,
+which have the
+same user IDs and user names. So we consider <span style="font-style: italic;">u1</span> and <span style="font-style: italic;">u2</span> to be the same
+user.</font></li>
+<li><font face="helvetica">But when we test<span style="font-style: italic;">
+if (u1.equals(u2))</span>, it returns <span style="font-style: italic;">false</span>. Why? Because
+the<span style="font-style: italic;"> default</span>
+behavior of <span style="font-style: italic;">equals()</span>
+compares the objects' locations in memory, which are different for <span style="font-style: italic;">u</span>1 and <span style="font-style: italic;">u2</span>.</font></li>
+<li><font face="helvetica">So, we want to
+override<span style="font-style: italic;"> equals()</span>
+to say,
+if both User objects have the same user IDs and same user names, then
+they are equal &nbsp;(i.e., return <span style="font-style: italic;">true</span>)</font></li>
+<li><font face="helvetica">Now, if we override <span style="font-style: italic;">equals()</span>,
+we must also override <span style="font-style: italic;">hashCode()</span>.
+This ensures **if two objects are equal according to the <span style="font-style: italic;">equals(Object)</span>
+method, then calling the <span style="font-style: italic;">hashCode()</span>
+method on each of the two objects must produce the same integer
+result**, which is the general rule defined in hashCode contract.
+Otherwise we'll violate this rule because the default<span style="font-style: italic;"> hashCode()</span>, if not
+overridden, returns distinct integers for distinct objects. </font></li>
+</ul>
+</ul>
+
+</body>
+<!-- Mirrored from course.cse.ust.hk/comp3021/question.html by HTTrack Website Copier/3.x [XR&CO'2014], Wed, 03 Jun 2015 09:24:48 GMT -->
+</html>

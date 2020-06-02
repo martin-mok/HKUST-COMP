@@ -1,0 +1,197 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+
+<!-- Mirrored from course.cse.ust.hk/comp4441/labs/lab1/lab1.html by HTTrack Website Copier/3.x [XR&CO'2014], Wed, 03 Jun 2015 09:38:14 GMT -->
+<head>
+  <meta content="text/html; charset=ISO-8859-1"
+ http-equiv="content-type">
+  <title>COMP 4441 Lab 1</title>
+</head>
+<body>
+<h1><font face="Arial Unicode MS">COMP 4441 Computer Music<br>
+</font>
+</h1>
+<h1><font face="Arial Unicode MS">Lab 1: Additive Synthesis in Csound</font></h1>
+<hr style="width: 100%; height: 2px;">
+<h2 style="font-weight: normal;"><font face="Arial Unicode MS">Setting up the 
+environment of your PC</font></h2>
+<ul>
+	<li>
+	<p style="font-weight: normal;"><font face="Arial Unicode MS">In the start 
+	Menu, choose &quot;Creative&quot; =&gt; &quot;Creative Audio Control Panel&quot;.</font></li>
+<li>
+<p style="font-weight: normal;"><font face="Arial Unicode MS">In the &quot;Speakers&quot; 
+tab, change the &quot;Speaker Configuration&quot; to &quot;Headphones&quot;</font></li>
+</ul>
+<p style="font-weight: normal;">
+<img border="0" src="creative1.png" width="478" height="576">
+<img border="0" src="creative2.png" width="414" height="509"></p>
+<h2 style="font-weight: normal;"><font face="Arial Unicode MS">Csound
+Basics</font></h2>
+<ul>
+  <li><font face="Arial Unicode MS">Download and save the files, <a
+ href="sinewave.orc">sinewave.orc</a>
+and <a href="sinewave.sco">sinewave.sco</a>, into your local directory
+(e.g., C:\Temp).</font></li>
+	<li><font face="Arial Unicode MS">To run Csound in the lab machine, you have 
+	to set the correct path for the executables. Download the following
+	<a href="CsoundPath.bat">batch file</a> to you local directory (e.g., 
+	C:\Temp).</font></li>
+	<li><font face="Arial Unicode MS">Double click the <a href="CsoundPath.bat">
+	SoundPath.bat</a>, a command prompt will pop up and you can start using 
+	Csound.</font></li>
+  <li> <font face="Arial Unicode MS">Change the working directory to
+the directory that you saved your <b>sinewave.orc</b> and <b>sinewav.sco</b>
+files. (Using command <b>"cd"</b>)</font></li>
+  <li><font face="Arial Unicode MS">Compile the two files using the
+following command,</font></li>
+</ul>
+<p align="center"><font face="Arial Unicode MS">csound sinewave.orc
+sinewave.sco</font></p>
+<ul>
+	<li>
+	<p align="left"><font face="Arial Unicode MS">The compiled sound is
+immediately played after you press Enter. If you prefer a file output,
+you have to add an extra flag <b>"-Wo"</b> and add a filename:</font> </p></li>
+</ul>
+<p align="center"><font face="Arial Unicode MS">csound -Wo sinewave.wav
+sinewave.orc sinewave.sco</font></p>
+<h2 style="font-weight: normal;"><font face="Arial Unicode MS">Editing the 
+source code</font></h2>
+<ul>
+	<li>
+	<p style="font-weight: normal;"><font face="Arial Unicode MS">There are 
+	various text editor installed in the lab PC. We suggest using &quot;TextPad&quot; 
+	since it is intuitive and caused least problems about tabs and encoding</font></li>
+<li>
+<p style="font-weight: normal;"><font face="Arial Unicode MS">In the Start Menu, 
+type &quot;TextPad&quot; and start the program</font></li>
+<li>
+<p style="font-weight: normal;"><font face="Arial Unicode MS">Drag and drop the 
+source files to the program window for editing.</font></li>
+</ul>
+<h2 style="font-weight: normal;"><font face="Arial Unicode MS">Lab
+Assignment</font></h2>
+<ul>
+  <li><font face="Arial Unicode MS">Make a simple additive synthesis instrument based on the below amplitude/harmonic table.
+Your final result should sound like <a href="instrument.wav">this</a>.</font></li>
+  <li> <font face="Arial Unicode MS">Please refer to P.7 of the </font><font
+ face="Arial Unicode MS">"<a href="../../notes/additive.ppt">Additive Synthesis</a>" </font><font
+ face="Arial Unicode MS">notes. You may set the duration, attack, and
+decay to be the same for all notes.</font></li>
+</ul>
+&nbsp;
+<table style="text-align: left; width: 387px; height: 385px;" border="1"
+ cellpadding="2" cellspacing="2">
+  <tbody>
+    <tr>
+      <td style="width: 183px;"> <font face="Arial Unicode MS">Harmonic
+No</font></td>
+      <td style="width: 184px;"> <font face="Arial Unicode MS">Amplitude</font></td>
+    </tr>
+    <tr>
+      <td style="width: 183px;"> <font face="Arial Unicode MS">1</font></td>
+      <td style="width: 184px;"> <font face="Arial Unicode MS">5311</font></td>
+    </tr>
+    <tr>
+      <td style="width: 183px;"> <font face="Arial Unicode MS">2</font></td>
+      <td style="width: 184px;"> <font face="Arial Unicode MS">223</font></td>
+    </tr>
+    <tr>
+      <td style="width: 183px;"> <font face="Arial Unicode MS">3</font></td>
+      <td style="width: 184px;"> <font face="Arial Unicode MS">3886</font></td>
+    </tr>
+    <tr>
+      <td style="width: 183px;"> <font face="Arial Unicode MS">4</font></td>
+      <td style="width: 184px;"> <font face="Arial Unicode MS">961</font></td>
+    </tr>
+    <tr>
+      <td style="width: 183px;"> <font face="Arial Unicode MS">5</font></td>
+      <td style="width: 184px;"> <font face="Arial Unicode MS">6972</font></td>
+    </tr>
+    <tr>
+      <td style="width: 183px;"> <font face="Arial Unicode MS">6</font></td>
+      <td style="width: 184px;"> <font face="Arial Unicode MS">783</font></td>
+    </tr>
+    <tr>
+      <td style="width: 183px;"> <font face="Arial Unicode MS">7</font></td>
+      <td style="width: 184px;"> <font face="Arial Unicode MS">2487</font></td>
+    </tr>
+    <tr>
+      <td style="width: 183px;"> <font face="Arial Unicode MS">8</font></td>
+      <td style="width: 184px;"> <font face="Arial Unicode MS">646</font></td>
+    </tr>
+    <tr>
+      <td style="width: 183px;"> <font face="Arial Unicode MS">9</font></td>
+      <td style="width: 184px;"> <font face="Arial Unicode MS">702</font></td>
+    </tr>
+    <tr>
+      <td style="width: 183px;"> <font face="Arial Unicode MS">10</font></td>
+      <td style="width: 184px;"> <font face="Arial Unicode MS">1114</font></td>
+    </tr>
+    <tr>
+      <td style="width: 183px;"> <font face="Arial Unicode MS">11</font></td>
+      <td style="width: 184px;"> <font face="Arial Unicode MS">235</font></td>
+    </tr>
+    <tr>
+      <td style="width: 183px;"> <font face="Arial Unicode MS">12</font></td>
+      <td style="width: 184px;"> <font face="Arial Unicode MS">2188</font></td>
+    </tr>
+  </tbody>
+</table>
+<font face="Arial Unicode MS"><br>
+Fundamental frequency = 311 Hz</font><p>&nbsp;</p>
+<h3><font face="Arial Unicode MS">Part 1</font></h3>
+<ul>
+	<li><font face="Arial Unicode MS">Starting with <a
+ href="sinewave.orc">sinewave.orc</a> and <a href="sinewave.sco">sinewave.sco</a>,
+	modify only the <a href="sinewave.sco">sinwave.sco</a> and save it as <b>
+	additive.sco</b> to accomplish the synthesis</font>.</li>
+	<li><font face="Arial Unicode MS">The result can be tested by the following 
+	command,</font></li>
+</ul>
+<p align="center"><font face="Arial Unicode MS"><wbr>csound sinewave.orc additive.sco -Wo 
+add1.wav</font></p>
+<p>&nbsp;</p>
+<h3><font face="Arial Unicode MS">Part 2</font></h3>
+<ul>
+	<li><font face="Arial Unicode MS">Starting with <a
+ href="sinewave.orc">sinewave.orc</a> and <a href="sinewave.sco">sinewave.sco</a>,
+	modify only the <a href="sinewave.orc">sinwave.orc</a> and save it as <b>
+	additive.orc</b> to accomplish the synthesis</font>.</li>
+	<li><font face="Arial Unicode MS">The result can be tested by the following 
+	command,</font><p align="center"><font face="Arial Unicode MS">
+	csound 
+	additive.orc sinewave.sco -Wo add2.wav</font></p></li>
+</ul>
+<p>&nbsp;</p>
+<ul>
+	<li><font face="Arial Unicode MS">Demonstrate your work to your TA
+after you have finished.</font></li>
+</ul>
+<h2><font face="Arial Unicode MS">CASS - Course Assignment Submission
+System</font></h2>
+<p><font face="Arial Unicode MS">If you don't attend the labs or you
+cannot finish the assignment in the lab, you need to submit the source
+code using the
+<a href="../../../cass/submit.html">CASS</a>. The
+instructions can be found <a
+ href="http://cssystem.cse.ust.hk/home.php?docbase=UGuides/cass&amp;req_url=UGuides/cass/student.html#access">
+here</a>. </font> </p>
+<h3><font face="Arial Unicode MS">Remark - Plugging your earphones</font></h3>
+<p>Please plug your earphones to the <b>back</b> of your workstation as shown 
+with the following photo</p>
+<p><img border="0" src="IMG_20110225_111948.jpg" width="472" height="630"></p>
+<hr style="width: 100%; height: 2px;">
+<h2><font face="Arial Unicode MS">Demonstration and Submission</font></h2>
+<p><font face="Arial Unicode MS">Please submit your files
+"<a href="../answers/additive.html">additive.orc</a>" and "<a href="../answers/additive-2.html">additive.sco</a>" using
+<a href="../../../cass/submit.html">CASS</a> before <b>Monday (22-Sep-2014)</b>. For any questions, please contact
+your TAs by email (<b>*Only for question asking. Submissions please go to CASS.*</b> ronmo@cse.ust.hk, bwuaa@cse.ust.hk).
+ DO NOT submit the wav file; submitting the orc and sco
+files will be enough. Thank you.
+</font> </p>
+</body>
+
+<!-- Mirrored from course.cse.ust.hk/comp4441/labs/lab1/lab1.html by HTTrack Website Copier/3.x [XR&CO'2014], Wed, 03 Jun 2015 09:38:15 GMT -->
+</html>

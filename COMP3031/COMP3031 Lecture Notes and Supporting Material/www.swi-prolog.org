@@ -1,0 +1,261 @@
+<!DOCTYPE html><html>
+<head>
+
+<link rel="stylesheet" type="text/css" href="/css/footer.css">
+<link rel="stylesheet" type="text/css" href="/css/plweb.css">
+<link rel="stylesheet" type="text/css" href="/css/swipl.css">
+<link rel="stylesheet" type="text/css" href="/js/jquery/themes/base/jquery-ui.css">
+<script type="text/javascript" src="/pldoc/res/jquery.js">
+
+</script>
+<script type="text/javascript" src="/js/jquery/ui/minified/jquery-ui.min.js">
+
+</script>
+<script type="text/javascript" src="/js/jquery/menu.js">
+
+</script>
+<link rel="stylesheet" type="text/css" href="/pldoc/res/pldoc.css">
+<meta http-equiv="content-type" content="text/html; charset=UTF-8">
+<link rel="shortcut icon" href="/icons/favicon.ico">
+<link rel="apple-touch-icon" href="/apple-touch-icon.png">
+
+</head>
+<body>
+<div class="outer-container">
+<div id="upper-header">
+<div id="upper-header-contents"><span id="dyknow-container"><span class="lbl">News: </span><span id="dyknow"><a href="/news/2818a59a-22bd-11e4-8e55-00144fee017c">Markus Triska added clp(b) to SWI-Prolog</a></span></span><span id="search-container"><span class="lbl">Search Documentation:</span>
+
+<form action="/search" id="search-form">
+<input name="for" id="for"><input id="submit-for" type="submit" value="Search">
+<script type="text/javascript">
+
+    $(function() {
+        $("#"+"for").autocomplete({
+        minLength: 1,
+        delay: 0.3,
+        source: "/autocomplete/ac_predicate",
+        focus: function(event,ui) {
+          $("#"+"for").val(ui.item.label);
+          return false;
+        },
+        select: function(event,ui) {
+          $("#"+"for").val(ui.item.label);
+          window.location.href = ui.item.href;
+          return false;
+        }
+        })
+        .data("ui-autocomplete")._renderItem = function(ul,item) {
+        var label = String(item.label).replace(
+            new RegExp(this.term),
+            "<span class=\"acmatch\">$&</span>");
+        var tag = item.tag ? " <i>["+item.tag+"]</i>" : "";
+        return $("<li>")
+          .append("<a class=\""+item.class+"\">"+label+tag+"</a>")
+          .appendTo(ul)
+        };
+        });
+
+</script>
+</form>
+
+</span></div>
+</div>
+<div id="tag-line-area"><a href="http://www.swi-prolog.org"><img class="owl" src="/icons/swipl.png" alt="SWI-Prolog owl logo"></a><span class="tagline">Robust, mature, free. <b>Prolog for the real world.</b></span></div>
+
+<div id="menubar">
+<div class="menubar fixed-width">
+<ul class="menubar-container">
+<li><a href="/">Home</a></li>
+<li>DOWNLOAD
+<ul>
+<li><a href="/Download.html">SWI-Prolog</a></li>
+<li><a href="/build/">Sources/building</a></li>
+<li><a href="/pack/list">Add-ons</a></li>
+<li><a href="https://github.com/SWI-Prolog">Browse GIT</a><img class="ext-link" src="/icons/ext-link.png" alt="External"></li>
+</ul>
+</li>
+<li>DOCUMENTATION
+<ul>
+<li><a href="/pldoc/refman/">Manual</a></li>
+<li><a href="/pldoc/package/">Packages</a></li>
+<li><a href="/FAQ/">FAQ</a></li>
+<li><a href="/pldoc/man?section=cmdline">Command line</a></li>
+<li><a href="/pldoc/package/pldoc.html">PlDoc</a></li>
+<li>Bluffers<span class="arrow">&#x25B6;</span>
+<ul>
+<li><a href="/pldoc/man?section=syntax">Prolog syntax</a></li>
+<li><a href="/pldoc/man?section=emacsbluff">PceEmacs</a></li>
+<li><a href="/pldoc/man?section=htmlwrite">HTML generation</a></li>
+</ul>
+</li>
+<li><a href="/license.html">License</a></li>
+<li><a href="/Publications.html">Publications</a></li>
+</ul>
+</li>
+<li>TUTORIALS
+<ul>
+<li>Beginner<span class="arrow">&#x25B6;</span>
+<ul>
+<li><a href="/pldoc/man?section=quickstart">Getting started</a></li>
+<li><a href="http://michael.richter.name/tutorials/swiplmod">Modules</a><img class="ext-link" src="/icons/ext-link.png" alt="External"></li>
+<li><a href="/pldoc/man?section=debugoverview">Debugger</a></li>
+<li><a href="/IDE.html">Development tools</a></li>
+<li><a href="http://lpn.swi-prolog.org/">Learn Prolog Now!</a><img class="ext-link" src="/icons/ext-link.png" alt="External"></li>
+</ul>
+</li>
+<li>Intermediate<span class="arrow">&#x25B6;</span>
+<ul>
+<li><a href="/howto/http/">Web service</a></li>
+<li><a href="http://www.pathwayslms.com/swipltuts/html/index.html">Web applications</a><img class="ext-link" src="/icons/ext-link.png" alt="External"></li>
+<li><a href="http://www.pathwayslms.com/swipltuts/dcg/">DCGs</a><img class="ext-link" src="/icons/ext-link.png" alt="External"></li>
+<li><a href="http://www.pathwayslms.com/swipltuts/clpfd/clpfd.html">clp(fd)</a><img class="ext-link" src="/icons/ext-link.png" alt="External"></li>
+<li><a href="/swipltuts/pldoc/index.html">PlDoc</a></li>
+<li><a href="/download/xpce/doc/coursenotes/coursenotes.pdf">XPCE</a></li>
+<li><a href="/Graphics.html">GUI options</a></li>
+</ul>
+</li>
+<li>Advanced<span class="arrow">&#x25B6;</span>
+<ul>
+<li><a href="/howto/UseRdfMeta.html">RDF namespaces</a></li>
+<li><a href="/build/guidelines.txt">Linux packages</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li>COMMUNITY
+<ul>
+<li><a href="http://webchat.freenode.net/?channels=##prolog">IRC</a><img class="ext-link" src="/icons/ext-link.png" alt="External"></li>
+<li><a href="/forum">Forum</a></li>
+<li><a href="/news">News</a></li>
+<li><a href="/Mailinglist.txt">Mail list</a></li>
+<li><a href="/bug.html">Report a bug</a></li>
+<li><a href="/howto/SubmitPatch.html">Submit a patch</a></li>
+<li><a href="/howto/Pack.html">Submit an add-on</a></li>
+<li><a href="/Links.html">External links</a></li>
+<li><a href="/Contributors.html">Contributors</a></li>
+<li><a href="/loot.html">SWI-Prolog items</a></li>
+</ul>
+</li>
+<li>USERS
+<ul>
+<li><a href="/web/index.html">Semantic web</a></li>
+<li><a href="/students/index.html">Students</a></li>
+<li><a href="/research/index.html">Researchers</a></li>
+<li><a href="/commercial/index.html">Commercial users</a></li>
+<li><a href="/dogfood.html">Dog food</a></li>
+<li><a href="pldoc/man?section=swiorother">Is SWIPL right for me?</a></li>
+</ul>
+</li>
+<li>WIKI
+<ul>
+<li><a href="/openid/login?openid.return_to=/">Login</a></li>
+<li><a href="/wiki/changes">View changes</a></li>
+<li><a href="/wiki/sandbox">Sandbox</a></li>
+<li><a href="/wiki/">Wiki help</a></li>
+<li><a href="/list-tags">All tags</a></li>
+</ul>
+</li>
+</ul>
+</div>
+</div>
+<div id="blurb">      
+<div>	 SWI-Prolog offers a comprehensive free Prolog environment.
+	 Since its start in 1987, SWI-Prolog development has been driven
+	 by the needs of real world applications. SWI-Prolog is widely
+	 used in research and education as well as commercial applications.
+	 Join over a million users who have downloaded SWI-Prolog.
+      </div>
+
+    </div>
+<div id="cta-container">        
+<div><a href="Download.html">Download SWI-Prolog</a></div>
+
+        
+<div><a href="pldoc/man?section=quickstart">Get Started</a></div>
+
+        
+<div><a href="http://swish.swi-prolog.org">Try SWI-Prolog online</a></div>
+
+    </div>
+<div> </div>
+<div id="enhanced-search-container">	        
+<div>	          <span class="lbl">SEARCH DOCUMENTATION:</span>
+	          
+
+<form id="search-form-enhanced" action="/search">
+	            <input name="for" type="text" id="forenhanced">
+	            <input type="image" src="/icons/go.png" alt="Search">
+	          
+</form>
+
+
+	        </div>
+
+	      </div>
+
+<script type="text/javascript">
+
+    $(function() {
+        $("#"+"forenhanced").autocomplete({
+        minLength: 1,
+        delay: 0.3,
+        source: "/autocomplete/ac_predicate",
+        focus: function(event,ui) {
+          $("#"+"forenhanced").val(ui.item.label);
+          return false;
+        },
+        select: function(event,ui) {
+          $("#"+"forenhanced").val(ui.item.label);
+          window.location.href = ui.item.href;
+          return false;
+        }
+        })
+        .data("ui-autocomplete")._renderItem = function(ul,item) {
+        var label = String(item.label).replace(
+            new RegExp(this.term),
+            "<span class=\"acmatch\">$&</span>");
+        var tag = item.tag ? " <i>["+item.tag+"]</i>" : "";
+        return $("<li>")
+          .append("<a class=\""+item.class+"\">"+label+tag+"</a>")
+          .appendTo(ul)
+        };
+        });
+
+</script>
+<span> </span>
+
+
+<p>
+</p>
+<div id="dialog" style="display:none;"></div>
+<div class="footer newstyle">
+<div class="footer">
+<div id="footer">
+<div class="current-user"><a class="signin" href="/openid/login?openid.return_to=/">login</a></div>
+<a id="powered" href="http://www.swi-prolog.org">Powered by SWI-Prolog 7.1.27</a></div>
+</div>
+<script type="text/javascript">
+
+		   $().ready(function()
+	           { var $navtree = $(".navwindow");
+		     var $navcontent = $(".navcontent");
+		     if ( $navtree.length > 0 && $navcontent.length > 0 )
+		     { var $window = $(window).on("resize", function()
+		       { var ch = $navcontent.height();
+			 var nh = $navtree.height();
+			 if ( nh > 400 && nh > ch + 200 )
+			 { if ( ch < 300 ) ch = 300;
+			   $navtree.height(ch);
+			   $navtree.css('overflow-y', 'scroll');
+			 }
+		       }).trigger("resize")
+		     }
+		   });
+		  
+</script>
+</div>
+<div id="tail-end">&nbsp;</div>
+</div>
+</body>
+
+</html>

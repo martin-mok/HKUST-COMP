@@ -1,0 +1,875 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"> <html xml:lang="en"
+
+xmlns="http://www.w3.org/1999/xhtml" lang="en">
+<!-- Mirrored from course.cse.ust.hk/comp4622/ by HTTrack Website Copier/3.x [XR&CO'2014], Wed, 03 Jun 2015 09:22:05 GMT -->
+<head>
+
+
+
+<title>COMP4622 Course Website (Fall 2012)</title>
+
+
+
+<meta http-equiv="content-type" content="text/html; charset=UTF-8">
+
+<link rel="stylesheet" type="text/css" media="screen"
+
+href="css/screen.css">
+
+
+
+<style type="text/css" charset="utf-8">/* See license.txt for terms
+
+of usage */
+
+
+
+
+
+</style></head><body>
+
+
+
+<script lang="javascript"> function switch_col(id) {
+
+    for (i = 1; i < 10; i++)
+
+    document.getElementById("col" + i).style.display = "none"
+
+    document.getElementById("col" + id).style.display = "block"
+
+} </script>
+
+
+
+<!-- wrap starts here --> <div id="wrap">
+
+
+
+    <!--header --> <div id="header">
+
+
+
+        <h1 id="logo-text"><a href="index-2.html" title="">COMP
+
+        4622: Computer Networks II (Fall 2013)</a></h1> <p
+
+        id="slogan">HKUST / Department of Computer Science and Engineering</p>
+
+
+
+    <!--header ends--> </div>
+
+
+
+    <!-- content --> <div id="content-outer" class="clear"><div
+
+    id="content-wrap">
+
+
+
+        <div id="content">
+
+            <div id="right">
+
+                <div id="col1" class="entry">
+
+                    <h3><a>Announcements</a></h3>
+
+                    <ul>
+						<li>(17/11/2013) - Notes for the 8th chapter (sensor and 
+						sensor networks) has been uploaded!</li>
+						<li>(11/11/2013) - Notes for the 7th chapter (wireless 
+						security) has been uploaded!</li>
+						<li>(1/11/2013) - Notes for the 6th chapter (network 
+						security) has been uploaded!</li>
+						<li>(15/10/2013) - Notes for the fifth chapter 
+						(multimedia networking) has been 
+						uploaded!</li>
+						<li>(30/09/2013) - The questions for homework 1 has been 
+						posted. The submission deadline is Oct. 8, 2013 at 
+						11:59pm.</li>
+						<li>(19/09/2013) - Notes for the fourth chapter 
+						(wireless) has been 
+						uploaded!</li>
+                        <li>(9/09/2013) - Mid-Term will be held from 19:00-21:00 
+						at LTC on Oct. 18, 2013 (Friday).</li>
+						<li>(7/09/2013) - Notes for the third chapter (P2P) has been 
+						uploaded!</li>
+						<li>(3/09/2013) - Notes for the second chapter 
+						(Multicast) has been 
+						uploaded!</li>
+						<li>(26/08/2013) - Notes for the first chapter has been 
+						uploaded!</li>
+						<li>(26/08/2013) - Welcome to COMP4622 course website!</li>				
+
+                    </ul>
+
+                </div>
+
+
+                <div id="col2" class="entry">
+
+                    <h3><a>Course Information</a></h3>
+
+                    <ul>
+
+                        <sub>Course Descriptions</sub>
+
+                        <p>
+
+Multicast and broadcast algorithms; Peer-to-Peer Networking; Wireless and Mobile Communication; Multimedia requirements; Advanced Internet Protocols (Diffserv, IntServ, etc.); Introduction to Network Security 
+and Wireless Security; Sensor and Sensor Networks. Exclusion: COMP5611; 
+
+                        </p>
+
+
+
+                        <sub>Prerequisites</sub>
+
+                        <p>
+
+COMP4621 or ELEC4120
+                        </p>
+
+
+                        <sub>Textbook</sub>
+
+						<table width="62%" border="0"> 
+ 
+                            <tbody> 
+ 
+                            <tr> 
+ 
+                                <td> 
+ 
+                                    &nbsp;<img border="0" src="images/TextBookCover.jpg"></td> 
+ 
+                                <td> 
+ 
+                                <a href="http://www.aw-bc.com/kurose_ross/" style="color: #880000;text-decoration: underline"  target="_blank">Computer Networking: A Top-Down Approach (5th Edition)</a><br> 
+ 
+                                James F. Kurose and Keith W. Ross<br> 
+ 
+                                Pearson<br> 
+ 
+                                ISBN: 0-13-607967-9
+ 
+                                </td> 
+ 
+                            </tr> 
+ 
+                            </tbody> 
+ 
+                        </table>
+
+
+
+                        <sub>Lectures</sub>
+
+                        <table width="80%" border="0">
+
+                            <tbody>
+
+                            <tr>
+
+                                <td><b>Instructor</b></td>
+
+                                <td><b>Meeting time</b></td>
+
+                                <td><b>Venue</b></td>
+
+                            </tr>
+
+                            <tr>
+
+                                <td><a href="http://www.cse.ust.hk/~qianzh">Qian Zhang</a></td>
+
+                                <td> Mon / Wed 10:30AM - 11:50AM</td>
+
+                                <td> LRm 4433, Lift 3</td>
+
+                            </tr>
+
+                            </tbody>
+
+                        </table>
+
+                        <sub>Academic Integrity</sub>
+
+                        <p>
+
+Colleagues may wish to be aware or reminded of a document which lays down a systematic process by which alleged violations of academic integrity are dealt with within the University. Known as "A Framework on Academic Integrity", this document is available 
+<a href="http://www.ab.ust.hk/ccss/Senate_Academic_Integrity.htm">here</a>.
+
+                        </p>
+
+
+
+                        <sub>Grading Scheme</sub>
+
+                        <table width="70%" border="0">
+
+                            <tbody>
+
+                            <tr>
+
+                                <td>Midterm Exam</td>
+
+                                <td>35%</td>
+
+                            </tr>
+
+                            <tr>
+
+                                <td>Final Exam</td>
+
+                                <td>40%</td>
+
+                            </tr>
+
+                            <tr>
+
+                                <td>Assignments </td>
+
+                                <td>20% (2 homeworks, 10% each)</td>
+
+                            </tr>
+
+                            <tr>
+
+                                <td>Projects</td>
+
+                                <td>5% </td>
+
+                            </tr>
+
+                            </tbody>
+
+                        </table>
+
+
+
+
+                </ul>
+
+                </div>
+
+
+
+
+
+                <div id="col3" class="entry" style="display:none;">
+
+                    <h3><a>Syllabus and Lecture Notes</a></h3>
+
+                    <div class="schedule">
+
+					<TABLE class=tableBorder style="LINE-HEIGHT: 14pt" cellSpacing=1 cellPadding=3 
+					align=center border=0 width="98%">
+					  <TBODY>
+
+					  <TR>
+						<TH class=tableHeaderText width="3%" height=25>No.</TH>  
+<!--						<TH class=tableHeaderText width="10%" height=25>Date</TH>  -->
+						<TH class=tableHeaderText height=25 width="30%">Topic</TH>
+						<TH class=tableHeaderText height=25 width="17%">Notes (.pps)</TH>  
+						<TH class=tableHeaderText height=25 width="19%">Notes<BR>(1 slide/page)</TH>  
+						<TH class=tableHeaderText height=25 width="19%">Notes<BR>(4 slides/page)</TH>  
+						</TR>
+
+					  <TR>
+						<TD class=forumRow vAlign=middle align=center width="3%" height=46 rowspan="1">
+						<p align="center">01</TD>
+<!--						<TD class=forumRow width="10%" height=23 align="center">
+						Sep. 12</TD>-->
+						<TD class=forumRow align=center width="30%" height=23>Overview</TD>
+						<TD class=forumRow align=center width="17%" height=23 rowspan="1">
+						<a href="notes/1-intro.ppsx">chapter-1</a></TD>
+						<TD class=forumRow align=center width="19%" height=23 rowspan="1">
+						<a href="notes/1-intro.pdf">chapter-1</a></TD>
+						<TD class=forumRow align=center width="19%" height=23 rowspan="1">
+						<a href="notes/1-intro.pdf">chapter-1</a></TD>
+						</TR>
+						
+					  <TR>
+						<TD class=forumRow vAlign=middle align=center width="3%" height=46 rowspan="1">
+						<p align="center">02</TD>
+						<TD class=forumRow align=center width="30%" height=23>Multicast</TD>
+						<TD class=forumRow align=center width="17%" height=23 rowspan="1">
+						<a href="notes/2-Multicast.ppsx">chapter-2</a></TD>
+						<TD class=forumRow align=center width="19%" height=23 rowspan="1">
+						<a href="notes/2-Multicast.pdf">chapter-2</a></TD>
+						<TD class=forumRow align=center width="19%" height=23 rowspan="1">
+						<a href="notes/2-Multicast(4).pdf">chapter-2</a></TD>
+						</TR>
+					  <TR>
+						<TD class=forumRow vAlign=middle align=center width="3%" height=46 rowspan="1">
+						<p align="center">03</TD>
+
+						<TD class=forumRow align=center width="30%" height=23>Peer-to-Peer networking</TD>
+						<TD class=forumRow align=center width="17%" height=23 rowspan="1">
+						<a href="notes/3-p2p.ppsx">chapter-3</a></TD>
+						<TD class=forumRow align=center width="19%" height=23 rowspan="1">
+						<a href="notes/3-p2p.pdf">chapter-3</a></TD>
+						<TD class=forumRow align=center width="19%" height=23 rowspan="1">
+						<a href="notes/3-p2p(4).pdf">chapter-3</a></TD>
+						</TR>
+					  <TR>
+						<TD class=forumRow vAlign=middle align=center width="3%" height=46 rowspan="1">
+						<p align="center">04</TD>
+						<TD class=forumRow align=center width="30%" height=23>Wireless and Mobile Networks</TD>
+						<TD class=forumRow align=center width="17%" height=23 rowspan="1">
+						<a href="notes/4-wireless%20%26%20mobility.ppsx">chapter-4</a></TD>
+						<TD class=forumRow align=center width="19%" height=23 rowspan="1">
+						<a href="notes/4-wireless%20%26%20mobility.pdf">chapter-4</a></TD>
+						<TD class=forumRow align=center width="19%" height=23 rowspan="1">
+						<a href="notes/4-wireless%20%26%20mobility(4).pdf">chapter-4</a></TD>
+						</TR>
+					  <TR>
+						<TD class=forumRow vAlign=middle align=center width="3%" height=46 rowspan="1">
+						<p align="center">05</TD>
+						<TD class=forumRow align=center width="30%" height=23>Multimedia Networking</TD>
+						<TD class=forumRow align=center width="17%" height=23 rowspan="1">
+						<a href="notes/5-multimedia.ppsx">chapter-5</a></TD>
+						</TD>
+						<TD class=forumRow align=center width="19%" height=23 rowspan="1">
+						<a href="notes/5-multimedia.pdf">chapter-5</a></TD>
+						</TD>
+						<TD class=forumRow align=center width="19%" height=23 rowspan="1">
+						<a href="notes/5-multimedia(4).pdf">chapter-5</a></TD>
+						</TD>
+						</TR>	
+					  <TR>
+						<TD class=forumRow vAlign=middle align=center width="3%" height=46 rowspan="1">
+						<p align="center">06</TD>
+						<TD class=forumRow align=center width="30%" height=23>Network Security</TD>
+						<TD class=forumRow align=center width="17%" height=23 rowspan="1">
+						<a href="notes/6-security.ppsx">chapter-6</a></TD>
+						</TD>
+						<TD class=forumRow align=center width="19%" height=23 rowspan="1">
+						<a href="notes/6-security.pdf">chapter-6</a></TD>
+						</TD>
+						<TD class=forumRow align=center width="19%" height=23 rowspan="1">
+						<a href="notes/6-security(4).pdf">chapter-6</a></TD>
+						</TD>
+						</TR>
+					  <TR>
+						<TD class=forumRow vAlign=middle align=center width="3%" height=46>
+						<p style="text-align: center">
+						<font size="5" style="font-size: 1.2em">07</font></TD>
+						<TD class=forumRow align=center width="30%" height=23>
+						Wireless Security</TD>
+						<TD class=forumRow align=center width="17%" height=23>
+						<a href="notes/7-wireless%20security.ppsx">chapter-7</a></TD>
+						<TD class=forumRow align=center width="19%" height=23>
+						<a href="notes/7-wireless%20security.pdf">chapter-7</a></TD>
+						<TD class=forumRow align=center width="19%" height=23>
+						<a href="notes/7-wireless%20security(4).pdf">chapter-7</a></TD>
+						</TR>					
+					  <TR>
+						<TD class=forumRow vAlign=middle align=center width="3%" height=46 rowspan="1">
+						<p align="center">08</TD>
+						<TD class=forumRow align=center width="30%" height=23>
+						Sensor and Sensor Networks</TD>
+						<TD class=forumRow align=center width="17%" height=23 rowspan="1">
+						<a href="notes/8-sensor.ppsx">chapter-8</a></TD>
+						</TD>
+						<TD class=forumRow align=center width="19%" height=23 rowspan="1">
+						<a href="notes/8-sensor.pdf">chapter-8</a></TD>
+						</TD>
+						<TD class=forumRow align=center width="19%" height=23 rowspan="1">
+						<a href="notes/8-sensor(4).pdf">chapter-8</a></TD>
+						</TD>
+						</TR>					
+				     </TABLE>
+<!-- 					
+					
+                        <table width="97%">
+
+                            <tbody>
+
+                            <tr>
+
+                                <td width="50%" COLSPAN="2"><strong>1. Overview (1 week)</strong></td>
+
+                            </tr>
+
+                            <tr>
+
+                                <td width="50%">
+
+                                    <ul>
+
+                                        <li>Chapter 1: Introduction</li>
+
+                                    </ul>
+
+                                </td>
+
+                                <td width="50%">
+
+                                    <ul>
+
+                                        <li style="margin-left: 20px;">&nbsp&nbsp&nbsp&nbsp <a href="lecturenotes/ppt/ch01_fall12.ppt">PPT</a>&nbsp&nbsp&nbsp&nbsp&nbsp <a href="lecturenotes/pdf/ch01_fall12_1up.pdf">1up PDF</a>&nbsp&nbsp&nbsp&nbsp&nbsp <a href="lecturenotes/pdf/ch01_fall12_6up.pdf">6up PDF</a>&nbsp&nbsp&nbsp&nbsp&nbsp <a href="lecturenotes/pdf/ch01_fall12_9up.pdf">9up PDF</a></li>
+
+                                    </ul>
+
+                                </td>
+
+                            </tr>
+
+                            </tbody>
+
+                        </table>-->
+
+
+
+                    </div>
+
+                </div>
+
+
+
+                <div id="col4" class="entry" style="display:none;">
+
+                    <h3>&nbsp;</h3>
+
+                    <div class="schedule">
+
+                   <table width="97%">
+
+                        <tr>
+
+                            <td width="60%">
+
+                                <ul>
+<!--
+                                    <li>Chapter 1: Introduction</li>-->
+
+                                </ul>
+
+                            </td>
+
+                            <td>
+
+                                <ul>
+
+                               <!--    <li><a href="summary/Ch1-2_Overview_summary.pdf">PDF</a></li> -->
+
+                                </ul>
+
+                            </td>
+
+                        </tr>
+
+
+
+                    </table>
+
+                    </div>
+
+                </div>
+
+
+
+                <div id="col5" class="entry" style="display:none;">
+
+                    <h3><a>Homeworks and Exams</a></h3>
+
+                    <ul>
+
+						<p></p><sub>Homeworks</sub>
+						
+						<br><br>
+
+						<li style="color: #000000;font-size:1.5em">
+						<strong>Homework #1</strong>
+						</li>
+
+						<li style="list-style: none;">
+						<a>Handout date</a>:&nbsp;  						
+						Sept. 30, 2013</li>
+
+						<li style="list-style: none;">
+						<a>Due date</a>:&nbsp;  						
+						Oct. 8, 2013 at 11:59pm</li>
+						
+						<li style="list-style: none;">
+						Link: &nbsp<a href="homework1.pdf">Homework #1</a></li>
+						
+						<li style="list-style: none;">
+						Answer: 
+						</li>
+						
+						<li style="list-style: none;">
+						Scores: 
+						<br>
+						
+						<li style="color: #000000;font-size:1.5em">
+						<strong>Homework #2</strong>
+						</li>
+
+						<li style="list-style: none;">
+						<a>Handout date</a>:  						
+						</li>
+
+						<li style="list-style: none;">
+						<a>Due date</a>:&nbsp;  						
+						</li>
+						
+						<li style="list-style: none;">
+						Link:&nbsp; 
+						</li>
+						
+						<li style="list-style: none;">
+						Answer:&nbsp; 
+						</li>
+						
+						<li style="list-style: none;">
+						Scores:&nbsp;
+						</li>
+			
+					<br>
+                    </ul>
+					
+					<br><br>
+
+                    <ul>
+
+						<p></p><sub>Project</sub>
+						
+						<br><br>
+						
+						<li style="list-style: none;">
+						Scores:&nbsp;
+						</li>
+			
+					<br>
+                    </ul>
+
+					<br><br>
+					
+					<ul>
+
+                        <p></p><sub>Exams</sub>
+						
+						<br><br>
+						
+						<li style="color: #000000;font-size:1.5em">
+                        <strong>Midterm Exam</strong>
+                        </li>
+						
+                        <li style="list-style: none;">
+                        <a>Date</a>:&nbsp; 
+                        </li>
+
+                        <li style="list-style: none;">
+                        <a>Time</a>:&nbsp; 
+                        </li>
+
+                        <li style="list-style: none;">
+                        <a>Venues</a>:&nbsp; 
+                        </li>
+						
+						<li style="list-style: none;">					
+						Answer:&nbsp;
+						
+						<li style="list-style: none;">
+						Scores:&nbsp;
+						</li>
+						
+						<br>
+						
+                        <li style="color: #000000;font-size:1.5em">
+                        <strong>Final Exam</strong>
+                        </li>
+						
+                        <li style="list-style: none;">
+                        <a>Date</a>:&nbsp; 
+                        </li>
+
+                        <li style="list-style: none;">
+                        <a>Time</a>:&nbsp; 
+                        </li>
+
+                        <li style="list-style: none;">
+                        <a>Venue</a>:&nbsp; 
+                        </li>
+						
+						<li style="list-style: none;">					
+						Answer:
+
+						<li style="list-style: none;">
+						Scores:&nbsp; 
+						</li>			
+
+						<li style="list-style: none;">
+						&nbsp;</li>			
+                    </ul>
+
+                </div>
+
+
+
+                <div id="col6" class="entry" style="display:none;">
+
+                    <h3><a>Past Exams</a></h3>
+
+                  <ul>
+
+                        <li></li>
+
+                        <li></li>
+&nbsp;<!--
+                        <li>Final Exam fall09 Solution <a href="exams/comp252_final_fall09.pdf">PDF</a></li>
+
+                        <li>Final Exam fall10 Solution <a href="exams/comp252_final_fall10.pdf">PDF</a></li>
+--></ul>
+
+                </div>
+
+
+
+                 <div id="col7" class="entry" style="display:none;">
+
+                    <h3><a>Project Assignments</a></h3><br>
+
+
+                </div>
+
+
+
+
+
+
+                <div id="col8" class="entry" style="display:none;">
+
+                    <h3><a>References</a></h3>
+
+                    <ul>
+<!--
+                        <li>Information about UNIX (<a href="http://www.ust.hk/ccst/unix/UNIXhelp1.3/Pages/">Link</a>)</li>
+
+                        <li>Information on basic UNIX commands (<a href="http://www.cup.uni-muenchen.de/oc/zipse/lv18099/UNIX_info.html">Link</a>)</li>
+
+                        <li>Unix's FAQ List (<a href="http://www.bsd.org/faq.html">Link</a>)</li>
+
+                        <li>Unix Guru Universe - Official page for UNIX System Administrators (<a href="http://www.ugu.com/">Link</a>)</li>
+
+                        <li>Automating Program Compilation - Writing Makefiles (<a href="http://users.actcom.co.il/~choo/lupg/tutorials/writing-makefiles/writing-makefiles.html">Link</a>)</li>
+
+                        <li>VI Command Summary (<a href="references/vi-ref.pdf">PDF</a>)</li>
+
+                        <li>GNU Debugger (GDB) (<a href="Others/GDB.htm">Link</a>)</li>
+
+                        <li>Using GNU's GDB Debugger (<a href="http://www.dirac.org/linux/gdb/">Link</a>)</li>
+
+                        <li>C/C++ Programming Tutorials (<a href="http://www.cprogramming.com/tutorial.html">Link</a>)</li>
+
+                        <li>The C++ Resources Network (<a href="http://www.cplusplus.com/">Link</a>)</li>
+
+                        <li>Applets (<a href="http://143.89.191.10/Search/Search.php?course=COMP252">Link</a>)</li>
+
+                        <li>Google Chrome - Important concepts of OS and what can be learned from OS (<a href="http://www.google.com/googlebooks/chrome/">Link</a>)</li>
+
+                    </ul>-->
+
+                </div>
+
+                <div id="col9" class="entry" style="display:none;">
+
+                    <h3><a>TAs</a></h3>
+
+                    <div class="schedule">
+
+                        <table width="97%">
+
+                            <tbody>
+
+                            <tr>
+
+                                <td width="40%" height="200px" style="text-align:center;">
+
+                                    &nbsp;</td>
+
+                                <td width="60%" style="font-size:1.3em">
+
+                                    &nbsp;</td>
+
+                            </tr>
+
+
+                            <tr>
+
+                                <td width="40%" height="200px" style="text-align:center;">
+
+                                    &nbsp;</td>
+
+                                <td width="60%" style="font-size:1.3em">
+
+                                    <ul>
+                                        <li style="list-style: none;">Wei Wang</li>
+                                        <li style="list-style: none;">Email: gswwang@cse.ust.hk</li>
+                                        <li style="list-style: none;;">Office: 2577</li>
+                                        <li style="list-style: none;;">Office Hour: Fri 16:00-17:00</li>
+                                    </ul>
+
+                                </td>
+
+                            </tr>
+
+
+                            </tbody>
+
+                        </table>
+
+                    </div>
+
+                </div>
+
+        </div>
+
+        <div id="left">
+
+                <div class="sidemenu">
+
+                <h3>Menu</h3> <ul>
+
+                        <li><a
+
+                        href="index-2.html">Home</a></li>
+
+                        <li><a
+
+                        onclick="javascript:switch_col(1);"
+
+                        href="#">Announcements</a></li>
+
+                        <li><a
+
+                        onclick="javascript:switch_col(2);"
+
+                        href="#">Course Information</a></li>
+
+                        <li><a
+
+                        onclick="javascript:switch_col(3);"
+
+                        href="#">Syllabus and Lecture Notes</a></li>
+
+                        <li></li>
+
+                        <li><a
+
+                        onclick="javascript:switch_col(5);"
+
+                        href="#">Homeworks and Exams</a></li>
+
+                        <li><a
+
+                        onclick="javascript:switch_col(6);"
+
+                        href="#">Past Exams</a></li>
+
+                        <li><a
+
+                        onclick="javascript:switch_col(7);"
+
+                        href="#">Project Assignments</a></li>
+
+                        <li><a
+
+                        onclick="javascript:switch_col(8);"
+
+                        href="#">References</a></li>
+
+                        <li><a
+
+                        onclick="javascript:switch_col(9);"
+
+                        href="#">TA Information</a></li>
+
+                    </ul>
+
+                </div>
+
+
+                <div class="sidemenu">
+
+                    <h3>Instructor</h3> <ul>
+
+
+                    <li><a
+
+                    href="mailto:qianzh@cse.ust.hk"><strong>Qian Zhang</strong></a> <strong>(<a
+
+                    href="http://www.cse.ust.hk/~qianzh/"
+
+                    target="_blank">web</a>)</strong>
+
+                    <strong><br>Office hours:<br>
+
+                    by appointment (Room
+
+                    3533)</strong> </li>
+
+
+                    </ul>
+
+                </div>
+
+                <div class="sidemenu">
+
+                    <h3>Links</h3> <ul>
+<!--
+                        <li><a href="http://www.ust.hk/cgi-bin/ccst/dnews/dnewsweb?cmd=xover&group=hkust.cs.class.4622&from=&utag=&sub=y">Course 
+Newsgroup</a></li>-->
+
+                        <li><a href="http://cssystem.cs.ust.hk/home.php?docbase=UGuides/cass&amp;req_url=UGuides/cass/index.html">CASS</a></li>
+
+                    </ul>
+
+                </div>
+
+        </div>
+
+
+
+        </div>
+
+
+
+    <!-- content end --> </div></div>
+
+
+
+    <!-- footer-bottom starts --> <div id="footer-bottom">
+
+        <div class="bottom-left">
+
+            <p> <strong>Page maintained by: Qian Zhang
+
+            </strong>&nbsp; &nbsp; &nbsp; <strong>Powered
+
+            by: <a
+
+            href="http://www.styleshout.com/">styleshout<strong></a>
+
+            </p>
+
+        </div>
+
+
+
+
+
+    <!-- footer-bottom ends --> </div>
+
+
+
+<!-- wrap ends here --> </div> </body>
+<!-- Mirrored from course.cse.ust.hk/comp4622/ by HTTrack Website Copier/3.x [XR&CO'2014], Wed, 03 Jun 2015 09:22:05 GMT -->
+</html>
